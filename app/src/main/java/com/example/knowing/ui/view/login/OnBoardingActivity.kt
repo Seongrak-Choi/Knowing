@@ -1,13 +1,14 @@
 package com.example.knowing.ui.view.login
 
+import android.os.Build
 import android.os.Bundle
+
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
-import com.example.knowing.config.ApplicationClass
 import com.example.knowing.databinding.ActivityOnBoardingBinding
 import com.example.knowing.ui.base.BaseActivity
 import com.example.knowing.ui.viewmodel.OnBoardingActivityViewModel
-import com.nhn.android.naverlogin.OAuthLogin
-import com.nhn.android.naverlogin.OAuthLoginHandler
+
 
 class OnBoardingActivity : BaseActivity<ActivityOnBoardingBinding>(ActivityOnBoardingBinding::inflate){
     private lateinit var onBoardingActivityViewModel : OnBoardingActivityViewModel
@@ -17,28 +18,17 @@ class OnBoardingActivity : BaseActivity<ActivityOnBoardingBinding>(ActivityOnBoa
 
         onBoardingActivityViewModel = ViewModelProvider(this).get(OnBoardingActivityViewModel::class.java) //뷰모델 장착
 
+        //네이버아이디로 로그인 버튼 클릭 리스너
         binding.btnLoginNaver.setOnClickListener {
-//            onBoardingActivityViewModel.setActivity(this)
-//            onBoardingActivityViewModel.getNaverToken()
-            val mOAuthLoginInstance = OAuthLogin.getInstance() //네아로 인스턴스 생성
-            //인스턴스 초기화 init(context,id,secret,name)
-            mOAuthLoginInstance.init(this,
-                ApplicationClass().naver_client_id,
-                ApplicationClass().naver_client_secret,
-                ApplicationClass().naver_client_name)
-            mOAuthLoginInstance.startOauthLoginActivity(this, OAuthLogin.mOAuthLoginHandler)
-
-            //네아로의 로그인 callback을 처리할 핸들러
-            val mOAuthLoginHandler : OAuthLoginHandler = object : OAuthLoginHandler(){
-                override fun run(success: Boolean) {
-                    if(success){
-                        val accessToken = mOAuthLoginInstance.getAccessToken(applicationContext) //로그인 결과로 얻은 접근 토큰을 반환
-                        println(accessToken.toString())
-                    }
-                }
-            }
-            println("뭐냐")
+            onBoardingActivityViewModel.setActivity(this) //activity의 정보를 viewModel로 넘겨준다. 네이버아이디로로그인 할 때 필요함.
+            onBoardingActivityViewModel.getNaverToken() //네이버 로그인을 진행한다.
         }
+
+        //카카오계정 로그인 버튼 클릭 리스너
+        binding.btnLoginKakao.setOnClickListener {
+            onBoardingActivityViewModel.getKakaoToken()
+        }
+
 
     }
 }

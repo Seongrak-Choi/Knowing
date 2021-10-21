@@ -42,11 +42,11 @@ dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.0'
 
     //네아로 SDK
-    implementation files('libs/naveridlogin_android_sdk_4.2.6.aar')
-    implementation 'androidx.appcompat:appcompat:1.0.0'
-    implementation 'androidx.legacy:legacy-support-core-utils:1.0.0'
-    implementation 'androidx.browser:browser:1.0.0'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.naver.nid:naveridlogin-android-sdk:4.2.6'
+
+    //카카오계정 로그인
+    implementation "com.kakao.sdk:v2-user:2.0.1"
+
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.6.0'

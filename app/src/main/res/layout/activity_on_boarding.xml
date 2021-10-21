@@ -39,19 +39,20 @@
             app:layout_constraintTop_toBottomOf="@+id/tx_start">
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btn_login_kakao"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_launcher_background" />
+
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/btn_login_naver"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
                 android:adjustViewBounds="true"
                 android:src="@drawable/btng_icon_circle" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:adjustViewBounds="true"
-                android:src="@drawable/ic_launcher_background" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="60dp"
