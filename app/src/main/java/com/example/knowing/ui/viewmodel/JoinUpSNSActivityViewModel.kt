@@ -2,11 +2,10 @@ package com.example.knowing.ui.viewmodel
 
 import android.annotation.SuppressLint
 import android.app.Application
-import android.content.pm.PackageManager
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import com.example.knowing.config.ApplicationClass
-import com.example.knowing.ui.view.login.OnBoardingActivity
+import com.example.knowing.ui.view.login.JoinUpSNSActivity
 import com.kakao.sdk.auth.LoginClient
 
 import com.kakao.sdk.auth.model.OAuthToken
@@ -15,11 +14,11 @@ import com.kakao.sdk.user.UserApiClient
 import com.nhn.android.naverlogin.OAuthLogin
 import com.nhn.android.naverlogin.OAuthLoginHandler
 
-class OnBoardingActivityViewModel(application: Application) : AndroidViewModel(application){
+class JoinUpSNSActivityViewModel(application: Application) : AndroidViewModel(application){
     private val mOAuthLoginInstance = OAuthLogin.getInstance() //네아로 인스턴스 생성
     private val myApplication = application //application을 전역변수로 사용할 수 있도록 세팅
     private val myContext = myApplication.applicationContext //Context를 전역변수로 사용할 수 있도록 세팅
-    private lateinit var activity: OnBoardingActivity
+    private lateinit var activity: JoinUpSNSActivity
 
 
 
@@ -107,7 +106,7 @@ class OnBoardingActivityViewModel(application: Application) : AndroidViewModel(a
                         Toast.makeText(myContext, "앱이 요청 권한이 없음", Toast.LENGTH_SHORT).show()
                     }
                     else -> { // Unknown
-                        Toast.makeText(myContext, "기타 에러", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(myContext, "로그인 취소", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
@@ -140,7 +139,7 @@ class OnBoardingActivityViewModel(application: Application) : AndroidViewModel(a
     /*
     onBoardingActivity의 activity를 받아와 viewModel(자신)클래스에 저장한다. startOauthLoginActivity메소드를 호출할 때 필요함.
      */
-    fun setActivity(activity: OnBoardingActivity){
+    fun setActivity(activity: JoinUpSNSActivity){
         this.activity = activity
     }
 
