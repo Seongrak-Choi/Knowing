@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Knowing</string>
     <string name="kakao_app_key">d8e0e3e9398b5db90db367e587268a49</string>
+
+    <!--onboarding1-->
+    <string name="onboarding1_1">나에게 맞는 정보만\n빠르게 쏙쏙!</string>
+    <string name="onboarding1_2">나를 위한 정부 보조금 정책을\n간편하게 받아보세요.</string>
+    <!--onboarding2-->
+    <string name="onboarding2_1">정책 발견부터\n알림 신청,\n관리까지 한번에!</string>
+    <string name="onboarding2_2">개인 비서같은 꼼꼼함으로 정책 신청부터\n관리까지, 놓치지 않고 도와드릴게요.</string>
 </resources>

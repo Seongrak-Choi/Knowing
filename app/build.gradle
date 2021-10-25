@@ -50,7 +50,7 @@ dependencies {
     //google login
     implementation 'com.google.android.gms:play-services-auth:19.2.0'
 
-    //viewpager2 indicator 라이브러릴
+    //viewpager2 indicator 라이브러리
     implementation 'com.tbuonomo:dotsindicator:4.2'
 
 

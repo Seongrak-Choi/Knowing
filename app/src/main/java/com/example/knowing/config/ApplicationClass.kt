@@ -12,12 +12,9 @@ class ApplicationClass : Application() {
 
 
     //카카오계정 로그인에 필요한 kakao_app_key는 string에 선언해 두었음
-
     override fun onCreate() {
         super.onCreate()
-
         KakaoSdk.init(this, getString(R.string.kakao_app_key))
     }
-
 
 }

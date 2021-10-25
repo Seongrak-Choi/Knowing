@@ -3,7 +3,6 @@ package com.example.knowing.ui.view.onboarding
 import android.os.Bundle
 import android.view.View
 import com.example.knowing.R
-import com.example.knowing.databinding.FragmentOnboarding1Binding
 import com.example.knowing.databinding.FragmentOnboarding2Binding
 import com.example.knowing.ui.base.BaseFragment
 
