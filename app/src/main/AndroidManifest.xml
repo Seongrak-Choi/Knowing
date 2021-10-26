@@ -15,7 +15,12 @@
         <meta-data android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_app_key"/>
 
-        <activity android:name=".ui.view.MainActivity">
+        <activity android:name=".ui.view.main.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity android:name=".ui.view.onboarding.OnboardingActivity">
@@ -23,11 +28,7 @@
 
         <activity android:name=".ui.view.splash.SplashActivity"
             android:theme="@style/SplashActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ui.view.login.JoinUpSNSActivity"/>
 
