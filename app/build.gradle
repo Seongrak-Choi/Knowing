@@ -34,6 +34,13 @@ android {
     viewBinding{
         enabled=true
     }
+    sourceSets {
+        main {
+            assets {
+                srcDirs 'src\\main\\assets'
+            }
+        }
+    }
 }
 
 dependencies {
@@ -52,6 +59,10 @@ dependencies {
 
     //viewpager2 indicator 라이브러리
     implementation 'com.tbuonomo:dotsindicator:4.2'
+
+    //lottie 라이브러리
+    implementation 'com.airbnb.android:lottie:2.1.0'
+
 
 
 

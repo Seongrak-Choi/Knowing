@@ -16,6 +16,9 @@
             android:value="@string/kakao_app_key"/>
 
         <activity android:name=".ui.view.main.MainActivity">
+        </activity>
+
+        <activity android:name=".ui.view.main.LoadingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,6 +27,11 @@
         </activity>
 
         <activity android:name=".ui.view.onboarding.OnboardingActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity android:name=".ui.view.splash.SplashActivity"
