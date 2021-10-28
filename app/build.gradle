@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    //firebase사용하기 위해 플러그인 추가
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -54,15 +56,21 @@ dependencies {
     //카카오계정 로그인
     implementation "com.kakao.sdk:v2-user:2.0.1"
 
-    //google login
+    //google계정으로 login 라이브러리
     implementation 'com.google.android.gms:play-services-auth:19.2.0'
 
     //viewpager2 indicator 라이브러리
     implementation 'com.tbuonomo:dotsindicator:4.2'
 
     //lottie 라이브러리
-    implementation 'com.airbnb.android:lottie:2.1.0'
+    implementation 'com.airbnb.android:lottie:3.4.0'
 
+    //firebase로그인 설정 라이브러리
+    implementation platform('com.google.firebase:firebase-bom:28.4.2')
+    implementation 'com.google.firebase:firebase-auth-ktx'
+
+    //firebase분석 관련 라이브러리
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 
 
 

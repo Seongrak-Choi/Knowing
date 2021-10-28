@@ -5,11 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewpager2"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraint_btn"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_bg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/group_bg"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,61 +26,99 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="노잉 시작하기"
-            android:textSize="13sp"
+            android:textSize="17sp"
+            android:fontFamily="@font/godom"
+            android:textColor="#515151"
+            android:layout_marginBottom="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toTopOf="@+id/linear_btn" />
 
         <LinearLayout
             android:id="@+id/linear_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             android:gravity="center"
             android:orientation="horizontal"
             android:paddingHorizontal="20dp"
-            app:layout_constraintTop_toBottomOf="@+id/tx_start">
+            android:layout_marginBottom="23dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_sign_up">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/btn_login_kakao"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:adjustViewBounds="true"
-                android:src="@drawable/ic_launcher_background" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/btn_login_naver"
-                android:layout_width="60dp"
+                android:layout_width="55dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
+                android:layout_marginHorizontal="5dp"
                 android:adjustViewBounds="true"
-                android:src="@drawable/btng_icon_circle" />
+                android:src="@drawable/group_logo_naver" />
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="60dp"
+                android:id="@+id/btn_login_kakao"
+                android:layout_width="55dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
+                android:layout_marginHorizontal="5dp"
                 android:adjustViewBounds="true"
-                android:src="@drawable/ic_launcher_background" />
+                android:src="@drawable/group_logo_kakao" />
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="60dp"
+                android:id="@+id/btn_login_facebook"
+                android:layout_width="55dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
+                android:layout_marginHorizontal="5dp"
                 android:adjustViewBounds="true"
-                android:src="@drawable/ic_launcher_background" />
+                android:src="@drawable/group_logo_facebook" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btn_login_google"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/group_logo_google" />
         </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btn_sign_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이메일로 로그인"
+            android:textSize="14sp"
+            android:textColor="#939393"
+            android:layout_marginBottom="50dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/roboto_bold"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintEnd_toStartOf="@+id/line"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="2dp"
+            android:layout_height="0dp"
+            android:background="#D8D8D8"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginVertical="2dp"
+            app:layout_constraintStart_toEndOf="@id/btn_sign_in"
+            app:layout_constraintEnd_toStartOf="@id/btn_sign_up"
+            app:layout_constraintTop_toTopOf="@id/btn_sign_in"
+            app:layout_constraintBottom_toBottomOf="@id/btn_sign_in"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/btn_sign_up"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:layout_marginBottom="50dp"
             android:text="이메일로 회원가입"
+            android:textSize="14sp"
+            android:textColor="#939393"
+            android:fontFamily="@font/roboto_bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/linear_btn" />
+            app:layout_constraintStart_toEndOf="@id/line"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

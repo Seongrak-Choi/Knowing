@@ -20,7 +20,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::bind
         //viewpager2 어댑터 설정
         binding.viewPager2.adapter = HomeFragmentViewPager2Adapter(this)
         binding.viewPager2.orientation = ViewPager2.ORIENTATION_HORIZONTAL
-
+        binding.viewPager2.isSaveEnabled = false
 
         //tabLayout과 viewpager2 연결
         TabLayoutMediator(binding.tabLayout,binding.viewPager2){tab, position ->

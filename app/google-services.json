@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "157904142433",
+    "project_id": "knowing-a0cf1",
+    "storage_bucket": "knowing-a0cf1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:157904142433:android:9f3beffb2439d37e64aa20",
+        "android_client_info": {
+          "package_name": "com.example.knowing"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "157904142433-cvvlg6l457sf1r53l728m350m9inja69.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.knowing",
+            "certificate_hash": "21f03c292e9be88a4fd68ab5558643f7a092459a"
+          }
+        },
+        {
+          "client_id": "157904142433-14uchdgjb6st9qc0m69rqsoc5bqodgmr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTPibnoiTI3t9awPxJVZ49KH72Iyo_vcE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "157904142433-14uchdgjb6st9qc0m69rqsoc5bqodgmr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "157904142433-jpig5aluihgqpamq1f6e1mkakd3ncpvi.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.cmcTeamTeam.Knowing"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

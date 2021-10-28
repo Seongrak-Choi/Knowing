@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/main_home_bottomNava_home"
-        android:title="홈"
+        android:id="@+id/main_home_bottomNavi_home"
+        android:title="@string/bottom_navi_menu1"
         android:icon="@drawable/ic_baseline_home_24"/>
     <item
-        android:id="@+id/main_home_bottomNava_area"
-        android:title="알림내역"
+        android:id="@+id/main_home_bottomNavi_alert"
+        android:title="@string/bottom_navi_menu2"
         android:icon="@drawable/ic_baseline_add_alert_24"/>
     <item
-        android:id="@+id/main_home_bottomNava_my_near"
-        android:title="북마크"
+        android:id="@+id/main_home_bottomNavi_bookmark"
+        android:title="@string/bottom_navi_menu3"
         android:icon="@drawable/ic_baseline_bookmark_border_24"/>
     <item
-        android:id="@+id/main_home_bottomNava_like"
-        android:title="마이페이지"
+        android:id="@+id/main_home_bottomNavi_my_page"
+        android:title="@string/bottom_navi_menu4"
         android:icon="@drawable/ic_baseline_perm_identity_24"/>
 </menu>

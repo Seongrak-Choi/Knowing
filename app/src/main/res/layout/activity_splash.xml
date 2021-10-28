@@ -13,7 +13,7 @@
         android:background="@drawable/splash_bg"/>
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="0dp"
+        android:layout_width="117dp"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         app:layout_constraintTop_toTopOf="parent"
@@ -21,9 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintVertical_bias="0.45"
-        android:src="@drawable/logotype"
-        android:layout_marginStart="140dp"
-        android:layout_marginEnd="140dp"/>
+        android:src="@drawable/logotype" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

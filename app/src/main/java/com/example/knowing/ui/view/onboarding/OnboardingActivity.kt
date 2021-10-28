@@ -1,8 +1,10 @@
 package com.example.knowing.ui.view.onboarding
 
 import android.animation.*
+import android.graphics.Color
 import android.graphics.drawable.TransitionDrawable
 import android.os.Bundle
+import android.view.View
 import android.view.WindowManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -32,13 +34,16 @@ class OnboardingActivity : BaseActivity<ActivityOnboardingBinding>(ActivityOnboa
             softKeyHeight = resources.getDimensionPixelSize(resourceId)
         }
 
-        //soft_key_navigation_bar 만큼 view가 올라오도록 최상단 layout에 패딩을 설정
-        binding.constraint.setPadding(0,0,0,softKeyHeight)
+//        //soft_key_navigation_bar 만큼 view가 올라오도록 최상단 layout에 패딩을 설정
+//        binding.constraint.setPadding(0,0,0,softKeyHeight)
 
 
         //statusbar 투명하게 설정
-        val window = window
-        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+//        val window = window
+//        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        window?.decorView?.systemUiVisibility =
+            View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        window.statusBarColor = Color.TRANSPARENT
 
 
 

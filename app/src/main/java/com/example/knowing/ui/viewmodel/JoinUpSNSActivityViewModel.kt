@@ -2,10 +2,13 @@ package com.example.knowing.ui.viewmodel
 
 import android.annotation.SuppressLint
 import android.app.Application
+import android.content.Intent
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import com.example.knowing.config.ApplicationClass
 import com.example.knowing.ui.view.login.JoinUpSNSActivity
+import com.example.knowing.ui.view.main.LoadingActivity
+import com.example.knowing.ui.view.onboarding.OnboardingActivity
 import com.kakao.sdk.auth.LoginClient
 
 import com.kakao.sdk.auth.model.OAuthToken
@@ -45,6 +48,11 @@ class JoinUpSNSActivityViewModel(application: Application) : AndroidViewModel(ap
                 val refreshToken = mOAuthLoginInstance.getRefreshToken(myContext) //refresh토큰 값을 저장
                 val expiresAt = mOAuthLoginInstance.getExpiresAt(myContext) //토큰 만료기간을 저장
                 val tokenType = mOAuthLoginInstance.getTokenType(myContext) //토큰의 타입을 저장
+
+                //activitiy 이동
+                var intent = Intent(application.applicationContext, LoadingActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)//activity가 아닌 곳에서 startActivity를 할 경우 오류가 발생하기 때문에 flag를 지정해준다.
+                application.startActivity(intent)
             }
             else{
                 //로그인이 실패했을 경우
@@ -119,7 +127,6 @@ class JoinUpSNSActivityViewModel(application: Application) : AndroidViewModel(ap
                     println("e-mail: ${user?.kakaoAccount?.ageRange}")
                     println("e-mail: ${user?.kakaoAccount?.birthday}")
                     println("e-mail: ${user?.kakaoAccount?.gender}")
-
                 }
 
                 //액티비티 이동
@@ -134,6 +141,13 @@ class JoinUpSNSActivityViewModel(application: Application) : AndroidViewModel(ap
         }
     }
 
+
+    /*
+    google계정으로 로그인하여 토큰값을 받아서 firebase에 등록하는 함수
+     */
+    fun getGoogleToken(){
+
+    }
 
 
     /*

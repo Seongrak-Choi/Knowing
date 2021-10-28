@@ -1,9 +1,11 @@
 package com.example.knowing.ui.view.splash
 
 import android.content.res.Resources
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.util.DisplayMetrics
+import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.LinearLayout
@@ -31,13 +33,17 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
         }
 
 
-        //statusbar 투명하게 설정
-        val window = window
-        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        //statusbar 투명하게 설정(네비게이션bar도 투명해지는 단점이 존재)
+//        val window = window
+//        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        //statusbar 투명하게 설정(네비게이션bar는 투명해지지 않음)
+        window?.decorView?.systemUiVisibility =
+            View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        window.statusBarColor = Color.TRANSPARENT
 
 
-        //soft_key_navigation_bar 만큼 view가 올라오도록 최상단 layout에 패딩을 설정
-        binding.constraint.setPadding(0,0,0,softKeyHeight)
+//        //soft_key_navigation_bar 만큼 view가 올라오도록 최상단 layout에 패딩을 설정
+//        binding.constraint.setPadding(0,0,0,softKeyHeight)
 
     }
 }
