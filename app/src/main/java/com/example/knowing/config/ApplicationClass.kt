@@ -2,6 +2,8 @@ package com.example.knowing.config
 
 import android.app.Application
 import com.example.knowing.R
+import com.facebook.FacebookSdk
+import com.facebook.appevents.AppEventsLogger
 import com.kakao.sdk.common.KakaoSdk
 
 class ApplicationClass : Application() {
@@ -15,6 +17,8 @@ class ApplicationClass : Application() {
     override fun onCreate() {
         super.onCreate()
         KakaoSdk.init(this, getString(R.string.kakao_app_key))
+        FacebookSdk.sdkInitialize(this)
+        AppEventsLogger.activateApp(this)
     }
 
 }

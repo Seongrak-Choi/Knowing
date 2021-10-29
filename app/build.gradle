@@ -72,6 +72,10 @@ dependencies {
     //firebase분석 관련 라이브러리
     implementation 'com.google.firebase:firebase-analytics-ktx'
 
+    //facebook 로그인 라이브러리
+    implementation 'com.facebook.android:facebook-login:5.15.3'
+
+
 
 
 

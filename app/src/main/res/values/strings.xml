@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">Knowing</string>
+    //카카오 로그인 키값
     <string name="kakao_app_key">d8e0e3e9398b5db90db367e587268a49</string>
+
+    //facebook계정 로그인 키값
+    <string name="facebook_app_id">1582784508732482</string>
+    <string name="fb_login_protocol_scheme">fb1582784508732482</string>
+
 
     <!--onboarding1-->
     <string name="onboarding1_1">나에게 맞는 정보만\n빠르게 쏙쏙!</string>
@@ -9,9 +15,14 @@
     <string name="onboarding2_1">정책 발견부터\n알림 신청,\n관리까지 한번에!</string>
     <string name="onboarding2_2">개인 비서같은 꼼꼼함으로 정책 신청부터\n관리까지, 놓치지 않고 도와드릴게요.</string>
 
+    <!--sign_up-->
+    <string name="title1">환영합니다!</string>
+    <string name="title2">한페이지로\n끝내는 회원가입</string>
+
     <!--main-->
     <string name="bottom_navi_menu1">홈</string>
     <string name="bottom_navi_menu2">알림내역</string>
     <string name="bottom_navi_menu3">북마크</string>
     <string name="bottom_navi_menu4">마이페이지</string>
+
 </resources>
