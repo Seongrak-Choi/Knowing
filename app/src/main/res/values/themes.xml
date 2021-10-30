@@ -22,4 +22,13 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <!--DatePicker 구분선 설정을 위한 스타일-->
+    <style name="customNumberPicker" parent="Theme.Knowing">
+        <item name="colorControlNormal">#ff8955</item>
+    </style>
+
+    <!--sign_up화면 적용될 테마-->
+    <style name="sign_up_theme" parent="Theme.Knowing">
+        <item name="android:statusBarColor">#fcf5eb</item>
+    </style>
 </resources>

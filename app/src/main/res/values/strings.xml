@@ -18,6 +18,13 @@
     <!--sign_up-->
     <string name="title1">환영합니다!</string>
     <string name="title2">한페이지로\n끝내는 회원가입</string>
+    <string name="edt_name_hint">이름 입력</string>
+    <string name="edt_email_hint">이메일 주소 입력</string>
+    <string name="edt_pwd_hint">영문자와 숫자 포함 8자 이상 입력</string>
+    <string name="tx_email_error">이메일 형식이 올바르지 않습니다.</string>
+    <string name="tx_pwd_error">영문자와 숫자 포함 8자 이상 입력해주세요.</string>
+
+
 
     <!--main-->
     <string name="bottom_navi_menu1">홈</string>

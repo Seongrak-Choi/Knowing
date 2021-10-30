@@ -8,4 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="soft_key_navigation_bar">#E8E8E8</color>
+    <color name="trans">#00ffffff</color>
+    <color name="gender_btn_text_uncheck">#37393d</color>
+    <color name="gender_btn_text_check">#ffffff</color>
+
 </resources>

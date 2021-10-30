@@ -15,4 +15,8 @@
     <font
         android:fontStyle="normal"
         android:font="@font/roboto_medium"/>
+
+    <font
+        android:fontStyle="normal"
+        android:font="@font/roboto_regular"/>
 </font-family>

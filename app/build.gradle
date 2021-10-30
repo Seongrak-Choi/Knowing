@@ -75,6 +75,10 @@ dependencies {
     //facebook 로그인 라이브러리
     implementation 'com.facebook.android:facebook-login:5.15.3'
 
+    //numberpicker 라이브러리
+    implementation 'io.github.ShawnLin013:number-picker:2.4.13'
+
+
 
 
 

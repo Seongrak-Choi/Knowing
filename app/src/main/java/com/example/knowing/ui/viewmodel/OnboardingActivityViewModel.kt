@@ -39,11 +39,11 @@ class OnboardingActivityViewModel(application: Application) : AndroidViewModel(a
     /*
     '다음' 버튼 클릭 이벤트
      */
-    fun onNextFragment(btn: Button) {
+    fun onNextFragment() {
         //버튼의 텍스가 다음인지 시작하기인지 판단하여 시작하기인 경우 joinupsnsactivity로 이동
         if(_currentBtnText.value=="다음"){
             viewpager2.setCurrentItem(getCurrentItem()+1, true)
-            btn.text = "시작하기"
+            _currentBtnText.postValue("시작하기")
         }else{
             var intent = Intent(mApplication.applicationContext, JoinUpSNSActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)//activity가 아닌 곳에서 startActivity를 할 경우 오류가 발생하기 때문에 flag를 지정해준다.

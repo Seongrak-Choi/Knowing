@@ -39,8 +39,6 @@ class OnboardingActivity : BaseActivity<ActivityOnboardingBinding>(ActivityOnboa
 
 
         //statusbar 투명하게 설정
-//        val window = window
-//        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         window?.decorView?.systemUiVisibility =
             View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
         window.statusBarColor = Color.TRANSPARENT
@@ -87,7 +85,7 @@ class OnboardingActivity : BaseActivity<ActivityOnboardingBinding>(ActivityOnboa
 
         //다음 버튼 클릭 리스너
         binding.btnNext.setOnClickListener {
-            onboardingActivityViewModel.onNextFragment(binding.btnNext)
+            onboardingActivityViewModel.onNextFragment()
         }
     }
 

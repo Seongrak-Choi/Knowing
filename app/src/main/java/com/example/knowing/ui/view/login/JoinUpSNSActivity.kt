@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.knowing.R
 import com.example.knowing.databinding.ActivityJoinUpSnsBinding
 import com.example.knowing.ui.base.BaseActivity
+import com.example.knowing.ui.view.sign_up.SignUpActivity
 import com.example.knowing.ui.viewmodel.JoinUpSNSActivityViewModel
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
@@ -66,7 +67,6 @@ class JoinUpSNSActivity : BaseActivity<ActivityJoinUpSnsBinding>(ActivityJoinUpS
         auth=FirebaseAuth.getInstance()
 
 
-
         joinUpSNSActivityViewModel = ViewModelProvider(this).get(JoinUpSNSActivityViewModel::class.java) //뷰모델 장착
 
         //statusbar 투명하게 설정(네비게이션bar는 투명해지지 않음)
@@ -94,6 +94,12 @@ class JoinUpSNSActivity : BaseActivity<ActivityJoinUpSnsBinding>(ActivityJoinUpS
         //facebook 로그인 버튼 클릭 리스너
         binding.btnLoginFacebook.setOnClickListener {
             facebookLogin()
+        }
+
+        //이메일로 회원가입 버튼 클릭 리스너
+        binding.btnSignUp.setOnClickListener {
+            val intent = Intent(this,SignUpActivity::class.java)
+            startActivity(intent)
         }
     }
 
