@@ -24,6 +24,15 @@
     <string name="tx_email_error">이메일 형식이 올바르지 않습니다.</string>
     <string name="tx_pwd_error">영문자와 숫자 포함 8자 이상 입력해주세요.</string>
 
+    <!--sign_in-->
+    <string name="sign_in_title">로그인</string>
+
+    <!--more_information-->
+    <string name="more_information_title1">딱 맞는 복지정보, 노잉이 찾아드릴게요!</string>
+    <string name="more_information_title2">님만의 혜택을 위해선\n추가 입력이 필요해요</string>
+    <string name="more_information_address">거주지</string>
+    <string name="more_information_title_check">아래 사항 해당 시 체크해주세요.</string>
+    <string name="more_information_content_check">가장, 다문화가정, 한부모가정,\n군인의 자녀, 장애인, 다자녀,\n북한이탈주민&#183;자녀, 국가유공자&#183;자녀</string>
 
 
     <!--main-->

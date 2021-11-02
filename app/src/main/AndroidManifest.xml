@@ -38,11 +38,6 @@
 
         <activity android:name=".ui.view.splash.SplashActivity"
             android:theme="@style/SplashActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity android:name=".ui.view.login.JoinUpSNSActivity"/>
@@ -64,6 +59,16 @@
                     android:scheme="kakaod8e0e3e9398b5db90db367e587268a49"/>
             </intent-filter>
         </activity>
+        <activity android:name=".ui.view.sign_in.SignInActivity">
+        </activity>
+        <activity android:name=".ui.view.more_information.MoreInformationActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

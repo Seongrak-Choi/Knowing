@@ -114,7 +114,6 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
 
             override fun afterTextChanged(s: Editable?) {
             }
-
         })
 
         //edtName을 리셋할 수 있는 캔슬 버튼 클릭 리스너

@@ -18,7 +18,7 @@ class SignUpActivityViewModel(application: Application) : AndroidViewModel(appli
     private val _nameIsCorrect = MutableLiveData<Boolean>() //입력한 이름을 저장하는 라이브 데이터
     private val _emailIsCorrect = MutableLiveData<Boolean>()  //입력한 email이 정상인지 체크하는 라이브 데이터
     private val _pwdIsCorrect = MutableLiveData<Boolean>() //입력한 패스워드가 정상인지 체크하는 라이브 데이터
-    private val _allIsCorrect = MutableLiveData<Boolean>()
+    private val _allIsCorrect = MutableLiveData<Boolean>() //이메일, 패스워드, 성별선택여부, 이름, 날짜선택여부 형식이 정상적인지 아닌지 판단해 회원가입하기 버튼을 활성화 시키는 라이브 데이터
 
     val currentEdtTextBirth: MutableLiveData<String>
         get() = _currentEdtTextBirth

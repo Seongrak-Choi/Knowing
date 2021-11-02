@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.knowing.R
 import com.example.knowing.databinding.ActivityJoinUpSnsBinding
 import com.example.knowing.ui.base.BaseActivity
+import com.example.knowing.ui.view.sign_in.SignInActivity
 import com.example.knowing.ui.view.sign_up.SignUpActivity
 import com.example.knowing.ui.viewmodel.JoinUpSNSActivityViewModel
 import com.facebook.AccessToken
@@ -94,6 +95,13 @@ class JoinUpSNSActivity : BaseActivity<ActivityJoinUpSnsBinding>(ActivityJoinUpS
         //facebook 로그인 버튼 클릭 리스너
         binding.btnLoginFacebook.setOnClickListener {
             facebookLogin()
+        }
+
+
+        //이메일로 로그인 버튼 클릭 리스너
+        binding.btnSignIn.setOnClickListener {
+            val intent = Intent(this, SignInActivity::class.java)
+            startActivity(intent)
         }
 
         //이메일로 회원가입 버튼 클릭 리스너

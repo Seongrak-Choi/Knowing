@@ -19,4 +19,8 @@
     <font
         android:fontStyle="normal"
         android:font="@font/roboto_regular"/>
+
+    <font
+        android:fontStyle="normal"
+        android:font="@font/gothic_bold"/>
 </font-family>
