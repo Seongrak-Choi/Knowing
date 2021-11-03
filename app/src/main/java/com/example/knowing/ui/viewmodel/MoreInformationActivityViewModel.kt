@@ -17,7 +17,7 @@ class MoreInformationActivityViewModel(application: Application):AndroidViewMode
 
     init {
         _currentCheckState.value=false
-        getDoList()
+        getGyeonggiSiList()
     }
 
     fun changeBtnBackground(){
@@ -26,6 +26,10 @@ class MoreInformationActivityViewModel(application: Application):AndroidViewMode
 
     fun getDoList(){
         _currentDoList.value=DialogSelectDoRepository().getDoList()
+    }
+
+    fun getGyeonggiSiList(){
+        _currentDoList.value=DialogSelectDoRepository().getGyeonggiSiList()
     }
 
 }
