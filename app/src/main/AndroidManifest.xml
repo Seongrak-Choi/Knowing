@@ -61,7 +61,7 @@
         </activity>
         <activity android:name=".ui.view.sign_in.SignInActivity">
         </activity>
-        <activity android:name=".ui.view.more_information.MoreInformationActivity">
+        <activity android:name=".ui.view.more_information.MoreInformationActivity1">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

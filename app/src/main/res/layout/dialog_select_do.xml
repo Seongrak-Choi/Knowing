@@ -1,73 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    app:layout_behavior="">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tx_title_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="시/도 선택"
-        android:textSize="20sp"
-        android:textColor="#656565"
-        android:fontFamily="@font/godom"
         android:layout_marginTop="24dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/godom"
+        android:text="시/도 선택"
+        android:textColor="#656565"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/btn_cancel"
         android:layout_width="32dp"
         android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:src="@drawable/ic_cancel_large"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_cancel_large"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/edt_search"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:singleLine="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="25dp"
         android:background="@drawable/do_edit_search_bg"
         android:drawableStart="@drawable/ic_do_dialog_edt_searchl_start"
         android:drawablePadding="9dp"
-        android:textSize="16sp"
         android:hint="검색어를 입력해주세요."
+        android:singleLine="true"
         android:textColorHint="#c2c2c2"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginTop="18dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tx_title_main"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tx_title_main" />
 
     <View
         android:id="@+id/line"
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:background="#c2c2c2"
         android:layout_marginTop="14dp"
-        app:layout_constraintTop_toBottomOf="@+id/edt_search"
+        android:background="#c2c2c2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-    
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/line">
-        
+        app:layout_constraintTop_toBottomOf="@+id/edt_search" />
+
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rc_do"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginEnd="25dp"/>
-
-    </androidx.core.widget.NestedScrollView>
+            android:paddingTop="15dp"
+            android:clipToPadding="false"
+            app:layout_constraintTop_toBottomOf="@+id/line"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

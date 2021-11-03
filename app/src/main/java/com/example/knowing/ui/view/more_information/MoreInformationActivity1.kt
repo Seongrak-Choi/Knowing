@@ -4,12 +4,11 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.knowing.R
-import com.example.knowing.databinding.ActivityMoreInformationBinding
+import com.example.knowing.databinding.ActivityMoreInformation1Binding
 import com.example.knowing.ui.base.BaseActivity
 import com.example.knowing.ui.viewmodel.MoreInformationActivityViewModel
-import com.google.android.material.bottomsheet.BottomSheetDialog
 
-class MoreInformationActivity : BaseActivity<ActivityMoreInformationBinding>(ActivityMoreInformationBinding::inflate){
+class MoreInformationActivity1 : BaseActivity<ActivityMoreInformation1Binding>(ActivityMoreInformation1Binding::inflate){
     private lateinit var moreInformationActivityViewModel : MoreInformationActivityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {

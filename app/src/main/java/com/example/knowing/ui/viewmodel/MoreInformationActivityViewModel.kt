@@ -17,7 +17,7 @@ class MoreInformationActivityViewModel(application: Application):AndroidViewMode
 
     init {
         _currentCheckState.value=false
-        getGyeonggiSiList()
+        getDoList()
     }
 
     fun changeBtnBackground(){

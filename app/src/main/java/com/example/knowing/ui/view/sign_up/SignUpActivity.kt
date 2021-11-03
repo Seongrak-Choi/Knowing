@@ -242,10 +242,10 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
         val cancel: Button = mView.findViewById(R.id.btn_cancel)
         val save: Button = mView.findViewById(R.id.btn_ok)
 
-        //  순환 안되게 막기
-        year.wrapSelectorWheel = false
-        month.wrapSelectorWheel = false
-        day.wrapSelectorWheel = false
+        //  순환 안되게 막기코드인데 나는 순환 되도록 설정함
+//        year.wrapSelectorWheel = false
+//        month.wrapSelectorWheel = false
+//        day.wrapSelectorWheel = false
 
         //  editText 설정 해제
         year.descendantFocusability = NumberPicker.FOCUS_BLOCK_DESCENDANTS

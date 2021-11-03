@@ -30,6 +30,7 @@ class SelectDoDialog(context: Context) : BottomSheetDialogFragment(){
 //            var behaviorField = bottomSheetDialog.javaClass.getDeclaredField("behavior")
 //            behaviorField.isAccessible=true
 //            val behavior = behaviorField.get(bottomSheetDialog) as BottomSheetBehavior<*>
+//           // behavior.isDraggable=false
 //            behavior.setBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback(){
 //                override fun onStateChanged(bottomSheet: View, newState: Int) {
 //                    if (newState == BottomSheetBehavior.STATE_DRAGGING){
@@ -69,11 +70,11 @@ class SelectDoDialog(context: Context) : BottomSheetDialogFragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val offsetFromTop = 400
-        (dialog as? BottomSheetDialog)?.behavior?.apply {
-            isFitToContents = false
-            expandedOffset = offsetFromTop
-            state = BottomSheetBehavior.STATE_SETTLING
-        }
+//        val offsetFromTop = 650
+//        (dialog as? BottomSheetDialog)?.behavior?.apply {
+//            isFitToContents = false
+//            expandedOffset = offsetFromTop
+//            state = BottomSheetBehavior.STATE_SETTLING
+//        }
     }
 }
