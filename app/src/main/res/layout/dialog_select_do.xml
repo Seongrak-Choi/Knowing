@@ -65,6 +65,8 @@
             android:paddingHorizontal="20dp"
             android:clipToPadding="false"
             android:paddingTop="15dp"
+            android:paddingBottom="120dp"
+            android:overScrollMode="never"
             app:layout_constraintTop_toBottomOf="@+id/line"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
