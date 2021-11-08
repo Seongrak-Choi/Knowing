@@ -30,7 +30,7 @@
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/roboto_medium"
                 android:text="@string/title1"
-                android:textColor="@color/black"
+                android:textColor="#7D7A75"
                 android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="@id/guidelineStart"
                 app:layout_constraintTop_toBottomOf="@+id/btn_back" />
@@ -160,6 +160,53 @@
                 android:layout_marginTop="5dp"
                 android:visibility="invisible"/>
 
+
+
+            <!--비밀번호 확인 부분-->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tx_pwd_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="비밀번호 확인"
+                android:textColor="#64625e"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/edt_pwd" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edt_pwd_check"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/sign_up_edit_bg"
+                android:drawableStart="@drawable/ic_sign_up_edt_pwd_left"
+                android:drawablePadding="8dp"
+                android:hint="다시 한번 입력"
+                android:textColorHint="#c2c2c2"
+                android:textCursorDrawable="@drawable/sign_up_edt_cursor"
+                android:textSize="16sp"
+                android:inputType="textPassword"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/tx_pwd_check" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tx_pwd_check_error"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tx_pwd_check_error"
+                android:textSize="11sp"
+                android:textColor="#ff6c00"
+                android:fontFamily="@font/roboto_regular"
+                app:layout_constraintTop_toBottomOf="@+id/edt_pwd_check"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                android:layout_marginTop="5dp"
+                android:visibility="invisible"/>
+
+
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tx_gender"
                 android:layout_width="wrap_content"
@@ -169,7 +216,7 @@
                 android:text="성별"
                 android:textColor="#64625e"
                 app:layout_constraintStart_toStartOf="@id/guidelineStart"
-                app:layout_constraintTop_toBottomOf="@+id/edt_pwd" />
+                app:layout_constraintTop_toBottomOf="@+id/edt_pwd_check" />
 
 
             <androidx.appcompat.widget.AppCompatButton
@@ -330,6 +377,37 @@
                 android:layout_marginEnd="2dp"
                 android:layout_marginBottom="3dp"
                 android:visibility="invisible"/>
+
+            <!--비밀번호 확인 에러 이미지 -->
+            <ImageView
+                android:id="@+id/img_pwd_check_error"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_alert_signuppage"
+                app:layout_constraintEnd_toEndOf="@+id/edt_pwd_check"
+                app:layout_constraintTop_toTopOf="@+id/edt_pwd_check"
+                app:layout_constraintBottom_toBottomOf="@+id/edt_pwd_check"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="3dp"
+                android:visibility="invisible"/>
+
+            <!--비밀번호 확인 취소 버튼 -->
+            <ImageView
+                android:id="@+id/img_pwd_check_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_cancel"
+                app:layout_constraintEnd_toEndOf="@+id/edt_pwd_check"
+                app:layout_constraintTop_toTopOf="@+id/edt_pwd_check"
+                app:layout_constraintBottom_toBottomOf="@+id/edt_pwd_check"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="2dp"
+                android:layout_marginBottom="3dp"
+                android:visibility="invisible"/>
+
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guidelineStart"

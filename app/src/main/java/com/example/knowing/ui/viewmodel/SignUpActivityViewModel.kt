@@ -18,6 +18,7 @@ class SignUpActivityViewModel(application: Application) : AndroidViewModel(appli
     private val _nameIsCorrect = MutableLiveData<Boolean>() //입력한 이름을 저장하는 라이브 데이터
     private val _emailIsCorrect = MutableLiveData<Boolean>()  //입력한 email이 정상인지 체크하는 라이브 데이터
     private val _pwdIsCorrect = MutableLiveData<Boolean>() //입력한 패스워드가 정상인지 체크하는 라이브 데이터
+    private val _pwdCheckIsCorrect = MutableLiveData<Boolean>() //입력한 비밀번호 확인이 비밀번호와 일치한지 상태를 저장하는 라이브 데이터
     private val _allIsCorrect = MutableLiveData<Boolean>() //이메일, 패스워드, 성별선택여부, 이름, 날짜선택여부 형식이 정상적인지 아닌지 판단해 회원가입하기 버튼을 활성화 시키는 라이브 데이터
 
     val currentEdtTextBirth: MutableLiveData<String>
@@ -37,6 +38,9 @@ class SignUpActivityViewModel(application: Application) : AndroidViewModel(appli
 
     val pwdIsCorrect : MutableLiveData<Boolean>
         get() = _pwdIsCorrect
+
+    val pwdCheckIsCorrect : MutableLiveData<Boolean>
+        get() = _pwdCheckIsCorrect
 
     val allIsCorrect : MutableLiveData<Boolean>
         get() = _allIsCorrect
@@ -75,7 +79,7 @@ class SignUpActivityViewModel(application: Application) : AndroidViewModel(appli
         println("이메일 ${_emailIsCorrect.value} / 패스워드 ${_pwdIsCorrect.value}  / 이름 ${_nameIsCorrect.value}  성별  ${isCheckGender()} / 생년월일  ${isInputBirth()}")
 
         //모든 조건들이 참인 경우 회원가입 버튼의 enabled를 담당하는 라이브 데이터를 true로 바꿔준다.
-        if(_emailIsCorrect.value == true && _pwdIsCorrect.value==true && _nameIsCorrect.value==true && isCheckGender() && isInputBirth()){
+        if(_emailIsCorrect.value == true && _pwdIsCorrect.value==true && _nameIsCorrect.value==true && isCheckGender() && isInputBirth() && _pwdCheckIsCorrect.value==true){
             allIsCorrect.value=true
         }else
             allIsCorrect.value=false

@@ -86,6 +86,8 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
             signUpActivityViewModel.changeValueWomen()
         }
 
+        //edtName의 키보드를 완료로 바꿔주기 위한 코드
+        binding.edtName.imeOptions=EditorInfo.IME_ACTION_DONE
 
         //edtName에 포커싱이 될 때 힌트를 없애기 위한 포커스리스너
         binding.edtName.setOnFocusChangeListener { v, hasFocus ->
@@ -121,6 +123,25 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
         binding.imgNameCancel.setOnClickListener {
             binding.edtName.text=null // 캔슬 버튼을 누르면 해당 edttext의 데이터 리셋
         }
+
+        //edtName키보드 완료 버튼 클릭 이벤트. 완료 버튼을 누르면 포커싱을 없애주기 위한 코드
+        binding.edtName.setOnEditorActionListener { v, actionId, event ->
+            var handled = false
+            if(actionId == EditorInfo.IME_ACTION_DONE){ //액션 iD가 완료이면
+                binding.edtName.clearFocus() //edtPwd 포커싱 없애기
+
+                //키보드 밑으로 내리는 코드
+                val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(binding.edtName.windowToken, 0);
+
+                handled=true
+            }
+            handled
+        }
+
+
+        //edtEmail의 키보드를 완료로 바꿔주기 위한 코드
+        binding.edtEmail.imeOptions=EditorInfo.IME_ACTION_DONE
 
         //edtEmail에 포커싱이 될 때 힌트를 없애기 위한 포커스리스너
         binding.edtEmail.setOnFocusChangeListener { v, hasFocus ->
@@ -165,6 +186,24 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
         }
 
 
+        //edtEmail키보드 완료 버튼 클릭 이벤트. 완료 버튼을 누르면 포커싱을 없애주기 위한 코드
+        binding.edtEmail.setOnEditorActionListener { v, actionId, event ->
+            var handled = false
+            if(actionId == EditorInfo.IME_ACTION_DONE){ //액션 iD가 완료이면
+                binding.edtEmail.clearFocus() //edtPwd 포커싱 없애기
+
+                //키보드 밑으로 내리는 코드
+                val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(binding.edtEmail.windowToken, 0);
+
+                handled=true
+            }
+            handled
+        }
+
+        //edtPwd의 키보드를 완료로 바꿔주기 위한 코드
+        binding.edtPwd.imeOptions=EditorInfo.IME_ACTION_DONE
+
         //edtPwd에 포커싱이 될 때 힌트를 없애기 위한 포커스리스너
         binding.edtPwd.setOnFocusChangeListener { v, hasFocus ->
             if (hasFocus){
@@ -181,8 +220,8 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
                     binding.txPwdError.visibility=View.VISIBLE // 패턴이 일치하지 않으면 에러 텍스트 보이도록
                     signUpActivityViewModel.pwdIsCorrect.value=false //라이브 데이터 변경
                 }else{ //패턴이 일치하면
-                    binding.imgPwdError.visibility=View.INVISIBLE //패턴이 일치하면 에러 이미지 보이도록
-                    binding.txPwdError.visibility=View.INVISIBLE // 패턴이 일치하면 에러 텍스트 보이도록
+                    binding.imgPwdError.visibility=View.INVISIBLE //패턴이 일치하면 에러 이미지 안보이도록
+                    binding.txPwdError.visibility=View.INVISIBLE // 패턴이 일치하면 에러 텍스트 안보이도록
                     signUpActivityViewModel.pwdIsCorrect.value=true //라이브 데이터 변경
                 }
 
@@ -211,8 +250,7 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
             binding.edtPwd.text=null
         }
 
-
-        //키보드 완료 버튼 클릭 이벤트
+        //edtPwd키보드 완료 버튼 클릭 이벤트
         binding.edtPwd.setOnEditorActionListener { v, actionId, event ->
             var handled = false
             if(actionId == EditorInfo.IME_ACTION_DONE){ //액션 iD가 완료이면
@@ -221,6 +259,68 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
                 //키보드 밑으로 내리는 코드
                 val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(binding.edtPwd.windowToken, 0);
+
+                handled=true
+            }
+            handled
+        }
+
+
+        //edtPwdCheck의 키보드를 완료로 바꿔주기 위한 코드
+        binding.edtPwdCheck.imeOptions=EditorInfo.IME_ACTION_DONE
+
+        //edtPwdCheck 포커싱 리스너
+        binding.edtPwdCheck.setOnFocusChangeListener { v, hasFocus ->
+            if (hasFocus){
+                binding.edtPwdCheck.hint=""
+            }else{ //포커싱이 없어질 대
+                binding.edtPwd.hint = "다시 한번 입력"
+                binding.imgPwdCheckCancel.visibility = View.INVISIBLE //포커싱이 없어지면 cancel 버튼 비활성화
+
+                //포커싱이 없어질 때 비밀번호와 비밀번호 확인이 같은지 확인해서 뷰모델의 pwdCheckIsCorrect 라이브데이터 변경
+                    if (binding.edtPwd.text.toString()==binding.edtPwdCheck.text.toString()){
+                        signUpActivityViewModel.pwdCheckIsCorrect.value = true
+                        binding.txPwdCheckError.visibility=View.INVISIBLE
+                    }else{
+                        signUpActivityViewModel.pwdCheckIsCorrect.value = false
+                        binding.txPwdCheckError.visibility=View.VISIBLE
+                    }
+                //모든 조건이 만족하는지 검사 후 라이브데이터 변경
+                signUpActivityViewModel.checkAllIsCorrect()
+            }
+       }
+
+        //edtPwdCheck 텍스트 체인지 리스너
+        binding.edtPwdCheck.addTextChangedListener(object:TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                binding.imgPwdCheckCancel.visibility=View.VISIBLE //텍스트 체인지 리스너가 발동하면 캔슬버튼 보이도록
+                binding.imgPwdCheckError.visibility=View.INVISIBLE //edt에 데이터가 들어오면 에러 이미지 안보이도록
+                binding.txPwdCheckError.visibility=View.INVISIBLE // edt에 데이터가 들어오면 에러 텍스트 안보이도록
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+            }
+
+        })
+
+        //edtPwdCheck 리셋을 위해 캔슬 버튼 클릭 리스너
+        binding.imgPwdCancel.setOnClickListener {
+            binding.edtPwdCheck.text=null
+        }
+
+
+        //edtPwdCheck키보드 완료 버튼 클릭 이벤트
+        binding.edtPwdCheck.setOnEditorActionListener { v, actionId, event ->
+            var handled = false
+            if(actionId == EditorInfo.IME_ACTION_DONE){ //액션 iD가 완료이면
+                binding.edtPwdCheck.clearFocus() //edtPwd 포커싱 없애기
+
+                //키보드 밑으로 내리는 코드
+                val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(binding.edtPwdCheck.windowToken, 0);
 
                 handled=true
             }

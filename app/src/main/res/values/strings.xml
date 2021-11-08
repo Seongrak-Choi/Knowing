@@ -23,6 +23,7 @@
     <string name="edt_pwd_hint">영문자와 숫자 포함 8자 이상 입력</string>
     <string name="tx_email_error">이메일 형식이 올바르지 않습니다.</string>
     <string name="tx_pwd_error">영문자와 숫자 포함 8자 이상 입력해주세요.</string>
+    <string name="tx_pwd_check_error">두 비밀번호가 같지 않습니다.</string>
 
     <!--sign_in-->
     <string name="sign_in_title">로그인</string>
