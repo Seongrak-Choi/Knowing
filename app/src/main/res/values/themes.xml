@@ -31,4 +31,15 @@
     <style name="sign_up_theme" parent="Theme.Knowing">
         <item name="android:statusBarColor">#fcf5eb</item>
     </style>
+
+    <!--more_information1에서 다이얼로그 키패드 때문에 위로 밀리는 형상 없애기 위해서 지정한 스타일-->
+    <style name="theme_popupdialog_stlye" parent="@android:style/Theme.Dialog">
+        <item name="android:windowIsFloating">false</item> <!--윈도우가 움직이지 못하게 막아버리기 문서에는 dialog가 전체 화면을 사용한다. 라고 되어있지만 키보드에 밀리지가 많음-->
+        <item name="android:backgroundDimEnabled">true</item> <!--위의 옵션을 주게되면 다이얼로그가 출력될 때 뒷배경이 어두워지지 않기 때문에 이 옵션을 통해 어두워지도록 설정-->
+    </style>
+
+
+
+
+
 </resources>

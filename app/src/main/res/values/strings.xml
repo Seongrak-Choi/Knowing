@@ -27,13 +27,18 @@
     <!--sign_in-->
     <string name="sign_in_title">로그인</string>
 
-    <!--more_information-->
-    <string name="more_information_title1">딱 맞는 복지정보, 노잉이 찾아드릴게요!</string>
-    <string name="more_information_title2">님만의 혜택을 위해선\n추가 입력이 필요해요</string>
-    <string name="more_information_address">거주지</string>
-    <string name="more_information_title_check">아래 사항 해당 시 체크해주세요.</string>
-    <string name="more_information_content_check">가장, 다문화가정, 한부모가정,\n군인의 자녀, 장애인, 다자녀,\n북한이탈주민&#183;자녀, 국가유공자&#183;자녀</string>
-
+    <!--more_information1-->
+    <string name="more_information1_title1">딱 맞는 복지정보, 노잉이 찾아드릴게요!</string>
+    <string name="more_information1_title2">님만의 혜택을 위해선\n추가 입력이 필요해요</string>
+    <string name="more_information1_address">거주지</string>
+    <string name="more_information1_title_check">아래 사항 해당 시 체크해주세요.</string>
+    <string name="more_information1_content_check">가장, 다문화가정, 한부모가정,\n군인의 자녀, 장애인, 다자녀,\n북한이탈주민&#183;자녀, 국가유공자&#183;자녀</string>
+    <string name="more_information1_choice_do">시/도 선택</string>
+    <string name="more_information1_choice_si">시/군/구 선택</string>
+    <string name="more_information1_not_choice_do_mention">[시/도]를 먼저 선택해주세요.</string>
+    
+    <!--more_information4-->
+    <string name="more_information4_title_major">전공 계열</string>
 
     <!--main-->
     <string name="bottom_navi_menu1">홈</string>

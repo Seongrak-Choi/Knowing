@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:animateLayoutChanges="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -19,7 +20,7 @@
         android:id="@+id/tx_title1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/more_information_title1"
+        android:text="@string/more_information1_title1"
         android:textColor="#7f7f7f"
         android:fontFamily="@font/roboto_regular"
         android:textSize="15sp"
@@ -31,7 +32,7 @@
         android:id="@id/tx_title2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/more_information_title2"
+        android:text="@string/more_information1_title2"
         android:textSize="24sp"
         android:textColor="#656565"
         android:fontFamily="@font/godom"
@@ -132,7 +133,7 @@
         android:id="@+id/tx_title_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/more_information_address"
+        android:text="@string/more_information1_address"
         android:fontFamily="@font/roboto_bold"
         android:textSize="15sp"
         android:textColor="#000000"
@@ -156,7 +157,7 @@
             android:id="@+id/tx_do"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="시/도 선택"
+            android:text="@string/more_information1_choice_do"
             android:textSize="16sp"
             android:textColor="#c2c2c2"
             android:fontFamily="@font/roboto_regular"
@@ -199,7 +200,7 @@
             android:id="@+id/tx_si"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="시/군/구 선택"
+            android:text="@string/more_information1_choice_si"
             android:textSize="16sp"
             android:textColor="#c2c2c2"
             android:fontFamily="@font/roboto_regular"
@@ -227,17 +228,32 @@
             app:layout_constraintBottom_toBottomOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tx_no_choice_do"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/more_information1_not_choice_do_mention"
+        android:textSize="11sp"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="#ff6c00"
+        android:layout_marginTop="5dp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@id/guidelineStart"
+        app:layout_constraintTop_toBottomOf="@+id/btn_select_do"/>
+
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tx_title_check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/more_information_title_check"
+        android:text="@string/more_information1_title_check"
         android:textColor="#666666"
         android:textSize="15sp"
         android:fontFamily="@font/roboto_bold"
         android:layout_marginTop="40dp"
         app:layout_constraintStart_toStartOf="@id/guidelineStart"
-        app:layout_constraintTop_toBottomOf="@+id/btn_select_do"/>
+        app:layout_constraintTop_toBottomOf="@+id/tx_no_choice_do"/>
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/btn_check"
@@ -253,7 +269,7 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/more_information_content_check"
+        android:text="@string/more_information1_content_check"
         android:textSize="15sp"
         android:textColor="#7f7f7f"
         android:fontFamily="@font/roboto_regular"
@@ -262,6 +278,7 @@
         app:layout_constraintTop_toTopOf="@+id/btn_check"/>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_next"
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:text="다음"

@@ -1,6 +1,5 @@
 package com.example.knowing.ui.view.more_information
 
-import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
 import android.graphics.Point
@@ -18,10 +17,10 @@ import com.example.knowing.R
 import com.example.knowing.databinding.DialogSelectDoBinding
 import com.example.knowing.ui.adapter.SelectDoDialogRCAdapter
 import com.example.knowing.ui.viewmodel.MoreInformationActivity1ViewModel
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-
-class SelectDoDialog() : DialogFragment() {
-    private lateinit var binding: DialogSelectDoBinding
+class SelectSiDialog: DialogFragment(){
+    private lateinit var binding : DialogSelectDoBinding
     private lateinit var moreInformationActivity1ViewModel: MoreInformationActivity1ViewModel
     private lateinit var adapter : SelectDoDialogRCAdapter
 
@@ -34,9 +33,6 @@ class SelectDoDialog() : DialogFragment() {
 
     override fun onResume() {
         super.onResume()
-
-        //다이얼로그를 하단에 붙힘
-        dialog?.window?.setGravity(Gravity.BOTTOM)
 
         /*
         다이얼로그는 테두리에 기본으로 마진이 되어있어서 바텀시트다이얼로그 처럼 화면에 딱 달라붙지 않는다.
@@ -53,6 +49,8 @@ class SelectDoDialog() : DialogFragment() {
             params!!.width = deviceSize.x //다이얼로그의 가로를 디바이스 만큼 넓히기
             params!!.height = (deviceSize.y/1.4).toInt() //다이얼로그의 세로를 디바이스의 세로의 60%만큼만 차지
             //params!!.horizontalMargin = 0.0f //가로의 마진 없애기인데 사실 이거 없어도 가로가 꽉참.
+            dialog?.window?.attributes = params
+            dialog?.window?.setGravity(Gravity.BOTTOM)
 
             val window = dialog?.window
             window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -62,40 +60,32 @@ class SelectDoDialog() : DialogFragment() {
     }
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         binding = DialogSelectDoBinding.inflate(layoutInflater) //viewBinding
 
-
         //뷰모델 장착
-        moreInformationActivity1ViewModel =
-            ViewModelProvider(requireActivity()).get(MoreInformationActivity1ViewModel::class.java)
+        moreInformationActivity1ViewModel=ViewModelProvider(requireActivity()).get(MoreInformationActivity1ViewModel::class.java)
 
         //x모양 취소 버튼 클릭 리스너
         binding.btnCancel.setOnClickListener {
             dialog?.dismiss()
         }
 
-
         //리사이클러뷰 어댑터에 들어가는 리스트를 컨트롤하기 위해 뷰모델에 있는 라이브 데이터를 옵저버 패턴으로 관찰해서 어댑터 생성 후 장착
-        moreInformationActivity1ViewModel.doList.observe(this, Observer {
-            binding.rcDo.layoutManager = GridLayoutManager(context, 2)
-            adapter = SelectDoDialogRCAdapter(it)
-            binding.rcDo.adapter = adapter
+        moreInformationActivity1ViewModel.siList.observe(this, Observer {
+            binding.rcDo.layoutManager=GridLayoutManager(context,2)
+            adapter=SelectDoDialogRCAdapter(it)
+            binding.rcDo.adapter=adapter
             adapter.notifyDataSetChanged()
 
             //리사이클러뷰 어댑터에내에서 선택되어진 동작을 다이얼로그에서 구현하기 위해 리스너 생성 후 장착
-            adapter.setOnItemClickListener(object : SelectDoDialogRCAdapter.OnItemClickListener {
+            adapter.setOnItemClickListener(object:SelectDoDialogRCAdapter.OnItemClickListener{
                 override fun onItemClick(value: String) {
-                    moreInformationActivity1ViewModel.currentTxDo.value =
-                        value  //리사이클러뷰에서 선택되어진 데이터를 뷰모델의 currentTxSi에 저장
-                    moreInformationActivity1ViewModel.isSelectDo.value =
-                        true //리사이클러뷰에서 시/도가 선택되어지면 선택이 되었다고 뷰모델의 isSelectDo에 true저장
-                    dialog?.dismiss()
+                    moreInformationActivity1ViewModel.currentTxSi.value=value //리사이클러뷰에서 선택되어진 데이터를 뷰모델의 currentTxSi에 저장
+                    moreInformationActivity1ViewModel.isSelectSi.value=true //리사이클러뷰에서 시/군/구가 선택되어지면 선택이 되었다고 뷰모델의 isSelectSi에 true저장
+                    dialog?.dismiss() //다이얼로그 안보이게
                 }
             })
         })
@@ -103,13 +93,14 @@ class SelectDoDialog() : DialogFragment() {
         //search_edt를 누를 때 나오는 키패드가 다음이 아닌 완료 버튼이 나오도록 설정
         binding.edtSearch.imeOptions=EditorInfo.IME_ACTION_DONE
 
-        //EditText검색을 위한 텍스트 체인지 리스너
         binding.edtSearch.addTextChangedListener(object:TextWatcher{
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
+
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                adapter.filter.filter(s) //검색을 위해 EditText에 입력을 하면 어댑터의 필터메소드 호출
+                adapter.filter.filter(s)
             }
+
             override fun afterTextChanged(s: Editable?) {
             }
         })
