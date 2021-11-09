@@ -43,11 +43,6 @@
 
         <activity android:name=".ui.view.sign_up.SignUpActivity"
             android:theme="@style/sign_up_theme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <meta-data android:name="com.kakao.sdk.AppKey"
@@ -68,6 +63,13 @@
         <activity android:name=".ui.view.more_information.MoreInformationActivity1">
         </activity>
         <activity android:name=".ui.view.more_information.MoreInformationActivity4">
+        </activity>
+        <activity android:name=".ui.view.more_information.MoreInformationActivity5">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
     </application>

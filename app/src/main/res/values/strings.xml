@@ -27,6 +27,10 @@
 
     <!--sign_in-->
     <string name="sign_in_title">로그인</string>
+    
+    <!--loading-->
+    <string name="loading_title">님의 복지 수혜 예상\n금액을 계산중이에요!</string>
+    <string name="loadin_wait">잠시만 기다려주세요</string>
 
     <!--more_information1-->
     <string name="more_information1_title1">딱 맞는 복지정보, 노잉이 찾아드릴게요!</string>
@@ -40,7 +44,12 @@
     
     <!--more_information4-->
     <string name="more_information4_title_major">전공 계열</string>
+    <string name="more_information4_title_major2">학과</string>
 
+    <!--more_information5-->
+    <string name="more_information5_title_term">현재 학기</string>
+    <string name="more_information5_title_term_plus">추가 학기 / 졸업 유예</string>
+    <string name="more_information5_title_last_semester_score">지난 학기 학점</string>
     <!--main-->
     <string name="bottom_navi_menu1">홈</string>
     <string name="bottom_navi_menu2">알림내역</string>

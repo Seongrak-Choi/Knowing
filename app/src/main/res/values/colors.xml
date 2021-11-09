@@ -11,5 +11,6 @@
     <color name="trans">#00ffffff</color>
     <color name="gender_btn_text_uncheck">#37393d</color>
     <color name="gender_btn_text_check">#ffffff</color>
-
+    <color name="more_information_major_btn_unchecked_text_color">#6c6c6c</color>
+    <color name="more_information_major_btn_checked_text_color">#ffffff</color>
 </resources>

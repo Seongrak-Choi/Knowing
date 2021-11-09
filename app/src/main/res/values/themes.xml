@@ -38,6 +38,11 @@
         <item name="android:backgroundDimEnabled">true</item> <!--위의 옵션을 주게되면 다이얼로그가 출력될 때 뒷배경이 어두워지지 않기 때문에 이 옵션을 통해 어두워지도록 설정-->
     </style>
 
+    <!--moreInformation4 학과 입력 edtText custom-->
+    <style name="editText" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorAccent">#ff8854</item>
+        <item name="colorControlNormal">#979797</item>
+    </style>
 
 
 

@@ -1,5 +1,6 @@
 package com.example.knowing.ui.view.more_information
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.fonts.Font
@@ -96,6 +97,11 @@ class MoreInformationActivity1 :
                 binding.txDo.typeface=typeFace //폰트 적용
                 binding.txNoChoiceDo.visibility= View.VISIBLE
             }
+        }
+
+        binding.btnNext.setOnClickListener {
+            var intent  = Intent(this,MoreInformationActivity4::class.java)
+            startActivity(intent)
         }
     }
 }
