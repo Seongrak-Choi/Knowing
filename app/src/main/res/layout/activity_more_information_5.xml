@@ -144,7 +144,7 @@
             android:id="@+id/title_semester"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="학년"
+            android:text="학기"
             android:textSize="17sp"
             android:fontFamily="@font/roboto_regular"
             android:textColor="#414141"
@@ -222,7 +222,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tx_title_last_semester_score">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_last_semester1"
+            android:id="@+id/btn_last_semester_score_1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="~2.9"
@@ -234,7 +234,7 @@
             android:layout_weight="1"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_last_semester2"
+            android:id="@+id/btn_last_semester_score_2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="3.0~3.4"
@@ -247,7 +247,7 @@
             android:layout_weight="1"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_last_semester3"
+            android:id="@+id/btn_last_semester_score_3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="3.5~3.9"
@@ -274,7 +274,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linear_btn_1">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_last_semester4"
+            android:id="@+id/btn_last_semester_score_4"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

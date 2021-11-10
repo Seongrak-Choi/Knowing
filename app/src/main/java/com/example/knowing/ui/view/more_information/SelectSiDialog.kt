@@ -15,12 +15,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.knowing.R
 import com.example.knowing.databinding.DialogSelectDoBinding
+import com.example.knowing.databinding.DialogSelectSiBinding
 import com.example.knowing.ui.adapter.SelectDoDialogRCAdapter
 import com.example.knowing.ui.viewmodel.MoreInformationActivity1ViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class SelectSiDialog: DialogFragment(){
-    private lateinit var binding : DialogSelectDoBinding
+    private lateinit var binding : DialogSelectSiBinding
     private lateinit var moreInformationActivity1ViewModel: MoreInformationActivity1ViewModel
     private lateinit var adapter : SelectDoDialogRCAdapter
 
@@ -50,9 +51,13 @@ class SelectSiDialog: DialogFragment(){
             params!!.height = (deviceSize.y/1.4).toInt() //다이얼로그의 세로를 디바이스의 세로의 60%만큼만 차지
             //params!!.horizontalMargin = 0.0f //가로의 마진 없애기인데 사실 이거 없어도 가로가 꽉참.
             dialog?.window?.attributes = params
-            dialog?.window?.setGravity(Gravity.BOTTOM)
+            dialog?.window?.setGravity(Gravity.BOTTOM) //다이얼로그를 바텀에 붙히기 위함
+
+            //다이얼로그 팝업 애니메이션 효과 주기
+            params.windowAnimations=R.style.AnimationPopupStyle
 
             val window = dialog?.window
+            //다이얼로그를 띄우는 백그라운드를 투명하게하여 둥근 커스텀이 보이고 꽉차도록 만듬
             window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         } catch (e: Exception) {
             e.printStackTrace()
@@ -63,7 +68,7 @@ class SelectSiDialog: DialogFragment(){
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        binding = DialogSelectDoBinding.inflate(layoutInflater) //viewBinding
+        binding = DialogSelectSiBinding.inflate(layoutInflater) //viewBinding
 
         //뷰모델 장착
         moreInformationActivity1ViewModel=ViewModelProvider(requireActivity()).get(MoreInformationActivity1ViewModel::class.java)
@@ -85,6 +90,10 @@ class SelectSiDialog: DialogFragment(){
                 override fun onItemClick(value: String) {
                     moreInformationActivity1ViewModel.currentTxSi.value=value //리사이클러뷰에서 선택되어진 데이터를 뷰모델의 currentTxSi에 저장
                     moreInformationActivity1ViewModel.isSelectSi.value=true //리사이클러뷰에서 시/군/구가 선택되어지면 선택이 되었다고 뷰모델의 isSelectSi에 true저장
+
+                    //specialDialog가 닫힐 때 다음 버튼의 활성화 여부를 체크하기 위한 메소드 실행
+                    moreInformationActivity1ViewModel.checkIsAllCorrect()
+
                     dialog?.dismiss() //다이얼로그 안보이게
                 }
             })

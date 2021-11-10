@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/item_rc_do_dialog_bg">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tx_title_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/godom"
+        android:text="특별사항 선택"
+        android:textColor="#656565"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btn_cancel"
+        android:layout_width="32dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_cancel_large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="14dp"
+        android:background="#dddddd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tx_title_main" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btn_check"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="5dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/group_checkbox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_bold"
+        android:text="선택사항 없음"
+        android:textColor="#5b5b5b"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_check"
+        app:layout_constraintStart_toEndOf="@+id/btn_check"
+        app:layout_constraintTop_toTopOf="@+id/btn_check" />
+
+    <View
+        android:id="@+id/line1"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="#ff8854"
+        app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+        app:layout_constraintStart_toStartOf="@id/guidelineStart"
+        app:layout_constraintTop_toBottomOf="@+id/btn_check" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tx_overlap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="* 중복 선택 가능"
+        android:textColor="#a0a0a0"
+        android:fontFamily="@font/roboto_bold"
+        android:textSize="14sp"
+        android:layout_marginTop="22dp"
+        app:layout_constraintTop_toBottomOf="@+id/line1"
+        app:layout_constraintStart_toStartOf="@id/guidelineStart"/>
+
+    <!--중소기업 저소득층 버튼 있는 레이아웃-->
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linear_btn_1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toBottomOf="@+id/tx_overlap"
+        app:layout_constraintStart_toStartOf="@id/guidelineStart"
+        app:layout_constraintEnd_toEndOf="@id/guidelineEnd">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_small_business"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="중소기업"
+            android:textSize="14sp"
+            android:textColor="#6c6c6c"
+            android:fontFamily="@font/roboto_bold"
+            style="?android:attr/borderlessButtonStyle"
+            android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+            android:layout_weight="1"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_low_income"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="저소득층"
+            android:textSize="14sp"
+            android:fontFamily="@font/roboto_bold"
+            style="?android:attr/borderlessButtonStyle"
+            android:textColor="#6c6c6c"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+            android:layout_weight="1"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <!--장애인 농업인 버튼 있는 레이아웃-->
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linear_btn_2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/linear_btn_1"
+        app:layout_constraintStart_toStartOf="@id/guidelineStart"
+        app:layout_constraintEnd_toEndOf="@id/guidelineEnd">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_disabled"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="장애인"
+            android:textSize="14sp"
+            android:textColor="#6c6c6c"
+            android:fontFamily="@font/roboto_bold"
+            style="?android:attr/borderlessButtonStyle"
+            android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+            android:layout_weight="1"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_farmers"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="농업인"
+            android:textSize="14sp"
+            android:fontFamily="@font/roboto_bold"
+            style="?android:attr/borderlessButtonStyle"
+            android:textColor="#6c6c6c"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+            android:layout_weight="1"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    <!--군인, 지역인재 버튼 있는 레이아웃-->
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linear_btn_3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/linear_btn_2"
+        app:layout_constraintStart_toStartOf="@id/guidelineStart"
+        app:layout_constraintEnd_toEndOf="@id/guidelineEnd">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_soldier"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="군인"
+            android:textSize="14sp"
+            android:textColor="#6c6c6c"
+            android:fontFamily="@font/roboto_bold"
+            style="?android:attr/borderlessButtonStyle"
+            android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+            android:layout_weight="1"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_local_talent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="지역인재"
+            android:textSize="14sp"
+            android:fontFamily="@font/roboto_bold"
+            style="?android:attr/borderlessButtonStyle"
+            android:textColor="#6c6c6c"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+            android:layout_weight="1"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_ok"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="41dp"
+        app:layout_constraintStart_toStartOf="@id/guidelineStart"
+        app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:enabled="false"
+        android:background="@drawable/sign_up_final_btn_bg"
+        android:text="적용하기"
+        android:textSize="16sp"
+        android:textColor="#ffffff"
+        android:fontFamily="@font/roboto_bold"/>
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="25dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="25dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

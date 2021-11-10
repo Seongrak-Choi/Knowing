@@ -45,6 +45,13 @@
     </style>
 
 
+    <!--dialog위에서 아래로 아래에서 위로 open,close 애니메이션 주기-->
+    <style name="AnimationPopupStyle">
+        <item name="android:windowEnterAnimation">@animator/dialog_bottom_up</item>
+        <item name="android:windowExitAnimation">@animator/dialog_up_bottom</item>
+    </style>
+
+
 
 
 </resources>

@@ -28,14 +28,6 @@ class MoreInformationActivity1 :
             ViewModelProvider(this).get(MoreInformationActivity1ViewModel::class.java)
 
 
-        //체크버튼의 백그라운드를 변경하기 위해 뷰모델의 라이브데이터를 관찰
-        moreInformationActivity1ViewModel.currentCheckState.observe(this, Observer {
-            if (it)
-                binding.btnCheck.setBackgroundResource(R.drawable.group_checkbox_color)
-            else
-                binding.btnCheck.setBackgroundResource(R.drawable.group_checkbox)
-        })
-
         // 시/도에서 선택할 경우 선택된 데이터로 텍스트를 변경해주기 위해 옵저버 패턴을 이용해 뷰모델의 _currentTxDo를 관찰한다.
         moreInformationActivity1ViewModel.currentTxDo.observe(this, Observer {
             println(it)
@@ -65,21 +57,34 @@ class MoreInformationActivity1 :
         moreInformationActivity1ViewModel.isSelectSi.observe(this, Observer {
             if (it){
                 binding.txSi.setTextColor(Color.parseColor("#414141")) //바텀시트 다이얼로그에서 값이 선택되어 지면 색상을 변경
-                binding.btnNext.isEnabled=it //시/군/구가 선택되어졌다는 얘기는 시/도가 선택되어졌다는 얘기임으로 isSelectSi만 체크하면 된다.
+            }
+        })
+
+        //모든 거주지, 특별사항 다이얼로그에서 선택이 완료 되었을 경우 다음 버튼을 활성화 시키기 위해 isAllCorrect 관찰
+        moreInformationActivity1ViewModel.isAllCorrect.observe(this, Observer {
+            binding.btnNext.isEnabled=it
+        })
+
+        //특별사항 선택 다이얼로그에서 선택된 버튼들의 정보를 관찰
+        moreInformationActivity1ViewModel.checkedBtnInfo.observe(this, Observer {
+            //선택되어진 후 텍스트 색상을 변경
+            binding.txSpecial.setTextColor(Color.parseColor("#414141"))
+
+            //받아온 라이브데이터를 - 기준으로 나눈다.
+            val str = it.split("-")
+            if (str.size==2){//나눈 값이 2개이면(처음 초기화하는 것 때문에 사이즈가2로 찍힘)
+                binding.txSpecial.text=str[0]//사이즈는2이지만 실제 데이터는 인덱스0번에 저장되어 있기 때문에 str[0]을 저장
+            }else{
+                //사이즈가 처음 checkedBtnInfo를 초기화하는 과정에서 1개가 추가되기 때문에 실제 개수를 위해 str.size에서 -1을 하였다.
+                binding.txSpecial.text="선택사항 ${str.size-1}개"
             }
         })
 
 
-        //체크버튼 클릭 리스너
-        binding.btnCheck.setOnClickListener {
-            //버튼의 백그라운드를 변경하기 위해 뷰모델의 라이브데이터를 바꾸는(참이면 거짓으로, 거짓이면 참으로) 메소드 호출
-            moreInformationActivity1ViewModel.changeBtnBackground()
-        }
-
 
         //시/도 선택 클릭 리스너
         binding.btnSelectDo.setOnClickListener {
-            val bottomSheet = SelectDoDialog()//고차 함수로 바텀시트다이얼로그에서 callback을 받음
+            val bottomSheet = SelectDoDialog()
             bottomSheet.show(supportFragmentManager, bottomSheet.tag)
         }
 
@@ -99,6 +104,14 @@ class MoreInformationActivity1 :
             }
         }
 
+        //특별사항 클릭 리스너
+        binding.btnSelectSpecial.setOnClickListener {
+            val bottomSheet = SelectSpecialDialog()
+            bottomSheet.show(supportFragmentManager,bottomSheet.tag)
+        }
+
+
+        //다음 버튼 클릭 리스너
         binding.btnNext.setOnClickListener {
             var intent  = Intent(this,MoreInformationActivity4::class.java)
             startActivity(intent)

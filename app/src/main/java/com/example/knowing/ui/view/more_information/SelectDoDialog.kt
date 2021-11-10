@@ -54,7 +54,11 @@ class SelectDoDialog() : DialogFragment() {
             params!!.height = (deviceSize.y/1.4).toInt() //다이얼로그의 세로를 디바이스의 세로의 60%만큼만 차지
             //params!!.horizontalMargin = 0.0f //가로의 마진 없애기인데 사실 이거 없어도 가로가 꽉참.
 
+            //다이얼로그 팝업 애니메이션 효과 주기
+            params.windowAnimations=R.style.AnimationPopupStyle
+
             val window = dialog?.window
+            //다이얼로그를 띄우는 백그라운드를 투명하게하여 둥근 커스텀이 보이고 꽉차도록 만듬
             window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         } catch (e: Exception) {
             e.printStackTrace()

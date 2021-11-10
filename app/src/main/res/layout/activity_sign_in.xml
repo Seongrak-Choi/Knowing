@@ -130,6 +130,47 @@
         app:layout_constraintStart_toStartOf="@id/guidelineStart"
         app:layout_constraintTop_toBottomOf="@+id/edt_pwd" />
 
+    <TextView
+        android:id="@+id/btn_search_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="9dp"
+        android:text="이메일 찾기"
+        android:fontFamily="@font/roboto_bold"
+        android:textColor="#939393"
+        android:textSize="14sp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintEnd_toStartOf="@+id/line"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login"/>
+
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="2dp"
+        android:layout_height="11dp"
+        android:background="#e0e0e0"
+        app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+        app:layout_constraintStart_toStartOf="@id/guidelineStart"
+        app:layout_constraintTop_toTopOf="@+id/btn_search_email"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_search_email" />
+
+
+    <TextView
+        android:id="@+id/btn_search_pwd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="9dp"
+        android:text="비밀번호 재설정"
+        android:fontFamily="@font/roboto_bold"
+        android:textColor="#939393"
+        android:textSize="14sp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toEndOf="@+id/line"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login"/>
+
 
     <ImageView
         android:id="@+id/img_email_error"

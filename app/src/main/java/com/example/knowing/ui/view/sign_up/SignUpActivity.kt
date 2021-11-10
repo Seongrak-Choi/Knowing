@@ -89,6 +89,7 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
         //edtName의 키보드를 완료로 바꿔주기 위한 코드
         binding.edtName.imeOptions=EditorInfo.IME_ACTION_DONE
 
+
         //edtName에 포커싱이 될 때 힌트를 없애기 위한 포커스리스너
         binding.edtName.setOnFocusChangeListener { v, hasFocus ->
             if (hasFocus){
@@ -348,9 +349,9 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
 //        month.wrapSelectorWheel = false
 //        day.wrapSelectorWheel = false
 
-        //  editText 설정 해제
-        year.descendantFocusability = NumberPicker.FOCUS_BLOCK_DESCENDANTS
-        month.descendantFocusability = NumberPicker.FOCUS_BLOCK_DESCENDANTS
+//        //  editText 설정 해제 왜 필요한지 모름....
+//        year.descendantFocusability = NumberPicker.FOCUS_BLOCK_DESCENDANTS
+//        month.descendantFocusability = NumberPicker.FOCUS_BLOCK_DESCENDANTS
 
         //  최소값 설정
         year.minValue = 1900
@@ -367,15 +368,17 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
         month.value = 6
         day.value = 15
 
+        //취소 버튼 눌렀을 때 리스너
         cancel.setOnClickListener {
             dialog.dismiss()
             dialog.cancel()
         }
 
+        //확인 눌렀을 때 리스너
         save.setOnClickListener {
             var strYear = year.value.toString() //numberpicker에서 선택한 데이터 중 year 부분을 저장
-            var strMonth = "" //numberpicker에서 선택한 데이터 중 month 부분을 저장
-            var strDay = "" //numberpicker에서 선택한 데이터 중 day 부분을 저장
+            var strMonth = "" //numberpicker에서 선택한 데이터 중 month 부분을 저장. 어차피 밑에서 1의 자리인 경우 앞에 0을 붙혀주는 작업이 있기 때문에 공백을 초기화만 시켜둠
+            var strDay = "" //numberpicker에서 선택한 데이터 중 day 부분을 저장. 어차피 밑에서 1의 자리인 경우 앞에 0을 붙혀주는 작업이 있기 때문에 공백을 초기화만 시켜둠
 
             //선택한 데이터가 한자리 수 이면 앞에 0을 붙혀주기 위한 코드
             strMonth = if (month.value < 10) {

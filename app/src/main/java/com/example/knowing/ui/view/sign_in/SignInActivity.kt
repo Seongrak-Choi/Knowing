@@ -1,5 +1,6 @@
 package com.example.knowing.ui.view.sign_in
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -10,6 +11,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.knowing.databinding.ActivitySignInBinding
 import com.example.knowing.ui.base.BaseActivity
+import com.example.knowing.ui.view.sign_in.search_email.SearchEmailActivity
+import com.example.knowing.ui.view.sign_in.search_pwd.SearchPwdActivity
 import com.example.knowing.ui.viewmodel.SignInActivityViewModel
 import com.example.knowing.ui.viewmodel.SignUpActivityViewModel
 import java.util.regex.Matcher
@@ -135,6 +138,20 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>(ActivitySignInBinding
                 handled=true
             }
             handled
+        }
+
+        //이메일 찾기 버튼 클릭 리스너
+        binding.btnSearchEmail.setOnClickListener {
+            //이메일 찾는 화면으로 이동
+            val intent = Intent(this,SearchEmailActivity::class.java)
+            startActivity(intent)
+        }
+
+        //비밀번호 재설정버튼 클릭 리스너
+        binding.btnSearchPwd.setOnClickListener {
+            //비밀번호 재설정버튼 화면으로 이동
+            val intent = Intent(this,SearchPwdActivity::class.java)
+            startActivity(intent)
         }
     }
 
