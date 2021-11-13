@@ -113,7 +113,7 @@ class MoreInformationActivity1 :
 
         //다음 버튼 클릭 리스너
         binding.btnNext.setOnClickListener {
-            var intent  = Intent(this,MoreInformationActivity4::class.java)
+            var intent  = Intent(this,MoreInformationActivity2::class.java)
             startActivity(intent)
         }
     }

@@ -48,7 +48,17 @@
     <string name="more_information1_choice_si">시/군/구 선택</string>
     <string name="more_information1_select_special">특별사항 선택</string>
     <string name="more_information1_not_choice_do_mention">[시/도]를 먼저 선택해주세요.</string>
-    
+
+    <!--more_information2-->
+    <string name="more_information2_title1">월 소득</string>
+    <string name="more_information2_title2">취업상태</string>
+
+    <!--more information3-->
+    <string name="more_information3_title1">학적사항</string>
+    <string name="more_information3_title2">학교</string>
+
+
+
     <!--more_information4-->
     <string name="more_information4_title_major">전공 계열</string>
     <string name="more_information4_title_major2">학과</string>
@@ -57,6 +67,11 @@
     <string name="more_information5_title_term">현재 학기</string>
     <string name="more_information5_title_term_plus">추가 학기 / 졸업 유예</string>
     <string name="more_information5_title_last_semester_score">지난 학기 학점</string>
+
+    <!--select_category-->
+    <string name="select_category">추천 받을 복지\n카테고리 선택하기</string>
+    <string name="select_category_foundation_btn1">구직 활동 지원 &#183; 인턴</string>
+
     <!--main-->
     <string name="bottom_navi_menu1">홈</string>
     <string name="bottom_navi_menu2">알림내역</string>

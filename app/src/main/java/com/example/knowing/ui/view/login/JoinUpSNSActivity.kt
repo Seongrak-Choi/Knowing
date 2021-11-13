@@ -28,6 +28,7 @@ import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.*
+import com.kakao.sdk.common.util.Utility
 import java.util.*
 
 
@@ -46,6 +47,10 @@ class JoinUpSNSActivity : BaseActivity<ActivityJoinUpSnsBinding>(ActivityJoinUpS
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //해시키 값을 구하기 위한 코드
+//        var keyHash = Utility.getKeyHash(this)
+//        println("keyHash: $keyHash")
 
         //구글 로그인을 위한 빌더 설정
         var googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -142,7 +147,6 @@ class JoinUpSNSActivity : BaseActivity<ActivityJoinUpSnsBinding>(ActivityJoinUpS
                         Toast.makeText(applicationContext,"구글 로그인 실패",Toast.LENGTH_SHORT).show()
                     }
                 }
-
             })
     }
 

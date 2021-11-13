@@ -155,6 +155,11 @@ class MoreInformationActivity4 : BaseActivity<ActivityMoreInformation4Binding>(A
             i.setOnClickListener(majorBtnClickListener)
         }
 
+        //뒤로가기 버튼 클릭 리스너
+        binding.btnBack.setOnClickListener{
+            this.onBackPressed()
+        }
+
         // moreInformationActivity5로 가기 위한 다음 버튼 클릭 리스너
         binding.btnNext.setOnClickListener {
             var intent = Intent(this,MoreInformationActivity5::class.java)

@@ -8,7 +8,6 @@ import androidx.lifecycle.AndroidViewModel
 import com.example.knowing.config.ApplicationClass
 import com.example.knowing.ui.view.login.JoinUpSNSActivity
 import com.example.knowing.ui.view.main.LoadingActivity
-import com.example.knowing.ui.view.onboarding.OnboardingActivity
 import com.kakao.sdk.auth.LoginClient
 
 import com.kakao.sdk.auth.model.OAuthToken
@@ -36,7 +35,9 @@ class JoinUpSNSActivityViewModel(application: Application) : AndroidViewModel(ap
         mOAuthLoginInstance.startOauthLoginActivity(activity,mOAuthLoginHandler)
     }
 
+
     /*
+    네이버 로그인
     startOauthLoginActivity메소드를 호출할 때 필요한 핸들러 이 곳에서 로그인 성공과 실패 했을 경우를 정의한다.
      */
     private val mOAuthLoginHandler : OAuthLoginHandler = @SuppressLint("HandlerLeak")
@@ -48,6 +49,8 @@ class JoinUpSNSActivityViewModel(application: Application) : AndroidViewModel(ap
                 val refreshToken = mOAuthLoginInstance.getRefreshToken(myContext) //refresh토큰 값을 저장
                 val expiresAt = mOAuthLoginInstance.getExpiresAt(myContext) //토큰 만료기간을 저장
                 val tokenType = mOAuthLoginInstance.getTokenType(myContext) //토큰의 타입을 저장
+
+                println("Naver accessToken: $accessToken")
 
                 //activitiy 이동
                 var intent = Intent(application.applicationContext, LoadingActivity::class.java)
@@ -61,7 +64,6 @@ class JoinUpSNSActivityViewModel(application: Application) : AndroidViewModel(ap
                 Toast.makeText(myContext, "errorCode:$errorCode, errorDesc:$errorDesc",Toast.LENGTH_SHORT).show()//Toast로 오류 코드와 메세지 출력
             }
         }
-
     }
 
 
@@ -72,17 +74,17 @@ class JoinUpSNSActivityViewModel(application: Application) : AndroidViewModel(ap
      */
     fun getKakaoToken(){
 
-//        //우리는 JWT를 SharedPreference에 저장해서 로그인의 여부를 확인할 것이기 때문에 필요 없다.
-//        //로그인 정보를 확인한다. 로그인 정보가 남아있다면 자동 로그인 성공
-//        UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
-//            if (error != null) {
-//                Toast.makeText(myContext, "토큰 정보 보기 실패", Toast.LENGTH_SHORT).show()
-//            }
-//            else if (tokenInfo != null) {
-//                Toast.makeText(myContext, "토큰 정보 보기 성공", Toast.LENGTH_SHORT).show()
-//                //액티비티 이동
-//            }
-//        }
+        //우리는 JWT를 SharedPreference에 저장해서 로그인의 여부를 확인할 것이기 때문에 필요 없다.
+        //로그인 정보를 확인한다. 로그인 정보가 남아있다면 자동 로그인 성공
+        UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
+            if (error != null) {
+                Toast.makeText(myContext, "토큰 정보 보기 실패", Toast.LENGTH_SHORT).show()
+            }
+            else if (tokenInfo != null) {
+                Toast.makeText(myContext, "토큰 정보 보기 성공", Toast.LENGTH_SHORT).show()
+                //액티비티 이동
+            }
+        }
 
 
         //로그인 진행하고 동작할 callback 정의
@@ -115,18 +117,19 @@ class JoinUpSNSActivityViewModel(application: Application) : AndroidViewModel(ap
                     }
                     else -> { // Unknown
                         Toast.makeText(myContext, "로그인 취소", Toast.LENGTH_SHORT).show()
+                        println("error: ${error}")
                     }
                 }
             }
             else if (token !=null){ //token값이 null이 아니면 실행
                 Toast.makeText(myContext,"로그인에 성공하였습니다.",Toast.LENGTH_SHORT).show()
-
+                println("kakao token: $token")
                 UserApiClient.instance.me { user, error ->
                     println("닉네임: ${user?.kakaoAccount?.profile?.nickname}")
                     println("e-mail: ${user?.kakaoAccount?.email}")
-                    println("e-mail: ${user?.kakaoAccount?.ageRange}")
-                    println("e-mail: ${user?.kakaoAccount?.birthday}")
-                    println("e-mail: ${user?.kakaoAccount?.gender}")
+                    println("연령대: ${user?.kakaoAccount?.ageRange}")
+                    println("생년월일: ${user?.kakaoAccount?.birthday}")
+                    println("성별: ${user?.kakaoAccount?.gender}")
                 }
 
                 //액티비티 이동

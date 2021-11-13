@@ -39,7 +39,8 @@
             android:theme="@style/SplashActivity">
         </activity>
 
-        <activity android:name=".ui.view.login.JoinUpSNSActivity"/>
+        <activity android:name=".ui.view.login.JoinUpSNSActivity">
+        </activity>
 
         <activity android:name=".ui.view.sign_up.SignUpActivity"
             android:theme="@style/sign_up_theme">
@@ -61,6 +62,15 @@
         <activity android:name=".ui.view.sign_in.SignInActivity">
         </activity>
         <activity android:name=".ui.view.more_information.MoreInformationActivity1">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.view.more_information.MoreInformationActivity2">
+        </activity>
+        <activity android:name=".ui.view.more_information.MoreInformationActivity3">
         </activity>
         <activity android:name=".ui.view.more_information.MoreInformationActivity4">
         </activity>
@@ -68,7 +78,8 @@
         </activity>
         <activity android:name=".ui.view.sign_in.search_email.SearchEmailActivity"/>
         <activity android:name=".ui.view.sign_in.search_pwd.SearchPwdActivity"/>
-
+        <activity android:name=".ui.view.more_information.SelectCategoryActivity">
+        </activity>
     </application>
 
 </manifest>
