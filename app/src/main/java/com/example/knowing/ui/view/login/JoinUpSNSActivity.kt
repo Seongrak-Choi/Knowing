@@ -20,6 +20,7 @@ import com.facebook.FacebookCallback
 import com.facebook.FacebookException
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
+import com.facebook.login.widget.LoginButton
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -57,8 +58,19 @@ class JoinUpSNSActivity : BaseActivity<ActivityJoinUpSnsBinding>(ActivityJoinUpS
 
         //firebaseAuth 초기화
         firebaseAuth= Firebase.auth
-        //커스텀 jwt
-        firebaseAuth.signInWithCustomToken("")
+//        //커스텀 jwt로 계정 등록
+//        firebaseAuth.signInWithCustomToken("")
+
+        //firebase customToken으로 로그인
+//        firebaseAuth.signInWithCustomToken("")
+//            .addOnCompleteListener {
+//                if(it.isSuccessful){
+//                    var user = firebaseAuth.currentUser
+//                    println("user: $user")
+//                }else{
+//                    Toast.makeText(this,"커스텀 토큰으로 로그인 실패",Toast.LENGTH_SHORT).show()
+//                }
+//            }
 
 
         //구글 로그인을 위한 빌더 설정
@@ -76,7 +88,7 @@ class JoinUpSNSActivity : BaseActivity<ActivityJoinUpSnsBinding>(ActivityJoinUpS
 
         //facebook로그인을 위한 콜백매니저 생성
         callbackManager= CallbackManager.Factory.create()
-        //따로 만든 LoginCallback클래스 인스턴스 생성
+
 
         //파이어베이스 인증 객체 초기화
         auth=FirebaseAuth.getInstance()
@@ -135,7 +147,7 @@ class JoinUpSNSActivity : BaseActivity<ActivityJoinUpSnsBinding>(ActivityJoinUpS
                 var account = result.signInAccount //accout라는 데이터는 구글 로그인 정보를 담고있다. (닉네임,포르필사진url,이메일주소...)
                 resultLogin(account)
             }
-        }else{//돌려 받은 값이 google이 아니니 facebook인 경우
+        }else{//돌려 받은 값이 google이 아닌 facebook인 경우
             callbackManager.onActivityResult(requestCode,resultCode,data)
         }
     }
@@ -164,7 +176,7 @@ class JoinUpSNSActivity : BaseActivity<ActivityJoinUpSnsBinding>(ActivityJoinUpS
      */
     private fun facebookLogin() {
         LoginManager.getInstance()
-            .logInWithReadPermissions(this, listOf("email", "public_profile"))
+            .logInWithReadPermissions(this, listOf("email","public_profile"))
 
         LoginManager.getInstance()
             .registerCallback(callbackManager, object: FacebookCallback<LoginResult> {
@@ -181,8 +193,7 @@ class JoinUpSNSActivity : BaseActivity<ActivityJoinUpSnsBinding>(ActivityJoinUpS
                     //취소가 된 경우 할일
                 }
                 override fun onError(error: FacebookException?) {
-                    //에러가 난 경우 할일
-                }
+                    Log.d("FacebookError", error.toString())                }
             })
     }
 
@@ -204,6 +215,7 @@ class JoinUpSNSActivity : BaseActivity<ActivityJoinUpSnsBinding>(ActivityJoinUpS
                 } else {
                     // 예외 발생 시 메시지 출력
                     Toast.makeText(this, task.exception?.message, Toast.LENGTH_LONG).show()
+                    Log.e("facebookWithFirebaseError",task.exception?.message.toString())
                 }
             }
     }
