@@ -78,7 +78,10 @@ dependencies {
     //numberpicker 라이브러리
     implementation 'io.github.ShawnLin013:number-picker:2.4.13'
 
-
+    //firebase bom 라이브러리
+    implementation platform('com.google.firebase:firebase-bom:28.4.1')
+    //firebase auth 라이브러리
+    implementation 'com.google.firebase:firebase-auth-ktx'
 
 
 

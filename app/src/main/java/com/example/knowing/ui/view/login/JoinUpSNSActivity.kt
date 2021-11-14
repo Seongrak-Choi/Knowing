@@ -28,6 +28,8 @@ import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.*
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import com.kakao.sdk.common.util.Utility
 import java.util.*
 
@@ -38,6 +40,7 @@ class JoinUpSNSActivity : BaseActivity<ActivityJoinUpSnsBinding>(ActivityJoinUpS
     private lateinit var auth : FirebaseAuth
     private lateinit var googleApiClient : GoogleApiClient
     private lateinit var callbackManager : CallbackManager
+    private lateinit var firebaseAuth: FirebaseAuth
 
     companion object{
         private val REQ_SIGN_GOOGLE = 100 //구글 로그인 결과 코드
@@ -51,6 +54,12 @@ class JoinUpSNSActivity : BaseActivity<ActivityJoinUpSnsBinding>(ActivityJoinUpS
         //해시키 값을 구하기 위한 코드
 //        var keyHash = Utility.getKeyHash(this)
 //        println("keyHash: $keyHash")
+
+        //firebaseAuth 초기화
+        firebaseAuth= Firebase.auth
+        //커스텀 jwt
+        firebaseAuth.signInWithCustomToken("")
+
 
         //구글 로그인을 위한 빌더 설정
         var googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
