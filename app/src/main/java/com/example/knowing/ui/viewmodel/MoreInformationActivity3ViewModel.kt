@@ -1,10 +1,20 @@
 package com.example.knowing.ui.viewmodel
 
 import android.app.Application
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import com.example.knowing.config.ApplicationClass
+import com.example.knowing.data.model.network.response.CollegeResponseModel
+import com.example.knowing.data.remote.api.CollegeInterface
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class MoreInformationActivity3ViewModel(application: Application) : AndroidViewModel(application) {
+    //activity에서 넘겨받은 application 저장
+    val mApplication = application
+
     //학적사항 버튼 관련 라이브 데이터
     private val _isSelectBtnAll = MutableLiveData<Boolean>()
     private val _isSelectBtnUnderHighSchool = MutableLiveData<Boolean>()
@@ -15,6 +25,12 @@ class MoreInformationActivity3ViewModel(application: Application) : AndroidViewM
 
     //다음 버튼의 활성화 유무를 책임질 라이브 데이터
     private val _isCorrectBtn = MutableLiveData<Boolean>()
+
+
+    //대학교 검색 리사이클러뷰를 위한 라이브 데이터
+    private val _currentCollegeNameList = MutableLiveData<ArrayList<String>>()
+    private val _currentSelectTxCollegeName = MutableLiveData<String>()
+
 
     val isSelectBtnAll: MutableLiveData<Boolean>
         get() = _isSelectBtnAll
@@ -31,6 +47,16 @@ class MoreInformationActivity3ViewModel(application: Application) : AndroidViewM
 
     val isCorrectBtn: MutableLiveData<Boolean>
         get() = _isCorrectBtn
+
+    val currentCollegeNameList: MutableLiveData<ArrayList<String>>
+        get() = _currentCollegeNameList
+
+    val currentSelectTxCollegeName: MutableLiveData<String>
+        get() = _currentSelectTxCollegeName
+
+
+
+
 
 
     //전체 버튼 클릭 시
@@ -82,5 +108,58 @@ class MoreInformationActivity3ViewModel(application: Application) : AndroidViewM
             _isCorrectBtn.value=true
         }else
             _isCorrectBtn.value=false
+    }
+
+    /*
+    학력사항 버튼 중 선택된 값들을 string 형식으로 공백으로 나눠서 반환하는 메소드
+     */
+    fun getSchoolRecords():String{
+        if (_isSelectBtnAll.value==true)
+            return "전체"
+        else if (_isSelectBtnUnderHighSchool.value==true)
+            return "고졸미만"
+        else if (_isSelectBtnGraduateHighSchool.value==true)
+            return "고교졸업"
+        else if (_isSelectBtnBeingCollege.value==true)
+            return "대학재학"
+        else if (_isSelectBtnGraduateCollege.value==true)
+            return "대학졸업"
+        else
+            return "석박사"
+    }
+
+
+
+    /*
+    대학교 검색을 위한 retrofit통신
+     */
+    fun tryGetCollege(apiKey:String,svcType:String,svcCode:String,gubun:String,searchSchulNm:String,contentType:String){
+        //대학교 이름만 저장할 ArrayList<String>
+        var name_list = ArrayList<String>()
+
+        //CollegeInterface를 retrofit을 이용해 인스턴스화 시킴
+        val collegeInterface = ApplicationClass.collegeRetrofit.create(CollegeInterface::class.java)
+        collegeInterface.getCollegeInfo(apiKey, svcType, svcCode, gubun, searchSchulNm, contentType).enqueue(object:
+            Callback<CollegeResponseModel> {
+            override fun onResponse(
+                call: Call<CollegeResponseModel>,
+                response: Response<CollegeResponseModel>
+            ) {
+                if (response.isSuccessful){
+                    val result = response.body() as CollegeResponseModel
+                    val collegeInfoList=result.dataSearch.collegeDataSearch
+
+                    //받아온 대학교 개수 만큼 for문을 돈다
+                    for (i in collegeInfoList){
+                        name_list.add(i.schoolName) //받아온 대학교 중 학교 이름만 저장한다.
+                    }
+                    _currentCollegeNameList.value=name_list //이름만 저장한 리스트를 라이브데이터에 넣어준다.
+                }
+            }
+            override fun onFailure(call: Call<CollegeResponseModel>, t: Throwable) {
+                Toast.makeText(mApplication.applicationContext,"대학교 검색 통신오류",Toast.LENGTH_SHORT).show()
+            }
+
+        })
     }
 }

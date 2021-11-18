@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/item_rc_do_dialog_bg">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tx_title_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/godom"
+        android:text="대학교 선택"
+        android:textColor="#656565"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btn_cancel"
+        android:layout_width="32dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_cancel_large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edt_search"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/do_edit_search_bg"
+        android:drawableStart="@drawable/ic_do_dialog_edt_searchl_start"
+        android:drawablePadding="9dp"
+        android:textCursorDrawable="@drawable/sign_up_edt_cursor"
+        android:hint="검색어를 입력해주세요."
+        android:singleLine="true"
+        android:textColorHint="#c2c2c2"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tx_title_main" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="14dp"
+        android:background="#dddddd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_search" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rc_do"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp"
+            android:clipToPadding="false"
+            android:paddingTop="15dp"
+            android:paddingBottom="120dp"
+            android:overScrollMode="never"
+            app:layout_constraintTop_toBottomOf="@+id/line"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

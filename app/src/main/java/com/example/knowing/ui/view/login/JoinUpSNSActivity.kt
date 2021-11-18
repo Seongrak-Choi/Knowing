@@ -41,7 +41,6 @@ class JoinUpSNSActivity : BaseActivity<ActivityJoinUpSnsBinding>(ActivityJoinUpS
     private lateinit var auth : FirebaseAuth
     private lateinit var googleApiClient : GoogleApiClient
     private lateinit var callbackManager : CallbackManager
-    private lateinit var firebaseAuth: FirebaseAuth
 
     companion object{
         private val REQ_SIGN_GOOGLE = 100 //구글 로그인 결과 코드
@@ -56,10 +55,6 @@ class JoinUpSNSActivity : BaseActivity<ActivityJoinUpSnsBinding>(ActivityJoinUpS
 //        var keyHash = Utility.getKeyHash(this)
 //        println("keyHash: $keyHash")
 
-        //firebaseAuth 초기화
-        firebaseAuth= Firebase.auth
-//        //커스텀 jwt로 계정 등록
-//        firebaseAuth.signInWithCustomToken("")
 
         //firebase customToken으로 로그인
 //        firebaseAuth.signInWithCustomToken("")
@@ -145,36 +140,22 @@ class JoinUpSNSActivity : BaseActivity<ActivityJoinUpSnsBinding>(ActivityJoinUpS
             var result = Auth.GoogleSignInApi.getSignInResultFromIntent(data)
             if (result.isSuccess){//인증결과가 성공인지 확인
                 var account = result.signInAccount //accout라는 데이터는 구글 로그인 정보를 담고있다. (닉네임,포르필사진url,이메일주소...)
-                resultLogin(account)
+
+                //firebase에 google계정 등록하려면 activity가 필요하대.... 이러면 안될거 같지만 일단 이렇게 처리함.
+                joinUpSNSActivityViewModel.setActivity(this)
+                //돌려받은 결과와 firebase를 연결해주는 메소드 호출
+                joinUpSNSActivityViewModel.resultLogin(account)
             }
         }else{//돌려 받은 값이 google이 아닌 facebook인 경우
             callbackManager.onActivityResult(requestCode,resultCode,data)
         }
     }
 
-
     /*
-    구글 로그인 화면에서 로그인이 완료 후 돌려받은 account값을 firebase와 연동하기 위한 메소드
-     */
-    private fun resultLogin(account : GoogleSignInAccount){
-        var credential:AuthCredential = GoogleAuthProvider.getCredential(account.idToken,null) //구글 로그인을 firebase와 연동
-        auth.signInWithCredential(credential)
-            .addOnCompleteListener(this, object:OnCompleteListener<AuthResult> {
-                override fun onComplete(task: Task<AuthResult>) {
-                    if(task.isSuccessful){ //firebase와 연동이 성공해서 로그인이 되었으면...
-                        Toast.makeText(applicationContext,"구글 로그인 성공",Toast.LENGTH_SHORT).show()
-
-                    }else{ //로그인이 실패했으면....
-                        Toast.makeText(applicationContext,"구글 로그인 실패",Toast.LENGTH_SHORT).show()
-                    }
-                }
-            })
-    }
-
-    /*
-    facebooklogin을 하기위한 메소드
-     */
-    private fun facebookLogin() {
+      facebooklogin을 하기위해 로그인 activity로 갔다가 callback을 받아서 성공했을 경우
+      firebase와 연결하는 메소드로 이동. callbackManager때문에 이 함수는 뷰모델에서 사용하기 어려움....
+       */
+    fun facebookLogin() {
         LoginManager.getInstance()
             .logInWithReadPermissions(this, listOf("email","public_profile"))
 
@@ -184,7 +165,7 @@ class JoinUpSNSActivity : BaseActivity<ActivityJoinUpSnsBinding>(ActivityJoinUpS
                     if (result?.accessToken != null) {
                         // facebook 계정 정보를 firebase 서버에게 전달(로그인)
                         val accessToken = result.accessToken
-                        firebaseAuthWithFacebook(accessToken)
+                        joinUpSNSActivityViewModel.firebaseAuthWithFacebook(accessToken)
                     } else {
                         Log.d("Facebook", "Fail Facebook Login")
                     }
@@ -198,27 +179,6 @@ class JoinUpSNSActivity : BaseActivity<ActivityJoinUpSnsBinding>(ActivityJoinUpS
     }
 
 
-    /*
-    facebook에서 로그인한 토큰을 firebase와 연동하기 위한 메소드
-     */
-    private fun firebaseAuthWithFacebook(accessToken: AccessToken?) {
-        // AccessToken 으로 Facebook 인증
-        val credential = FacebookAuthProvider.getCredential(accessToken?.token!!)
-
-        // 성공 시 Firebase 에 유저 정보 보내기 (로그인)
-        auth?.signInWithCredential(credential)
-            ?.addOnCompleteListener{
-                    task ->
-                if(task.isSuccessful){ // 정상적으로 email, password 가 전달된 경우
-                    // 로그인 처리
-                    Toast.makeText(this,"facebook계정으로 로그인 성공",Toast.LENGTH_SHORT).show()
-                } else {
-                    // 예외 발생 시 메시지 출력
-                    Toast.makeText(this, task.exception?.message, Toast.LENGTH_LONG).show()
-                    Log.e("facebookWithFirebaseError",task.exception?.message.toString())
-                }
-            }
-    }
 
     /*
     구글 계정 로그인 하기 위해 필요한 override 메소드인데 어디에 쓰는지 아직 잘 모름

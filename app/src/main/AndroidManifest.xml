@@ -46,7 +46,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".ui.view.sign_up.SnsSignUpActivity"
+            android:theme="@style/sign_up_theme"/>
         <activity android:name=".ui.view.sign_up.SignUpActivity"
             android:theme="@style/sign_up_theme">
         </activity>
@@ -67,7 +68,6 @@
         <activity android:name=".ui.view.sign_in.SignInActivity">
         </activity>
         <activity android:name=".ui.view.more_information.MoreInformationActivity1">
-
         </activity>
         <activity android:name=".ui.view.more_information.MoreInformationActivity2">
         </activity>
@@ -78,7 +78,10 @@
         <activity android:name=".ui.view.more_information.MoreInformationActivity5">
         </activity>
         <activity android:name=".ui.view.sign_in.search_email.SearchEmailActivity"/>
+        <activity android:name=".ui.view.sign_in.search_email.LoadingSearchEmailActivity"/>
         <activity android:name=".ui.view.sign_in.search_pwd.SearchPwdActivity"/>
+        <activity android:name=".ui.view.sign_in.search_pwd.LoadingSearchPwdActivity">
+        </activity>
         <activity android:name=".ui.view.more_information.SelectCategoryActivity">
         </activity>
     </application>

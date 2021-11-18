@@ -1,7 +1,6 @@
 package com.example.knowing.data.repository
 
-import com.example.knowing.data.datasource.local.DummyData
-import java.util.*
+import com.example.knowing.data.local.DummyData
 import kotlin.collections.ArrayList
 
 class DialogSelectDoRepository {

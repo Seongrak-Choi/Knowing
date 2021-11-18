@@ -168,4 +168,31 @@ class MoreInformationActivity4ViewModel(application: Application):AndroidViewMod
         }
         _isSelectEtc.value=_isSelectEtc.value != true
     }
+
+    /*
+    전공 계열 선택 데이터를 반환해주는 메소드
+     */
+    fun getMainMajor():String{
+        if (_isSelectHumanities.value==true)
+            return "인문"
+        if (_isSelectSociety.value==true)
+            return "사회"
+        if (_isSelectLaw.value==true)
+            return "법"
+        if (_isSelectManagement.value==true)
+            return "경영"
+        if (_isSelectEducation.value==true)
+            return "교육"
+        if (_isSelectEngineering.value==true)
+            return "공학"
+        if (_isSelectNature.value==true)
+            return "자연"
+        if (_isSelectEntertainment.value==true)
+            return "예체능"
+        if (_isSelectMedical.value==true)
+            return "의약"
+        if (_isSelectEtc.value==true)
+            return "기타"
+        return ""
+    }
 }

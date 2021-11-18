@@ -25,6 +25,10 @@
     <string name="tx_pwd_error">영문자와 숫자 포함 8자 이상 입력해주세요.</string>
     <string name="tx_pwd_check_error">두 비밀번호가 같지 않습니다.</string>
 
+    <!--sns_sign_up-->
+    <string name="sns_sign_up_title1">환영합니다!</string>
+    <string name="sns_sign_up_title2">이용자님,\n뭐라고 불러드릴까요?</string>
+
     <!--sign_in-->
     <string name="sign_in_title">로그인</string>
 

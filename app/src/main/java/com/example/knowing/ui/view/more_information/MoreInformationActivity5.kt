@@ -12,6 +12,7 @@ import android.widget.NumberPicker
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.knowing.R
+import com.example.knowing.data.model.domain.SignUpUser
 import com.example.knowing.databinding.ActivityMoreInformation5Binding
 import com.example.knowing.ui.base.BaseActivity
 import com.example.knowing.ui.viewmodel.MoreInformationActivity5ViewModel
@@ -22,6 +23,9 @@ class MoreInformationActivity5:BaseActivity<ActivityMoreInformation5Binding>(Act
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //MoreInformation4 activity에서 받은 유저 객체
+        var user_data =intent.getSerializableExtra("user_data") as SignUpUser
 
         //이 화면은, 오른쪽에서 왼쪽으로 슬라이딩 하면서 켜집니다.
         overridePendingTransition(R.animator.horizon_enter,R.animator.none)
@@ -127,6 +131,9 @@ class MoreInformationActivity5:BaseActivity<ActivityMoreInformation5Binding>(Act
         binding.btnNext.setOnClickListener {
             //카테고리 선택하기 화면으로 이동
             val intent = Intent(this,SelectCategoryActivity::class.java)
+            user_data.semester="${moreInformation5ActivityViewModel.currentTxGrade.value.toString()} ${moreInformation5ActivityViewModel.currentTxSemester.value.toString()}"
+            user_data.lastSemesterScore=moreInformation5ActivityViewModel.getLastSemesterScore()
+            intent.putExtra("user_data",user_data)
             startActivity(intent)
         }
 
@@ -135,6 +142,7 @@ class MoreInformationActivity5:BaseActivity<ActivityMoreInformation5Binding>(Act
             this.onBackPressed()
         }
     }
+
 
     /*
     화면이 종료 될때 실행되는 메소드
@@ -211,6 +219,7 @@ class MoreInformationActivity5:BaseActivity<ActivityMoreInformation5Binding>(Act
             dialog.cancel()
         }
 
+        //확인 버튼 클릭 리스너
         save.setOnClickListener {
             var strGrade = grade.value.toString() //numberpicker에서 선택한 데이터 중 grade 부분을 저장
             var strSemester = semester.value.toString() //numberpicker에서 선택한 데이터 중 semester 부분을 저장

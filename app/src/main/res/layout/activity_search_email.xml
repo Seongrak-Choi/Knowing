@@ -82,14 +82,14 @@
         android:textColorHint="#c2c2c2"
         android:textCursorDrawable="@drawable/sign_up_edt_cursor"
         android:textSize="16sp"
-        android:inputType="textPassword"
+        android:inputType="phone"
         app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
         app:layout_constraintStart_toStartOf="@id/guidelineStart"
         app:layout_constraintTop_toBottomOf="@+id/tx_phone" />
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_login"
+        android:id="@+id/btn_ok"
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginTop="30dp"

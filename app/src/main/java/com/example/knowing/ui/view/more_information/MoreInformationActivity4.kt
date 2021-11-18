@@ -7,16 +7,20 @@ import android.widget.Button
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.knowing.R
+import com.example.knowing.data.model.domain.SignUpUser
 import com.example.knowing.databinding.ActivityMoreInformation4Binding
 import com.example.knowing.ui.base.BaseActivity
 import com.example.knowing.ui.viewmodel.MoreInformationActivity4ViewModel
-import com.example.knowing.ui.viewmodel.MoreInformationActivity5ViewModel
 
 class MoreInformationActivity4 : BaseActivity<ActivityMoreInformation4Binding>(ActivityMoreInformation4Binding::inflate) {
     private lateinit var majorBtnMap : MutableMap<Button,Boolean>
     private lateinit var moreInformationActivity4ViewModel: MoreInformationActivity4ViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+        //MoreInformation3 activity에서 받은 유저 객체
+        var user_data =intent.getSerializableExtra("user_data") as SignUpUser
 
         //이 화면은, 오른쪽에서 왼쪽으로 슬라이딩 하면서 켜집니다.
         overridePendingTransition(R.animator.horizon_enter,R.animator.none)
@@ -163,6 +167,9 @@ class MoreInformationActivity4 : BaseActivity<ActivityMoreInformation4Binding>(A
         // moreInformationActivity5로 가기 위한 다음 버튼 클릭 리스너
         binding.btnNext.setOnClickListener {
             var intent = Intent(this,MoreInformationActivity5::class.java)
+            user_data.mainMajor=moreInformationActivity4ViewModel.getMainMajor()
+            user_data.subMajor=binding.edtMajorDetail.text.toString()
+            intent.putExtra("user_data",user_data)
             startActivity(intent)
         }
     }

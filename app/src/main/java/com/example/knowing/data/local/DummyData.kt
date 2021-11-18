@@ -1,4 +1,4 @@
-package com.example.knowing.data.datasource.local
+package com.example.knowing.data.local
 
 import java.util.*
 import kotlin.collections.ArrayList

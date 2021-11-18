@@ -564,16 +564,16 @@
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:background="@drawable/more_information_4_major_btn_unchecked_bg"
                     android:fontFamily="@font/roboto_medium"
-                    android:paddingHorizontal="26dp"
+                    android:layout_marginStart="16dp"
                     android:text="심리지원"
                     android:textColor="#6c6c6c"
                     android:textSize="14sp" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_next"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="41dp"
@@ -583,6 +583,7 @@
                 android:text="적용하기"
                 android:textColor="#ffffff"
                 android:textSize="16sp"
+                android:enabled="false"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
                 app:layout_constraintStart_toStartOf="@id/guidelineStart"

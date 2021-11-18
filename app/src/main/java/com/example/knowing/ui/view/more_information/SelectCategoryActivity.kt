@@ -6,6 +6,8 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.knowing.R
+import com.example.knowing.config.ApplicationClass.Companion.USER_UID
+import com.example.knowing.data.model.domain.SignUpUser
 import com.example.knowing.databinding.ActivitySelectCategoryBinding
 import com.example.knowing.ui.base.BaseActivity
 import com.example.knowing.ui.viewmodel.SelectCategoryActivityViewModel
@@ -15,6 +17,9 @@ class SelectCategoryActivity : BaseActivity<ActivitySelectCategoryBinding>(Activ
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //MoreInformation5 activity에서 받은 유저 객체
+        var user_data =intent.getSerializableExtra("user_data") as SignUpUser
 
         //뷰모델 장착
         selectCategoryActivityViewModel=ViewModelProvider(this).get(SelectCategoryActivityViewModel::class.java)
@@ -345,42 +350,63 @@ class SelectCategoryActivity : BaseActivity<ActivitySelectCategoryBinding>(Activ
             }
         })
 
+        //적용하기 버튼 상태 변경하기 위해 라이브데이터 관찰
+        selectCategoryActivityViewModel.isCorrectBtnNext.observe(this, Observer {
+            binding.btnNext.isEnabled=it
+        })
+
 
 
 
         //학생 지원-전체 클릭 리스너
         binding.btnStudent1.setOnClickListener {
             selectCategoryActivityViewModel.changeStudentBtnAll()
+            //적용하기 버튼 상태 업데이트 하기 위한 메소드 호출
+            selectCategoryActivityViewModel.checkIsCorrectBtnNext()
         }
         //학생 지원-교내 장학금 클릭 리스너
         binding.btnStudent2.setOnClickListener {
             selectCategoryActivityViewModel.changeStudentBtnInSchoolTuition()
+            //적용하기 버튼 상태 업데이트 하기 위한 메소드 호출
+            selectCategoryActivityViewModel.checkIsCorrectBtnNext()
         }
         //학생 지원-교외 장학금 클릭 리스너
         binding.btnStudent3.setOnClickListener {
             selectCategoryActivityViewModel.changeStudentBtnOutSchoolTuition()
+            //적용하기 버튼 상태 업데이트 하기 위한 메소드 호출
+            selectCategoryActivityViewModel.checkIsCorrectBtnNext()
         }
 
 
         //취업 지원-전체 클릭 리스너
         binding.btnJob1.setOnClickListener {
             selectCategoryActivityViewModel.changeJobBtnAll()
+            //적용하기 버튼 상태 업데이트 하기 위한 메소드 호출
+            selectCategoryActivityViewModel.checkIsCorrectBtnNext()
         }
         //취업 지원-구직활동지원인턴 클릭 리스너
         binding.btnJob2.setOnClickListener {
             selectCategoryActivityViewModel.changeJobBtnJobSearch()
+            //적용하기 버튼 상태 업데이트 하기 위한 메소드 호출
+            selectCategoryActivityViewModel.checkIsCorrectBtnNext()
         }
         //취업 지원-중소중견기업취업지원 클릭 리스너
         binding.btnJob3.setOnClickListener {
             selectCategoryActivityViewModel.changeJobBtnJobSmallBusiness()
+            //적용하기 버튼 상태 업데이트 하기 위한 메소드 호출
+            selectCategoryActivityViewModel.checkIsCorrectBtnNext()
         }
         //취업 지원-특수분야취업지원 클릭 리스너
         binding.btnJob4.setOnClickListener {
             selectCategoryActivityViewModel.changeJobBtnJobSpecialField()
+            //적용하기 버튼 상태 업데이트 하기 위한 메소드 호출
+            selectCategoryActivityViewModel.checkIsCorrectBtnNext()
         }
         //취업 지원-해외취업및진출지원 클릭 리스너
         binding.btnJob5.setOnClickListener {
             selectCategoryActivityViewModel.changeJobBtnJobOverSeas()
+            //적용하기 버튼 상태 업데이트 하기 위한 메소드 호출
+            selectCategoryActivityViewModel.checkIsCorrectBtnNext()
         }
 
 
@@ -388,34 +414,50 @@ class SelectCategoryActivity : BaseActivity<ActivitySelectCategoryBinding>(Activ
         //창업 지원-전체 클릭 리스너
         binding.btnFoundation1.setOnClickListener {
             selectCategoryActivityViewModel.changeFoundationBtnAll()
+            //적용하기 버튼 상태 업데이트 하기 위한 메소드 호출
+            selectCategoryActivityViewModel.checkIsCorrectBtnNext()
         }
         //창업 지원-창업운영지원 클릭 리스너
         binding.btnFoundation2.setOnClickListener {
             selectCategoryActivityViewModel.changeFoundationBtnFoundationOperate()
+            //적용하기 버튼 상태 업데이트 하기 위한 메소드 호출
+            selectCategoryActivityViewModel.checkIsCorrectBtnNext()
         }//창업 지원-경영지원 클릭 리스너
         binding.btnFoundation3.setOnClickListener {
             selectCategoryActivityViewModel.changeFoundationBtnManagement()
+            //적용하기 버튼 상태 업데이트 하기 위한 메소드 호출
+            selectCategoryActivityViewModel.checkIsCorrectBtnNext()
         }//창업 지원-자본금지원 클릭 리스너
         binding.btnFoundation4.setOnClickListener {
             selectCategoryActivityViewModel.changeFoundationBtnCapital()
+            //적용하기 버튼 상태 업데이트 하기 위한 메소드 호출
+            selectCategoryActivityViewModel.checkIsCorrectBtnNext()
         }
 
 
         //주거금융 지원-전체 클릭 리스너
         binding.btnDwelling1.setOnClickListener {
             selectCategoryActivityViewModel.changeDwellingBtnAll()
+            //적용하기 버튼 상태 업데이트 하기 위한 메소드 호출
+            selectCategoryActivityViewModel.checkIsCorrectBtnNext()
         }
         //주거금융 지원-생활비지원 클릭 리스너
         binding.btnDwelling2.setOnClickListener {
             selectCategoryActivityViewModel.changeDwellingBtnLivingExpense()
+            //적용하기 버튼 상태 업데이트 하기 위한 메소드 호출
+            selectCategoryActivityViewModel.checkIsCorrectBtnNext()
         }
         //주거금융 지원-주거지원 클릭 리스너
         binding.btnDwelling3.setOnClickListener {
             selectCategoryActivityViewModel.changeDwellingBtnDwelling()
+            //적용하기 버튼 상태 업데이트 하기 위한 메소드 호출
+            selectCategoryActivityViewModel.checkIsCorrectBtnNext()
         }
         //주거금융 지원-학자금지원 클릭 리스너
         binding.btnDwelling4.setOnClickListener {
             selectCategoryActivityViewModel.changeDwellingBtnSchoolExpense()
+            //적용하기 버튼 상태 업데이트 하기 위한 메소드 호출
+            selectCategoryActivityViewModel.checkIsCorrectBtnNext()
         }
 
 
@@ -423,14 +465,20 @@ class SelectCategoryActivity : BaseActivity<ActivitySelectCategoryBinding>(Activ
         //생활복지 지원-전체 클릭 리스너
         binding.btnLife1.setOnClickListener {
             selectCategoryActivityViewModel.changeLifeBtnAll()
+            //적용하기 버튼 상태 업데이트 하기 위한 메소드 호출
+            selectCategoryActivityViewModel.checkIsCorrectBtnNext()
         }
         //생활복지 지원-건강 클릭 리스너
         binding.btnLife2.setOnClickListener {
             selectCategoryActivityViewModel.changeLifeBtnHealth()
+            //적용하기 버튼 상태 업데이트 하기 위한 메소드 호출
+            selectCategoryActivityViewModel.checkIsCorrectBtnNext()
         }
         //생활복지 지원-문화 클릭 리스너
         binding.btnLife3.setOnClickListener {
             selectCategoryActivityViewModel.changeLifeBtnCulture()
+            //적용하기 버튼 상태 업데이트 하기 위한 메소드 호출
+            selectCategoryActivityViewModel.checkIsCorrectBtnNext()
         }
 
 
@@ -438,25 +486,66 @@ class SelectCategoryActivity : BaseActivity<ActivitySelectCategoryBinding>(Activ
         //코로나19지원-전체 클릭 리스너
         binding.btnCorona1.setOnClickListener {
             selectCategoryActivityViewModel.changeCoronaBtnAll()
+            //적용하기 버튼 상태 업데이트 하기 위한 메소드 호출
+            selectCategoryActivityViewModel.checkIsCorrectBtnNext()
         }
         //코로나19지원-기본소득지원 클릭 리스너
         binding.btnCorona2.setOnClickListener {
             selectCategoryActivityViewModel.changeCoronaBtnBasicIncome()
+            //적용하기 버튼 상태 업데이트 하기 위한 메소드 호출
+            selectCategoryActivityViewModel.checkIsCorrectBtnNext()
         }//코로나19지원-저소득층지원 클릭 리스너
         binding.btnCorona3.setOnClickListener {
             selectCategoryActivityViewModel.changeCoronaBtnLowIncome()
+            //적용하기 버튼 상태 업데이트 하기 위한 메소드 호출
+            selectCategoryActivityViewModel.checkIsCorrectBtnNext()
         }//코로나19지원-재난피해지원 클릭 리스너
         binding.btnCorona4.setOnClickListener {
             selectCategoryActivityViewModel.changeCoronaBtnDisasterDamage()
+            //적용하기 버튼 상태 업데이트 하기 위한 메소드 호출
+            selectCategoryActivityViewModel.checkIsCorrectBtnNext()
         }//코로나19지원-소득일자리보전 클릭 리스너
         binding.btnCorona5.setOnClickListener {
             selectCategoryActivityViewModel.changeCoronaBtnJobPreservation()
+            //적용하기 버튼 상태 업데이트 하기 위한 메소드 호출
+            selectCategoryActivityViewModel.checkIsCorrectBtnNext()
         }//코로나19지원-기타 인센티브 클릭 리스너
         binding.btnCorona6.setOnClickListener {
             selectCategoryActivityViewModel.changeCoronaBtnIncentive()
+            //적용하기 버튼 상태 업데이트 하기 위한 메소드 호출
+            selectCategoryActivityViewModel.checkIsCorrectBtnNext()
         }//코로나19지원-심리지원 클릭 리스너
         binding.btnCorona7.setOnClickListener {
             selectCategoryActivityViewModel.changeCoronaBtnPsychologicalSupport()
+            //적용하기 버튼 상태 업데이트 하기 위한 메소드 호출
+            selectCategoryActivityViewModel.checkIsCorrectBtnNext()
+        }
+
+
+        //뒤로가기 아이콘 클릭 리스너
+        binding.btnBack.setOnClickListener {
+            this.onBackPressed()
+        }
+
+        //적용하기 버튼 클릭 리스너
+        binding.btnNext.setOnClickListener {
+            //각각 카테고리 별에 맞게 유저 객체에 저장
+            user_data.studentCategory=selectCategoryActivityViewModel.getStudentCategory()
+            user_data.empolyCategory=selectCategoryActivityViewModel.getJobCategory()
+            user_data.foundationCategory=selectCategoryActivityViewModel.getFoundationCategory()
+            user_data.residentCategory=selectCategoryActivityViewModel.getResidentCategory()
+            user_data.lifeCategory=selectCategoryActivityViewModel.getLifeCategory()
+            user_data.covidCategory=selectCategoryActivityViewModel.getCovidCategory()
+
+            //만약 이메일로 회원가입하기를 누르고 회원가입을 하였다면, firebase에 등록해줘야 하기 때문에 조건문으로 걸러준다.
+            if (user_data.provider=="default"){
+                selectCategoryActivityViewModel.postEmailSignUpToFirebase(user_data)
+            }else{
+                //회원가입 API 호출
+                selectCategoryActivityViewModel.tryPostSignUp(USER_UID,user_data)
+            }
+
+
         }
     }
 }

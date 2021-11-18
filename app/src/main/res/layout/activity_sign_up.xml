@@ -205,6 +205,34 @@
                 android:layout_marginTop="5dp"
                 android:visibility="invisible"/>
 
+            <!--전화번호 부분-->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tx_phone_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="전화번호"
+                android:textColor="#64625e"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/edt_pwd_check" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edt_phone_num"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/sign_up_edit_bg"
+                android:drawableStart="@drawable/ic_sign_up_edt_phone_left"
+                android:drawablePadding="8dp"
+                android:hint="'-'없이 입력"
+                android:textColorHint="#c2c2c2"
+                android:textCursorDrawable="@drawable/sign_up_edt_cursor"
+                android:textSize="16sp"
+                android:inputType="phone"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/tx_phone_num" />
 
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -216,7 +244,7 @@
                 android:text="성별"
                 android:textColor="#64625e"
                 app:layout_constraintStart_toStartOf="@id/guidelineStart"
-                app:layout_constraintTop_toBottomOf="@+id/edt_pwd_check" />
+                app:layout_constraintTop_toBottomOf="@+id/edt_phone_num" />
 
 
             <androidx.appcompat.widget.AppCompatButton

@@ -243,5 +243,27 @@ class MoreInformationActivity1ViewModel(application: Application):AndroidViewMod
             _checkedBtnInfo.value+="지역인재-"
     }
 
+    /*
+    특별사항 중 선택된 데이터를 반환해주는 메소드
+     */
+    fun getSpecialStatus():ArrayList<String>{
+        var choice_value = ArrayList<String>() //특별사항 중 선택된 데이터들을 공백을 기준으로 나눠서 저장할 변수
+        if (_currentBtnSmallBusiness.value==true)
+            choice_value.add("중소기업")
+        if (_currentBtnLowIncome.value==true)
+            choice_value.add("저소득층")
+        if (_currentBtnDisabled.value==true)
+            choice_value.add("장애인")
+        if (_currentBtnFarmer.value==true)
+            choice_value.add("농업인")
+        if (_currentBtnSolider.value==true)
+            choice_value.add("군인")
+        if (_currentBtnLocalTalent.value==true)
+            choice_value.add("지역인재")
+        if (_currentCheckState.value==true)
+            choice_value.add("none")
+        return choice_value
+    }
+
 
 }

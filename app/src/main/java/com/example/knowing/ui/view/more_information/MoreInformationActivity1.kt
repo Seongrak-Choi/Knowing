@@ -3,15 +3,11 @@ package com.example.knowing.ui.view.more_information
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
-import android.graphics.fonts.Font
-import android.graphics.fonts.FontFamily
 import android.os.Bundle
 import android.view.View
-import android.view.WindowManager
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.knowing.R
+import com.example.knowing.data.model.domain.SignUpUser
 import com.example.knowing.databinding.ActivityMoreInformation1Binding
 import com.example.knowing.ui.base.BaseActivity
 import com.example.knowing.ui.viewmodel.MoreInformationActivity1ViewModel
@@ -23,9 +19,16 @@ class MoreInformationActivity1 :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        //sign_up activity에서 받은 유저 객체
+        var user_data =intent.getSerializableExtra("user_data") as SignUpUser
+
+
         //뷰모델 장착
         moreInformationActivity1ViewModel =
             ViewModelProvider(this).get(MoreInformationActivity1ViewModel::class.java)
+
+        //회원가입에서 받아온 이름으로 라이팅 하기위해 TextView의 Text변경
+        binding.txTitle2.text="${user_data.name}님만의 혜택을 위해선 추가 입력이 필요해요"
 
 
         // 시/도에서 선택할 경우 선택된 데이터로 텍스트를 변경해주기 위해 옵저버 패턴을 이용해 뷰모델의 _currentTxDo를 관찰한다.
@@ -110,10 +113,19 @@ class MoreInformationActivity1 :
             bottomSheet.show(supportFragmentManager,bottomSheet.tag)
         }
 
+        //뒤로가기 아이콘 클릭 리스너
+        binding.btnBack.setOnClickListener {
+            this.onBackPressed()
+        }
+
 
         //다음 버튼 클릭 리스너
         binding.btnNext.setOnClickListener {
             var intent  = Intent(this,MoreInformationActivity2::class.java)
+            user_data.address=moreInformationActivity1ViewModel.currentTxDo.value.toString()
+            user_data.addressDetail= moreInformationActivity1ViewModel.currentTxSi.value.toString()
+            user_data.specialStatus=moreInformationActivity1ViewModel.getSpecialStatus()
+            intent.putExtra("user_data",user_data)
             startActivity(intent)
         }
     }

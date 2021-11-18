@@ -16,6 +16,7 @@
         android:fontFamily="@font/roboto_bold"
         android:textColor="#6c6c6c"
         android:background="@drawable/item_rc_do_tx_bg"
+        android:paddingHorizontal="12dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>

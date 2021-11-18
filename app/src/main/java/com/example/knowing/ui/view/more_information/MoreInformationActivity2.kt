@@ -12,6 +12,7 @@ import android.view.inputmethod.InputMethodManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.knowing.R
+import com.example.knowing.data.model.domain.SignUpUser
 import com.example.knowing.databinding.ActivityMoreInformation2Binding
 import com.example.knowing.ui.base.BaseActivity
 import com.example.knowing.ui.viewmodel.MoreInformationActivity2ViewModel
@@ -24,6 +25,9 @@ class MoreInformationActivity2:BaseActivity<ActivityMoreInformation2Binding>(Act
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //MoreInformation1 activity에서 받은 유저 객체
+        var user_data =intent.getSerializableExtra("user_data") as SignUpUser
 
         //이 화면은, 오른쪽에서 왼쪽으로 슬라이딩 하면서 켜집니다.
         overridePendingTransition(R.animator.horizon_enter,R.animator.none)
@@ -209,10 +213,16 @@ class MoreInformationActivity2:BaseActivity<ActivityMoreInformation2Binding>(Act
             moreInformationActivity2ViewModel.checkIsCorrect()
         }
 
+
+
         //'다음'버튼 클릭 리스너
         binding.btnNext.setOnClickListener {
-            //moreActivity3로 이동
+            //moreActivity3로 이동하면서 user_data 넘겨줌
             val intent= Intent(this,MoreInformationActivity3::class.java)
+            user_data.incomeLevel=moreInformationActivity2ViewModel.getIncomeLevel(binding.edtIncome.text.toString())
+            user_data.incomeAvg=moreInformationActivity2ViewModel.getIncomeAvg(binding.edtIncome.text.toString())
+            user_data.employmentState=moreInformationActivity2ViewModel.getEmployState()
+            intent.putExtra("user_data",user_data)
             startActivity(intent)
         }
 
@@ -230,6 +240,8 @@ class MoreInformationActivity2:BaseActivity<ActivityMoreInformation2Binding>(Act
             }else{ //포커싱이 사라질 때...
                 //뷰모델의 라이브데이터로 edtIncome의 데이터 저장
                 moreInformationActivity2ViewModel.currentEdtIncome.value=binding.edtIncome.text.toString()
+
+                println(binding.edtIncome.text.toString().isNotEmpty())
 
                 //'다음'버튼 활성화를 확인하는 메소드 출력
                 moreInformationActivity2ViewModel.checkIsCorrect()
@@ -257,6 +269,13 @@ class MoreInformationActivity2:BaseActivity<ActivityMoreInformation2Binding>(Act
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+                //월 소득이 입력되어져 있는지 아닌지 판단하기 위한 라이브데이터 변경
+                moreInformationActivity2ViewModel.isSelectEdtIncome.value =
+                    binding.edtIncome.text.toString().isNotEmpty()
+                //'다음'버튼 활성화를 확인하는 메소드 출력
+                moreInformationActivity2ViewModel.checkIsCorrect()
+
                 if (!TextUtils.isEmpty(s.toString())&&!s.toString().equals(result)){
                     result=decimalFormat.format((s.toString().replace(",","")).toDouble())
                     binding.edtIncome.setText(result)
@@ -276,20 +295,5 @@ class MoreInformationActivity2:BaseActivity<ActivityMoreInformation2Binding>(Act
         if (isFinishing){
             overridePendingTransition(R.animator.none,R.animator.horizon_exit)
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        println("2번 destory")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        println("2번 stop")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        println("2번 pause")
     }
 }

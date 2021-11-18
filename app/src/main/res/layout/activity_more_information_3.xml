@@ -241,7 +241,7 @@
         app:layout_constraintEnd_toEndOf="@id/guidelineEnd">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tx_do"
+            android:id="@+id/tx_college_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="학교 선택"
@@ -257,8 +257,8 @@
             android:adjustViewBounds="true"
             android:src="@drawable/ic_select"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tx_do"
-            app:layout_constraintBottom_toBottomOf="@id/tx_do"/>
+            app:layout_constraintTop_toTopOf="@id/tx_college_name"
+            app:layout_constraintBottom_toBottomOf="@id/tx_college_name"/>
 
         <View
             android:id="@+id/line"
@@ -266,7 +266,7 @@
             android:layout_height="0.5dp"
             android:background="#979797"
             android:layout_marginTop="7dp"
-            app:layout_constraintTop_toBottomOf="@+id/tx_do"
+            app:layout_constraintTop_toBottomOf="@+id/tx_college_name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>

@@ -121,14 +121,55 @@
         android:textColorHint="#c2c2c2"
         android:textCursorDrawable="@drawable/sign_up_edt_cursor"
         android:textSize="16sp"
-        android:inputType="textPassword"
+        android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
         app:layout_constraintStart_toStartOf="@id/guidelineStart"
         app:layout_constraintTop_toBottomOf="@+id/tx_email" />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tx_email_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tx_email_error"
+        android:textSize="11sp"
+        android:textColor="#ff6c00"
+        android:fontFamily="@font/roboto_regular"
+        app:layout_constraintTop_toBottomOf="@+id/edt_email"
+        app:layout_constraintStart_toStartOf="@id/guidelineStart"
+        android:layout_marginTop="5dp"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/img_email_error"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_alert_signuppage"
+        app:layout_constraintEnd_toEndOf="@+id/edt_email"
+        app:layout_constraintTop_toTopOf="@+id/edt_email"
+        app:layout_constraintBottom_toBottomOf="@+id/edt_email"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="3dp"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/img_email_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_cancel"
+        app:layout_constraintEnd_toEndOf="@+id/edt_email"
+        app:layout_constraintTop_toTopOf="@+id/edt_email"
+        app:layout_constraintBottom_toBottomOf="@+id/edt_email"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="3dp"
+        android:visibility="invisible"/>
+
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_login"
+        android:id="@+id/btn_send"
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginTop="30dp"

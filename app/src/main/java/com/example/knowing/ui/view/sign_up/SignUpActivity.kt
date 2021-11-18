@@ -1,10 +1,11 @@
 package com.example.knowing.ui.view.sign_up
 
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
+import android.telephony.PhoneNumberFormattingTextWatcher
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.inputmethod.EditorInfo
@@ -15,8 +16,10 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.knowing.R
+import com.example.knowing.data.model.domain.SignUpUser
 import com.example.knowing.databinding.ActivitySignUpBinding
 import com.example.knowing.ui.base.BaseActivity
+import com.example.knowing.ui.view.more_information.MoreInformationActivity1
 import com.example.knowing.ui.viewmodel.SignUpActivityViewModel
 import java.util.regex.Matcher
 import java.util.regex.Pattern
@@ -24,6 +27,7 @@ import java.util.regex.Pattern
 
 class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding::inflate) {
     private lateinit var signUpActivityViewModel: SignUpActivityViewModel
+    private var birthValue : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,7 +71,10 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
 
         //회원가입 버튼 활성화를 위해 라이브 데이터 관찰
         signUpActivityViewModel.allIsCorrect.observe(this, Observer {
-            binding.btnFinish.isEnabled=it
+            if(it){
+                binding.btnFinish.isEnabled=it
+            }
+
         })
 
 
@@ -195,7 +202,7 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
 
                 //키보드 밑으로 내리는 코드
                 val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(binding.edtEmail.windowToken, 0);
+                imm.hideSoftInputFromWindow(binding.edtEmail.windowToken, 0)
 
                 handled=true
             }
@@ -327,6 +334,37 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
             }
             handled
         }
+
+
+        //edt phone 텍스트 체인지 리스너
+        binding.edtPhoneNum.addTextChangedListener(object : PhoneNumberFormattingTextWatcher() { //핸드폰 양식에 맞게 입력되도록 폰넘버포맷팅텍스트워쳐씀
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                super.onTextChanged(s, start, before, count)
+                var inputPhone = binding.edtPhoneNum.text.toString()
+
+                //입력이 12자가 되면 라이브 데이터 true 아니면 false
+                signUpActivityViewModel.isCorrectEdtPhoneNum.value = inputPhone.length == 13
+            }
+        })
+
+
+        //회원가입 버튼 클릭 리스너
+        binding.btnFinish.setOnClickListener {
+            val intent = Intent(this,MoreInformationActivity1::class.java)
+            //폰번호는 "-"빼서 보내기 위해 데이터 가공 후 메소드에 전달
+            val phNum = binding.edtPhoneNum.text.toString().replace("-","")
+            //화면에서 입력받은 데이터들을 모아서 SignUpUser형으로 객체 생성
+            val user_data= SignUpUser(binding.edtEmail.text.toString(),binding.edtName.text.toString(),binding.edtPwd.text.toString(),phNum,
+            signUpActivityViewModel.getGenderValue(),birthValue,provider = "default")
+            intent.putExtra("user_data",user_data) //userData객체를 intent로 전달
+            startActivity(intent)
+        }
+
+
+        //뒤로가기 아이콘 클릭 리스너
+        binding.btnBack.setOnClickListener {
+            this.onBackPressed()
+        }
     }
 
 
@@ -394,8 +432,11 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
                 day.value.toString()
             }
 
-            //viewmodel의 livedat의 값을 변경
+            //viewmodel의 livedat의 값을 변경해서 화면에 출력하는 용도
             signUpActivityViewModel.currentEdtTextBirth.value="$strYear / $strMonth / $strDay"
+
+            //intent넘어갈 때 보내주기 위해 int형으로 담아두는 용도
+            birthValue=(strYear+strMonth+strDay).toInt()
             dialog.dismiss() //datepicker dialog 종료
 
             //모든 조건이 만족하는지 검사 후 라이브데이터 변경

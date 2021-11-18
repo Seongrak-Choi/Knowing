@@ -7,6 +7,8 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.knowing.R
+import com.example.knowing.config.ApplicationClass
+import com.example.knowing.data.model.domain.SignUpUser
 import com.example.knowing.databinding.ActivityMoreInformation3Binding
 import com.example.knowing.ui.base.BaseActivity
 import com.example.knowing.ui.viewmodel.MoreInformationActivity3ViewModel
@@ -16,6 +18,9 @@ class MoreInformationActivity3:BaseActivity<ActivityMoreInformation3Binding>(Act
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //MoreInformation2 activity에서 받은 유저 객체
+        var user_data =intent.getSerializableExtra("user_data") as SignUpUser
 
         //이 화면은, 오른쪽에서 왼쪽으로 슬라이딩 하면서 켜집니다.
         overridePendingTransition(R.animator.horizon_enter,R.animator.none)
@@ -35,6 +40,7 @@ class MoreInformationActivity3:BaseActivity<ActivityMoreInformation3Binding>(Act
                 binding.btnRegister1.typeface= Typeface.createFromAsset(assets,"roboto_medium.ttf") //선택 시 굵게 폰트 변경하기 위해 에셋에서 불러옴
             }
         })
+
         //고졸미만 버튼의 선택 유무를 위해 라이브 데이터 관찰
         moreInformationActivity3ViewModel.isSelectBtnUnderHighSchool.observe(this, Observer {
             if (it){
@@ -96,6 +102,13 @@ class MoreInformationActivity3:BaseActivity<ActivityMoreInformation3Binding>(Act
             }
         })
 
+
+        //다이얼로그에서 선택한 대학교 이름이 TextView에 보이기 위해 선택한 학교 이름을 저장하고 있는 라이브데이터 관찰
+        moreInformationActivity3ViewModel.currentSelectTxCollegeName.observe(this, Observer {
+            binding.txCollegeName.text=it
+        })
+
+
         //다음 버튼 활성화를 위해 라이브 데이터 관찰
         moreInformationActivity3ViewModel.isCorrectBtn.observe(this, Observer {
             binding.btnNext.isEnabled=it
@@ -140,10 +153,21 @@ class MoreInformationActivity3:BaseActivity<ActivityMoreInformation3Binding>(Act
         }
 
 
+        //학교 선택 버튼 클릭 리스너
+        binding.btnSelectSchool.setOnClickListener {
+            val bottomSheet = SelectCollegeDialog()
+            bottomSheet.show(supportFragmentManager, bottomSheet.tag)
+        }
+
+
+
         //'다음'버튼 클릭 리스너
         binding.btnNext.setOnClickListener {
             //moreActivity4로 이동
             val intent= Intent(this,MoreInformationActivity4::class.java)
+            user_data.schoolRecords=moreInformationActivity3ViewModel.getSchoolRecords()
+            user_data.school=moreInformationActivity3ViewModel.currentSelectTxCollegeName.value.toString()
+            intent.putExtra("user_data",user_data)
             startActivity(intent)
         }
 

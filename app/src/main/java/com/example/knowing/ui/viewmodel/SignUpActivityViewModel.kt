@@ -20,6 +20,8 @@ class SignUpActivityViewModel(application: Application) : AndroidViewModel(appli
     private val _pwdIsCorrect = MutableLiveData<Boolean>() //입력한 패스워드가 정상인지 체크하는 라이브 데이터
     private val _pwdCheckIsCorrect = MutableLiveData<Boolean>() //입력한 비밀번호 확인이 비밀번호와 일치한지 상태를 저장하는 라이브 데이터
     private val _allIsCorrect = MutableLiveData<Boolean>() //이메일, 패스워드, 성별선택여부, 이름, 날짜선택여부 형식이 정상적인지 아닌지 판단해 회원가입하기 버튼을 활성화 시키는 라이브 데이터
+    private val _isCorrectEdtPhoneNum=MutableLiveData<Boolean>() //전화번호를 양식에 맞게 잘 입력했는지 확인하는 라이브 데이터
+
 
     val currentEdtTextBirth: MutableLiveData<String>
         get() = _currentEdtTextBirth
@@ -44,6 +46,9 @@ class SignUpActivityViewModel(application: Application) : AndroidViewModel(appli
 
     val allIsCorrect : MutableLiveData<Boolean>
         get() = _allIsCorrect
+
+    val isCorrectEdtPhoneNum : MutableLiveData<Boolean>
+        get() = _isCorrectEdtPhoneNum
 
 
     init {
@@ -76,10 +81,10 @@ class SignUpActivityViewModel(application: Application) : AndroidViewModel(appli
     회원가입 버튼을 활성화 하기 위한 모든 조건들이 만족하는지 확인하는 메소드
      */
     fun checkAllIsCorrect(){
-        println("이메일 ${_emailIsCorrect.value} / 패스워드 ${_pwdIsCorrect.value}  / 이름 ${_nameIsCorrect.value}  성별  ${isCheckGender()} / 생년월일  ${isInputBirth()}")
+        //println("이메일 ${_emailIsCorrect.value} / 패스워드 ${_pwdIsCorrect.value}  / 이름 ${_nameIsCorrect.value}  / 전화번호 ${_isCorrectEdtPhoneNum.value}성별  ${isCheckGender()} / 생년월일  ${isInputBirth()}")
 
         //모든 조건들이 참인 경우 회원가입 버튼의 enabled를 담당하는 라이브 데이터를 true로 바꿔준다.
-        if(_emailIsCorrect.value == true && _pwdIsCorrect.value==true && _nameIsCorrect.value==true && isCheckGender() && isInputBirth() && _pwdCheckIsCorrect.value==true){
+        if(_emailIsCorrect.value == true && _pwdIsCorrect.value==true && _nameIsCorrect.value==true && isCheckGender() && isInputBirth() && _pwdCheckIsCorrect.value==true && _isCorrectEdtPhoneNum.value==true){
             allIsCorrect.value=true
         }else
             allIsCorrect.value=false
@@ -98,5 +103,17 @@ class SignUpActivityViewModel(application: Application) : AndroidViewModel(appli
     fun isInputBirth() :Boolean{
         return _currentEdtTextBirth.value.toString().isNotEmpty()
     }
+
+    /*
+    성별 중 남성이 선택되어져 있는지 여성이 선택되어져 있는지 결과값 불러오는 메소드
+     */
+    fun getGenderValue():String{
+        //남성이 선택되어져 있으면 true 아니면 false 반환
+        if (_currentBtnMen.value==true)
+            return "남성"
+        else
+            return "여성"
+    }
+
 
 }

@@ -109,4 +109,18 @@ class MoreInformationActivity5ViewModel(application: Application):AndroidViewMod
         _isSelectHigh.value=false
         _isSelectNone.value=false
     }
+
+    /*
+    지난 학기 학점에서 선택된 데이터가 무엇인지 String형식으로 반환해주는 메소드
+     */
+    fun getLastSemesterScore():String{
+        if (_isSelectLow.value==true)
+            return "~2.9"
+        else if (_isSelectMedium.value==true)
+            return "3.0~3.4"
+        else if (_isSelectHigh.value==true)
+            return "3.5~3.9"
+        else
+            return "없음"
+    }
 }
