@@ -51,6 +51,16 @@
         <item name="android:windowExitAnimation">@animator/dialog_up_bottom</item>
     </style>
 
+    <!--main_activity화면 적용될 테마-->
+    <style name="main_theme" parent="Theme.Knowing">
+        <item name="android:statusBarColor">#ffe4b6</item>
+    </style>
+
+    <!--main_home_tabLayout에 들어갈 메뉴 글자 설정-->
+    <style name="main_home_tab_layout_text_style">
+        <item name="android:textSize">16sp</item>
+        <item name="fontFamily">@font/roboto_bold</item>
+    </style>
 
 
 

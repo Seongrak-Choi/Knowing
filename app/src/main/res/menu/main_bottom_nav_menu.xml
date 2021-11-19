@@ -3,17 +3,17 @@
     <item
         android:id="@+id/main_home_bottomNavi_home"
         android:title="@string/bottom_navi_menu1"
-        android:icon="@drawable/ic_baseline_home_24"/>
+        android:icon="@drawable/ic_bottom_nav_home_selector"/>
     <item
         android:id="@+id/main_home_bottomNavi_alert"
         android:title="@string/bottom_navi_menu2"
-        android:icon="@drawable/ic_baseline_add_alert_24"/>
+        android:icon="@drawable/ic_bottom_nav_bell_selector"/>
     <item
         android:id="@+id/main_home_bottomNavi_bookmark"
         android:title="@string/bottom_navi_menu3"
-        android:icon="@drawable/ic_baseline_bookmark_border_24"/>
+        android:icon="@drawable/ic_bottom_nav_bookmark_selector"/>
     <item
         android:id="@+id/main_home_bottomNavi_my_page"
         android:title="@string/bottom_navi_menu4"
-        android:icon="@drawable/ic_baseline_perm_identity_24"/>
+        android:icon="@drawable/ic_bottom_nav_mypage_selector"/>
 </menu>

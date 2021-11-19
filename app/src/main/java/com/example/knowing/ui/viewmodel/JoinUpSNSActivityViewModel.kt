@@ -209,7 +209,10 @@ class JoinUpSNSActivityViewModel(application: Application) : AndroidViewModel(ap
                             }
                         }
                     }else{ //db에 email이 존재하면 기존회원이기 때문에 로그인 진행
-                        print("네이버 로그인 성공~")
+                        //로딩해주는 화면으로 이동
+                        val intent = Intent(myContext,LoadingActivity::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)//activity가 아닌 곳에서 startActivity를 할 경우 오류가 발생하기 때문에 flag를 지정해준다.
+                        myContext.startActivity(intent)
                     }
                 }
             }
@@ -259,7 +262,10 @@ class JoinUpSNSActivityViewModel(application: Application) : AndroidViewModel(ap
                             }
                         }
                     }else{ //db에 email이 존재하면 기존회원이기 때문에 로그인 진행
-                        print("kakao 로그인 성공~")
+                        //로딩해주는 화면으로 이동
+                        val intent = Intent(myContext,LoadingActivity::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)//activity가 아닌 곳에서 startActivity를 할 경우 오류가 발생하기 때문에 flag를 지정해준다.
+                        myContext.startActivity(intent)
                     }
                 }
             }
@@ -276,7 +282,7 @@ class JoinUpSNSActivityViewModel(application: Application) : AndroidViewModel(ap
   Google,facebook,default로 로그인 시 uid가 db에 있는지 판단하고 db에 없으면 회원가입 있으면 로그인으로 진행하기 위해
   api 통신함
   */
-    fun tryGetIsGFDInDB(uid:String) {
+    fun tryGetIsGFDInDB(uid:String,provider:String) {
         val collegeInterface = ApplicationClass.sRetrofit.create(JoinUpSNSInterface::class.java)
         collegeInterface.getIsGFDInDB(uid).enqueue(object :
             Callback<GFDLoginResponse> {
@@ -292,12 +298,14 @@ class JoinUpSNSActivityViewModel(application: Application) : AndroidViewModel(ap
                         USER_UID=firebaseAuth.currentUser?.uid.toString()
 
                         val intent = Intent(myContext,SnsSignUpActivity::class.java)
-                        intent.putExtra("provider","google")
+                        intent.putExtra("provider",provider)
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)//activity가 아닌 곳에서 startActivity를 할 경우 오류가 발생하기 때문에 flag를 지정해준다.
                         myContext.startActivity(intent)
                     }else{//신규회원이 아닌 기존회원일 경우
                         //로그인 진행
-                        println("google 로그인 성공~")
+                        val intent = Intent(myContext,LoadingActivity::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)//activity가 아닌 곳에서 startActivity를 할 경우 오류가 발생하기 때문에 flag를 지정해준다.
+                        myContext.startActivity(intent)
                     }
                 }else{//response가 실패면
 
@@ -328,8 +336,7 @@ class JoinUpSNSActivityViewModel(application: Application) : AndroidViewModel(ap
                 override fun onComplete(task: Task<AuthResult>) {
                     if(task.isSuccessful){ //firebase와 연동이 성공해서 로그인이 되었으면...
                         //계정의 uid가 db에 있는지 없는지 확인하기 위해 api통신
-                        tryGetIsGFDInDB(firebaseAuth.currentUser!!.uid)
-                        println("google uid: ${firebaseAuth.currentUser!!.uid}")
+                        tryGetIsGFDInDB(firebaseAuth.currentUser!!.uid,"google")
 
                     }else{ //로그인이 실패했으면....
                         Toast.makeText(myContext,"구글 로그인 실패",Toast.LENGTH_SHORT).show()
@@ -357,7 +364,7 @@ class JoinUpSNSActivityViewModel(application: Application) : AndroidViewModel(ap
                     task ->
                 if(task.isSuccessful){ // 정상적으로 email, password 가 전달된 경우
                     // 로그인 처리
-                    tryGetIsGFDInDB(firebaseAuth.currentUser!!.uid)
+                    tryGetIsGFDInDB(firebaseAuth.currentUser!!.uid,"facebook")
                     println("facebook uid: ${firebaseAuth.currentUser!!.uid}")
                 } else {
                     // 예외 발생 시 메시지 출력

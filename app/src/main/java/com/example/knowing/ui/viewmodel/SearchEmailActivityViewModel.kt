@@ -3,6 +3,7 @@ package com.example.knowing.ui.viewmodel
 import android.app.Application
 import android.content.Intent
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.knowing.config.ApplicationClass
@@ -61,6 +62,8 @@ class SearchEmailActivityViewModel(application: Application):AndroidViewModel(ap
                         intent.putExtra("email",result.emailSearchResult.email)//api로 받아온 email주소를 intent로 넘겨준다.
                         intent.putExtra("name",name)
                         mContext.startActivity(intent)
+                    }else{
+                        Toast.makeText(mContext,"일치하는 이메일이 존재하지 않습니다.",Toast.LENGTH_SHORT).show()
                     }
                 }
             }
@@ -69,4 +72,5 @@ class SearchEmailActivityViewModel(application: Application):AndroidViewModel(ap
             }
         })
     }
+
 }

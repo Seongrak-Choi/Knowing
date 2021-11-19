@@ -1,7 +1,9 @@
 package com.example.knowing.ui.view.main
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.example.knowing.R
 import com.example.knowing.databinding.ActivityMainBinding
 import com.example.knowing.ui.base.BaseActivity
@@ -20,6 +22,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
         //Main에서 처음으로 보여질 fragment 설정
         supportFragmentManager.beginTransaction().replace(R.id.frame_layout,fmHome!!).commit()

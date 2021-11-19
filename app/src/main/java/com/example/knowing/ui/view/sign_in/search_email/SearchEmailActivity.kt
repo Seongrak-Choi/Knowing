@@ -73,4 +73,10 @@ class SearchEmailActivity : BaseActivity<ActivitySearchEmailBinding>(ActivitySea
             this.onBackPressed()
         }
     }
+
+    override fun onStop() {
+        super.onStop()
+
+        this.finish()
+    }
 }

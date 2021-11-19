@@ -121,6 +121,13 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 binding.imgNameCancel.visibility=View.VISIBLE //edtText의 데이터가 들어오면 리셋 가능한 캔슬 버튼 활성화
+
+
+                //edtName의 데이터가 비어있지 않다면 라이브 데이터 true로 변경
+                signUpActivityViewModel.nameIsCorrect.value = binding.edtName.text.toString().isNotEmpty()
+
+                //모든 조건이 만족하는지 검사
+                signUpActivityViewModel.checkAllIsCorrect()
             }
 
             override fun afterTextChanged(s: Editable?) {
@@ -182,6 +189,12 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
                 binding.imgEmailError.visibility=View.INVISIBLE //edt에 입력이 시작되면 에러 이미지 안보이게
                 binding.txEmailError.visibility=View.INVISIBLE//edt에 입력이 시작되면 에러 메세지 안보이게
                 binding.imgEmailCancel.visibility=View.VISIBLE //edt에 입력이 시작되면 캔슬 버튼 보이도록
+
+                //입력과 동시에 email형식이 맞는지 확인하는 라인
+                signUpActivityViewModel.emailIsCorrect.value = isEmailValid(binding.edtEmail.text.toString())
+
+                //모든 조건이 만족하는지 검사 후 라이브데이터 변경
+                signUpActivityViewModel.checkAllIsCorrect()
             }
 
             override fun afterTextChanged(s: Editable?) {
@@ -247,6 +260,19 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
                 binding.imgPwdCancel.visibility=View.VISIBLE //텍스트 체인지 리스너가 발동하면 캔슬버튼 보이도록
                 binding.imgPwdError.visibility=View.INVISIBLE //edt에 데이터가 들어오면 에러 이미지 안보이도록
                 binding.txPwdError.visibility=View.INVISIBLE // edt에 데이터가 들어오면 에러 텍스트 안보이도록
+
+                var passwrod_pattern =
+                    "^(?=.*[A-Za-z])(?=.*[0-9])[A-Za-z[0-9]]{8,20}\$" //숫자 1개라도 포함, 영어 1개라도 포함, 특수문자 1개라도 포함해서 8~20사이
+
+                //비밀번호 형식에 맞는지 안맞는지 확인하는 라인.
+                signUpActivityViewModel.pwdIsCorrect.value =
+                    Pattern.matches(passwrod_pattern,binding.edtPwd.text.toString())
+
+                //비밀번호를 변경할 때 비밀번호확인과의 값을 비교해서 올바르지 않다는 false값을 라이브데이터에 저장하기 위함.
+                signUpActivityViewModel.pwdCheckIsCorrect.value=binding.edtPwd.text.toString()==binding.edtPwdCheck.toString()
+
+                //모든 조건이 만족하는지 검사 후 라이브데이터 변경
+                signUpActivityViewModel.checkAllIsCorrect()
             }
 
             override fun afterTextChanged(s: Editable?) {
@@ -307,6 +333,9 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
                 binding.imgPwdCheckCancel.visibility=View.VISIBLE //텍스트 체인지 리스너가 발동하면 캔슬버튼 보이도록
                 binding.imgPwdCheckError.visibility=View.INVISIBLE //edt에 데이터가 들어오면 에러 이미지 안보이도록
                 binding.txPwdCheckError.visibility=View.INVISIBLE // edt에 데이터가 들어오면 에러 텍스트 안보이도록
+
+                //비밀번호와 비밀번호 확인이 같은지 확인해서 뷰모델의 pwdCheckIsCorrect 라이브데이터 변경
+                signUpActivityViewModel.pwdCheckIsCorrect.value = binding.edtPwd.text.toString()==binding.edtPwdCheck.text.toString()
             }
 
             override fun afterTextChanged(s: Editable?) {
