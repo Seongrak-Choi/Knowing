@@ -28,6 +28,11 @@
 
         <activity android:name=".ui.view.main.MainActivity"
             android:theme="@style/main_theme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity android:name=".ui.view.main.LoadingActivity">
@@ -41,11 +46,6 @@
         </activity>
 
         <activity android:name=".ui.view.login.JoinUpSNSActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ui.view.sign_up.SnsSignUpActivity"
             android:theme="@style/sign_up_theme"/>

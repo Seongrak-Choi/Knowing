@@ -62,6 +62,12 @@
         <item name="fontFamily">@font/roboto_bold</item>
     </style>
 
+    <!--main_home_tabLayout에 들어갈 메뉴 글자 설정-->
+    <style name="main_home_custom_welfare_tab_layout_text_style">
+        <item name="android:textSize">17sp</item>
+        <item name="fontFamily">@font/roboto_medium</item>
+    </style>
+
 
 
 </resources>

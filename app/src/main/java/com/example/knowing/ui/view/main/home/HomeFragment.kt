@@ -31,7 +31,7 @@ class HomeFragment : BaseFragment<FragmentMainHomeBinding>(FragmentMainHomeBindi
         for (i in 0 until binding.tabLayout.getTabCount()) {
             val tab = (binding.tabLayout.getChildAt(0) as ViewGroup).getChildAt(i)
             val p = tab.layoutParams as ViewGroup.MarginLayoutParams
-            p.setMargins(15, 15, 15, 15)
+            p.setMargins(15, 20, 15, 20)
             tab.requestLayout()
         }
 

@@ -34,7 +34,6 @@ class SelectSiDialog: DialogFragment(){
 
     override fun onResume() {
         super.onResume()
-
         /*
         다이얼로그는 테두리에 기본으로 마진이 되어있어서 바텀시트다이얼로그 처럼 화면에 딱 달라붙지 않는다.
         이를 해결하기 위해 임의로 다이얼로그의 마진을 없앴다. 또한 다이얼로그의 기존의 백그라운드를 투명으로 하여
