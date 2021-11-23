@@ -12,5 +12,12 @@ data class MainWelfareResponse(
     val category3Total : Int,
     val category4Total : Int,
     val category5Total : Int,
-    val category6Total : Int
+    val category6Total : Int,
+    val uid : String,
+    val name : String,
+    val serviceType:String,
+    val maxMoney:String,
+    val minMoney:String,
+    val address:String,
+    val applyDate:String
 )

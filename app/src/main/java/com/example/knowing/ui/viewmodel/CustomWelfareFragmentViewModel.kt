@@ -35,6 +35,9 @@ class CustomWelfareFragmentViewModel(application: Application):AndroidViewModel(
     private val _biasBarHeightSubject5 : MutableLiveData<Float> by lazy { MutableLiveData<Float>() }
     private val _biasBarHeightSubject6 : MutableLiveData<Float> by lazy { MutableLiveData<Float>() }
 
+    //맞춤복지 리사이클러뷰 출력할 라이브데이터
+    private val _currentRcList = MutableLiveData<ArrayList<MainWelfareResponse>>()
+
 
 
     val welfareInfo : MutableLiveData<MainWelfareResponse>
@@ -82,6 +85,11 @@ class CustomWelfareFragmentViewModel(application: Application):AndroidViewModel(
         get() = _biasBarHeightSubject5
     val biasBarHeightSubject6 : MutableLiveData<Float>
         get() = _biasBarHeightSubject6
+
+
+    val currentRcList : MutableLiveData<ArrayList<MainWelfareResponse>>
+        get() = _currentRcList
+
 
 
     init {
@@ -235,6 +243,11 @@ class CustomWelfareFragmentViewModel(application: Application):AndroidViewModel(
             _currentTxSubject6.value=tempList
         }
 
+
+        //리사이클러뷰 출력 예시 용 작업
+        var dd = ArrayList<MainWelfareResponse>()
+        dd.add(_welfareInfo.value!!)
+        _currentRcList.value = dd
     }
 
 

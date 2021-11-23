@@ -7,9 +7,13 @@ import android.view.ViewGroup
 import android.view.ViewTreeObserver
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.knowing.R
 import com.example.knowing.data.model.network.response.MainWelfareResponse
 import com.example.knowing.databinding.FragmentMainHomeCustomWelfareBinding
+import com.example.knowing.ui.adapter.MainHomeCustomWelfareRCAdapter
+import com.example.knowing.ui.adapter.SelectDoDialogRCAdapter
 import com.example.knowing.ui.base.BaseFragment
 import com.example.knowing.ui.viewmodel.CustomWelfareFragmentViewModel
 
@@ -38,7 +42,8 @@ class CustomWelfareFragment : BaseFragment<FragmentMainHomeCustomWelfareBinding>
 
         //복지 정보 더미데이터
         val dumy = MainWelfareResponse("학생","취업","창업","주거 금융","생활 복지","코로나 19",
-            10,15,40,5,20,0)
+            10,15,40,5,20,0,"R20210218000010","국민취업지원제도","현금",
+        "2500000","300000","충북 영동군","21.08.17~21.11.23")
 
         //뷰모델 장착
         customWelfareFragmentViewModel=ViewModelProvider(this).get(CustomWelfareFragmentViewModel::class.java)
@@ -110,6 +115,15 @@ class CustomWelfareFragment : BaseFragment<FragmentMainHomeCustomWelfareBinding>
         })
 
 
+        //맞춤복지 리사이클러뷰에 출력할 라이브데이터 관찰
+        customWelfareFragmentViewModel.currentRcList.observe(viewLifecycleOwner, Observer {
+            binding.rcCustomWelfare.layoutManager= LinearLayoutManager(requireContext())
+            val adapter =  MainHomeCustomWelfareRCAdapter(it)
+            binding.rcCustomWelfare.adapter = adapter
+            adapter.notifyDataSetChanged()
+        })
+
+
         //tabLayout의 tab들 마진 설정하는 코드
         for (i in 0 until binding.tabLayoutCustomWelfare.getTabCount()) {
             val tab = (binding.tabLayoutCustomWelfare.getChildAt(0) as ViewGroup).getChildAt(i)
@@ -117,6 +131,7 @@ class CustomWelfareFragment : BaseFragment<FragmentMainHomeCustomWelfareBinding>
             p.setMargins(15, 20, 15, 20)
             tab.requestLayout()
         }
+
     }
 
     //화면이 재실행 될 때 마다 애니메이션이 실행 되도록 onResume에서 실행시킴
