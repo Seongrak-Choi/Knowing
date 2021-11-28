@@ -34,6 +34,13 @@ class ApplicationClass : Application() {
         //뭘로 로그인을 하던지 firebase에서 받아오는 UID 저장할 변수
         var USER_UID = ""
 
+        //sharedPerferences를 싱글톤 개념으로 생성
+        lateinit var sp: SharedPreferences
+
+        //UID 키 값
+        val UID_KEY = "UID_KEY"
+
+
 
         // Retrofit 인스턴스, 앱 실행시 한번만 생성하여 사용합니다.
         lateinit var sRetrofit: Retrofit
@@ -47,6 +54,9 @@ class ApplicationClass : Application() {
         KakaoSdk.init(this, getString(R.string.kakao_app_key))
         FacebookSdk.sdkInitialize(this)
         AppEventsLogger.activateApp(this)
+
+        //sp 객체 생성
+        sp = getSharedPreferences("KNOWING", 0)
 
         //레트로핏 인스턴스 생성
         initRetrofitInstance()

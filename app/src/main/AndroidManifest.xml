@@ -28,14 +28,14 @@
 
         <activity android:name=".ui.view.main.MainActivity"
             android:theme="@style/main_theme">
+        </activity>
+
+        <activity android:name=".ui.view.main.LoadingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <activity android:name=".ui.view.main.LoadingActivity">
         </activity>
 
         <activity android:name=".ui.view.onboarding.OnboardingActivity">
@@ -52,7 +52,6 @@
         <activity android:name=".ui.view.sign_up.SignUpActivity"
             android:theme="@style/sign_up_theme">
         </activity>
-
         <meta-data android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_app_key"/>
         <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity">
@@ -84,6 +83,8 @@
         <activity android:name=".ui.view.sign_in.search_pwd.LoadingSearchPwdActivity">
         </activity>
         <activity android:name=".ui.view.more_information.SelectCategoryActivity">
+        </activity>
+        <activity android:name=".ui.view.main.WelfareDetailActivity">
         </activity>
     </application>
 

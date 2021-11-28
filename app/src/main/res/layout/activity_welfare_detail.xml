@@ -1,0 +1,1185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="0dp">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/btn_back"
+                    android:layout_width="31dp"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_arrow_back_signuppage"
+                    app:layout_constraintStart_toStartOf="@id/guidelineStart2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/btn_notice"
+                    android:layout_width="33dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_notice"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_bookmark"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/btn_bookmark"
+                    android:layout_width="33dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_bookmark_grey_s"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_share"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/btn_share"
+                    android:layout_width="33dp"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_share"
+                    app:layout_constraintEnd_toEndOf="@id/guidelineEnd2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_oval_government"
+                    app:layout_constraintBottom_toBottomOf="@id/tx_address"
+                    app:layout_constraintStart_toStartOf="@id/guidelineStart2"
+                    app:layout_constraintTop_toTopOf="@id/tx_address" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="26dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="고용노동부"
+                    android:textColor="#767676"
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toEndOf="@+id/img_address"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_back" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="국민취업지원제도"
+                    android:textColor="#413f51"
+                    android:textSize="24sp"
+                    app:layout_constraintStart_toStartOf="@id/guidelineStart2"
+                    app:layout_constraintTop_toBottomOf="@+id/tx_address" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="한국형 실업부조로 고용안전망 사각지대에 있는 취업취약계층에게 취업지원서비스 및 생활안정을 지원하는 정책"
+                    android:textColor="#a1a1a1"
+                    android:textSize="13sp"
+                    app:layout_constraintEnd_toEndOf="@id/guidelineEnd2"
+                    app:layout_constraintStart_toStartOf="@id/guidelineStart2"
+                    app:layout_constraintTop_toBottomOf="@+id/tx_name" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rc_category"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:overScrollMode="never"
+                    app:layout_constraintEnd_toEndOf="@id/guidelineEnd2"
+                    app:layout_constraintStart_toStartOf="@id/guidelineStart2"
+                    app:layout_constraintTop_toBottomOf="@+id/tx_title" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linear_layout1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:background="@drawable/rectangle_fff7eb_radius20"
+                    android:orientation="horizontal"
+                    android:paddingVertical="18dp"
+                    app:layout_constraintEnd_toEndOf="@id/guidelineEnd2"
+                    app:layout_constraintStart_toStartOf="@id/guidelineStart2"
+                    app:layout_constraintTop_toBottomOf="@+id/rc_category">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="지원형태"
+                            android:textColor="#808080"
+                            android:textSize="14sp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tx_service_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="현금"
+                            android:textColor="#4b4b4b"
+                            android:textSize="15sp" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="디데이"
+                            android:textColor="#808080"
+                            android:textSize="14sp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tx_d_day"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="D-20"
+                            android:textColor="#4b4b4b"
+                            android:textSize="15sp" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_regular"
+                            android:text="선정인원"
+                            android:textColor="#808080"
+                            android:textSize="14sp" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tx_people"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="590,000명"
+                            android:textColor="#4b4b4b"
+                            android:textSize="15sp" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <View
+                    android:id="@+id/line1"
+                    android:layout_width="match_parent"
+                    android:layout_height="6dp"
+                    android:layout_marginTop="18dp"
+                    android:background="#fcf5eb"
+                    app:layout_constraintTop_toBottomOf="@+id/linear_layout1" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineStart2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="20dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineEnd2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_end="20dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <com.example.knowing.util.StickyScrollView
+        android:id="@+id/sticky_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="44dp"
+        android:clipToPadding="false"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:background="@drawable/welfare_detail_tablayout_baseline"
+                android:outlineProvider="none"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tabGravity="fill"
+                app:tabIndicatorColor="#ff8854"
+                app:tabIndicatorHeight="3dp"
+                app:tabMode="fixed"
+                app:tabSelectedTextColor="#ff7c42"
+                app:tabTextAppearance="@style/welfare_detail_tab_layout_text_style">
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="지원 내용" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="신청 자격" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="신청 방법" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="기타" />
+            </com.google.android.material.tabs.TabLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title_money"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/rectangle_fff7eb_radius20"
+                android:drawableLeft="@drawable/resize_ic_money_left"
+                android:drawablePadding="8dp"
+                android:fontFamily="@font/roboto_bold"
+                android:paddingVertical="6dp"
+                android:paddingStart="11dp"
+                android:text="얼마나 받을 수 있나요?"
+                android:textColor="#4a4a4a"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/tab_layout" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title_max_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="최대"
+                android:textColor="#ff8854"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tx_max_money"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toTopOf="@+id/tx_max_money" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tx_max_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="3,000,000"
+                android:textColor="#ff8854"
+                android:textSize="22sp"
+                app:layout_constraintStart_toEndOf="@+id/title_max_money"
+                app:layout_constraintTop_toBottomOf="@+id/title_money" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tx_max_money_won"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="원"
+                android:textColor="#ff8854"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tx_max_money"
+                app:layout_constraintStart_toEndOf="@+id/tx_max_money"
+                app:layout_constraintTop_toTopOf="@id/tx_max_money" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title_min_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="최소"
+                android:textColor="#424242"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tx_min_money"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toTopOf="@+id/tx_min_money" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tx_min_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="조건별 상이"
+                android:textColor="#424242"
+                android:textSize="17sp"
+                app:layout_constraintStart_toStartOf="@+id/tx_max_money"
+                app:layout_constraintTop_toBottomOf="@+id/tx_max_money" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tx_min_money_won"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="원"
+                android:textColor="#424242"
+                android:textSize="17sp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/tx_min_money"
+                app:layout_constraintStart_toEndOf="@+id/tx_min_money"
+                app:layout_constraintTop_toTopOf="@+id/tx_min_money" />
+
+
+            <View
+                android:id="@+id/line2"
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:layout_marginTop="24dp"
+                android:background="#fcf5eb"
+                app:layout_constraintTop_toBottomOf="@+id/tx_min_money" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title_benefit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/rectangle_fff7eb_radius20"
+                android:drawableLeft="@drawable/resize_ic_benefits_left"
+                android:drawablePadding="8dp"
+                android:fontFamily="@font/roboto_bold"
+                android:paddingVertical="6dp"
+                android:paddingStart="11dp"
+                android:text="어떤 혜택을 받을 수 있나요?"
+                android:textColor="#4a4a4a"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/line2" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rc_benefits"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="31dp"
+                android:overScrollMode="never"
+                app:layout_constraintTop_toBottomOf="@+id/title_benefit" />
+
+            <View
+                android:id="@+id/line3"
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:layout_marginTop="23dp"
+                android:background="#fcf5eb"
+                app:layout_constraintTop_toBottomOf="@+id/rc_benefits" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title_who"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/rectangle_fff7eb_radius20"
+                android:drawableLeft="@drawable/resize_ic_people_left"
+                android:drawablePadding="8dp"
+                android:fontFamily="@font/roboto_bold"
+                android:paddingVertical="6dp"
+                android:paddingStart="11dp"
+                android:text="누가 받을 수 있나요?"
+                android:textColor="#4a4a4a"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/line3" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title_who_summary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:singleLine="true"
+                android:text="신청 자격 요약"
+                android:textColor="#a3a3a3"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_who_emphasize"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toTopOf="@+id/btn_who_emphasize" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btn_who_emphasize"
+                android:layout_width="26dp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_emphasize"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_more_info"
+                app:layout_constraintStart_toEndOf="@+id/title_who_summary"
+                app:layout_constraintTop_toTopOf="@+id/btn_more_info" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btn_more_info"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="10dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_arrow_open"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/title_who" />
+
+
+            <!--신청 자격 요약 보였다가 안보였다 할 수 있도록 리니어로 묶음-->
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linear_application"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="vertical"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintTop_toBottomOf="@+id/btn_more_info">
+
+                <View
+                    android:id="@+id/line4"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="7dp"
+                    android:background="#f5f5f5" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linear_age"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2.5"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="나이"
+                        android:textColor="#4b4b4b"
+                        android:textSize="14sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tx_age"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7.5"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="만15세~만69세"
+                        android:textColor="#808080"
+                        android:textSize="13sp" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linear_filter_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="19dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2.5"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="거주지"
+                        android:textColor="#4b4b4b"
+                        android:textSize="14sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tx_filter_address"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7.5"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="제한없음"
+                        android:textColor="#808080"
+                        android:textSize="13sp" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linear_income"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="19dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2.5"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="소득"
+                        android:textColor="#4b4b4b"
+                        android:textSize="14sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tx_income"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7.5"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="제한없음"
+                        android:textColor="#808080"
+                        android:textSize="13sp" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linear_school_records"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="19dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2.5"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="학력"
+                        android:textColor="#4b4b4b"
+                        android:textSize="14sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tx_school_records"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7.5"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="제한없음"
+                        android:textColor="#808080"
+                        android:textSize="13sp" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linear_major"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="19dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2.5"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="전공"
+                        android:textColor="#4b4b4b"
+                        android:textSize="14sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tx_major"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7.5"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="제한없음"
+                        android:textColor="#808080"
+                        android:textSize="13sp" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linear_employ_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="19dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2.5"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="취업 상태"
+                        android:textColor="#4b4b4b"
+                        android:textSize="14sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tx_employ_state"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7.5"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="제한없음"
+                        android:textColor="#808080"
+                        android:textSize="13sp" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/linear_special_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="19dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2.5"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="특화 분야"
+                        android:textColor="#4b4b4b"
+                        android:textSize="14sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tx_special_status"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7.5"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="제한없음"
+                        android:textColor="#808080"
+                        android:textSize="13sp" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <View
+                android:id="@+id/line5"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="22.5dp"
+                android:background="#faefdd"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/linear_application" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="7dp"
+                android:layout_marginBottom="-1dp"
+                android:background="#ffe4b6"
+                app:layout_constraintBottom_toBottomOf="@+id/title_limite"
+                app:layout_constraintEnd_toEndOf="@id/title_limite"
+                app:layout_constraintStart_toStartOf="@id/title_limite" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title_limite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="23.5dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="참여 제한 대상"
+                android:textColor="#4b4b4b"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/line5" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rc_limite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:overScrollMode="never"
+                app:layout_constraintTop_toBottomOf="@+id/title_limite" />
+
+
+            <View
+                android:id="@+id/line6"
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:layout_marginTop="23dp"
+                android:background="#fcf5eb"
+                app:layout_constraintTop_toBottomOf="@+id/rc_limite" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title_how"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/rectangle_fff7eb_radius20"
+                android:drawableLeft="@drawable/resize_ic_people_left"
+                android:drawablePadding="8dp"
+                android:fontFamily="@font/roboto_bold"
+                android:paddingVertical="6dp"
+                android:paddingStart="11dp"
+                android:text="어떻게 신청하나요?"
+                android:textColor="#4a4a4a"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/line6" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="7dp"
+                android:layout_marginBottom="-1dp"
+                android:background="#ffe4b6"
+                app:layout_constraintBottom_toBottomOf="@+id/title_application"
+                app:layout_constraintEnd_toEndOf="@id/title_application"
+                app:layout_constraintStart_toStartOf="@id/title_application" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title_application"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="신청·운영 기간"
+                android:textColor="#4b4b4b"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/title_how" />
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linear_application_start"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/title_application">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.5"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="신청 시작일"
+                    android:textColor="#4b4b4b"
+                    android:textSize="14sp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_application_start"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7.5"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="2020.12.18"
+                    android:textColor="#808080"
+                    android:textSize="14sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linear_application_end"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/linear_application_start">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.5"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="신청 마감일"
+                    android:textColor="#4b4b4b"
+                    android:textSize="14sp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_application_end"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7.5"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="-"
+                    android:textColor="#808080"
+                    android:textSize="14sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linear_application_run_day"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/linear_application_end">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.5"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="신청 시작일"
+                    android:textColor="#4b4b4b"
+                    android:textSize="14sp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_application_run_day"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7.5"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="연중 상시"
+                    android:textColor="#808080"
+                    android:textSize="14sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <View
+                android:id="@+id/line7"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="24dp"
+                android:background="#faefdd"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/linear_application_run_day" />
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="7dp"
+                android:layout_marginBottom="-1dp"
+                android:background="#ffe4b6"
+                app:layout_constraintBottom_toBottomOf="@+id/title_application_method"
+                app:layout_constraintEnd_toEndOf="@id/title_application_method"
+                app:layout_constraintStart_toStartOf="@id/title_application_method" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title_application_method"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="신청 방법"
+                android:textColor="#4b4b4b"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/line7" />
+
+
+            <!--방문 신청 리니어-->
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linear_visit_application"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/title_application_method">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_check"
+                    android:layout_width="12dp"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_check"
+                    app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                    app:layout_constraintTop_toBottomOf="@+id/title_application_method" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="방문 신청"
+                    android:textColor="#ff8854"
+                    android:textSize="15sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <!--온라인 신청 리니어-->
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linear_online_application"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toEndOf="@+id/linear_visit_application"
+                app:layout_constraintTop_toBottomOf="@+id/title_application_method">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_check2"
+                    android:layout_width="12dp"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_check"
+                    app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                    app:layout_constraintTop_toBottomOf="@+id/title_application_method" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="온라인인 신청"
+                    android:textColor="#ff8854"
+                    android:textSize="15sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <View
+                android:id="@+id/line8"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="24dp"
+                android:background="#faefdd"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/linear_visit_application" />
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="7dp"
+                android:layout_marginBottom="-1dp"
+                android:background="#ffe4b6"
+                app:layout_constraintBottom_toBottomOf="@+id/title_judge"
+                app:layout_constraintEnd_toEndOf="@id/title_judge"
+                app:layout_constraintStart_toStartOf="@id/title_judge" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title_judge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="심사 및 발표"
+                android:textColor="#4b4b4b"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/line8" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rc_judge"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:overScrollMode="never"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/title_judge" />
+
+            <View
+                android:id="@+id/line9"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="24dp"
+                android:background="#faefdd"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/rc_judge"
+                app:layout_goneMarginTop="10dp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="7dp"
+                android:layout_marginBottom="-1dp"
+                android:background="#ffe4b6"
+                app:layout_constraintBottom_toBottomOf="@+id/title_document"
+                app:layout_constraintEnd_toEndOf="@id/title_document"
+                app:layout_constraintStart_toStartOf="@id/title_document" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title_document"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="제출 서류"
+                android:textColor="#4b4b4b"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/line9" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rc_document"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:overScrollMode="never"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/title_document" />
+
+
+            <View
+                android:id="@+id/line10"
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:layout_marginTop="14dp"
+                android:background="#faefdd"
+                app:layout_constraintTop_toBottomOf="@+id/rc_document"
+                app:layout_goneMarginTop="14dp" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title_etc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/rectangle_fff7eb_radius20"
+                android:drawableLeft="@drawable/resize_ic_etc_left"
+                android:drawablePadding="8dp"
+                android:fontFamily="@font/roboto_bold"
+                android:paddingVertical="6dp"
+                android:paddingStart="11dp"
+                android:text="기타 정보"
+                android:textColor="#4a4a4a"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/line10" />
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linear_etc_ph_num"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/title_etc">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.5"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="문의 전화"
+                    android:textColor="#4b4b4b"
+                    android:textSize="14sp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_etc_ph_num"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7.5"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="1350"
+                    android:textColor="#808080"
+                    android:textSize="14sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linear_etc_manage_office"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/linear_etc_ph_num">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.5"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="운영 기관"
+                    android:textColor="#4b4b4b"
+                    android:textSize="14sp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_etc_manage_office"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7.5"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="고용노동부"
+                    android:textColor="#808080"
+                    android:textSize="14sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/sign_up_final_btn_bg"
+                android:fontFamily="@font/roboto_bold"
+                android:text="신청 홈페이지 바로가기"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/linear_etc_manage_office" />
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="20dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="20dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.example.knowing.util.StickyScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

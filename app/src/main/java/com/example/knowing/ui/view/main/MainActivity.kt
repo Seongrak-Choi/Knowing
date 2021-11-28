@@ -1,17 +1,15 @@
 package com.example.knowing.ui.view.main
 
-import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import com.example.knowing.R
+import com.example.knowing.data.model.network.response.MainWelfareResponse
 import com.example.knowing.databinding.ActivityMainBinding
 import com.example.knowing.ui.base.BaseActivity
 import com.example.knowing.ui.view.main.alert.AlertFragment
 import com.example.knowing.ui.view.main.bookmark.BookmarkFragment
 import com.example.knowing.ui.view.main.home.HomeFragment
 import com.example.knowing.ui.view.main.mypage.MyPageFragment
-import com.google.android.material.tabs.TabLayoutMediator
+
 
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
 
@@ -22,6 +20,18 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //로딩화면에서 받아온 복지 데이터
+        val welfareInfo = intent.getSerializableExtra("welfareInfo") as MainWelfareResponse
+
+        //Fragment에서 사용할 수 있도록 bundle에 저장
+        val bundle = Bundle()
+        bundle.putSerializable("welfareInfo",welfareInfo)
+
+        fmHome.arguments=bundle//복지 정보 전달
+        fmAlert.arguments=bundle
+        fmBookmark.arguments=bundle
+        fmMyPage.arguments=bundle
 
 
         //Main에서 처음으로 보여질 fragment 설정

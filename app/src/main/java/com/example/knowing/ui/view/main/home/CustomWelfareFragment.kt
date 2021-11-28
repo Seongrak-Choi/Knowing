@@ -1,24 +1,32 @@
 package com.example.knowing.ui.view.main.home
 
 import android.animation.ValueAnimator
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.knowing.R
 import com.example.knowing.data.model.network.response.MainWelfareResponse
 import com.example.knowing.databinding.FragmentMainHomeCustomWelfareBinding
 import com.example.knowing.ui.adapter.MainHomeCustomWelfareRCAdapter
-import com.example.knowing.ui.adapter.SelectDoDialogRCAdapter
 import com.example.knowing.ui.base.BaseFragment
 import com.example.knowing.ui.viewmodel.CustomWelfareFragmentViewModel
+import com.google.android.material.tabs.TabLayout
 
 class CustomWelfareFragment : BaseFragment<FragmentMainHomeCustomWelfareBinding>(FragmentMainHomeCustomWelfareBinding::bind,
     R.layout.fragment_main_home_custom_welfare){
+
+    //백프레스드 콜백 리스너
+    private lateinit var callback: OnBackPressedCallback
+
+    //복지데이터
+    private lateinit var welfareInfo : MainWelfareResponse
 
     //뷰모델 변수 선언
     private lateinit var customWelfareFragmentViewModel:CustomWelfareFragmentViewModel
@@ -36,43 +44,49 @@ class CustomWelfareFragment : BaseFragment<FragmentMainHomeCustomWelfareBinding>
     //6번재 주제 그래프바 애니메이션 변수
     private lateinit var subject6_anim : ValueAnimator
 
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        //복지데이터 받기
+        welfareInfo = arguments?.getSerializable("welfareInfo") as MainWelfareResponse
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        //복지 정보 더미데이터
-        val dumy = MainWelfareResponse("학생","취업","창업","주거 금융","생활 복지","코로나 19",
-            10,15,40,5,20,0,"R20210218000010","국민취업지원제도","현금",
-        "2500000","300000","충북 영동군","21.08.17~21.11.23")
 
         //뷰모델 장착
         customWelfareFragmentViewModel=ViewModelProvider(this).get(CustomWelfareFragmentViewModel::class.java)
 
         //뷰모델 라이브데이터에 복지 정보 전달
-        customWelfareFragmentViewModel.welfareInfo.value=dumy
+        customWelfareFragmentViewModel.welfareInfo.value=welfareInfo
         customWelfareFragmentViewModel.settingAllView()
-
 
         //첫번째 주제 총 복지 갯수
         customWelfareFragmentViewModel.currentTxSubject1Total.observe(viewLifecycleOwner, Observer {
             binding.txGraphSubject1Total.text=it
         })
+
         //두번째 주제 총 복지 갯수
         customWelfareFragmentViewModel.currentTxSubject2Total.observe(viewLifecycleOwner, Observer {
             binding.txGraphSubject2Total.text=it
         })
+
         //세번째 주제 총 복지 갯수
         customWelfareFragmentViewModel.currentTxSubject3Total.observe(viewLifecycleOwner, Observer {
             binding.txGraphSubject3Total.text=it
         })
+
         //네번째 주제 총 복지 갯수
         customWelfareFragmentViewModel.currentTxSubject4Total.observe(viewLifecycleOwner, Observer {
             binding.txGraphSubject4Total.text=it
         })
+
         //다섯번째 주제 총 복지 갯수
         customWelfareFragmentViewModel.currentTxSubject5Total.observe(viewLifecycleOwner, Observer {
             binding.txGraphSubject5Total.text=it
         })
+
         //여섯번째 주제 총 복지 갯수
         customWelfareFragmentViewModel.currentTxSubject6Total.observe(viewLifecycleOwner, Observer {
             binding.txGraphSubject6Total.text=it
@@ -114,11 +128,25 @@ class CustomWelfareFragment : BaseFragment<FragmentMainHomeCustomWelfareBinding>
             binding.txGraphSubject62.text=it[1]
         })
 
+        //수혜 예상 복지 건수 설정하기 위해 라이브데이터 관찰
+        customWelfareFragmentViewModel.currentTotalWelfare.observe(viewLifecycleOwner, Observer {
+            binding.txTotalWelfare.text="${it}건"
+        })
+
+        //최대금액 출력하기 위해 라이브데이터 관찰
+        customWelfareFragmentViewModel.currentMaxMoney.observe(viewLifecycleOwner, Observer {
+            binding.txMaxCost.text=it
+        })
+
+        //최소금액 출력하기 위해 라이브데이터 관찰
+        customWelfareFragmentViewModel.currentMinMoney.observe(viewLifecycleOwner, Observer {
+            binding.txMinCost.text=it
+        })
 
         //맞춤복지 리사이클러뷰에 출력할 라이브데이터 관찰
         customWelfareFragmentViewModel.currentRcList.observe(viewLifecycleOwner, Observer {
             binding.rcCustomWelfare.layoutManager= LinearLayoutManager(requireContext())
-            val adapter =  MainHomeCustomWelfareRCAdapter(it)
+            val adapter =  MainHomeCustomWelfareRCAdapter(it,requireContext())
             binding.rcCustomWelfare.adapter = adapter
             adapter.notifyDataSetChanged()
         })
@@ -132,6 +160,31 @@ class CustomWelfareFragment : BaseFragment<FragmentMainHomeCustomWelfareBinding>
             tab.requestLayout()
         }
 
+
+        //카테고리별 맞춤 복지 탭 레이아웃
+        binding.tabLayoutCustomWelfare.addOnTabSelectedListener(object:TabLayout.OnTabSelectedListener{
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                when (tab!!.position){
+                    0->customWelfareFragmentViewModel.changeRcToStudent()
+                    1->customWelfareFragmentViewModel.changeRcToEmploy()
+                    2->customWelfareFragmentViewModel.changeRcToFoundation()
+                    3->customWelfareFragmentViewModel.changeRcToResident()
+                    4->customWelfareFragmentViewModel.changeRcToLife()
+                    else->customWelfareFragmentViewModel.changeRcToCovid()
+                }
+            }
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+            }
+
+        })
+
+        //최대 금액 옆에 있는 최대 금액 관련 복지 정보 보러가는 버튼 클릭 리스너
+        binding.btnMaxCostWelfareShow.setOnClickListener {
+            Toast.makeText(requireContext(),customWelfareFragmentViewModel.maxMoneyWelfareInfo.value!!.uid,Toast.LENGTH_SHORT).show()
+        }
     }
 
     //화면이 재실행 될 때 마다 애니메이션이 실행 되도록 onResume에서 실행시킴
@@ -160,7 +213,6 @@ class CustomWelfareFragment : BaseFragment<FragmentMainHomeCustomWelfareBinding>
                 subject1_anim.duration=Anitamon_Duration
                 subject1_anim.start()
 
-
                 //2번째 주제 애니메이션 실행 부분
                 subject2_anim = ValueAnimator.ofInt(binding.viewGraphSubject2.measuredHeight,(layoutHeight*customWelfareFragmentViewModel.biasBarHeightSubject2.value!!).toInt())
                 subject2_anim.addUpdateListener {
@@ -182,7 +234,6 @@ class CustomWelfareFragment : BaseFragment<FragmentMainHomeCustomWelfareBinding>
                 }
                 subject3_anim.duration=Anitamon_Duration
                 subject3_anim.start()
-
 
                 //4번째 주제 애니메이션 실행 부분
                 subject4_anim = ValueAnimator.ofInt(binding.viewGraphSubject4.measuredHeight,(layoutHeight*customWelfareFragmentViewModel.biasBarHeightSubject4.value!!).toInt())
@@ -217,11 +268,12 @@ class CustomWelfareFragment : BaseFragment<FragmentMainHomeCustomWelfareBinding>
                 subject6_anim.duration=Anitamon_Duration
                 subject6_anim.start()
 
-
                 //리스너 한번만 발동하도록 바로 삭제
                 binding.constraintGraph.viewTreeObserver.removeOnGlobalLayoutListener(this)
             }
         })
-
     }
+
+
+
 }

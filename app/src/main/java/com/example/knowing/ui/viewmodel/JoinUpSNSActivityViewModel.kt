@@ -267,6 +267,9 @@ class JoinUpSNSActivityViewModel(application: Application) : AndroidViewModel(ap
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)//activity가 아닌 곳에서 startActivity를 할 경우 오류가 발생하기 때문에 flag를 지정해준다.
                         myContext.startActivity(intent)
                     }
+                }else{
+                    Log.e("ERROR","카카오 커스텀 토큰 반환 안됨")
+                    println("카카오 로그인 실패")
                 }
             }
 

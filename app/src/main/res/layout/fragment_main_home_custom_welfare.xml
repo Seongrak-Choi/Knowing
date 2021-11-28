@@ -525,7 +525,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:clipToPadding="false"
                 app:tabContentStart="25dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
                 app:layout_constraintTop_toBottomOf="@+id/layout_title_category_custom_welfare">
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
@@ -557,7 +557,7 @@
                 android:id="@+id/rc_custom_welfare"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="27dp"
+                android:layout_marginTop="20dp"
                 android:overScrollMode="never"
                 app:layout_constraintStart_toStartOf="@id/guidelineStart"
                 app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
@@ -747,6 +747,7 @@
                     app:layout_constraintBottom_toBottomOf="@id/tx_won" />
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_min_cost"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="최소 80,000원"
@@ -766,8 +767,5 @@
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:background="#ffe4b6"/>
-
-
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

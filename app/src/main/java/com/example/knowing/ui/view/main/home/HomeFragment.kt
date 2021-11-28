@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager2.widget.ViewPager2
 import com.example.knowing.R
+import com.example.knowing.data.model.network.response.MainWelfareResponse
 import com.example.knowing.databinding.FragmentMainHomeBinding
 import com.example.knowing.ui.adapter.HomeFragmentViewPager2Adapter
 import com.example.knowing.ui.base.BaseFragment
@@ -17,8 +18,11 @@ class HomeFragment : BaseFragment<FragmentMainHomeBinding>(FragmentMainHomeBindi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //복지 정보 받기
+        val welfareInfo = arguments?.getSerializable("welfareInfo") as MainWelfareResponse
+
         //viewpager2 어댑터 설정
-        binding.viewPager2.adapter = HomeFragmentViewPager2Adapter(this)
+        binding.viewPager2.adapter = HomeFragmentViewPager2Adapter(this,welfareInfo)
         binding.viewPager2.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         binding.viewPager2.isSaveEnabled = false
 

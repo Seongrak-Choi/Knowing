@@ -30,5 +30,16 @@ data class SignUpUser(
     @SerializedName("covidCategory")var covidCategory: ArrayList<String> =ArrayList(),//코로나19지원
     @SerializedName("bookmark")var bookmark: ArrayList<String> =ArrayList(), //북마크
     @SerializedName("provider")var provider :String="",//로그인 방식(kakao,naver,google,facebook,default)
+    @SerializedName("alarm") var alarm : ArrayList<Alarm> = ArrayList(),
     @SerializedName("FCMTOKEN")var FCMTOKEN:String=""//FCM 토큰
+):Serializable
+
+
+data class Alarm(
+    @SerializedName("uid")var uid : String,
+    @SerializedName("title")var title:String,
+    @SerializedName("subTitle")var subTitle:String,
+    @SerializedName("date")var date : String,
+    @SerializedName("postUid")var postUid : String,
+    @SerializedName("isRead")var isRead : Boolean
 ):Serializable

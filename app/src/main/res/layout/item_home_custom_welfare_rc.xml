@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/btn_select_welfare"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingBottom="17dp"
     android:paddingTop="17dp"
+    android:layout_marginBottom="16dp"
     android:background="@drawable/rectangle_ffffff_radius30">
 
     <androidx.appcompat.widget.AppCompatImageView

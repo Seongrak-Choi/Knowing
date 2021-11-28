@@ -21,4 +21,5 @@ abstract class BaseFragment<B : ViewBinding>(private val bind: (View) -> B, @Lay
         _binding = bind(super.onCreateView(inflater, container, savedInstanceState)!!)
         return binding.root
     }
+
 }

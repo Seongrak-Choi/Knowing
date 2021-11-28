@@ -1,23 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/constraint"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:src="@drawable/main_frontbg_rectangle"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <TextView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="나의 캘린더"/>
+        android:layout_marginTop="-80dp"
+        android:clipToPadding="false"
+        android:paddingTop="70dp"
+        android:overScrollMode="never"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rc_my_calendar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                android:paddingHorizontal="20dp"
+                android:clipToPadding="false"
+                app:layout_constraintTop_toTopOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
 
+    <!--NestedScrollView보다 위에 있어야 하기 때문에 아래에 선언했음-->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:fitsSystemWindows="true"
+        app:elevation="0dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <!--collapsing이 여기 전까지 되기 때문에 toolbar 필요-->
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                android:paddingTop="65dp"
+                app:layout_constraintTop_toTopOf="parent">
+                <!--collapsing 위치를 지정하기 위해 home화면이랑 똑같은 tabLayout 가져와서 위치 조정함-->
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/home_tab_layout_bg"
+                    android:visibility="invisible"
+                    app:tabBackground="@drawable/home_selector_tab_bg"
+                    app:tabGravity="fill"
+                    app:tabIndicatorFullWidth="false"
+                    app:tabIndicatorHeight="0dp"
+                    app:tabMode="fixed"
+                    app:tabRippleColor="@null"
+                    app:tabSelectedTextColor="@color/white"
+                    app:tabTextAppearance="@style/main_home_tab_layout_text_style"
+                    app:tabTextColor="#8b8b8b" />
+            </com.google.android.material.appbar.MaterialToolbar>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/app_bar_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="#ffe4b6"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@id/calendar"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_app_bar_bg_left"
+                    android:layout_width="38dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-2dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/main_home_appbar_left"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/app_bar_bg" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_app_bar_bg_center"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="#ffe4b6"
+                    app:layout_constraintBottom_toBottomOf="@+id/img_app_bar_bg_left"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/img_app_bar_bg_left"
+                    app:layout_constraintTop_toBottomOf="@id/app_bar_bg"
+                    app:layout_constraintTop_toTopOf="@+id/img_app_bar_bg_left" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_app_bar_bg_right"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-1dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/main_home_appbar_right"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/img_app_bar_bg_center" />
+
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/toolbar_fake"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="24dp"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tab_layout_fake"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/home_tab_layout_bg"
+                        android:visibility="invisible"
+                        app:tabBackground="@drawable/home_selector_tab_bg"
+                        app:tabGravity="fill"
+                        app:tabIndicatorFullWidth="false"
+                        app:tabIndicatorHeight="0dp"
+                        app:tabMode="fixed"
+                        app:tabRippleColor="@null"
+                        app:tabSelectedTextColor="@color/white"
+                        app:tabTextAppearance="@style/main_home_tab_layout_text_style"
+                        app:tabTextColor="#8b8b8b" />
+                </com.google.android.material.appbar.MaterialToolbar>
+
+                <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+                    android:id="@+id/calendar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:mcv_showOtherDates="all"
+                    app:mcv_selectionColor="#ff8e55"
+                    app:mcv_arrowColor="#ffecb08f"
+                    app:mcv_firstDayOfWeek="monday"
+                    app:mcv_dateTextAppearance="@style/calendar_dateTextStyle"
+                    app:mcv_headerTextAppearance="@style/calendar_headerTextStyle"
+                    app:mcv_weekDayTextAppearance="@style/calendar_weekDayTextStyle"
+                    app:mcv_leftArrowMask="@drawable/resize_ic_calendar_arrow_left"
+                    app:mcv_rightArrowMask="@drawable/resize_ic_calendar_arrow_right"
+
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/toolbar_fake"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!--collapsing될 때 위쪽 부분에 안보이도록 같은 색상의 이미지뷰로 가려주기 위함-->
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="#ffe4b6" />
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

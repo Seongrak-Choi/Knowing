@@ -13,4 +13,5 @@
     <color name="gender_btn_text_check">#ffffff</color>
     <color name="more_information_major_btn_unchecked_text_color">#6c6c6c</color>
     <color name="more_information_major_btn_checked_text_color">#ffffff</color>
+    <color name="rc_delete_button_color">#ff9857</color>
 </resources>

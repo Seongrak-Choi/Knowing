@@ -44,7 +44,6 @@
         <item name="colorControlNormal">#979797</item>
     </style>
 
-
     <!--dialog위에서 아래로 아래에서 위로 open,close 애니메이션 주기-->
     <style name="AnimationPopupStyle">
         <item name="android:windowEnterAnimation">@animator/dialog_bottom_up</item>
@@ -68,6 +67,39 @@
         <item name="fontFamily">@font/roboto_medium</item>
     </style>
 
+    <!--main_home_tabLayout에 들어갈 메뉴 글자 설정-->
+    <style name="welfare_detail_tab_layout_text_style">
+        <item name="android:textSize">16sp</item>
+        <item name="fontFamily">@font/roboto_bold</item>
+    </style>
+
+    <!--main_home_all_welfare_tabLayout에 들어갈 메뉴 글자 설정-->
+    <style name="main_home_all_welfare_tab_layout_text_style">
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/roboto_bold</item>
+    </style>
+
+
+    <!--calendar의 일 글씨크기 변경-->
+    <style name="calendar_dateTextStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@drawable/my_custom_calendar_day_color</item>
+        <item name="android:fontFamily">@font/roboto_regular</item>
+    </style>
+
+    <!--calendar의 헤더 글씨크기 변경-->
+    <style name="calendar_headerTextStyle">
+        <item name="android:textSize">21sp</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textColor">#a4613d</item>
+    </style>
+
+    <!--calendar의 요일 글씨크기 변경-->
+    <style name="calendar_weekDayTextStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textColor">#bc835c</item>
+    </style>
 
 
 </resources>

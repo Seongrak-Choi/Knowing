@@ -87,6 +87,14 @@ dependencies {
     //firebase auth 라이브러리
     implementation 'com.google.firebase:firebase-auth-ktx'
 
+    //캘린더 라이브러리
+    implementation 'com.prolificinteractive:material-calendarview:1.4.3'
+
+    //SwipeLayout 라이브러리
+    implementation 'com.daimajia.swipelayout:library:1.2.0@aar'
+    //SwipeLayout에 사용될 애니메이션 라이브러리(이 부분은 애니메이션 효과를 줄 때 사용해도 될 듯)
+    implementation 'com.daimajia.androidanimations:library:2.4@aar'
+
 
 
     // https://github.com/square/retrofit
