@@ -66,8 +66,8 @@ class LoadingActivity : BaseActivity<ActivityLoadingBinding>(ActivityLoadingBind
 
         //api 호출이 성공하면 해당 actvity는 종료 시키기 위해 라이브데이터로 관찰
         loadingActivityViewModel.isSuccessAPI.observe(this, Observer {
-          //  if (it)
-               // this.finish()
+//            if (it)
+//                this.finish()
         })
 
 

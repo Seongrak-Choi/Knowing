@@ -41,7 +41,17 @@ class AgreeTermsActivityViewModel (application: Application) : AndroidViewModel(
     모두 동의합니다 반전 시켜주는 메소드
      */
     fun changeAllBtnState(){
-        _currentAllBtnState.value=_currentAllBtnState.value!=true
+        if (_currentAllBtnState.value==true){
+            _currentAllBtnState.value=false
+            _currentAlarmBtnState.value=false
+            _currentPrivateInfoBtnState.value=false
+            _currentTermsOfUseBtnState.value=false
+        }else{
+            _currentAllBtnState.value=true
+            _currentAlarmBtnState.value=true
+            _currentPrivateInfoBtnState.value=true
+            _currentTermsOfUseBtnState.value=true
+        }
     }
 
     /*

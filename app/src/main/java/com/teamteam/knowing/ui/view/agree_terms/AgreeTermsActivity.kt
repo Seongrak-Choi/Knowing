@@ -21,10 +21,6 @@ class AgreeTermsActivity:BaseActivity<ActivityAgreeTermsBinding>(ActivityAgreeTe
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //onBoarding을 한번 봤으면 앱을 삭제하기 전까지는 볼 필요 없게 관리하기 위해 sp에 저장
-        val editor = sp.edit()
-        editor.putBoolean(ApplicationClass.IS_FIRST_KEY,true)
-        editor.apply()
 
 
         //뷰모델 장착
@@ -110,7 +106,7 @@ class AgreeTermsActivity:BaseActivity<ActivityAgreeTermsBinding>(ActivityAgreeTe
         }
 
         //개인정보 수집 이용 (필수) 보러 가기 버튼 클릭 리스너
-        binding.btnShowTermsOfUse.setOnClickListener {
+        binding.btnShowPrivateInfo.setOnClickListener {
             val intent = Intent(this,PersonalInformationActivity::class.java)
             startActivity(intent)
         }
@@ -121,6 +117,9 @@ class AgreeTermsActivity:BaseActivity<ActivityAgreeTermsBinding>(ActivityAgreeTe
             //푸쉬 알림 여부 저장
             val editor = sp.edit()
             editor.putBoolean(PUSH_ALARM_KEY,agreeTermsActivityViewModel.currentAlarmBtnState.value!!)
+            //onBoarding을 한번 설정했으면 앱을 삭제하기 전까지는 볼 필요 없게 관리하기 위해 sp에 저장
+            editor.putBoolean(ApplicationClass.IS_FIRST_KEY,true)
+            editor.apply()
 
             val intent = Intent(this,OnboardingActivity::class.java)
             startActivity(intent)
