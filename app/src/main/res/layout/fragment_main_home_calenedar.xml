@@ -11,6 +11,7 @@
         android:clipToPadding="false"
         android:paddingTop="70dp"
         android:overScrollMode="never"
+        android:background="#ffffff"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,6 +25,49 @@
                 android:paddingHorizontal="20dp"
                 android:clipToPadding="false"
                 app:layout_constraintTop_toTopOf="parent"/>
+
+            <!--북마크 없는 경우 보여질 일러-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraint_no_data"
+                android:visibility="visible"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img"
+                    android:layout_width="217dp"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/bookmark_illust"
+                    app:layout_constraintVertical_bias="0.45"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/title1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="북마크한 게시물이 없습니다."
+                    android:textSize="16sp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textColor="#656565"
+                    android:layout_marginHorizontal="20dp"
+                    app:layout_constraintTop_toBottomOf="@+id/img"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="기억해둘 복지는 북마크 아이콘을 눌러서 모아보세요!"
+                    android:layout_marginTop="7dp"
+                    android:layout_marginHorizontal="20dp"
+                    app:layout_constraintTop_toBottomOf="@id/title1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
@@ -34,13 +78,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
-        android:fitsSystemWindows="true"
         app:elevation="0dp">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fitsSystemWindows="true"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <!--collapsing이 여기 전까지 되기 때문에 toolbar 필요-->
@@ -48,7 +90,6 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fitsSystemWindows="true"
                 android:paddingTop="65dp"
                 app:layout_constraintTop_toTopOf="parent">
                 <!--collapsing 위치를 지정하기 위해 home화면이랑 똑같은 tabLayout 가져와서 위치 조정함-->
@@ -166,6 +207,7 @@
 
     <!--collapsing될 때 위쪽 부분에 안보이도록 같은 색상의 이미지뷰로 가려주기 위함-->
     <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_top_rectangle"
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:background="#ffe4b6" />

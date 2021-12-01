@@ -1,0 +1,609 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-41dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btn_back"
+                android:layout_width="31dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_arrow_back_signuppage"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tx_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="19dp"
+                android:fontFamily="@font/godom"
+                android:text="복지 카테고리 설정"
+                android:textColor="#656565"
+                android:textSize="26sp"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/btn_back" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tx_title_student"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="학생 지원"
+                android:textColor="#5b5b5b"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/tx_title" />
+
+
+            <!--전체, 교내장학금 교외장학금 버튼 모은 레이아웃-->
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linear_student_btn_1"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/tx_title_student">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_student_1"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="74dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="전체"
+                    android:textColor="#6c6c6c"
+                    android:textSize="14sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_student_2"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="교내 장학금"
+                    android:textColor="#6c6c6c"
+                    android:textSize="14sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_student_3"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="교외 장학금"
+                    android:textColor="#6c6c6c"
+                    android:textSize="14sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <!--취업 지원-->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tx_title_job"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="취업 지원"
+                android:textColor="#5b5b5b"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/linear_student_btn_1" />
+
+
+            <!--전체 구직활동지원인턴 있는 버튼 리니어-->
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linear_job_btn_1"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/tx_title_job">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_job_1"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="74dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="전체"
+                    android:textColor="#6c6c6c"
+                    android:textSize="14sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_job_2"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                    android:fontFamily="@font/roboto_medium"
+                    android:paddingHorizontal="18dp"
+                    android:text="구직 활동 지원 &#183; 인턴"
+                    android:textColor="#6c6c6c"
+                    android:textSize="14sp" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <!--중소중견기업취업지원, 특수분야취업지원 있는 버튼 리니어-->
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linear_job_btn_2"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/linear_job_btn_1">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_job_3"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="중소 &#183; 중견기업 취업 지원"
+                    android:textColor="#6c6c6c"
+                    android:textSize="14sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_job_4"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="특수 분야 취업 지원"
+                    android:textColor="#6c6c6c"
+                    android:textSize="14sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <!--해외취업및진출지원 있는 버튼 리니어-->
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linear_job_btn_3"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/linear_job_btn_2">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_job_5"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="해외 취업 및 진출 지원"
+                    android:textColor="#6c6c6c"
+                    android:textSize="14sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <!--창업 지원-->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tx_title_foundation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="창업 지원"
+                android:textColor="#5b5b5b"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/linear_job_btn_3" />
+
+
+            <!--전체 창업운영 지원 있는 버튼 리니어-->
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linear_foundation_btn_1"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/tx_title_foundation">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_foundation_1"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="74dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="전체"
+                    android:textColor="#6c6c6c"
+                    android:textSize="14sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_foundation_2"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="창업운영 지원"
+                    android:textColor="#6c6c6c"
+                    android:textSize="14sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <!--경영지원, 자본금 지원 있는 버튼 리니어-->
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linear_foundation_btn_2"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/linear_foundation_btn_1">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_foundation_3"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="경영 지원"
+                    android:textColor="#6c6c6c"
+                    android:textSize="14sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_foundation_4"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="자본금 지원"
+                    android:textColor="#6c6c6c"
+                    android:textSize="14sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <!--주거금융 지원-->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tx_title_dwelling"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="주거 &#183; 금융 지원"
+                android:textColor="#5b5b5b"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/linear_foundation_btn_2" />
+
+
+            <!--전체 생활비 지원 있는 버튼 리니어-->
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linear_dwelling_btn_1"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/tx_title_dwelling">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_dwelling_1"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="74dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="전체"
+                    android:textColor="#6c6c6c"
+                    android:textSize="14sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_dwelling_2"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                    android:fontFamily="@font/roboto_medium"
+                    android:paddingHorizontal="18dp"
+                    android:text="생활비 지원 &#183; 금융 혜택"
+                    android:textColor="#6c6c6c"
+                    android:textSize="14sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <!--경영지원, 자본금 지원 있는 버튼 리니어-->
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linear_dwelling_btn_2"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/linear_dwelling_btn_1">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_dwelling_3"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="주거 지원"
+                    android:textColor="#6c6c6c"
+                    android:textSize="14sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_dwelling_4"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="학자금 지원"
+                    android:textColor="#6c6c6c"
+                    android:textSize="14sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <!--생활복지 지원-->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tx_title_life"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="생활 &#183; 복지 지원"
+                android:textColor="#5b5b5b"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/linear_dwelling_btn_2" />
+
+
+            <!--전체, 건강, 문화 있는 버튼 리니어-->
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linear_life_btn_1"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/tx_title_life">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_life_1"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="74dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="전체"
+                    android:textColor="#6c6c6c"
+                    android:textSize="14sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_life_2"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="74dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="건강"
+                    android:textColor="#6c6c6c"
+                    android:textSize="14sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_life_3"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="74dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="문화"
+                    android:textColor="#6c6c6c"
+                    android:textSize="14sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <!--코로나19 지원-->
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tx_title_corona"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="코로나19 지원"
+                android:textColor="#5b5b5b"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/linear_life_btn_1" />
+
+
+            <!--전체, 기본소득지원, 저소득층 지원 있는 버튼 리니어-->
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linear_corona_btn_1"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/tx_title_corona">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_corona_1"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="74dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="전체"
+                    android:textColor="#6c6c6c"
+                    android:textSize="14sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_corona_2"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="기본소득 지원"
+                    android:textColor="#6c6c6c"
+                    android:textSize="14sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_corona_3"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="문화"
+                    android:textColor="#6c6c6c"
+                    android:textSize="14sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <!--재난피해 지원, 소득일자리보전 있는 버튼 리니어-->
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linear_corona_btn_2"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/linear_corona_btn_1">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_corona_4"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="재난피해 지원"
+                    android:textColor="#6c6c6c"
+                    android:textSize="14sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_corona_5"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="소득 &#183; 일자리 보전"
+                    android:textColor="#6c6c6c"
+                    android:textSize="14sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <!--기타 인센티브, 심리지원 있는 버튼 리니어-->
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linear_corona_btn_3"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/linear_corona_btn_2">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_corona_6"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="기타 인센티브"
+                    android:textColor="#6c6c6c"
+                    android:textSize="14sp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_corona_7"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                    android:fontFamily="@font/roboto_medium"
+                    android:layout_marginStart="16dp"
+                    android:text="심리지원"
+                    android:textColor="#6c6c6c"
+                    android:textSize="14sp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_next"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="41dp"
+                android:layout_marginBottom="36dp"
+                android:background="@drawable/sign_up_final_btn_bg"
+                android:fontFamily="@font/roboto_bold"
+                android:text="적용하기"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                android:enabled="false"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/linear_corona_btn_3" />
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="20dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="20dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

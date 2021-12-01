@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff5e6"
+    android:paddingBottom="50dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.core.widget.NestedScrollView
@@ -582,21 +583,17 @@
 
 
 
-
-
     <!--NestedScrollView보다 위에 있어야 하기 때문에 아래에 선언했음-->
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
-        android:fitsSystemWindows="true"
         app:elevation="0dp">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fitsSystemWindows="true"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <!--collapsing이 여기 전까지 되기 때문에 toolbar 필요-->
@@ -605,7 +602,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="65dp"
-                android:fitsSystemWindows="true"
                 app:layout_constraintTop_toTopOf="parent">
                 <!--collapsing 위치를 지정하기 위해 home화면이랑 똑같은 tabLayout 가져와서 위치 조정함-->
                 <com.google.android.material.tabs.TabLayout
@@ -628,6 +624,7 @@
             </com.google.android.material.appbar.MaterialToolbar>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraint"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -699,7 +696,7 @@
                     android:id="@+id/tx_name_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="최성락님의 최대 수혜 금액"
+                    android:text="아토님의 최대 수혜 금액"
                     android:textSize="17sp"
                     android:textColor="#a4613d"
                     android:fontFamily="@font/godom"
@@ -764,6 +761,7 @@
 
     <!--collapsing될 때 위쪽 부분에 안보이도록 같은 색상의 이미지뷰로 가려주기 위함-->
     <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_top_rectangle"
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:background="#ffe4b6"/>

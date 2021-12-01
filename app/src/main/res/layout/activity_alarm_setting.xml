@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="15dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btn_back"
+        android:layout_width="31dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_arrow_back_signuppage"
+        app:layout_constraintStart_toStartOf="@id/guidelineStart"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/title_alarm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="알림 설정"
+        android:textColor="#656565"
+        android:fontFamily="@font/godom"
+        android:textSize="23sp"
+        android:layout_marginTop="19dp"
+        app:layout_constraintTop_toBottomOf="@+id/btn_back"
+        app:layout_constraintStart_toStartOf="@id/guidelineStart"/>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switch_custom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:track="@drawable/switch_track_selector"
+        android:thumb="@drawable/switch_thumb_selector"
+        android:layout_marginTop="40dp"
+        app:layout_constraintTop_toBottomOf="@id/title_alarm"
+        app:layout_constraintEnd_toEndOf="@id/guidelineEnd"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="맞춤 정보 푸시 알림"
+        android:textSize="16sp"
+        android:fontFamily="@font/roboto_bold"
+        android:textColor="#656565"
+        app:layout_constraintStart_toStartOf="@id/guidelineStart"
+        app:layout_constraintTop_toTopOf="@+id/switch_custom"
+        app:layout_constraintBottom_toBottomOf="@+id/switch_custom"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="보다 편리한 나만의 복지 정보 관리를 위해 북마크 및 알림설정을 해둔 게시물의 신청 마감일 알림, 맞춤 복지 업데이트 등 중요한 소식 알림을 받을 수 있습니다."
+        android:textSize="13sp"
+        android:textColor="#a9a9a9"
+        android:fontFamily="@font/roboto_regular"
+        android:layout_marginTop="18dp"
+        app:layout_constraintTop_toBottomOf="@+id/switch_custom"
+        app:layout_constraintStart_toStartOf="@id/guidelineStart"
+        app:layout_constraintEnd_toEndOf="@+id/guidelineEnd"/>
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="20dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,8 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:leftEdgeSwipeOffset="0dp"
-        app:rightEdgeSwipeOffset="0dp"
-        app:layout_constraintTop_toTopOf="parent">
+        app:rightEdgeSwipeOffset="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/btn_delete"
@@ -57,7 +56,9 @@
                 app:layout_constraintBottom_toBottomOf="parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/btn_select_welfare"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rectangle_fff6eb_radius20">
@@ -67,7 +68,7 @@
                 android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
-                android:src="@drawable/seoullogo_oval"
+                android:src="@drawable/logo_30_government"
                 android:layout_marginStart="14dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -107,6 +108,7 @@
                 android:adjustViewBounds="true"
                 android:src="@drawable/ic_my_calendar_notice"
                 android:tag="Hover"
+                android:visibility="gone"
                 android:layout_marginEnd="10dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"

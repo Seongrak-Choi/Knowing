@@ -39,7 +39,7 @@
     <string name="search_pwd_title">비밀번호 재설정</string>
     
     <!--loading-->
-    <string name="loading_title">님의 복지 수혜 예상\n금액을 계산중이에요!</string>
+    <string name="loading_title">복지 수혜 예상\n금액을 계산중이에요!</string>
     <string name="loadin_wait">잠시만 기다려주세요</string>
 
     <!--more_information1-->
@@ -81,5 +81,22 @@
     <string name="bottom_navi_menu2">알림내역</string>
     <string name="bottom_navi_menu3">북마크</string>
     <string name="bottom_navi_menu4">마이페이지</string>
+
+
+    <!--open_source-->
+    <string name="Freepik_contents">&lt;a href="https://www.freepik.com/vectors/people">People vector created by freepik - www.freepik.com&lt;/a&gt;
+\n
+\n&lt;a href="https://www.freepik.com/vectors/christmas">Christmas vector created by freepik - www.freepik.com&lt;/a&gt;
+\n
+\n&lt;a href="https://www.freepik.com/vectors/sale">Sale vector created by vectorjuice - www.freepik.com&lt;/a&gt;
+\n
+\n&lt;a href="http://www.freepik.com">Designed by gstudioimagen / Freepik&lt;/a&gt;
+\n
+\n&lt;a href="https://www.freepik.com/vectors/people">People vector created by stories - www.freepik.com&lt;/a&gt;
+\n
+\n&lt;a href="https://www.freepik.com/vectors/data">Data vector created by stories - www.freepik.com&lt;/a&gt;
+\n
+\n&lt;a href="https://www.freepik.com/vectors/mobile">Mobile vector created by stories - www.freepik.com&lt;/a&gt;
+</string>
 
 </resources>

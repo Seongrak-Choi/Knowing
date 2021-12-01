@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="20dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -35,6 +36,7 @@
                     android:layout_marginEnd="10dp"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_notice"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toStartOf="@+id/btn_bookmark"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,6 +56,7 @@
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_share"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="@id/guidelineEnd2"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -229,7 +232,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
 
-    <com.example.knowing.util.StickyScrollView
+    <com.teamteam.knowing.util.StickyScrollView
         android:id="@+id/sticky_scroll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -691,7 +694,7 @@
 
 
             <View
-                android:id="@+id/line5"
+                android:id="@+id/line11"
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:layout_marginTop="22.5dp"
@@ -699,6 +702,50 @@
                 app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
                 app:layout_constraintStart_toStartOf="@id/guidelineStart"
                 app:layout_constraintTop_toBottomOf="@+id/linear_application" />
+
+
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="7dp"
+                android:layout_marginBottom="-1dp"
+                android:background="#ffe4b6"
+                app:layout_constraintBottom_toBottomOf="@+id/title_detail_terms"
+                app:layout_constraintEnd_toEndOf="@id/title_detail_terms"
+                app:layout_constraintStart_toStartOf="@id/title_detail_terms" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title_detail_terms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="23.5dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="자격 상세 조건"
+                android:textColor="#4b4b4b"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/line11" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rc_detail_terms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                app:layout_constraintTop_toBottomOf="@+id/title_detail_terms">
+            </androidx.recyclerview.widget.RecyclerView>
+
+
+            <View
+                android:id="@+id/line5"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="22.5dp"
+                android:background="#faefdd"
+                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@+id/rc_detail_terms" />
 
             <View
                 android:layout_width="0dp"
@@ -795,7 +842,7 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2.5"
+                    android:layout_weight="3"
                     android:fontFamily="@font/roboto_bold"
                     android:text="신청 시작일"
                     android:textColor="#4b4b4b"
@@ -805,7 +852,7 @@
                     android:id="@+id/tx_application_start"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="7.5"
+                    android:layout_weight="7"
                     android:fontFamily="@font/roboto_regular"
                     android:text="2020.12.18"
                     android:textColor="#808080"
@@ -826,7 +873,7 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2.5"
+                    android:layout_weight="3"
                     android:fontFamily="@font/roboto_bold"
                     android:text="신청 마감일"
                     android:textColor="#4b4b4b"
@@ -836,7 +883,7 @@
                     android:id="@+id/tx_application_end"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="7.5"
+                    android:layout_weight="7"
                     android:fontFamily="@font/roboto_regular"
                     android:text="-"
                     android:textColor="#808080"
@@ -856,11 +903,12 @@
                 app:layout_constraintTop_toBottomOf="@+id/linear_application_end">
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/title_application_run_day"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2.5"
+                    android:layout_weight="3"
                     android:fontFamily="@font/roboto_bold"
-                    android:text="신청 시작일"
+                    android:text="복지 운영 기간"
                     android:textColor="#4b4b4b"
                     android:textSize="14sp" />
 
@@ -868,7 +916,7 @@
                     android:id="@+id/tx_application_run_day"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="7.5"
+                    android:layout_weight="7"
                     android:fontFamily="@font/roboto_regular"
                     android:text="연중 상시"
                     android:textColor="#808080"
@@ -967,7 +1015,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="7dp"
                     android:fontFamily="@font/roboto_bold"
-                    android:text="온라인인 신청"
+                    android:text="온라인 신청"
                     android:textColor="#ff8854"
                     android:textSize="15sp" />
             </androidx.appcompat.widget.LinearLayoutCompat>
@@ -981,7 +1029,7 @@
                 android:background="#faefdd"
                 app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
                 app:layout_constraintStart_toStartOf="@id/guidelineStart"
-                app:layout_constraintTop_toBottomOf="@+id/linear_visit_application" />
+                app:layout_constraintTop_toBottomOf="@+id/linear_online_application" />
 
 
             <View
@@ -1154,6 +1202,7 @@
 
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_go_url"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="35dp"
@@ -1181,5 +1230,5 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_end="20dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.example.knowing.util.StickyScrollView>
+    </com.teamteam.knowing.util.StickyScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

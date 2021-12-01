@@ -1,12 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/constraint"
+    android:paddingTop="20dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="알림 내역"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/godom"
+            android:text="알림"
+            android:textColor="#4b4b4b"
+            android:textSize="26sp"
+            app:layout_constraintStart_toStartOf="@id/guidelineStart"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/title_no_read"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:text="읽지 않은 알림"
+            android:textColor="#878787"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="@id/guidelineStart"
+            app:layout_constraintTop_toTopOf="@+id/tx_alarm_count"
+            app:layout_constraintBottom_toBottomOf="@+id/tx_alarm_count"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tx_alarm_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0건"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="3dp"
+        android:background="@drawable/rectangle_ff8e3b_radius14"
+        android:layout_marginTop="6dp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toEndOf="@+id/title_no_read"
+        app:layout_constraintTop_toBottomOf="@id/title"/>
+
+
+    <!--아무런 알람이 없을 경우 보여줄 일러를 담고 있는 레이아웃-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="@id/guidelineStart"
+        app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+        app:layout_constraintTop_toBottomOf="@+id/tx_alarm_count"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img"
+            android:layout_width="217dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/alarm_illust"
+            app:layout_constraintVertical_bias="0.37"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/title1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="알림 설정한 게시물이 없습니다."
+            android:textSize="16sp"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="#656565"
+            app:layout_constraintTop_toBottomOf="@+id/img"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="기억해둘 복지에 알림 아이콘을 눌러 두면\n신청 마감일이 다가왔을 때 알림을 드려요"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@id/title1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="20dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

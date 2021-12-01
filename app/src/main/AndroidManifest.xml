@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.knowing">
+    package="com.teamteam.knowing">
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
-        android:name=".config.ApplicationClass"
+        android:name="com.teamteam.knowing.config.ApplicationClass"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_knowing"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_knowing_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Knowing">
 
@@ -26,11 +26,17 @@
 <!--            </intent-filter>-->
 <!--        </activity>-->
 
-        <activity android:name=".ui.view.main.MainActivity"
-            android:theme="@style/main_theme">
+        <activity android:name="com.teamteam.knowing.ui.view.main.MainActivity">
         </activity>
 
-        <activity android:name=".ui.view.main.LoadingActivity">
+        <activity android:name="com.teamteam.knowing.ui.view.main.LoadingActivity">
+        </activity>
+
+        <activity android:name="com.teamteam.knowing.ui.view.onboarding.OnboardingActivity">
+        </activity>
+
+        <activity android:name="com.teamteam.knowing.ui.view.splash.SplashActivity"
+            android:theme="@style/SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -38,18 +44,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.view.onboarding.OnboardingActivity">
+        <activity android:name="com.teamteam.knowing.ui.view.login.JoinUpSNSActivity">
         </activity>
-
-        <activity android:name=".ui.view.splash.SplashActivity"
-            android:theme="@style/SplashActivity">
-        </activity>
-
-        <activity android:name=".ui.view.login.JoinUpSNSActivity">
-        </activity>
-        <activity android:name=".ui.view.sign_up.SnsSignUpActivity"
+        <activity android:name="com.teamteam.knowing.ui.view.sign_up.SnsSignUpActivity"
             android:theme="@style/sign_up_theme"/>
-        <activity android:name=".ui.view.sign_up.SignUpActivity"
+        <activity android:name="com.teamteam.knowing.ui.view.sign_up.SignUpActivity"
             android:theme="@style/sign_up_theme">
         </activity>
         <meta-data android:name="com.kakao.sdk.AppKey"
@@ -65,27 +64,39 @@
                     android:scheme="kakaod8e0e3e9398b5db90db367e587268a49"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ui.view.sign_in.SignInActivity">
+        <activity android:name="com.teamteam.knowing.ui.view.sign_in.SignInActivity">
         </activity>
-        <activity android:name=".ui.view.more_information.MoreInformationActivity1">
+        <activity android:name="com.teamteam.knowing.ui.view.more_information.MoreInformationActivity1">
         </activity>
-        <activity android:name=".ui.view.more_information.MoreInformationActivity2">
+        <activity android:name="com.teamteam.knowing.ui.view.more_information.MoreInformationActivity2">
         </activity>
-        <activity android:name=".ui.view.more_information.MoreInformationActivity3">
+        <activity android:name="com.teamteam.knowing.ui.view.more_information.MoreInformationActivity3">
         </activity>
-        <activity android:name=".ui.view.more_information.MoreInformationActivity4">
+        <activity android:name="com.teamteam.knowing.ui.view.more_information.MoreInformationActivity4">
         </activity>
-        <activity android:name=".ui.view.more_information.MoreInformationActivity5">
+        <activity android:name="com.teamteam.knowing.ui.view.more_information.MoreInformationActivity5">
         </activity>
-        <activity android:name=".ui.view.sign_in.search_email.SearchEmailActivity"/>
-        <activity android:name=".ui.view.sign_in.search_email.LoadingSearchEmailActivity"/>
-        <activity android:name=".ui.view.sign_in.search_pwd.SearchPwdActivity"/>
-        <activity android:name=".ui.view.sign_in.search_pwd.LoadingSearchPwdActivity">
+        <activity android:name="com.teamteam.knowing.ui.view.sign_in.search_email.SearchEmailActivity"/>
+        <activity android:name="com.teamteam.knowing.ui.view.sign_in.search_email.LoadingSearchEmailActivity"/>
+        <activity android:name="com.teamteam.knowing.ui.view.sign_in.search_pwd.SearchPwdActivity"/>
+        <activity android:name="com.teamteam.knowing.ui.view.sign_in.search_pwd.LoadingSearchPwdActivity">
         </activity>
-        <activity android:name=".ui.view.more_information.SelectCategoryActivity">
+        <activity android:name="com.teamteam.knowing.ui.view.more_information.SelectCategoryActivity">
         </activity>
-        <activity android:name=".ui.view.main.WelfareDetailActivity">
+        <activity android:name="com.teamteam.knowing.ui.view.main.WelfareDetailActivity">
         </activity>
+        <activity android:name="com.teamteam.knowing.ui.view.main.mypage.UserCorrectActivity"
+            android:theme="@style/user_correct_activity"/>
+        <activity android:name="com.teamteam.knowing.ui.view.main.mypage.AlarmSettingActivity"/>
+        <activity android:name="com.teamteam.knowing.ui.view.main.mypage.CategoryCorrectActivity"/>
+        <activity android:name="com.teamteam.knowing.ui.view.main.mypage.quize_terms.QuizeTermsActivity"/>
+        <activity android:name="com.teamteam.knowing.ui.view.main.mypage.NotificationActivity"/>
+        <activity android:name="com.teamteam.knowing.ui.view.main.mypage.quize_terms.PersonalInformationActivity"/>
+        <activity android:name="com.teamteam.knowing.ui.view.main.mypage.quize_terms.OpenSourceActivity"/>
+        <activity android:name="com.teamteam.knowing.ui.view.main.mypage.quize_terms.TermsOfUseActivity"/>
+        <activity android:name="com.teamteam.knowing.ui.view.main.mypage.SnsUserCorrectActivity"
+            android:theme="@style/sign_up_theme"/>
+        <activity android:name="com.teamteam.knowing.ui.view.agree_terms.AgreeTermsActivity"/>
     </application>
 
 </manifest>
