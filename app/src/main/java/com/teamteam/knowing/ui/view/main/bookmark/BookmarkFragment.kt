@@ -1,6 +1,8 @@
 package com.teamteam.knowing.ui.view.main.bookmark
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.FrameLayout
 import androidx.lifecycle.Observer
@@ -8,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.teamteam.knowing.R
 import com.teamteam.knowing.config.ApplicationClass
+import com.teamteam.knowing.data.model.network.response.WelfareInfo
 import com.teamteam.knowing.databinding.FragmentBookmarkBinding
 import com.teamteam.knowing.ui.adapter.MainBookmarkRCAdapter
 import com.teamteam.knowing.ui.base.BaseFragment
@@ -17,9 +20,19 @@ class BookmarkFragment : BaseFragment<FragmentBookmarkBinding>(FragmentBookmarkB
     //뷰모델 변수 선언
     private lateinit var bookmarkFragmentViewModel: BookmarkFragmentViewModel
 
+    //복지 뿌려주는 리사이클러뷰 어댑터 선언
+    private lateinit var adapter : MainBookmarkRCAdapter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        var array = ArrayList<WelfareInfo>()
+        //어댑터가 만들어 지기 전에 adapter를 참조했다고 오류나서 이렇게 미리 세팅함
+        adapter = MainBookmarkRCAdapter(array,requireContext())
+    }
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
         //statusbar 높이 구하는 방법
         var result = 0
@@ -48,17 +61,29 @@ class BookmarkFragment : BaseFragment<FragmentBookmarkBinding>(FragmentBookmarkB
             }else{
                binding.constraintNoData.visibility = View.INVISIBLE
                 binding.rcBookmark.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
-                val adapter = MainBookmarkRCAdapter(it,requireContext())
+                adapter = MainBookmarkRCAdapter(it,requireContext())
                 binding.rcBookmark.adapter = adapter
                 adapter.notifyDataSetChanged()
 
                 //리사이클러뷰의 스와이프 후 삭제버튼 클릭 리스너 구현
                 adapter.setOnItemClickListener(object : MainBookmarkRCAdapter.OnItemClickListener{
-                    override fun onItemClick(welfareUid: String) {
+                    override fun onItemClick(welfareUid: String,position:Int) {
                         //북마크 삭제 api 호출 및 결과 리사이클러뷰 라이브데이터에 저장
                         bookmarkFragmentViewModel.tryDeleteBookmarkList(ApplicationClass.USER_UID,welfareUid)
                     }
                 })
+            }
+        })
+
+
+        //EditText검색을 위한 텍스트 체인지 리스너
+        binding.edtSearch.addTextChangedListener(object: TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                adapter.filter.filter(s) //검색을 위해 EditText에 입력을 하면 어댑터의 필터메소드 호출
+            }
+            override fun afterTextChanged(s: Editable?) {
             }
         })
 

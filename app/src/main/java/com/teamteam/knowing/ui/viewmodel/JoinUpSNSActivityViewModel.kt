@@ -78,7 +78,7 @@ class JoinUpSNSActivityViewModel(application: Application) : AndroidViewModel(ap
                 //로그인이 실패했을 경우
                 val errorCode = mOAuthLoginInstance.getLastErrorCode(myContext).code //에러 코드 저장
                 val errorDesc = mOAuthLoginInstance.getLastErrorDesc(myContext)//에러 내용 저장
-                Toast.makeText(myContext, "errorCode:$errorCode, errorDesc:$errorDesc",Toast.LENGTH_SHORT).show()//Toast로 오류 코드와 메세지 출력
+                Toast.makeText(myContext, "로그인에 실패하였습니다.",Toast.LENGTH_SHORT).show()//Toast로 오류 코드와 메세지 출력
             }
         }
     }
@@ -132,7 +132,7 @@ class JoinUpSNSActivityViewModel(application: Application) : AndroidViewModel(ap
                     }
                     else -> { // Unknown
                         Toast.makeText(myContext, "로그인 취소", Toast.LENGTH_SHORT).show()
-                        println("error: ${error}")
+                        Log.e("ERROR","$error")
                     }
                 }
             }

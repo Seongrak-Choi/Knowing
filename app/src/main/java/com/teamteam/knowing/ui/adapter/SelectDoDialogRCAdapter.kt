@@ -57,7 +57,6 @@ class SelectDoDialogRCAdapter(private var doList: ArrayList<String>) :
         return object : Filter() {
             override fun performFiltering(constraint: CharSequence?): FilterResults {
                 val charString = constraint.toString()
-                println(charString)
                 files = if (charString.isEmpty()) {
                     doList
                 } else {
@@ -80,7 +79,6 @@ class SelectDoDialogRCAdapter(private var doList: ArrayList<String>) :
                 files = results?.values as ArrayList<String>
                 notifyDataSetChanged()
             }
-
         }
     }
 

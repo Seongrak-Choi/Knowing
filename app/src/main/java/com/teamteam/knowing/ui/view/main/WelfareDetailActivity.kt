@@ -2,14 +2,16 @@ package com.teamteam.knowing.ui.view.main
 
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.util.Log
-import android.view.View
-import android.view.ViewTreeObserver
+import android.view.*
+import androidx.annotation.RequiresApi
 import androidx.core.net.ParseException
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.tabs.TabLayout
 import com.teamteam.knowing.R
 import com.teamteam.knowing.config.ApplicationClass
 import com.teamteam.knowing.data.model.network.response.WelfareInfo
@@ -20,7 +22,6 @@ import com.teamteam.knowing.ui.adapter.WelfareDetailDocumentRCAdapter
 import com.teamteam.knowing.ui.adapter.WelfareDetailJudgeRCAdapter
 import com.teamteam.knowing.ui.base.BaseActivity
 import com.teamteam.knowing.ui.viewmodel.WelfareDetailActivityViewModel
-import com.google.android.material.tabs.TabLayout
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -29,10 +30,17 @@ class WelfareDetailActivity :
     BaseActivity<ActivityWelfareDetailBinding>(ActivityWelfareDetailBinding::inflate) {
 
     //뷰모델 저장할 변수
-    private lateinit var welfareDetailActivityViewModel : WelfareDetailActivityViewModel
+    private lateinit var welfareDetailActivityViewModel: WelfareDetailActivityViewModel
+
+    //tabLayout을 눌러서 스크롤 되는 동안에는 스크롤뷰 리스너가 동작하지 않도록 상태를 저장하는 변수
+    private var isUserScrolling = false
+
+    //스크롤의 마지막 부분에 닿을 때 계속 '기타' 메뉴가 선택되는걸 막기 위함함
+   private var endPosition = false
+
 
     //appBar높이 저장할 변수
-    private var appBarHeight : Int = 0
+    private var appBarHeight: Int = 0
 
     //최하단 기타 정보까지의 높이를 저장할 변수
     private var etcPartHeight = 0
@@ -47,6 +55,7 @@ class WelfareDetailActivity :
     private val displayMetrics = DisplayMetrics()
 
 
+    @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -54,12 +63,15 @@ class WelfareDetailActivity :
         val welfareInfo = intent.getSerializableExtra("welfareInfo") as WelfareInfo
 
         //뷰모델 장착
-        welfareDetailActivityViewModel = ViewModelProvider(this).get(WelfareDetailActivityViewModel::class.java)
+        welfareDetailActivityViewModel =
+            ViewModelProvider(this).get(WelfareDetailActivityViewModel::class.java)
 
 
         //해당 복지가 북마크에 등록이 되어 있는지 아닌지 확인하는 api 호출
-        welfareDetailActivityViewModel.tryGetIsWelfareApplyToBookmark(ApplicationClass.USER_UID,welfareInfo.uid)
-
+        welfareDetailActivityViewModel.tryGetIsWelfareApplyToBookmark(
+            ApplicationClass.USER_UID,
+            welfareInfo.uid
+        )
 
 
         //디스플레의 dip를 계산하기위해 메트릭스 객체에 디바이스 메트릭스 저장. dp를 px로 계산하기 위해 필요
@@ -70,18 +82,16 @@ class WelfareDetailActivity :
         dp48 = (48 * density + 0.5).toInt()
 
 
-
-
         //이 복지가 북마크에 추가 되어 있는지 확인과 북마크 추가,삭제 api 호출 시 버튼의 색상을 변경하기 위해 라이브데이터 관찰
-        welfareDetailActivityViewModel.currentBookmarkWhether.observe(this, androidx.lifecycle.Observer {
-            if (it){//북마크가 추가 되어 있을 경우 오랜지 색
-                binding.btnBookmark.setImageResource(R.drawable.ic_bookmark_orange_s)
-            }else{//북마크가 삭제 되었을 경우 회색
-                binding.btnBookmark.setImageResource(R.drawable.ic_bookmark_grey_s)
-            }
-        })
-
-
+        welfareDetailActivityViewModel.currentBookmarkWhether.observe(
+            this,
+            androidx.lifecycle.Observer {
+                if (it) {//북마크가 추가 되어 있을 경우 오랜지 색
+                    binding.btnBookmark.setImageResource(R.drawable.ic_bookmark_orange_s)
+                } else {//북마크가 삭제 되었을 경우 회색
+                    binding.btnBookmark.setImageResource(R.drawable.ic_bookmark_grey_s)
+                }
+            })
 
 
         //주소지 설정
@@ -103,9 +113,9 @@ class WelfareDetailActivity :
             //디데이 설정
             binding.txDDay.text =
                 getDDay(deadLine[0].toInt(), deadLine[1].toInt(), deadLine[2].toInt())
-        } else if(welfareInfo.applyDate=="연중상시"){
+        } else if (welfareInfo.applyDate == "연중상시") {
             binding.txDDay.text = "연중 상시"
-        }else{
+        } else {
             binding.txDDay.text = "별도 공지"
         }
 
@@ -166,90 +176,88 @@ class WelfareDetailActivity :
             } else {//둘다 아니라면 범위라는 뜻
                 binding.txAge.text = "만${ageMining[0]}세~만${ageMining[1]}세"
             }
-        }else{
-            binding.txAge.text="제한없음"
+        } else {
+            binding.txAge.text = "제한없음"
         }
 
         //신청 자격 요약 중 거주지 설정
         val addressMining = welfareInfo.address.split(" ")
-        if (addressMining[0] in "서울 부산 대구 인천 광주 대전 울산 경기 강원 충북 충남 전북 전남 경북 경남 제주 세종"){
-            binding.txFilterAddress.text=welfareInfo.address
-        }else{
-            binding.txFilterAddress.text="제한없음"
+        if (addressMining[0] in "서울 부산 대구 인천 광주 대전 울산 경기 강원 충북 충남 전북 전남 경북 경남 제주 세종") {
+            binding.txFilterAddress.text = welfareInfo.address
+        } else {
+            binding.txFilterAddress.text = "제한없음"
         }
 
         //신청 자격 요약 중 소득 설정
-        if (welfareInfo.incomeLevel!="제한없음"){
-            if(welfareInfo.incomeLevel.toInt()>9){
-                binding.txIncome.text="중위소득${welfareInfo.incomeLevel}%"
-            }else
-                binding.txIncome.text="소득분위 ${welfareInfo.incomeLevel}구간 이하"
-        }else
-            binding.txIncome.text="제한없음"
+        if (welfareInfo.incomeLevel != "제한없음") {
+            if (welfareInfo.incomeLevel.toInt() > 9) {
+                binding.txIncome.text = "중위소득${welfareInfo.incomeLevel}%"
+            } else
+                binding.txIncome.text = "소득분위 ${welfareInfo.incomeLevel}구간 이하"
+        } else
+            binding.txIncome.text = "제한없음"
 
         //신청 자격 요약 중 학력 설정
-        binding.txSchoolRecords.text=welfareInfo.schoolRecords
+        binding.txSchoolRecords.text = welfareInfo.schoolRecords
 
         //신청 자격 요약 중 전공 설정
-        binding.txMajor.text="제한없음"
+        binding.txMajor.text = "제한없음"
 
         //신청 자격 요약 중 취업 상태 설정
         binding.txEmployState.text = welfareInfo.employmentState
 
         //신청 자격 요약 중 특화 분야 설정
-        binding.txSpecialStatus.text=welfareInfo.specialStatus
+        binding.txSpecialStatus.text = welfareInfo.specialStatus
 
         //신청 시작일 설정
         if (welfareInfo.applyDate != "연중상시" && welfareInfo.applyDate != "별도공지" && welfareInfo.applyDate.isNotEmpty()) {
             val startYearMonthDay = welfareInfo.applyDate.split("~")[0] //년,월,일을 쪼갬
-            binding.txApplicationStart.text=startYearMonthDay
-        } else if(welfareInfo.applyDate=="연중상시"){
-            binding.txApplicationStart.text="-"
-        }else{
-            binding.txApplicationStart.text="-"
+            binding.txApplicationStart.text = startYearMonthDay
+        } else if (welfareInfo.applyDate == "연중상시") {
+            binding.txApplicationStart.text = "-"
+        } else {
+            binding.txApplicationStart.text = "-"
         }
 
 
         //신청 마감일 설정
         if (welfareInfo.applyDate != "연중상시" && welfareInfo.applyDate != "별도공지" && welfareInfo.applyDate.isNotEmpty()) {
             val deadLineYearMonthDay = welfareInfo.applyDate.split("~")[1] //년,월,일을 쪼갬
-            binding.txApplicationEnd.text=deadLineYearMonthDay
-        } else if(welfareInfo.applyDate=="연중상시"){
-            binding.txApplicationEnd.text="연중 상시"
-        }else{
-            binding.txApplicationEnd.text="별도 공지"
+            binding.txApplicationEnd.text = deadLineYearMonthDay
+        } else if (welfareInfo.applyDate == "연중상시") {
+            binding.txApplicationEnd.text = "연중 상시"
+        } else {
+            binding.txApplicationEnd.text = "별도 공지"
         }
-
 
 
         //복지 운영 기간
         if (welfareInfo.runDate != "연중상시" && welfareInfo.runDate != "별도공지" && welfareInfo.runDate.isNotEmpty()) {
-            binding.txApplicationRunDay.text=welfareInfo.runDate
-        } else if(welfareInfo.applyDate=="연중상시"){
-            binding.txApplicationRunDay.text="연중 상시"
-        }else{
-            binding.txApplicationRunDay.text="별도 공지"
+            binding.txApplicationRunDay.text = welfareInfo.runDate
+        } else if (welfareInfo.applyDate == "연중상시") {
+            binding.txApplicationRunDay.text = "연중 상시"
+        } else {
+            binding.txApplicationRunDay.text = "별도 공지"
         }
 
         //신청 방법 설정
-        if (welfareInfo.applyMethod.split("/").size>1){
-            binding.linearVisitApplication.visibility=View.VISIBLE
-        }else if (welfareInfo.applyMethod=="방문신청"){
-            binding.linearVisitApplication.visibility=View.VISIBLE
-            binding.linearOnlineApplication.visibility=View.INVISIBLE
-        }else{
-            binding.linearVisitApplication.visibility=View.GONE
-            binding.linearOnlineApplication.visibility=View.VISIBLE
+        if (welfareInfo.applyMethod.split("/").size > 1) {
+            binding.linearVisitApplication.visibility = View.VISIBLE
+        } else if (welfareInfo.applyMethod == "방문신청") {
+            binding.linearVisitApplication.visibility = View.VISIBLE
+            binding.linearOnlineApplication.visibility = View.INVISIBLE
+        } else {
+            binding.linearVisitApplication.visibility = View.GONE
+            binding.linearOnlineApplication.visibility = View.VISIBLE
         }
 
 
         //자격 상세 조건 리사이클러뷰 데이터 셋팅을 위해 split으로 데이터 마이닝
         val detailTermsList = welfareInfo.detailTerms.split("@")
         //자격 상세 조건 리사이클러뷰 데이터 셋팅
-        binding.rcDetailTerms.layoutManager=LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
-        binding.rcDetailTerms.adapter = WelfareDetailBenefitsRCAdapter(detailTermsList,this)
-
-
+        binding.rcDetailTerms.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        binding.rcDetailTerms.adapter = WelfareDetailBenefitsRCAdapter(detailTermsList, this)
 
 
         //참여 제한 대상 리사이클러뷰 데이터 셋팅을 위해 split으로 데이터 마이닝
@@ -288,17 +296,17 @@ class WelfareDetailActivity :
 
 
         //문의 전화 설정
-        if (welfareInfo.phNum!="없음")
-            binding.txEtcPhNum.text=welfareInfo.phNum
+        if (welfareInfo.phNum != "없음")
+            binding.txEtcPhNum.text = welfareInfo.phNum
         else
-            binding.txEtcPhNum.text="-"
+            binding.txEtcPhNum.text = "-"
 
 
         //운영 기관 설정
-        if (welfareInfo.manageOffice!="없음")
-            binding.txEtcManageOffice.text=welfareInfo.manageOffice
+        if (welfareInfo.manageOffice != "없음")
+            binding.txEtcManageOffice.text = welfareInfo.manageOffice
         else
-            binding.txEtcManageOffice.text="-"
+            binding.txEtcManageOffice.text = "-"
 
 
         //뒤로가기 버튼 클릭 리스너
@@ -308,6 +316,7 @@ class WelfareDetailActivity :
 
         //stickscrollview
         binding.stickyScroll.run {
+            //tab Layout이 붙도록 설정
             header = binding.tabLayout
             stickListener = { _ ->
                 Log.d("LOGGER_TAG", "stickListener")
@@ -321,9 +330,21 @@ class WelfareDetailActivity :
         //북마크 버튼 클릭 리스너
         binding.btnBookmark.setOnClickListener {
             //버튼을 눌러 해당 복지를 서버 북마크에 추가하고 삭제하기 위한 api 호출
-            welfareDetailActivityViewModel.tryPostBookmark(ApplicationClass.USER_UID,welfareInfo.uid)
+            welfareDetailActivityViewModel.tryPostBookmark(
+                ApplicationClass.USER_UID,
+                welfareInfo.uid
+            )
         }
 
+
+        //tabLayout의 tab들에게 클릭 리스너 설정하는 코드
+        for (i in 0 until binding.tabLayout.getTabCount()) {
+            val tab = (binding.tabLayout.getChildAt(0) as ViewGroup).getChildAt(i)
+            tab.setOnClickListener {
+                //tablayout을 클릭해서 scroll이 되는 경우 nestedScrollview의 scroll 리스너가 동작되지 않게 함
+                isUserScrolling=false
+            }
+        }
 
         //헤더에 붙는 tabLayout 아이템 클릭 리스너
         binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
@@ -334,40 +355,71 @@ class WelfareDetailActivity :
                 binding.appBar.setExpanded(false)
 
                 //tabLayout 높이 만큼 빼고(54dp) bar의 높이(6dp)를 빼서 48dp만큼 y값을 더 추가해 정확한 위치를 맞추기 위함
-                when (tab!!.position) {
-                    0 -> binding.stickyScroll.smoothScrollTo(
-                        binding.stickyScroll.scrollX,
-                        0
-                    ) //48dp를 픽셀로 계산해서 y값을 조정해줌
-                    1 -> binding.stickyScroll.smoothScrollTo(
-                        binding.stickyScroll.scrollX,
-                        binding.line3.y.toInt() - dp48
-                    )
-                    2 -> binding.stickyScroll.smoothScrollTo(
-                        binding.stickyScroll.scrollX,
-                        binding.line6.y.toInt() - dp48
-                    )
-                    3 -> {
-                        binding.stickyScroll.smoothScrollTo(
-                            binding.stickyScroll.scrollX,
-                            binding.line10.y.toInt() - dp48
-                        )
+                if (!isUserScrolling){
+                    when (tab!!.position) {
+                        0 -> {
+                            binding.stickyScroll.smoothScrollTo(binding.stickyScroll.scrollX, 0) //48dp를 픽셀로 계산해서 y값을 조정해줌
+                        }
+                        1 -> {
+                            binding.stickyScroll.smoothScrollTo(binding.stickyScroll.scrollX, binding.line3.y.toInt() - dp48)
+                        }
+                        2 -> {
+                            binding.stickyScroll.smoothScrollTo(binding.stickyScroll.scrollX, binding.line6.y.toInt() - dp48)
+                        }
+                        3 -> {
+                            binding.stickyScroll.smoothScrollTo(binding.stickyScroll.scrollX, binding.line10.y.toInt() - dp48)
+                        }
                     }
                 }
             }
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-            }
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
         })
 
 
+        //스크롤뷰 리스너
+        binding.stickyScroll.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+            val totalHeigt = binding.stickyScroll.getChildAt(0).height
+
+            if (isUserScrolling){
+                //스크롤뷰를 터치해서 스크롤 되는건지 아니면 tabLayout을 눌러서 스크롤 되는건지 파악해서 움직이기 위해 확인
+                //스크롤 위치가 고정된 tabLayout밑에 부터 시작하는데 line들은 tabLayout을 포함하지 않고 최상단 부터 y값을 계산해서 tabLayout높이 만큼 스크롤의 위치를 더해서 line의 y값과 맞춰줌
+                if (scrollY + dp48 >= dp48 && scrollY + dp48 < binding.line3.y.toInt()) {
+                    binding.tabLayout.getTabAt(0)?.select()
+                    //binding.tabLayout.setScrollPosition(0, 0f, true)
+                } else if (scrollY + dp48 >= binding.line3.y.toInt() && scrollY + dp48 < binding.line6.y.toInt()) {
+                    binding.tabLayout.getTabAt(1)?.select()
+                    //binding.tabLayout.setScrollPosition(1, 0f, true)
+
+                    //최하단일 경우 기타 메뉴가 선택 되도록 설정
+                } else if(!binding.stickyScroll.canScrollVertically(1)) {
+                    binding.tabLayout.getTabAt(3)?.select()
+                    //binding.tabLayout.setScrollPosition(3, 0f, true)
+
+                } else if (scrollY + dp48 >= binding.line6.y.toInt() && scrollY + dp48 < binding.line10.y.toInt()) {//마지막 부분에 기타 부분 때문에 리사이클러뷰가 잘 안맞아서
+                    //임의적으로 툴바 크기만큼 범위를 줄여준다.
+                    binding.tabLayout.getTabAt(2)?.select()
+                    //binding.tabLayout.setScrollPosition(2, 0f, true)
+                }
+            }
+        }
+
+        //nestedScroll을 터치 즉, tabLayout이 아닌 드래그해서 스크롤을 움직일 경우를 감지하기 위한 터치 리스너
+        binding.stickyScroll.setOnTouchListener { v, event ->
+            when (event.actionMasked){
+                MotionEvent.ACTION_DOWN->{
+                    isUserScrolling=true
+                }
+            }
+            return@setOnTouchListener false
+        }
+
+
         //만약 온라인 신청이 신청 방법 중 포함되어 있지 않으면 신청하러가기 버튼 비활성화 하면서 텍스트도 방문 신청으로 변경
-        if("온라인신청" in welfareInfo.applyMethod){
+        if ("온라인신청" in welfareInfo.applyMethod) {
             binding.btnGoUrl.isEnabled = true
-        }else{
-            binding.btnGoUrl.isEnabled =false
+        } else {
+            binding.btnGoUrl.isEnabled = false
             binding.btnGoUrl.text = "방문 신청"
         }
 
@@ -376,37 +428,15 @@ class WelfareDetailActivity :
             var intent = Intent(Intent.ACTION_VIEW, Uri.parse(welfareInfo.url))
             startActivity(intent)
         }
-
-
-
-        //스크롤뷰 리스너
-        binding.stickyScroll.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
-            val totalHeigt = binding.stickyScroll.getChildAt(0).height
-            println(appBarHeight)
-            println(totalHeigt-appBarHeight)
-            println("${scrollY+appBarHeight}:${totalHeigt-appBarHeight-dp48}")
-            //스크롤 위치가 고정된 tabLayout밑에 부터 시작하는데 line들은 tabLayout을 포함하지 않고 최상단 부터 y값을 계산해서 tabLayout높이 만큼 스크롤의 위치를 더해서 line의 y값과 맞춰줌
-            if (scrollY+dp48 >= dp48 && scrollY + dp48 < binding.line3.y.toInt()) {
-                binding.tabLayout.setScrollPosition(0, 0f, true)
-            } else if (scrollY + dp48 >= binding.line3.y.toInt() && scrollY + dp48 < binding.line6.y.toInt()) {
-                binding.tabLayout.setScrollPosition(1, 0f, true)
-            } else if (scrollY + dp48 >= binding.line6.y.toInt() && scrollY + dp48 < binding.line10.y.toInt()) {//마지막 부분에 기타 부분 때문에 리사이클러뷰가 잘 안맞아서
-                                                                                                                                //임의적으로 툴바 크기만큼 범위를 줄여준다.
-                binding.tabLayout.setScrollPosition(2, 0f, true)
-            }
-            if (scrollY + dp48 >= binding.line10.y.toInt() || scrollY+appBarHeight>=totalHeigt-appBarHeight-dp48) {//마지막 부분에 기타 부분 때문에 리사이클러뷰가 잘 안맞아서
-                                                                                                                    //임의적으로 툴바 크기만큼 범위를 줄여준다.
-                binding.tabLayout.setScrollPosition(3, 0f, true)
-            }
-        }
     }
 
 
     override fun onResume() {
         super.onResume()
-        binding.appBar.viewTreeObserver.addOnGlobalLayoutListener(object:ViewTreeObserver.OnGlobalLayoutListener{
+        binding.appBar.viewTreeObserver.addOnGlobalLayoutListener(object :
+            ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
-                appBarHeight=binding.appBar.height
+                appBarHeight = binding.appBar.height
 
                 binding.appBar.viewTreeObserver.removeOnGlobalLayoutListener(this)
             }

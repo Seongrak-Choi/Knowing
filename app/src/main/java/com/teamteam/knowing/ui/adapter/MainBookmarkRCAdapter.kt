@@ -6,6 +6,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.core.net.ParseException
 import androidx.recyclerview.widget.RecyclerView
 import com.teamteam.knowing.data.model.network.response.WelfareInfo
@@ -16,9 +18,13 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class MainBookmarkRCAdapter(private val welfareList:ArrayList<WelfareInfo>, private val mContext : Context):
-    RecyclerView.Adapter<MainBookmarkRCAdapter.ViewHolder>(){
+    RecyclerView.Adapter<MainBookmarkRCAdapter.ViewHolder>(), Filterable {//필터기능 위해 Filterable 상속
 
     private var listener: OnItemClickListener? = null
+
+    //서버에서 받아온 복지 리스트를 files에 저장
+    private var files: ArrayList<WelfareInfo> = welfareList
+
 
     interface OnItemClickListener {
         fun onItemClick(value: String)
@@ -79,8 +85,6 @@ class MainBookmarkRCAdapter(private val welfareList:ArrayList<WelfareInfo>, priv
                 //인터페이스를 이용해서 삭제 클릭되면 activity에서 api삭제 요청 후 리사이클러뷰 재정비
                 listener?.onItemClick(data.uid)
             }
-
-
         }
     }
 
@@ -92,10 +96,11 @@ class MainBookmarkRCAdapter(private val welfareList:ArrayList<WelfareInfo>, priv
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(welfareList[position])
+        val current = files[position] //files에는 필터링된 복지 정보 리스트들이 담겨 있음
+        holder.bind(current)  //holder부분에 넘겨받은 welfareList[position]을 넘겨주는게 아님
     }
 
-    override fun getItemCount(): Int = welfareList.size
+    override fun getItemCount(): Int = files.size //필터기능 때문에 files길이 반환
 
 
     /*
@@ -133,6 +138,34 @@ class MainBookmarkRCAdapter(private val welfareList:ArrayList<WelfareInfo>, priv
         }catch (e: ParseException){
             Log.e("ERROR","날짜 변화 중 형식이 맞지 않아 오류 발생")
             return "날짜 형식이 올바르지 않습니다"
+        }
+    }
+
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val charString = constraint.toString()
+                files = if (charString.isEmpty()) { welfareList
+                } else {
+                    val filteredList = ArrayList<WelfareInfo>()
+                    if (welfareList != null) {
+                        for (welfare in welfareList) {
+                            if (welfare.name.toLowerCase().contains(charString.toLowerCase())) {
+                                filteredList.add(welfare)
+                            }
+                        }
+                    }
+                    filteredList
+                }
+                val filterResults = FilterResults()
+                filterResults.values = files
+                return filterResults
+            }
+
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                files = results?.values as ArrayList<WelfareInfo>
+                notifyDataSetChanged()
+            }
         }
     }
 }

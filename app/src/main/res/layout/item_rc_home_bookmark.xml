@@ -10,166 +10,190 @@
         android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/btn_delete"
-            android:layout_width="68dp"
+            android:layout_width="85dp"
             android:layout_height="match_parent"
-            android:tag="Bottom3"
-            android:background="@drawable/rectangle_bgff9857_radius20" >
+            android:tag="Bottom3">
 
-            <View
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/btn_delete"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:background="@drawable/rectangle_bgff9857_radius20"/>
+                android:layout_marginStart="15dp"
+                android:background="@drawable/rectangle_bgff9857_radius20">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/rectangle_bgff9857_radius20"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/img_delete"
-                android:layout_width="17dp"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_small_delete_white"
-                android:adjustViewBounds="true"
-                app:layout_constraintVertical_chainStyle="packed"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/tx_delete"/>
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_delete"
+                    android:layout_width="17dp"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_small_delete_white"
+                    app:layout_constraintBottom_toTopOf="@+id/tx_delete"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tx_delete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="삭제"
-                android:textColor="#ffffff"
-                android:textSize="14sp"
-                android:fontFamily="@font/roboto_bold"
-                android:layout_marginHorizontal="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/img_delete"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="삭제"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/img_delete" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/btn_select_welfare"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingVertical="15dp"
-            android:background="@drawable/rectangle_fff6eb_radius30">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/img_address"
-                android:layout_width="20dp"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:src="@drawable/ic_oval_government"
-                app:layout_constraintStart_toStartOf="@id/guidelineStart"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tx_address"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="서울시"
-                android:textColor="#7a7a7a"
-                android:textSize="14sp"
-                app:layout_constraintStart_toEndOf="@+id/img_address"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tx_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="14dp"
-                android:fontFamily="@font/roboto_bold"
-                android:text="청년고용지원"
-                android:textColor="#262626"
-                android:textSize="17sp"
-                app:layout_constraintStart_toStartOf="@id/guidelineStart"
-                app:layout_constraintTop_toBottomOf="@+id/img_address" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tx_max_cost"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
-                android:fontFamily="@font/roboto_bold"
-                android:text="최대 250만원 지원"
-                android:textColor="#ff8e5b"
-                android:textSize="17sp"
-                app:layout_constraintStart_toStartOf="@id/guidelineStart"
-                app:layout_constraintTop_toBottomOf="@+id/tx_name" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tx_min_cost"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:fontFamily="@font/roboto_bold"
-                android:text="최소 20만원"
-                android:textColor="#8e8c8a"
-                android:textSize="15sp"
-                app:layout_constraintBottom_toBottomOf="@+id/tx_max_cost"
-                app:layout_constraintStart_toEndOf="@+id/tx_max_cost"
-                app:layout_constraintTop_toTopOf="@+id/tx_max_cost" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tx_deadline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="2021.12.31까지"
-                android:textColor="#949494"
-                android:textSize="13sp"
-                app:layout_constraintStart_toStartOf="@id/guidelineStart"
-                app:layout_constraintTop_toBottomOf="@+id/tx_max_cost" />
+            android:layout_height="wrap_content">
 
             <View
-                android:id="@+id/line1"
-                android:layout_width="1dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="7dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginBottom="4dp"
-                android:background="#e1e1e1"
-                app:layout_constraintBottom_toBottomOf="@+id/tx_deadline"
-                app:layout_constraintStart_toEndOf="@+id/tx_deadline"
-                app:layout_constraintTop_toTopOf="@id/tx_deadline" />
+                android:id="@+id/view"
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tx_d_day"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/btn_select_welfare"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="7dp"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/roboto_bold"
-                android:text="D-63"
-                android:textColor="#949494"
-                android:textSize="13sp"
-                app:layout_constraintStart_toEndOf="@id/line1"
-                app:layout_constraintTop_toBottomOf="@id/tx_max_cost" />
+                app:layout_constraintStart_toEndOf="@+id/view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@drawable/rectangle_fff6eb_radius30"
+                android:paddingVertical="15dp">
 
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guidelineStart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_begin="18dp" />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/img_address"
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_oval_government"
+                    app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guidelineEnd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_begin="18dp" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="서울시"
+                    android:textColor="#7a7a7a"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toEndOf="@+id/img_address"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="청년고용지원"
+                    android:textColor="#262626"
+                    android:textSize="17sp"
+                    app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                    app:layout_constraintTop_toBottomOf="@+id/img_address" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_max_cost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="최대 250만원 지원"
+                    android:textColor="#ff8e5b"
+                    android:textSize="17sp"
+                    app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                    app:layout_constraintTop_toBottomOf="@+id/tx_name" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_min_cost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="최소 20만원"
+                    android:textColor="#8e8c8a"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tx_max_cost"
+                    app:layout_constraintStart_toEndOf="@+id/tx_max_cost"
+                    app:layout_constraintTop_toTopOf="@+id/tx_max_cost" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_deadline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="2021.12.31까지"
+                    android:textColor="#949494"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                    app:layout_constraintTop_toBottomOf="@+id/tx_max_cost" />
+
+                <View
+                    android:id="@+id/line1"
+                    android:layout_width="1dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:background="#e1e1e1"
+                    app:layout_constraintBottom_toBottomOf="@+id/tx_deadline"
+                    app:layout_constraintStart_toEndOf="@+id/tx_deadline"
+                    app:layout_constraintTop_toTopOf="@id/tx_deadline" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_d_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="D-63"
+                    android:textColor="#949494"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toEndOf="@id/line1"
+                    app:layout_constraintTop_toBottomOf="@id/tx_max_cost" />
+
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineStart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="18dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineEnd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="18dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.daimajia.swipe.SwipeLayout>
 

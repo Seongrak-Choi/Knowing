@@ -26,7 +26,8 @@
 <!--            </intent-filter>-->
 <!--        </activity>-->
 
-        <activity android:name="com.teamteam.knowing.ui.view.main.MainActivity">
+        <activity android:name="com.teamteam.knowing.ui.view.main.MainActivity"
+            android:windowSoftInputMode="adjustNothing">
         </activity>
 
         <activity android:name="com.teamteam.knowing.ui.view.main.LoadingActivity">

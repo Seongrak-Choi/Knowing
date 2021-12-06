@@ -464,18 +464,22 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
             var strDay = "" //numberpicker에서 선택한 데이터 중 day 부분을 저장. 어차피 밑에서 1의 자리인 경우 앞에 0을 붙혀주는 작업이 있기 때문에 공백을 초기화만 시켜둠
 
             //선택한 데이터가 한자리 수 이면 앞에 0을 붙혀주기 위한 코드
-            strMonth = if (month.value < 10) {
-                "0${month.value}"
-            } else {
-                month.value.toString()
-            }
+            strMonth = String.format("%02d",month.value)
+            strDay = String.format("%02d",day.value)
+
+
+//            strMonth = if (month.value < 10) {
+//                "0${month.value}"
+//            } else {
+//                month.value.toString()
+//            }
 
             //선택한 데이터가 한자리 수 이면 앞에 0을 붙혀주기 위한 코드
-            strDay = if (day.value < 10) {
-                "0${day.value}"
-            } else {
-                day.value.toString()
-            }
+//            strDay = if (day.value < 10) {
+//                "0${day.value}"
+//            } else {
+//                day.value.toString()
+//            }
 
             //viewmodel의 livedat의 값을 변경해서 화면에 출력하는 용도
             signUpActivityViewModel.currentEdtTextBirth.value="$strYear / $strMonth / $strDay"
