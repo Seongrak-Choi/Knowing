@@ -67,7 +67,7 @@ class BookmarkFragment : BaseFragment<FragmentBookmarkBinding>(FragmentBookmarkB
 
                 //리사이클러뷰의 스와이프 후 삭제버튼 클릭 리스너 구현
                 adapter.setOnItemClickListener(object : MainBookmarkRCAdapter.OnItemClickListener{
-                    override fun onItemClick(welfareUid: String,position:Int) {
+                    override fun onItemClick(welfareUid: String) {
                         //북마크 삭제 api 호출 및 결과 리사이클러뷰 라이브데이터에 저장
                         bookmarkFragmentViewModel.tryDeleteBookmarkList(ApplicationClass.USER_UID,welfareUid)
                     }

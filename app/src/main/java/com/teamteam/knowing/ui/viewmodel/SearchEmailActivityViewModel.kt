@@ -2,6 +2,7 @@ package com.teamteam.knowing.ui.viewmodel
 
 import android.app.Application
 import android.content.Intent
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
@@ -61,11 +62,14 @@ class SearchEmailActivityViewModel(application: Application):AndroidViewModel(ap
                         mContext.startActivity(intent)
                     }else{
                         Toast.makeText(mContext,"일치하는 이메일이 존재하지 않습니다.",Toast.LENGTH_SHORT).show()
+                        Log.e("ERROR","이메일 찾기 api 결과 실패")
                     }
                 }
             }
 
             override fun onFailure(call: Call<SearchEmailResponse>, t: Throwable) {
+                Toast.makeText(mContext,"죄송합니다 통신에 오류가 있습니다. 다시 시도해주세요",Toast.LENGTH_SHORT).show()
+                Log.e("ERROR","이메일 찾기 api 통신 실패")
             }
         })
     }

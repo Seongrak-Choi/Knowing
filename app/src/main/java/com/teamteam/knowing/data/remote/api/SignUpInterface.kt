@@ -24,4 +24,8 @@ interface SignUpInterface {
     //회원 탈퇴 api
     @DELETE("/app/users/userdelete")
     fun deleteWithdrawal(@Header("uid")uid:String) : Call<UserWithdrawalResponse>
+
+    //이메일 중복 여부 확인하는 api
+    @GET("/app/users/checkemail")
+    fun getEmailDuplicate(@Query("email")email:String) : Call<EmailDuplicateResponse>
 }

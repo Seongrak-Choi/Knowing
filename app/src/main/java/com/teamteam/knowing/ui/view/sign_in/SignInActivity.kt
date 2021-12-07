@@ -154,6 +154,11 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>(ActivitySignInBinding
         }
 
 
+        //뒤로가기 버튼 클릭 리스너
+        binding.btnBack.setOnClickListener {
+            this.onBackPressed()
+        }
+
         //로그인하기 버튼 클릭 리스너
         binding.btnLogin.setOnClickListener {
             signInActivityViewModel.tryLoginWithFirebase(binding.edtEmail.text.toString(),binding.edtPwd.text.toString())

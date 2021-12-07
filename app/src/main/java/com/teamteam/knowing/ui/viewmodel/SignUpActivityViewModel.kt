@@ -1,8 +1,16 @@
 package com.teamteam.knowing.ui.viewmodel
 
 import android.app.Application
+import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import com.teamteam.knowing.config.ApplicationClass
+import com.teamteam.knowing.data.model.network.response.EmailDuplicateResponse
+import com.teamteam.knowing.data.remote.api.SignUpInterface
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SignUpActivityViewModel(application: Application) : AndroidViewModel(application) {
     private val mContext = application.applicationContext
@@ -15,7 +23,7 @@ class SignUpActivityViewModel(application: Application) : AndroidViewModel(appli
     private val _pwdCheckIsCorrect = MutableLiveData<Boolean>() //입력한 비밀번호 확인이 비밀번호와 일치한지 상태를 저장하는 라이브 데이터
     private val _allIsCorrect = MutableLiveData<Boolean>() //이메일, 패스워드, 성별선택여부, 이름, 날짜선택여부 형식이 정상적인지 아닌지 판단해 회원가입하기 버튼을 활성화 시키는 라이브 데이터
     private val _isCorrectEdtPhoneNum=MutableLiveData<Boolean>() //전화번호를 양식에 맞게 잘 입력했는지 확인하는 라이브 데이터
-
+    private val _isCorrectEmailDuplicate = MutableLiveData<Boolean>() //이메일이 중복되었는지 아닌지 상태를 저장하는 라이브 데이터
 
     val currentEdtTextBirth: MutableLiveData<String>
         get() = _currentEdtTextBirth
@@ -43,6 +51,9 @@ class SignUpActivityViewModel(application: Application) : AndroidViewModel(appli
 
     val isCorrectEdtPhoneNum : MutableLiveData<Boolean>
         get() = _isCorrectEdtPhoneNum
+
+    val isCorrectEmailDuplicate : MutableLiveData<Boolean>
+        get() = _isCorrectEmailDuplicate
 
 
     init {
@@ -110,4 +121,25 @@ class SignUpActivityViewModel(application: Application) : AndroidViewModel(appli
     }
 
 
+    /*
+    이메일 중복인지 아닌지 확인하는 api
+     */
+    fun tryGetEmailIsDuplicate(email:String){
+        val signUpInterface = ApplicationClass.sRetrofit.create(SignUpInterface::class.java)
+        signUpInterface.getEmailDuplicate(email).enqueue(object : Callback<EmailDuplicateResponse>{
+            override fun onResponse(call: Call<EmailDuplicateResponse>, response: Response<EmailDuplicateResponse>) {
+                if (response.isSuccessful){
+                    val result = response.body()
+                    //결과를 라이브데이터에 저장
+                   _isCorrectEmailDuplicate.value=result!!.emailDuplicateResult.status
+                }else{
+                    Log.e("ERROR","이메일 찾기 api 결과 실패")
+                }
+            }
+            override fun onFailure(call: Call<EmailDuplicateResponse>, t: Throwable) {
+                Toast.makeText(mContext,"죄송합니다 통신에 오류가 있습니다. 다시 시도해주세요", Toast.LENGTH_SHORT).show()
+                Log.e("ERROR","이메일 중복 확인 api 통신 실패")
+            }
+        })
+    }
 }
