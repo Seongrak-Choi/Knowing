@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.kakao.sdk.common.util.Utility
 import com.teamteam.knowing.config.ApplicationClass
 import com.teamteam.knowing.config.ApplicationClass.Companion.USER_BIRTH_KEY
 import com.teamteam.knowing.config.ApplicationClass.Companion.USER_EMAIL_KEY
@@ -16,12 +17,16 @@ import com.teamteam.knowing.config.ApplicationClass.Companion.sp
 import com.teamteam.knowing.databinding.ActivityLoadingBinding
 import com.teamteam.knowing.ui.base.BaseActivity
 import com.teamteam.knowing.ui.viewmodel.LoadingActivityViewModel
+import com.teamteam.knowing.util.FCMClass
 
 class LoadingActivity : BaseActivity<ActivityLoadingBinding>(ActivityLoadingBinding::inflate){
     lateinit var loadingActivityViewModel: LoadingActivityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //fcm토큰 저장
+        FCMClass()
 
         //lottie 애니메이션 시작
         binding.lottieView.playAnimation()

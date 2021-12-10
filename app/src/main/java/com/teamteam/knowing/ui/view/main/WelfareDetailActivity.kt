@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.tabs.TabLayout
 import com.teamteam.knowing.R
 import com.teamteam.knowing.config.ApplicationClass
+import com.teamteam.knowing.config.ApplicationClass.Companion.USER_UID
 import com.teamteam.knowing.data.model.network.response.WelfareInfo
 import com.teamteam.knowing.databinding.ActivityWelfareDetailBinding
 import com.teamteam.knowing.ui.adapter.WelfareDetailBenefitsRCAdapter
@@ -69,9 +70,12 @@ class WelfareDetailActivity :
 
         //해당 복지가 북마크에 등록이 되어 있는지 아닌지 확인하는 api 호출
         welfareDetailActivityViewModel.tryGetIsWelfareApplyToBookmark(
-            ApplicationClass.USER_UID,
+            USER_UID,
             welfareInfo.uid
         )
+
+        //해당 복지가 알림에 등록 되어 있는지 아닌지 확인하는 api 호출
+        welfareDetailActivityViewModel.tryGetIsWelfareApplyToAlarm(USER_UID,welfareInfo.uid)
 
 
         //디스플레의 dip를 계산하기위해 메트릭스 객체에 디바이스 메트릭스 저장. dp를 px로 계산하기 위해 필요
@@ -92,6 +96,16 @@ class WelfareDetailActivity :
                     binding.btnBookmark.setImageResource(R.drawable.ic_bookmark_grey_s)
                 }
             })
+
+
+        //이 복지가 알림 설정 되어 있는지 확인과 알림 설정,해제 api 호출 시 버튼의 색상을 변경하기 위해 라이브데이터 관찰
+        welfareDetailActivityViewModel.currentAlarmWhether.observe(this, androidx.lifecycle.Observer {
+            if (it){//알림 설정 되어 있는 경우 오렌지 색
+                binding.btnAlarm.setImageResource(R.drawable.ic_notice_color)
+            }else{//알림 해제 되었을 경우 회색
+                binding.btnAlarm.setImageResource(R.drawable.ic_notice)
+            }
+        })
 
 
         //주소지 설정
@@ -191,7 +205,7 @@ class WelfareDetailActivity :
         //신청 자격 요약 중 소득 설정
         if (welfareInfo.incomeLevel != "제한없음") {
             if (welfareInfo.incomeLevel.toInt() > 9) {
-                binding.txIncome.text = "중위소득${welfareInfo.incomeLevel}%"
+                binding.txIncome.text = "중위소득${welfareInfo.incomeLevel}% 이하"
             } else
                 binding.txIncome.text = "소득분위 ${welfareInfo.incomeLevel}구간 이하"
         } else
@@ -331,9 +345,15 @@ class WelfareDetailActivity :
         binding.btnBookmark.setOnClickListener {
             //버튼을 눌러 해당 복지를 서버 북마크에 추가하고 삭제하기 위한 api 호출
             welfareDetailActivityViewModel.tryPostBookmark(
-                ApplicationClass.USER_UID,
+                USER_UID,
                 welfareInfo.uid
             )
+        }
+
+        //알림 버튼 클릭 리스너
+        binding.btnAlarm.setOnClickListener {
+            //버튼을 눌러 해당 복지 알림 설정,해제 api 호출
+            welfareDetailActivityViewModel.tryPostChangeAlarm(USER_UID,welfareInfo.uid)
         }
 
 

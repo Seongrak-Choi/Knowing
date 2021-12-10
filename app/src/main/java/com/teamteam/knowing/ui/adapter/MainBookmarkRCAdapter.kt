@@ -8,8 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.app.ActivityCompat
 import androidx.core.net.ParseException
 import androidx.recyclerview.widget.RecyclerView
+import com.teamteam.knowing.R
 import com.teamteam.knowing.data.model.network.response.WelfareInfo
 import com.teamteam.knowing.databinding.ItemRcHomeBookmarkBinding
 import com.teamteam.knowing.ui.view.main.WelfareDetailActivity
@@ -84,6 +89,18 @@ class MainBookmarkRCAdapter(private val welfareList:ArrayList<WelfareInfo>, priv
             binding.btnDelete.setOnClickListener {
                 //인터페이스를 이용해서 삭제 클릭되면 activity에서 api삭제 요청 후 리사이클러뷰 재정비
                 listener?.onItemClick(data.uid)
+
+                //해당 복지 리스트에서 삭제
+                files.remove(files[adapterPosition])
+                //검색할 때 총 몇건인지 실시간으로 출력하기 위함
+                (mContext as AppCompatActivity).findViewById<TextView>(R.id.tx_welfare_total).text="총 ${files.size}건"
+
+                //스와이프 삭제 했을 때 리스트가 0이면 일러 나오도록 설정
+                if (files.isEmpty())
+                    (mContext as AppCompatActivity).findViewById<ConstraintLayout>(R.id.constraint_no_data).visibility=View.VISIBLE
+                else
+                    (mContext as AppCompatActivity).findViewById<ConstraintLayout>(R.id.constraint_no_data).visibility=View.INVISIBLE
+                notifyDataSetChanged()
             }
         }
     }
@@ -98,6 +115,7 @@ class MainBookmarkRCAdapter(private val welfareList:ArrayList<WelfareInfo>, priv
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val current = files[position] //files에는 필터링된 복지 정보 리스트들이 담겨 있음
         holder.bind(current)  //holder부분에 넘겨받은 welfareList[position]을 넘겨주는게 아님
+
     }
 
     override fun getItemCount(): Int = files.size //필터기능 때문에 files길이 반환
@@ -164,6 +182,9 @@ class MainBookmarkRCAdapter(private val welfareList:ArrayList<WelfareInfo>, priv
 
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
                 files = results?.values as ArrayList<WelfareInfo>
+
+                //검색할 때 총 몇건인지 실시간으로 출력하기 위함
+                (mContext as AppCompatActivity).findViewById<TextView>(R.id.tx_welfare_total).text="총 ${files.size}건"
                 notifyDataSetChanged()
             }
         }

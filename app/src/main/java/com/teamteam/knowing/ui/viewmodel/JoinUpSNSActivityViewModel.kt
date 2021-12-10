@@ -78,6 +78,7 @@ class JoinUpSNSActivityViewModel(application: Application) : AndroidViewModel(ap
                 //로그인이 실패했을 경우
                 val errorCode = mOAuthLoginInstance.getLastErrorCode(myContext).code //에러 코드 저장
                 val errorDesc = mOAuthLoginInstance.getLastErrorDesc(myContext)//에러 내용 저장
+                Log.e("ERROR","errorCode: $errorCode \nerrorDesc: $errorDesc")
                 Toast.makeText(myContext, "로그인에 실패하였습니다.",Toast.LENGTH_SHORT).show()//Toast로 오류 코드와 메세지 출력
             }
         }
@@ -138,6 +139,7 @@ class JoinUpSNSActivityViewModel(application: Application) : AndroidViewModel(ap
             }
             else if (token !=null){ //token값이 null이 아니면 실행
                 //accessToken을 서버로 보내 커스터 JWT받기 위해 메소드 호출
+                    println("kakao access token : ${token.accessToken}")
                 tryGetKakaoCustomToken(token.accessToken)
 
 //                UserApiClient.instance.me { user, error ->
@@ -210,8 +212,6 @@ class JoinUpSNSActivityViewModel(application: Application) : AndroidViewModel(ap
                             }
                         }
                     }else{ //db에 email이 존재하면 기존회원이기 때문에 로그인 진행
-
-
                         firebaseAuth= Firebase.auth
 
                         //커스텀 jwt로 계정 등록과 동시에 성공했을 경우인 addOnCompleteListener를 달아서 그 안에 성공했을 경우 수행
@@ -283,6 +283,7 @@ class JoinUpSNSActivityViewModel(application: Application) : AndroidViewModel(ap
                                 //추가 정보를 받기위해 SnsSignUpActivity로 이동
                                 val intent = Intent(myContext,SnsSignUpActivity::class.java)
                                 intent.putExtra("provider","kakao")
+                                //intent.putExtra("fcm",firebaseAuth)
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)//activity가 아닌 곳에서 startActivity를 할 경우 오류가 발생하기 때문에 flag를 지정해준다.
                                 myContext.startActivity(intent)
                             }else{

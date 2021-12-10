@@ -9,7 +9,7 @@ import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface BookmarkInterface {
-    @GET("app/mains/bookmark")//북마크 조회
+    @GET("app/mains/bookmark")//북마크 리스트 조회
     fun getBookmarkList(@Header("uid")uid:String) : Call<BookmarkResponse>
 
     @GET("app/users/bookmark")//북마크 상제 페이지에서 북마크에 등록 되어 있는지 조회
@@ -18,6 +18,6 @@ interface BookmarkInterface {
     @DELETE("app/mains/bookmark")//북마크 삭제
     fun deleteBookmarkList(@Header("userUid")userUid:String, @Header("welfareUid")welfareUid:String) : Call<BookmarkResponse>
 
-    @POST("app/users/bookmark") //추가,삭제
+    @POST("app/users/bookmark") //상세페이지 북마크 버튼 클릭하면 추가,삭제
     fun postBookmark(@Header("userUid")userUid:String, @Header("welfareUid")welfareUid:String) : Call<BookmarkPostResponse>
 }

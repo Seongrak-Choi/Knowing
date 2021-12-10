@@ -13,6 +13,7 @@ import com.teamteam.knowing.data.remote.api.SignUpInterface
 import com.teamteam.knowing.ui.view.main.LoadingActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.iid.FirebaseInstanceIdReceiver
 import com.google.firebase.ktx.Firebase
 import retrofit2.Call
 import retrofit2.Callback
@@ -542,6 +543,8 @@ class SelectCategoryActivityViewModel(application: Application) : AndroidViewMod
     회원가입 API호출 메소드
      */
     fun tryPostSignUp(uid: String, user_data: SignUpUser) {
+
+
         val signUpInterface = ApplicationClass.sRetrofit.create(SignUpInterface::class.java)
         signUpInterface.postSignUp(uid, user_data).enqueue(object : Callback<SignUpResponse> {
             override fun onResponse(call: Call<SignUpResponse>, response: Response<SignUpResponse>) {

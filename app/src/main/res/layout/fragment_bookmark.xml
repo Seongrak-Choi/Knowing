@@ -3,7 +3,8 @@
     android:id="@+id/constraint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="50dp"
+    android:paddingBottom="65dp"
+    android:clipToPadding="false"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.core.widget.NestedScrollView
@@ -24,6 +25,7 @@
                 android:maxLines="1"
                 android:background="@drawable/bookmar_edit_search_bg"
                 android:hint="검색"
+                android:inputType="text"
                 android:textColorHint="#c2c2c2"
                 android:fontFamily="@font/roboto_regular"
                 android:textSize="16sp"
@@ -73,8 +75,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:overScrollMode="never"
                 android:paddingEnd="20dp"
+                android:overScrollMode="never"
                 app:layout_constraintTop_toBottomOf="@+id/tx_welfare_total" />
 
 

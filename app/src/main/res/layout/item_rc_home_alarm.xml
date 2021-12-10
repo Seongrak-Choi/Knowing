@@ -81,104 +81,46 @@
                 app:layout_constraintStart_toEndOf="@+id/view"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:background="@drawable/rectangle_fff6eb_radius30"
+                android:background="@drawable/rectangle_f0f0f0_radius30"
+                android:paddingHorizontal="17dp"
                 android:paddingVertical="15dp">
 
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/img_address"
-                    android:layout_width="20dp"
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_title"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/ic_oval_government"
-                    app:layout_constraintStart_toStartOf="@id/guidelineStart"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:text="맞춤 정보 업데이트!"
+                    android:fontFamily="@font/roboto_bold"
+                    android:textColor="#747474"
+                    android:textSize="17sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tx_address"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tx_subtitle"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="6dp"
+                    android:text="아토님을 위한 새로운 복지 정책이 나왔어요. 확인하러 가볼까요?"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="서울시"
-                    android:textColor="#7a7a7a"
-                    android:textSize="14sp"
-                    app:layout_constraintStart_toEndOf="@+id/img_address"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tx_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
-                    android:fontFamily="@font/roboto_bold"
-                    android:text="청년고용지원"
-                    android:textColor="#262626"
-                    android:textSize="17sp"
-                    app:layout_constraintStart_toStartOf="@id/guidelineStart"
-                    app:layout_constraintTop_toBottomOf="@+id/img_address" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tx_max_cost"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:fontFamily="@font/roboto_bold"
-                    android:text="최대 250만원 지원"
-                    android:textColor="#ff8e5b"
-                    android:textSize="17sp"
-                    app:layout_constraintStart_toStartOf="@id/guidelineStart"
-                    app:layout_constraintTop_toBottomOf="@+id/tx_name" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tx_min_cost"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:fontFamily="@font/roboto_bold"
-                    android:text="최소 20만원"
-                    android:textColor="#8e8c8a"
+                    android:textColor="#9b9b9b"
                     android:textSize="15sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/tx_max_cost"
-                    app:layout_constraintStart_toEndOf="@+id/tx_max_cost"
-                    app:layout_constraintTop_toTopOf="@+id/tx_max_cost" />
+                    android:layout_marginTop="7dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tx_title"/>
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tx_deadline"
+                    android:id="@+id/tx_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:text="2시간 전"
+                    android:textSize="13sp"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="2021.12.31까지"
                     android:textColor="#949494"
-                    android:textSize="13sp"
-                    app:layout_constraintStart_toStartOf="@id/guidelineStart"
-                    app:layout_constraintTop_toBottomOf="@+id/tx_max_cost" />
-
-                <View
-                    android:id="@+id/line1"
-                    android:layout_width="1dp"
-                    android:layout_height="0dp"
-                    android:layout_marginStart="7dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginBottom="4dp"
-                    android:background="#e1e1e1"
-                    app:layout_constraintBottom_toBottomOf="@+id/tx_deadline"
-                    app:layout_constraintStart_toEndOf="@+id/tx_deadline"
-                    app:layout_constraintTop_toTopOf="@id/tx_deadline" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tx_d_day"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="7dp"
-                    android:layout_marginTop="5dp"
-                    android:fontFamily="@font/roboto_bold"
-                    android:text="D-63"
-                    android:textColor="#949494"
-                    android:textSize="13sp"
-                    app:layout_constraintStart_toEndOf="@id/line1"
-                    app:layout_constraintTop_toBottomOf="@id/tx_max_cost" />
+                    android:layout_marginTop="7dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tx_subtitle"/>
 
 
                 <androidx.constraintlayout.widget.Guideline

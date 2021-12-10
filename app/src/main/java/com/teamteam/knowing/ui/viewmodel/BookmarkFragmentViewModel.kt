@@ -59,8 +59,8 @@ class BookmarkFragmentViewModel(application:Application):AndroidViewModel(applic
             override fun onResponse(call: Call<BookmarkResponse>, response: Response<BookmarkResponse>) {
                 if (response.isSuccessful){
                     val result = response.body() as BookmarkResponse
-                    _currentRcList.value = result.bookmarkResult
-                    _currentBookmarkTotal.value = result.bookmarkResult.size
+                    //_currentRcList.value = result.bookmarkResult
+                    //_currentBookmarkTotal.value = result.bookmarkResult.size
                 }else{
                     Log.e("ERROR","북마크 삭제 정보 가져오기 실패")
                 }

@@ -407,7 +407,7 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
                 super.onTextChanged(s, start, before, count)
                 var inputPhone = binding.edtPhoneNum.text.toString()
 
-                //입력이 12자가 되면 라이브 데이터 true 아니면 false
+                //입력이 13자가 되면 라이브 데이터 true 아니면 false
                 signUpActivityViewModel.isCorrectEdtPhoneNum.value = inputPhone.length == 13
             }
         })

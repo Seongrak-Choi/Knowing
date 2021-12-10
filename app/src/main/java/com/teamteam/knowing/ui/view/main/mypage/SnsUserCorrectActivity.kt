@@ -15,6 +15,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.teamteam.knowing.R
+import com.teamteam.knowing.config.ApplicationClass
 import com.teamteam.knowing.config.ApplicationClass.Companion.USER_BIRTH_KEY
 import com.teamteam.knowing.config.ApplicationClass.Companion.USER_GENDER_KEY
 import com.teamteam.knowing.config.ApplicationClass.Companion.USER_NAME_KEY
@@ -105,6 +106,12 @@ class SnsUserCorrectActivity :
         //회원 수정 api가 성공하면 변경될 라이브데이터 관찰
         snsUserCorrectActivityViewModel.isSuccessApi.observe(this, Observer {
             if (it){
+                val editor = sp.edit()
+                editor.putString(USER_NAME_KEY,binding.edtName.text.toString())
+                editor.putString(USER_GENDER_KEY,snsUserCorrectActivityViewModel.getGenderValue())
+                editor.putString(USER_BIRTH_KEY,birthValue.toString())
+                editor.apply()
+
                 Toast.makeText(this,"회원정보가 변경되었습니다.",Toast.LENGTH_SHORT).show()
                 this.finish()
             }

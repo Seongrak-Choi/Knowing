@@ -58,7 +58,7 @@ class MainHomeCalendarRcAdapter(context:Context,private val welfareInfoList:Arra
 
     override fun onBindViewHolder(holder: MainHomeCalendarRcAdapter.SimpleViewHolder, position: Int) {
         holder.bind(welfareInfoList[position])
-        holder.binding.calendarSwipe.showMode=SwipeLayout.ShowMode.LayDown
+        holder.binding.calendarSwipe.showMode=SwipeLayout.ShowMode.PullOut
     }
 
     override fun getItemCount(): Int = welfareInfoList.size

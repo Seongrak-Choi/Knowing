@@ -35,6 +35,7 @@ class UserCorrectActivityViewModel(application: Application) : AndroidViewModel(
     private val _isSuccessWithdrawal = MutableLiveData<Boolean>()
 
 
+
     val isSuccessApi: MutableLiveData<Boolean>
         get() = _isSuccessApi
 

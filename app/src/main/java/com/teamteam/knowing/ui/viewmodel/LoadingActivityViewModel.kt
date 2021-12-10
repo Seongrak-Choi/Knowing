@@ -92,10 +92,7 @@ class LoadingActivityViewModel(application: Application) : AndroidViewModel(appl
     fun tryGetUserInfo(uid: String) {
         val signUpInterface = ApplicationClass.sRetrofit.create(SignUpInterface::class.java)
         signUpInterface.getUserInfo(uid).enqueue(object : Callback<UserInfoResult> {
-            override fun onResponse(
-                call: Call<UserInfoResult>,
-                response: Response<UserInfoResult>
-            ) {
+            override fun onResponse(call: Call<UserInfoResult>, response: Response<UserInfoResult>) {
                 if (response.isSuccessful) {
                     val result = response.body() as UserInfoResult
                     _userInfoApiResult.value = result.userInfoResult

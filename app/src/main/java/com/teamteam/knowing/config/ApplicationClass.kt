@@ -6,6 +6,7 @@ import com.teamteam.knowing.R
 import com.facebook.FacebookSdk
 import com.facebook.appevents.AppEventsLogger
 import com.kakao.sdk.common.KakaoSdk
+import com.teamteam.knowing.util.FCMClass
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -62,6 +63,9 @@ class ApplicationClass : Application() {
 
         //sp에 user_provider로 접근할 키 값
         val USER_PROVIDER_KEY = "USER_PROVIDER"
+
+        //sp에 user_FCM로 접근할 키 값
+        val USER_FCM_TOKEN_KEY = "USER_FCM_TOKEN"
 
 
 

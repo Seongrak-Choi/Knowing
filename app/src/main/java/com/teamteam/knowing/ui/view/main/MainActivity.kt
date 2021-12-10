@@ -71,5 +71,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         moveTaskToBack(true)
         finishAndRemoveTask();
         android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(0)
     }
 }

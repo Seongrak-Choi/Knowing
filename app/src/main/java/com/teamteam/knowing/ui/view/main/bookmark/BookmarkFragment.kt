@@ -4,7 +4,11 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.FrameLayout
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -88,6 +92,25 @@ class BookmarkFragment : BaseFragment<FragmentBookmarkBinding>(FragmentBookmarkB
         })
 
 
+        //EditText검색 할 때 나오는 키보드 종류가 완료이도록 설정
+        binding.edtSearch.imeOptions = EditorInfo.IME_ACTION_DONE
+
+
+        //EditText검색 키보드 완료 버튼 클릭 이벤트. 완료 버튼을 누르면 포커싱을 없애주기 위한 코드
+        binding.edtSearch.setOnEditorActionListener { v, actionId, event ->
+            var handled = false
+            if (actionId == EditorInfo.IME_ACTION_DONE) { //액션 iD가 완료이면
+
+                //키보드 밑으로 내리는 코드
+                val imm = requireActivity().getSystemService(AppCompatActivity.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(binding.edtSearch.windowToken, 0)
+
+                handled = true
+            }
+            handled
+        }
+
+
         //총 건수 설정할 라이브데이터 관찰
         bookmarkFragmentViewModel.currentBookmarkTotal.observe(viewLifecycleOwner, Observer {
             binding.txWelfareTotal.text="총 ${it}건"
@@ -99,5 +122,8 @@ class BookmarkFragment : BaseFragment<FragmentBookmarkBinding>(FragmentBookmarkB
 
         //api 호출 해서 라이브 데이터에 결과 저장
         bookmarkFragmentViewModel.tryGetBookmarkList(ApplicationClass.USER_UID)
+
+        //edtSearch 검색 기록 초기화
+        binding.edtSearch.setText("")
     }
 }

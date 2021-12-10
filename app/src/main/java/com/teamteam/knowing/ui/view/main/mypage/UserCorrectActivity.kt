@@ -117,6 +117,16 @@ class UserCorrectActivity :
         //회원 수정 api가 성공하면 변경될 라이브데이터 관찰
         userCorrectActivityViewModel.isSuccessApi.observe(this, Observer {
             if (it){
+                val phNum = binding.edtPhoneNum.text.toString().replace("-", "")
+
+                val editor = sp.edit()
+                editor.putString(USER_NAME_KEY,binding.edtName.text.toString())
+                editor.putString(USER_EMAIL_KEY,binding.edtEmail.text.toString())
+                editor.putString(USER_PHONE_NUM_KEY,phNum)
+                editor.putString(USER_GENDER_KEY,userCorrectActivityViewModel.getGenderValue())
+                editor.putString(USER_BIRTH_KEY,birthValue.toString())
+                editor.apply()
+
                 Toast.makeText(this,"회원정보가 변경되었습니다.",Toast.LENGTH_SHORT).show()
                 this.finish()
             }
@@ -154,7 +164,11 @@ class UserCorrectActivity :
             userCorrectActivityViewModel.currentBtnWomen.value=true
 
         val phNum = sp.getString(USER_PHONE_NUM_KEY,"").toString()
-        binding.edtPhoneNum.setText(phNum.substring(0,3)+"-"+phNum.substring(3,7)+"-"+phNum.substring(7,11))
+
+        //폰 번호의 길이가 11자인 경우에만 출력
+        if (phNum.length==11){
+            binding.edtPhoneNum.setText(phNum.substring(0,3)+"-"+phNum.substring(3,7)+"-"+phNum.substring(7,11))
+        }
 
         val birth = sp.getString(USER_BIRTH_KEY,"").toString()
         println(sp.getString(USER_BIRTH_KEY,"").toString())
@@ -472,5 +486,4 @@ class UserCorrectActivity :
         val matcher: Matcher = pattern.matcher(email)
         return matcher.matches()
     }
-
 }

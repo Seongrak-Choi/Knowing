@@ -104,6 +104,12 @@ class MyPageFragment:BaseFragment<FragmentMyPageBinding>(FragmentMyPageBinding::
 
             requireActivity().finish()
         }
+    }
 
+    override fun onResume() {
+        super.onResume()
+
+        //title 사용자 이름 넣어서 textview셋팅
+        binding.txName.text="${sp.getString(USER_NAME_KEY,"").toString()}님"
     }
 }
