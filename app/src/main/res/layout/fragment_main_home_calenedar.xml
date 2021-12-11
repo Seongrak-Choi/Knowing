@@ -90,7 +90,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="65dp"
+                android:paddingTop="55dp"
                 app:layout_constraintTop_toTopOf="parent">
                 <!--collapsing 위치를 지정하기 위해 home화면이랑 똑같은 tabLayout 가져와서 위치 조정함-->
                 <com.google.android.material.tabs.TabLayout

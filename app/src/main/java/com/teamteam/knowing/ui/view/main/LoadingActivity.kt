@@ -9,10 +9,12 @@ import com.kakao.sdk.common.util.Utility
 import com.teamteam.knowing.config.ApplicationClass
 import com.teamteam.knowing.config.ApplicationClass.Companion.USER_BIRTH_KEY
 import com.teamteam.knowing.config.ApplicationClass.Companion.USER_EMAIL_KEY
+import com.teamteam.knowing.config.ApplicationClass.Companion.USER_FCM_TOKEN_KEY
 import com.teamteam.knowing.config.ApplicationClass.Companion.USER_GENDER_KEY
 import com.teamteam.knowing.config.ApplicationClass.Companion.USER_NAME_KEY
 import com.teamteam.knowing.config.ApplicationClass.Companion.USER_PHONE_NUM_KEY
 import com.teamteam.knowing.config.ApplicationClass.Companion.USER_PROVIDER_KEY
+import com.teamteam.knowing.config.ApplicationClass.Companion.USER_UID
 import com.teamteam.knowing.config.ApplicationClass.Companion.sp
 import com.teamteam.knowing.databinding.ActivityLoadingBinding
 import com.teamteam.knowing.ui.base.BaseActivity
@@ -22,11 +24,10 @@ import com.teamteam.knowing.util.FCMClass
 class LoadingActivity : BaseActivity<ActivityLoadingBinding>(ActivityLoadingBinding::inflate){
     lateinit var loadingActivityViewModel: LoadingActivityViewModel
 
+    private lateinit var fcmToken : String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        //fcm토큰 저장
-        FCMClass()
 
         //lottie 애니메이션 시작
         binding.lottieView.playAnimation()
@@ -38,6 +39,9 @@ class LoadingActivity : BaseActivity<ActivityLoadingBinding>(ActivityLoadingBind
 
         //sp에서 user_name을 불러와서 저장
         val user_name = sp.getString(USER_NAME_KEY,"")
+
+        //sp에서 fcm토큰 불러와서 저장
+        fcmToken=sp.getString(USER_FCM_TOKEN_KEY,"").toString()
 
         //sp에서 불러온 user_name이 처음 회원가입하여 없는 경있는지 없는지 판단해서 라이팅 구분
         if(!user_name.isNullOrEmpty()){
@@ -62,9 +66,11 @@ class LoadingActivity : BaseActivity<ActivityLoadingBinding>(ActivityLoadingBind
                 editor.putString(USER_PROVIDER_KEY,loadingActivityViewModel.userInfoApiResult.value!!.provider)
                 editor.apply()
 
+                //유저 정보에 fcm 토큰 리프레쉬 해주는 api 호출
+                loadingActivityViewModel.tryPostUserFcmToken(USER_UID,fcmToken)
 
                 //유저 정보 sharedPreference에 저장한 후 복지정보 api 메소드 호출
-                loadingActivityViewModel.tryGetWelfareInfo(ApplicationClass.USER_UID)
+                loadingActivityViewModel.tryGetWelfareInfo(USER_UID)
             }
         })
 

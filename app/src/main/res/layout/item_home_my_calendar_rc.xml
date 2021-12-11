@@ -97,7 +97,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tx_name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="13dp"
                     android:layout_marginTop="15dp"
@@ -106,6 +106,9 @@
                     android:text="청년월세지원"
                     android:textColor="#262626"
                     android:textSize="16sp"
+                    android:maxLines="1"
+                    android:layout_marginEnd="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintBottom_toTopOf="@+id/tx_address"
                     app:layout_constraintStart_toEndOf="@+id/img_address"
                     app:layout_constraintTop_toTopOf="parent" />

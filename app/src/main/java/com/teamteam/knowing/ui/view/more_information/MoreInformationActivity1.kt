@@ -28,7 +28,7 @@ class MoreInformationActivity1 :
             ViewModelProvider(this).get(MoreInformationActivity1ViewModel::class.java)
 
         //회원가입에서 받아온 이름으로 라이팅 하기위해 TextView의 Text변경
-        binding.txTitle2.text="${user_data.name}님만의 혜택을 위해선 추가 입력이 필요해요"
+        binding.txTitle2.text="${user_data.name}님만의 혜택을 위해선\n추가 입력이 필요해요"
 
 
         // 시/도에서 선택할 경우 선택된 데이터로 텍스트를 변경해주기 위해 옵저버 패턴을 이용해 뷰모델의 _currentTxDo를 관찰한다.

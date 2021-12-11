@@ -152,7 +152,7 @@ class CustomWelfareFragmentViewModel(application: Application) : AndroidViewMode
 
         //그래프 비율 정해주는 곳
         if (totalMap[sortedList[0]] != 0)
-            _biasBarHeightSubject1.value = 0.6f
+            _biasBarHeightSubject1.value = 0.567f
         else
             _biasBarHeightSubject1.value = 0.01f
 
@@ -516,30 +516,30 @@ class CustomWelfareFragmentViewModel(application: Application) : AndroidViewMode
 
     /*
     그래프의 높이 비율을 구하기 위한 메소드
-    한 단계 당 0.0315f
+    한 단계 당 0.0298f
      */
     private fun getBias(bias: Int): Float {
         when (bias) {
-            20 -> return 0.6f
-            19 -> return 0.5985f
-            18 -> return 0.567f
-            17 -> return 0.5355f
-            16 -> return 0.504f
-            15 -> return 0.4725f
-            14 -> return 0.441f
-            13 -> return 0.4095f
-            12 -> return 0.378f
-            11 -> return 0.3465f
-            10 -> return 0.315f
-            9 -> return 0.2835f
-            8 -> return 0.252f
-            7 -> return 0.2205f
-            6 -> return 0.189f
-            5 -> return 0.1575f
-            4 -> return 0.126f
-            3 -> return 0.0945f
-            2 -> return 0.063f
-            1 -> return 0.0315f
+            20 -> return 0.567f
+            19 -> return 0.53719f
+            18 -> return 0.5074f
+            17 -> return 0.47759f
+            16 -> return 0.4478f
+            15 -> return 0.41799f
+            14 -> return 0.38819f
+            13 -> return 0.35839f
+            12 -> return 0.32859f
+            11 -> return 0.29879f
+            10 -> return 0.26899f
+            9 -> return 0.23919f
+            8 -> return 0.20939f
+            7 -> return 0.17959f
+            6 -> return 0.14979f
+            5 -> return 0.11999f
+            4 -> return 0.09019f
+            3 -> return 0.06039f
+            2 -> return 0.03059f
+            1 -> return 0.00079f
             else -> return 0.01f
         }
     }

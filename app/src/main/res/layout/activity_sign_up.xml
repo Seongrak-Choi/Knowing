@@ -41,6 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:fontFamily="@font/godom"
+                android:lineSpacingExtra="7dp"
                 android:text="@string/title2"
                 android:textColor="#656565"
                 android:textSize="26sp"

@@ -21,6 +21,10 @@ interface SignUpInterface {
     @GET("app/users/userInfo")
     fun getUserInfo(@Header("uid")uid:String) : Call<UserInfoResult>
 
+    //유저 FCM 토큰 서버에 저장하는 api
+    @POST("app/users/fcmplus")
+    fun postUserFCMToken(@Header("userUid")userUid:String, @Header("fcmtoken")fcmtoken:String):Call<PostFcmTokenResponse>
+
     //회원 탈퇴 api
     @DELETE("/app/users/userdelete")
     fun deleteWithdrawal(@Header("uid")uid:String) : Call<UserWithdrawalResponse>

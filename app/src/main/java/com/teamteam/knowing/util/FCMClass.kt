@@ -11,16 +11,25 @@ import androidx.core.app.NotificationCompat
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.teamteam.knowing.R
+import com.teamteam.knowing.config.ApplicationClass
+import com.teamteam.knowing.config.ApplicationClass.Companion.USER_FCM_TOKEN_KEY
 import com.teamteam.knowing.config.ApplicationClass.Companion.sp
+import com.teamteam.knowing.data.model.network.response.PostFcmTokenResponse
+import com.teamteam.knowing.data.remote.api.SignUpInterface
 import com.teamteam.knowing.ui.view.main.MainActivity
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class FCMClass : FirebaseMessagingService() {
     override fun onNewToken(s: String) {
         super.onNewToken(s)
-//        val editor = sp.edit()
-//        editor.putString("USER_FCM_TOKEN_KEY",s)
-//        editor.apply()
+
+        //fcm토큰 sp에 저장
+        val editor = sp.edit()
+        editor.putString(USER_FCM_TOKEN_KEY,s)
+        editor.apply()
 
         Log.d("FCM_TEST", s)
     }
@@ -28,10 +37,8 @@ class FCMClass : FirebaseMessagingService() {
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
         val title = remoteMessage.data["title"] //firebase에서 보낸 메세지의 title
-        val message = remoteMessage.data["message"] //firebase에서 보낸 메세지의 내용
+        val message = remoteMessage.data["body"] //firebase에서 보낸 메세지의 내용
         val test = remoteMessage.data["test"]
-        val topic = remoteMessage.data["topic"]
-        println("from : ${topic}")
         val intent = Intent(this, MainActivity::class.java)
         intent.putExtra("test", test)
         val pendingIntent =

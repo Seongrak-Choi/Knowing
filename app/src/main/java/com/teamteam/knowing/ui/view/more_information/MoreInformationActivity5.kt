@@ -36,11 +36,13 @@ class MoreInformationActivity5:BaseActivity<ActivityMoreInformation5Binding>(Act
         //datePicker에서 선택시 라이브 데이터가 변경되면 옵저버해서 txGrade를 변경함
         moreInformation5ActivityViewModel.currentTxGrade.observe(this, Observer {
             binding.txGrade.text=it.toString()
+            binding.txGrade.setTextColor(Color.parseColor("#414141"))
         })
 
         //datePicker에서 선택시 라이브 데이터가 변경되면 옵저버해서 txSemester를 변경함
         moreInformation5ActivityViewModel.currentTxSemester.observe(this, Observer {
             binding.txSemester.text=it.toString()
+            binding.txSemester.setTextColor(Color.parseColor("#414141"))
         })
 
         //추가 학기 / 졸업 유예 체크 상태를 변화시키기 위해 뷰모델의 currentCheckState상태를 옵저버로 확인해 백그라운드를 변경시켜 준다.

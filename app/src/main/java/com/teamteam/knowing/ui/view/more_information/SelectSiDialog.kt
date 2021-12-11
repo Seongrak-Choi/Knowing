@@ -45,7 +45,7 @@ class SelectSiDialog: DialogFragment(){
 
             val params = dialog?.window?.attributes
             params!!.width = deviceSize.x //다이얼로그의 가로를 디바이스 만큼 넓히기
-            params!!.height = (deviceSize.y/1.4).toInt() //다이얼로그의 세로를 디바이스의 세로의 60%만큼만 차지
+            params!!.height = (deviceSize.y/1.6).toInt() //다이얼로그의 세로를 디바이스의 세로의 60%만큼만 차지
             //params!!.horizontalMargin = 0.0f //가로의 마진 없애기인데 사실 이거 없어도 가로가 꽉참.
             dialog?.window?.attributes = params
             dialog?.window?.setGravity(Gravity.BOTTOM) //다이얼로그를 바텀에 붙히기 위함

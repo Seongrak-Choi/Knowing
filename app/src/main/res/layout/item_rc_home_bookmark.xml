@@ -110,7 +110,7 @@
                     android:id="@+id/tx_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
+                    android:layout_marginTop="14dp"
                     android:fontFamily="@font/roboto_bold"
                     android:text="청년고용지원"
                     android:textColor="#262626"

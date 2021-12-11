@@ -36,6 +36,7 @@
         android:textSize="24sp"
         android:textColor="#656565"
         android:fontFamily="@font/godom"
+        android:lineSpacingExtra="7dp"
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="@id/guidelineStart"
         app:layout_constraintTop_toBottomOf="@+id/tx_title1"/>

@@ -126,7 +126,8 @@
             android:textColor="#414141"
             android:layout_marginStart="8dp"
             app:layout_constraintStart_toEndOf="@+id/tx_grade"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tx_semester"
@@ -150,6 +151,7 @@
             android:textColor="#414141"
             android:layout_marginStart="8dp"
             app:layout_constraintStart_toEndOf="@+id/tx_semester"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <androidx.appcompat.widget.AppCompatImageView

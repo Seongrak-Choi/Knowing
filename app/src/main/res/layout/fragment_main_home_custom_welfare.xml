@@ -601,7 +601,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="65dp"
+                android:paddingTop="55dp"
                 app:layout_constraintTop_toTopOf="parent">
                 <!--collapsing 위치를 지정하기 위해 home화면이랑 똑같은 tabLayout 가져와서 위치 조정함-->
                 <com.google.android.material.tabs.TabLayout
@@ -631,7 +631,7 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/app_bar_bg"
                     android:layout_width="match_parent"
-                    android:layout_height="210dp"
+                    android:layout_height="190dp"
                     android:background="#ffe4b6"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -666,7 +666,6 @@
                     app:layout_constraintTop_toBottomOf="@+id/img_app_bar_bg_center"
                     app:layout_constraintEnd_toEndOf="parent"/>
 
-
                 <com.google.android.material.appbar.MaterialToolbar
                     android:id="@+id/toolbar_fake"
                     android:layout_width="match_parent"
@@ -700,7 +699,7 @@
                     android:textSize="17sp"
                     android:textColor="#a4613d"
                     android:fontFamily="@font/godom"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="20dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/toolbar_fake"/>
@@ -713,7 +712,7 @@
                     android:textColor="#b97142"
                     android:fontFamily="@font/godob"
                     android:textSize="42sp"
-                    android:layout_marginTop="14dp"
+                    android:layout_marginTop="4dp"
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintEnd_toStartOf="@+id/tx_won"
                     app:layout_constraintTop_toBottomOf="@+id/tx_name_title"
@@ -751,7 +750,7 @@
                     android:textSize="18sp"
                     android:fontFamily="@font/roboto_bold"
                     android:textColor="#d28451"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="4dp"
                     app:layout_constraintTop_toBottomOf="@+id/tx_max_cost"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"/>

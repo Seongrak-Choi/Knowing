@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData
 import com.teamteam.knowing.config.ApplicationClass
 import com.teamteam.knowing.data.model.domain.SignUpUser
 import com.teamteam.knowing.data.model.network.response.MainWelfareResponse
+import com.teamteam.knowing.data.model.network.response.PostFcmTokenResponse
 import com.teamteam.knowing.data.model.network.response.UserInfoResult
 import com.teamteam.knowing.data.remote.api.SignUpInterface
 import com.teamteam.knowing.data.remote.api.WelfareInterface
@@ -104,6 +105,26 @@ class LoadingActivityViewModel(application: Application) : AndroidViewModel(appl
 
             override fun onFailure(call: Call<UserInfoResult>, t: Throwable) {
                 Log.e("ERROR", "유저 정보 받아오는 api 통신 실패")
+            }
+
+        })
+    }
+
+    //유저 fcm토큰 초기화해서 서버에 post하는 api 메소드
+    fun tryPostUserFcmToken(userUid:String,fcmtoken:String){
+        println("api 호출은 되나?")
+        val signUpInterface = ApplicationClass.sRetrofit.create(SignUpInterface::class.java)
+        signUpInterface.postUserFCMToken(userUid,fcmtoken).enqueue(object:Callback<PostFcmTokenResponse>{
+            override fun onResponse(call: Call<PostFcmTokenResponse>, response: Response<PostFcmTokenResponse>) {
+                if (response.isSuccessful){
+                    val result = response.body() as PostFcmTokenResponse
+                    Log.d("INFO","fcm토큰 post 결과: ${result.postFcmTokenResult.status}")
+                }else{
+                    Log.e("ERROR","fcm토큰 post api 실패")
+                }
+            }
+            override fun onFailure(call: Call<PostFcmTokenResponse>, t: Throwable) {
+                Log.e("ERROR","FCM토큰 POST API 통신 실패")
             }
 
         })

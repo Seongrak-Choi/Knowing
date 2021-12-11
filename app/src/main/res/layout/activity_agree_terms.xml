@@ -18,13 +18,25 @@
         android:id="@+id/title1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="간편한 이용을 위해\n약관에 동의해주세요"
+        android:text="간편한 이용을 위해"
         android:textSize="24sp"
         android:fontFamily="@font/godom"
         android:textColor="#656565"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="@id/guidelineStart"
         app:layout_constraintTop_toBottomOf="@+id/img_knowing"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tx_title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="약관에 동의해주세요"
+        android:textSize="24sp"
+        android:fontFamily="@font/godom"
+        android:textColor="#656565"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@id/guidelineStart"
+        app:layout_constraintTop_toBottomOf="@+id/title1"/>
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img_illust"
@@ -35,7 +47,7 @@
         android:layout_marginTop="41dp"
         app:layout_constraintStart_toStartOf="@id/guidelineStart"
         app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
-        app:layout_constraintTop_toBottomOf="@+id/title1"/>
+        app:layout_constraintTop_toBottomOf="@+id/tx_title2"/>
 
 
     <!--모두 동의-->
@@ -43,7 +55,7 @@
         android:id="@+id/linear_1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="42dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         app:layout_constraintTop_toBottomOf="@+id/img_illust"
@@ -244,7 +256,7 @@
         app:layout_constraintStart_toStartOf="@id/guidelineStart"
         app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="50dp"/>
+        android:layout_marginBottom="20dp"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineStart"

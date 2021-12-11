@@ -19,20 +19,10 @@
         android:id="@+id/constraint_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintVertical_bias="0.92"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tx_start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="노잉 시작하기"
-            android:textSize="17sp"
-            android:fontFamily="@font/godom"
-            android:textColor="#515151"
-            android:layout_marginBottom="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/linear_btn" />
 
         <LinearLayout
             android:id="@+id/linear_btn"
@@ -40,41 +30,45 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal"
-            android:paddingHorizontal="20dp"
+            android:paddingHorizontal="60dp"
             android:layout_marginBottom="23dp"
             app:layout_constraintBottom_toTopOf="@+id/btn_sign_up">
 
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/btn_login_naver"
-                android:layout_width="55dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp"
                 android:adjustViewBounds="true"
+                android:layout_weight="1"
                 android:src="@drawable/group_logo_naver" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/btn_login_kakao"
-                android:layout_width="55dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp"
                 android:adjustViewBounds="true"
+                android:layout_weight="1"
                 android:src="@drawable/group_logo_kakao" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/btn_login_facebook"
-                android:layout_width="55dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp"
                 android:adjustViewBounds="true"
+                android:layout_weight="1"
                 android:src="@drawable/group_logo_facebook" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/btn_login_google"
-                android:layout_width="55dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp"
                 android:adjustViewBounds="true"
+                android:layout_weight="1"
                 android:src="@drawable/group_logo_google" />
         </LinearLayout>
 
@@ -85,7 +79,6 @@
             android:text="이메일로 로그인"
             android:textSize="14sp"
             android:textColor="#939393"
-            android:layout_marginBottom="50dp"
             android:layout_marginTop="30dp"
             android:fontFamily="@font/roboto_bold"
             app:layout_constraintHorizontal_chainStyle="packed"
@@ -111,7 +104,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:layout_marginBottom="50dp"
             android:text="이메일로 회원가입"
             android:textSize="14sp"
             android:textColor="#939393"
