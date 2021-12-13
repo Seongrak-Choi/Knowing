@@ -33,7 +33,6 @@ class MoreInformationActivity1 :
 
         // 시/도에서 선택할 경우 선택된 데이터로 텍스트를 변경해주기 위해 옵저버 패턴을 이용해 뷰모델의 _currentTxDo를 관찰한다.
         moreInformationActivity1ViewModel.currentTxDo.observe(this, Observer {
-            println(it)
             binding.txDo.text = it.toString()
         })
 
@@ -51,7 +50,6 @@ class MoreInformationActivity1 :
 
         // 시/군/구 에서 선택할 경우 선택된 데이터로 텍스트를 변경해주기 위해 옵저버 패턴을 이용해 뷰모델의 _currentTxDo를 관찰한다.
         moreInformationActivity1ViewModel.currentTxSi.observe(this, Observer {
-            println(it)
             binding.txSi.text = it.toString()
         })
 

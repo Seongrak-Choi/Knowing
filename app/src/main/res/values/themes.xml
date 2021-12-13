@@ -6,7 +6,7 @@
         <item name="colorPrimaryVariant">@color/white</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondary">#ff8e3b</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
@@ -62,32 +62,32 @@
 
     <!--main_home_tabLayout에 들어갈 메뉴 글자 설정-->
     <style name="main_home_tab_layout_text_style">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">16dp</item>
         <item name="fontFamily">@font/roboto_bold</item>
     </style>
 
     <!--main_home_tabLayout에 들어갈 메뉴 글자 설정-->
     <style name="main_home_custom_welfare_tab_layout_text_style">
-        <item name="android:textSize">17sp</item>
+        <item name="android:textSize">17dp</item>
         <item name="fontFamily">@font/roboto_medium</item>
     </style>
 
     <!--main_home_tabLayout에 들어갈 메뉴 글자 설정-->
     <style name="welfare_detail_tab_layout_text_style">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">16dp</item>
         <item name="fontFamily">@font/roboto_bold</item>
     </style>
 
     <!--main_home_all_welfare_tabLayout에 들어갈 메뉴 글자 설정-->
     <style name="main_home_all_welfare_tab_layout_text_style">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">14dp</item>
         <item name="fontFamily">@font/roboto_bold</item>
     </style>
 
 
     <!--calendar의 일 글씨크기 변경-->
     <style name="calendar_dateTextStyle">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">16dp</item>
         <item name="android:textColor">@drawable/my_custom_calendar_day_color</item>
         <item name="android:fontFamily">@font/roboto_regular</item>
     </style>

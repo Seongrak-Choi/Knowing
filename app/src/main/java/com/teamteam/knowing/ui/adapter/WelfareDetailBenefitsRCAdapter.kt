@@ -89,6 +89,8 @@ class WelfareDetailBenefitsRCAdapter(
             isSmallSubject = true
         }
 
+        //소주제가 없는데도 대주제가 2줄 이상인 경우를 파악해서 더보기 버튼을 달아줘야 한다. 때문에
+        //대주제가 2줄이상 넘어가는지 안넘어 가는지 확인하는 코드이다.
         holder.binding.txBigSubject.viewTreeObserver.addOnGlobalLayoutListener(object :
             ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {

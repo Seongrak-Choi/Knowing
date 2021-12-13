@@ -1,11 +1,14 @@
 package com.teamteam.knowing.ui.view.main.mypage
 
 import android.app.AlertDialog
+import android.app.Dialog
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
+import android.view.Window
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
@@ -25,6 +28,7 @@ import com.teamteam.knowing.config.ApplicationClass.Companion.sp
 import com.teamteam.knowing.data.model.network.request.UserCorrectRequest
 import com.teamteam.knowing.databinding.ActivitySnsUserCorrectBinding
 import com.teamteam.knowing.ui.base.BaseActivity
+import com.teamteam.knowing.ui.view.login.JoinUpSNSActivity
 import com.teamteam.knowing.ui.viewmodel.SnsUserCorrectActivityViewModel
 import java.util.regex.Matcher
 import java.util.regex.Pattern
@@ -32,6 +36,9 @@ import java.util.regex.Pattern
 class SnsUserCorrectActivity :
     BaseActivity<ActivitySnsUserCorrectBinding>(ActivitySnsUserCorrectBinding::inflate) {
     private lateinit var snsUserCorrectActivityViewModel: SnsUserCorrectActivityViewModel
+
+    //다이얼로그
+    private lateinit var dialog_withdrawal : Dialog
 
     private var birthValue: Int = 0
 
@@ -114,6 +121,29 @@ class SnsUserCorrectActivity :
 
                 Toast.makeText(this,"회원정보가 변경되었습니다.",Toast.LENGTH_SHORT).show()
                 this.finish()
+            }
+        })
+
+
+        //회원 탈퇴 api가 성공하면 변경될 라이브데이터 관찰
+        snsUserCorrectActivityViewModel.isSuccessWithdrawal.observe(this, Observer {
+            if (it){
+                val editor = sp.edit()
+                editor.putString(ApplicationClass.UID_KEY,"")
+                editor.putString(USER_NAME_KEY,"")
+                editor.putString(ApplicationClass.USER_EMAIL_KEY,"")
+                editor.putString(ApplicationClass.USER_PROVIDER_KEY,"")
+                editor.putString(ApplicationClass.USER_PHONE_NUM_KEY,"")
+                editor.putString(USER_GENDER_KEY,"")
+                editor.putString(USER_BIRTH_KEY,"")
+                editor.apply()
+
+                //JoinUpSns 액티비티로 이동
+                val intent = Intent(this, JoinUpSNSActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent)
+
+                finish()
             }
         })
 
@@ -244,6 +274,27 @@ class SnsUserCorrectActivity :
         //뒤로가기 아이콘 클릭 리스너
         binding.btnBack.setOnClickListener {
             this.onBackPressed()
+        }
+
+
+        //정말 탈퇴할 건지 묻는 다이얼로그 객체 생성 및 설정
+        dialog_withdrawal = Dialog(this)
+        dialog_withdrawal.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog_withdrawal.setContentView(R.layout.dialog_alert_withdrawal)
+
+        //회원탈퇴하기
+        binding.btnWithdrawal.setOnClickListener {
+            dialog_withdrawal.show()
+
+            //다이얼로그 내부 확인 누를 때 발동 리스너
+            dialog_withdrawal.findViewById<Button>(R.id.dialog_sys_setting_btn_positive).setOnClickListener {
+                //회원탈퇴 api 호출
+                snsUserCorrectActivityViewModel.tryDeleteWithdrawal(USER_UID)
+            }
+            //다이얼로그 내부 취소 누를 때 발동 리스너
+            dialog_withdrawal.findViewById<Button>(R.id.dialog_sys_setting_btn_negative).setOnClickListener {
+                dialog_withdrawal.dismiss()
+            }
         }
 
 

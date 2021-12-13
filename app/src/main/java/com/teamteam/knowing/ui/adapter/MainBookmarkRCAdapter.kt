@@ -45,6 +45,11 @@ class MainBookmarkRCAdapter(private val welfareList:ArrayList<WelfareInfo>, priv
             binding.txName.text=data.name
             binding.txAddress.text=data.address
 
+            //거주지가 서울인 경우 로고를 서울로 변경
+            if ("서울" in data.address){
+                binding.imgAddress.setImageResource(R.drawable.logo_20_seoul)
+            }
+
             if (data.maxMoney!="0"){//0이 아닌 경우만 수정하기 위함
                 var maxMoney = data.maxMoney.substring(0,data.maxMoney.length-4)
                 binding.txMaxCost.text="최대 ${maxMoney}만원 지원"
@@ -100,7 +105,7 @@ class MainBookmarkRCAdapter(private val welfareList:ArrayList<WelfareInfo>, priv
                     (mContext as AppCompatActivity).findViewById<ConstraintLayout>(R.id.constraint_no_data).visibility=View.VISIBLE
                 else
                     (mContext as AppCompatActivity).findViewById<ConstraintLayout>(R.id.constraint_no_data).visibility=View.INVISIBLE
-                notifyDataSetChanged()
+                notifyItemRemoved(position)
             }
         }
     }

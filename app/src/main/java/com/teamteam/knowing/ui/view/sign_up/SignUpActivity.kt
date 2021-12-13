@@ -222,6 +222,8 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
                 binding.imgEmailError.visibility = View.INVISIBLE //edt에 입력이 시작되면 에러 이미지 안보이게
                 binding.txEmailError.visibility = View.INVISIBLE//edt에 입력이 시작되면 에러 메세지 안보이게
                 binding.imgEmailCancel.visibility = View.VISIBLE //edt에 입력이 시작되면 캔슬 버튼 보이도록
+                binding.txEmailDuplicateError.visibility=View.INVISIBLE //edt에 입력이 시작되면 중복 메세지 안 보이도록
+
 
                 //입력과 동시에 email형식이 맞는지 확인하는 라인
                 signUpActivityViewModel.emailIsCorrect.value =
@@ -447,8 +449,6 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
             intent.putExtra("user_data", user_data) //userData객체를 intent로 전달
             startActivity(intent)
         }
-
-
         //뒤로가기 아이콘 클릭 리스너
         binding.btnBack.setOnClickListener {
             this.onBackPressed()

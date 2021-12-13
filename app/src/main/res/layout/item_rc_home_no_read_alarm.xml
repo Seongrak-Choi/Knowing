@@ -6,7 +6,6 @@
     android:layout_marginBottom="16dp">
 
     <com.daimajia.swipe.SwipeLayout
-        android:id="@+id/calendar_swipe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -76,79 +75,70 @@
                 app:layout_constraintTop_toTopOf="parent"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraint_select_welfare"
+                android:id="@+id/btn_select_welfare"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toEndOf="@+id/view"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:background="@drawable/rectangle_fff6eb_radius20">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/img_address"
-                    android:layout_width="30dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="14dp"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/logo_30_government"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                android:background="@drawable/rectangle_fff6e8_radius30"
+                android:paddingHorizontal="17dp"
+                android:paddingVertical="15dp">
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tx_name"
+                    android:id="@+id/tx_title"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="13dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="8dp"
+                    android:text="맞춤 정보 업데이트!"
                     android:fontFamily="@font/roboto_bold"
-                    android:text="청년월세지원"
-                    android:textColor="#262626"
-                    android:textSize="16sp"
-                    android:maxLines="1"
-                    android:layout_marginEnd="15dp"
-                    app:layout_constraintEnd_toStartOf="@+id/btn_notification"
-                    app:layout_constraintBottom_toTopOf="@+id/tx_address"
-                    app:layout_constraintStart_toEndOf="@+id/img_address"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:textColor="#a4613d"
+                    android:textSize="17sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tx_address"
+                    android:id="@+id/tx_subtitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="아토님을 위한 새로운 복지 정책이 나왔어요. 확인하러 가볼까요?"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textColor="#ce8e62"
+                    android:textSize="15sp"
+                    android:layout_marginTop="7dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tx_title"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="13dp"
-                    android:layout_marginBottom="15dp"
-                    android:fontFamily="@font/roboto_bold"
-                    android:text="서울시"
-                    android:textColor="#7a7a7a"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/img_address" />
+                    android:text="2시간 전"
+                    android:textSize="13sp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textColor="#949494"
+                    android:layout_marginTop="7dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tx_subtitle"/>
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/btn_notification"
-                    android:layout_width="38dp"
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineStart"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
-                    android:adjustViewBounds="true"
-                    android:tag="Hover"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="18dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineEnd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="18dp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <View
-                android:id="@+id/btn_select_welfare"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginEnd="70dp"
-                app:layout_constraintStart_toEndOf="@+id/view"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/constraint_select_welfare"
-                app:layout_constraintBottom_toBottomOf="@id/constraint_select_welfare"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.daimajia.swipe.SwipeLayout>
-
 
 </androidx.appcompat.widget.LinearLayoutCompat>

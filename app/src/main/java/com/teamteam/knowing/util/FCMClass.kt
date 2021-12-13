@@ -11,15 +11,11 @@ import androidx.core.app.NotificationCompat
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.teamteam.knowing.R
-import com.teamteam.knowing.config.ApplicationClass
 import com.teamteam.knowing.config.ApplicationClass.Companion.USER_FCM_TOKEN_KEY
 import com.teamteam.knowing.config.ApplicationClass.Companion.sp
-import com.teamteam.knowing.data.model.network.response.PostFcmTokenResponse
-import com.teamteam.knowing.data.remote.api.SignUpInterface
-import com.teamteam.knowing.ui.view.main.MainActivity
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+
+import com.teamteam.knowing.ui.view.main.LoadingActivity
+
 
 
 class FCMClass : FirebaseMessagingService() {
@@ -36,10 +32,11 @@ class FCMClass : FirebaseMessagingService() {
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
         super.onMessageReceived(remoteMessage)
+        println("notification: ${remoteMessage.notification}")
         val title = remoteMessage.data["title"] //firebase에서 보낸 메세지의 title
         val message = remoteMessage.data["body"] //firebase에서 보낸 메세지의 내용
         val test = remoteMessage.data["test"]
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, LoadingActivity::class.java)
         intent.putExtra("test", test)
         val pendingIntent =
             PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)

@@ -3,6 +3,7 @@ package com.teamteam.knowing.ui.view.main.home
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.lifecycle.ViewModelProvider
@@ -55,6 +56,13 @@ class CalendarFragment : BaseFragment<FragmentMainHomeCalenedarBinding>(
         params2.height = result * 2
         binding.imgTopRectangle.layoutParams = params2
 
+        val Height = resources.displayMetrics.heightPixels
+
+        //appbar 맨 밑 1자 바 높이를 디스플레이에 맞게 지정해준다.
+        val bgCenterLP : ViewGroup.LayoutParams = binding.imgAppBarBgCenter.layoutParams
+        bgCenterLP.height=(Height*0.05).toInt()
+        binding.imgAppBarBgCenter.layoutParams=bgCenterLP
+
 
         //뷰모델 장착
         calendarFragmentViewModel =
@@ -62,6 +70,9 @@ class CalendarFragment : BaseFragment<FragmentMainHomeCalenedarBinding>(
 
         //달력 월마다 4~5주에 맞게 다이나믹하게 높이 지정
         binding.calendar.isDynamicHeightEnabled=true
+
+
+
 
         //리사이클러뷰 장착을 위해 라이브데이터 관찰
         calendarFragmentViewModel.currentRcWelfareList.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
@@ -111,7 +122,6 @@ class CalendarFragment : BaseFragment<FragmentMainHomeCalenedarBinding>(
                         }
                     }
                 }
-
                 //데코 전부 삭제
                 binding.calendar.removeDecorators()
 

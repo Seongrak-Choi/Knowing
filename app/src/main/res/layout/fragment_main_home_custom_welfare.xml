@@ -35,7 +35,7 @@
                     android:fontFamily="@font/roboto_bold"
                     android:text="수혜 예상 복지"
                     android:textColor="#a4613d"
-                    android:textSize="17sp"
+                    android:textSize="17dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
                 <View
@@ -53,7 +53,7 @@
                     android:fontFamily="@font/roboto_bold"
                     android:text="50건"
                     android:textColor="#a4613d"
-                    android:textSize="17sp"
+                    android:textSize="17dp"
                     android:layout_marginStart="6dp"
                     app:layout_constraintStart_toEndOf="@+id/tx_title_graph"
                     app:layout_constraintTop_toTopOf="parent"/>
@@ -88,7 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 android:fontFamily="@font/roboto_bold"
                 android:textColor="#b97142"
                 app:layout_constraintVertical_bias="0.35"
@@ -112,7 +112,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="학생"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 android:textColor="#666666"
                 android:fontFamily="@font/roboto_regular"
                 app:layout_constraintBottom_toTopOf="@+id/tx_graph_subject1_2"
@@ -124,7 +124,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="11"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 android:textColor="#666666"
                 android:fontFamily="@font/roboto_regular"
                 android:layout_marginBottom="14dp"
@@ -150,7 +150,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 android:fontFamily="@font/roboto_bold"
                 android:textColor="#ffffff"
                 app:layout_constraintVertical_bias="0.35"
@@ -177,7 +177,7 @@
                 android:fontFamily="@font/roboto_regular"
                 android:text="취업"
                 android:textColor="#666666"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 app:layout_constraintBottom_toTopOf="@+id/tx_graph_subject2_2"
                 app:layout_constraintStart_toEndOf="@+id/tx_graph_subject1_1"
                 app:layout_constraintEnd_toStartOf="@+id/tx_graph_subject3_1"/>
@@ -189,7 +189,7 @@
                 android:fontFamily="@font/roboto_regular"
                 android:text="22"
                 android:textColor="#666666"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 android:layout_marginBottom="14dp"
                 app:layout_constraintBottom_toBottomOf="@id/constraint_graph"
                 app:layout_constraintEnd_toEndOf="@+id/tx_graph_subject2_1"
@@ -213,7 +213,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 android:fontFamily="@font/roboto_bold"
                 android:textColor="#ffffff"
                 app:layout_constraintVertical_bias="0.35"
@@ -237,7 +237,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="창업"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 android:textColor="#666666"
                 android:fontFamily="@font/roboto_regular"
                 app:layout_constraintBottom_toTopOf="@+id/tx_graph_subject3_2"
@@ -249,7 +249,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="33"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 android:textColor="#666666"
                 android:fontFamily="@font/roboto_regular"
                 android:layout_marginBottom="14dp"
@@ -275,7 +275,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 android:fontFamily="@font/roboto_bold"
                 android:textColor="#ffffff"
                 app:layout_constraintVertical_bias="0.35"
@@ -299,7 +299,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="주거"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 android:textColor="#666666"
                 android:fontFamily="@font/roboto_regular"
                 app:layout_constraintBottom_toTopOf="@+id/tx_graph_subject4_2"
@@ -310,7 +310,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="44"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 android:textColor="#666666"
                 android:fontFamily="@font/roboto_regular"
                 android:layout_marginBottom="14dp"
@@ -336,7 +336,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 android:fontFamily="@font/roboto_bold"
                 android:textColor="#ffffff"
                 app:layout_constraintVertical_bias="0.35"
@@ -360,7 +360,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="생활"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 android:textColor="#666666"
                 android:fontFamily="@font/roboto_regular"
                 app:layout_constraintBottom_toTopOf="@+id/tx_graph_subject5_2"
@@ -372,7 +372,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="55"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 android:textColor="#666666"
                 android:fontFamily="@font/roboto_regular"
                 android:layout_marginBottom="14dp"
@@ -397,7 +397,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 android:fontFamily="@font/roboto_bold"
                 android:textColor="#ffffff"
                 app:layout_constraintVertical_bias="0.35"
@@ -421,7 +421,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="코로나"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 android:textColor="#666666"
                 android:fontFamily="@font/roboto_regular"
                 app:layout_constraintBottom_toTopOf="@+id/tx_graph_subject6_2"
@@ -432,7 +432,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="66"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 android:textColor="#666666"
                 android:fontFamily="@font/roboto_regular"
                 android:layout_marginBottom="14dp"
@@ -459,7 +459,7 @@
                     android:fontFamily="@font/roboto_bold"
                     android:text="카테고리별"
                     android:textColor="#a4613d"
-                    android:textSize="17sp"
+                    android:textSize="17dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -478,7 +478,7 @@
                     android:fontFamily="@font/roboto_bold"
                     android:text="맞춤 복지"
                     android:textColor="#a4613d"
-                    android:textSize="17sp"
+                    android:textSize="17dp"
                     android:layout_marginStart="6dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/tx_title_category"
@@ -490,7 +490,7 @@
                     android:text="높은 금액순"
                     android:fontFamily="@font/roboto_bold"
                     android:textColor="#d28451"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:layout_marginEnd="5.5dp"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -518,6 +518,7 @@
                 app:tabIndicatorColor="@color/trans"
                 app:tabBackground="@drawable/home_custom_welfare_selector_tab_bg"
                 app:tabTextAppearance="@style/main_home_custom_welfare_tab_layout_text_style"
+                android:overScrollMode="never"
                 android:background="@color/trans"
                 app:tabRippleColor="@null"
                 app:tabTextColor="#d28451"
@@ -582,7 +583,6 @@
 
 
 
-
     <!--NestedScrollView보다 위에 있어야 하기 때문에 아래에 선언했음-->
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
@@ -597,17 +597,18 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <!--collapsing이 여기 전까지 되기 때문에 toolbar 필요-->
+            <!--collapsing이 되는 부분을 위해 paddingTop을 코드 onResume에서 주었다-->
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="55dp"
+                android:paddingTop="50dp"
                 app:layout_constraintTop_toTopOf="parent">
                 <!--collapsing 위치를 지정하기 위해 home화면이랑 똑같은 tabLayout 가져와서 위치 조정함-->
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tab_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="55dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
                     android:background="@drawable/home_tab_layout_bg"
@@ -637,24 +638,24 @@
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/img_app_bar_bg_left"
-                    android:layout_width="38dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:adjustViewBounds="true"
                     android:src="@drawable/main_home_appbar_left"
-                    android:layout_marginTop="-2dp"
-                    app:layout_constraintTop_toBottomOf="@+id/app_bar_bg"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    app:layout_constraintEnd_toStartOf="@+id/img_app_bar_bg_center"
+                    app:layout_constraintTop_toTopOf="@id/img_app_bar_bg_center"
+                    app:layout_constraintBottom_toBottomOf="@id/img_app_bar_bg_center"
                     app:layout_constraintStart_toStartOf="parent"/>
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/img_app_bar_bg_center"
                     android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_height="30dp"
                     android:background="#ffe4b6"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/app_bar_bg"
-                    app:layout_constraintStart_toEndOf="@+id/img_app_bar_bg_left"
-                    app:layout_constraintTop_toTopOf="@+id/img_app_bar_bg_left"
-                    app:layout_constraintBottom_toBottomOf="@+id/img_app_bar_bg_left"/>
+                    app:layout_constraintStart_toEndOf="@+id/img_app_bar_bg_left" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/img_app_bar_bg_right"
@@ -666,16 +667,16 @@
                     app:layout_constraintTop_toBottomOf="@+id/img_app_bar_bg_center"
                     app:layout_constraintEnd_toEndOf="parent"/>
 
+                <!--toolbar 만큼 멘트들을 내려주기 위함.-->
                 <com.google.android.material.appbar.MaterialToolbar
                     android:id="@+id/toolbar_fake"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="24dp"
                     app:layout_constraintTop_toTopOf="parent">
                     <com.google.android.material.tabs.TabLayout
                         android:id="@+id/tab_layout_fake"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="55dp"
                         android:layout_marginStart="20dp"
                         android:layout_marginEnd="20dp"
                         android:background="@drawable/home_tab_layout_bg"
@@ -696,10 +697,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="아토님의 최대 수혜 금액"
-                    android:textSize="17sp"
+                    android:textSize="17dp"
                     android:textColor="#a4613d"
                     android:fontFamily="@font/godom"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="35dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/toolbar_fake"/>
@@ -711,7 +712,7 @@
                     android:text="250,000"
                     android:textColor="#b97142"
                     android:fontFamily="@font/godob"
-                    android:textSize="42sp"
+                    android:textSize="42dp"
                     android:layout_marginTop="4dp"
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintEnd_toStartOf="@+id/tx_won"
@@ -724,7 +725,7 @@
                     android:layout_height="wrap_content"
                     android:text="원"
                     android:fontFamily="@font/godob"
-                    android:textSize="22sp"
+                    android:textSize="22dp"
                     android:textColor="#b47a5b"
                     android:layout_marginBottom="10dp"
                     android:layout_marginStart="2dp"
@@ -747,7 +748,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="최소 80,000원"
-                    android:textSize="18sp"
+                    android:textSize="18dp"
                     android:fontFamily="@font/roboto_bold"
                     android:textColor="#d28451"
                     android:layout_marginTop="4dp"

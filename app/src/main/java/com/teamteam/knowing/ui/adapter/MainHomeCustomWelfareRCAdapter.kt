@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.net.ParseException
 import androidx.recyclerview.widget.RecyclerView
+import com.teamteam.knowing.R
 import com.teamteam.knowing.data.model.network.response.WelfareInfo
 import com.teamteam.knowing.databinding.ItemHomeCustomWelfareRcBinding
 import com.teamteam.knowing.ui.view.main.WelfareDetailActivity
@@ -33,6 +34,12 @@ class MainHomeCustomWelfareRCAdapter(private val welfareList:ArrayList<WelfareIn
         fun bind(data: WelfareInfo) {
             binding.txName.text=data.name
             binding.txAddress.text=data.address
+
+            //거주지가 서울인 경우 로고를 서울로 변경
+            if ("서울" in data.address){
+                binding.imgAddress.setImageResource(R.drawable.logo_20_seoul)
+            }
+
 
             if (data.maxMoney!="0"){//0이 아닌 경우만 수정하기 위함
                 var maxMoney = data.maxMoney.substring(0,data.maxMoney.length-4)

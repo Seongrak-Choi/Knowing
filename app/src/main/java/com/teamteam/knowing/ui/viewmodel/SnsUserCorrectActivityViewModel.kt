@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import com.teamteam.knowing.config.ApplicationClass
 import com.teamteam.knowing.data.model.network.request.UserCorrectRequest
 import com.teamteam.knowing.data.model.network.response.UserCorrectResponse
+import com.teamteam.knowing.data.model.network.response.UserWithdrawalResponse
 import com.teamteam.knowing.data.remote.api.SignUpInterface
 import retrofit2.Call
 import retrofit2.Callback
@@ -28,7 +29,13 @@ class SnsUserCorrectActivityViewModel(application: Application) : AndroidViewMod
         MutableLiveData<Boolean>() //전화번호를 양식에 맞게 잘 입력했는지 확인하는 라이브 데이터
 
     //회원수정이 성공했는지 안했는지 저장하는 라이브 데이터
+    private val _isSuccessWithdrawal = MutableLiveData<Boolean>()
+
+    //회원수정이 성공했는지 안했는지 저장하는 라이브 데이터
     private val _isSuccessApi = MutableLiveData<Boolean>()
+
+
+
 
     val isSuccessApi: MutableLiveData<Boolean>
         get() = _isSuccessApi
@@ -51,6 +58,9 @@ class SnsUserCorrectActivityViewModel(application: Application) : AndroidViewMod
 
     val allIsCorrect: MutableLiveData<Boolean>
         get() = _allIsCorrect
+
+    val isSuccessWithdrawal: MutableLiveData<Boolean>
+        get() = _isSuccessWithdrawal
 
     val isCorrectEdtPhoneNum: MutableLiveData<Boolean>
         get() = _isCorrectEdtPhoneNum
@@ -139,5 +149,29 @@ class SnsUserCorrectActivityViewModel(application: Application) : AndroidViewMod
                     Log.e("ERROR", "회원 정보 수정 통신 오류")
                 }
             })
+    }
+
+
+    /*
+   탈퇴 하는 api 호출 메소드
+    */
+    fun tryDeleteWithdrawal(uid:String){
+        val signUpInterface = ApplicationClass.sRetrofit.create(SignUpInterface::class.java)
+        signUpInterface.deleteWithdrawal(uid).enqueue(object : Callback<UserWithdrawalResponse> {
+            override fun onResponse(call: Call<UserWithdrawalResponse>, response: Response<UserWithdrawalResponse>) {
+                if (response.isSuccessful) {
+                    val result = response.body() as UserWithdrawalResponse
+                    if (result.userWithdrawalResult.result == "유저탈퇴완료") {
+                        _isSuccessWithdrawal.value=true
+                    }
+                } else {
+                    Log.e("ERROR", "회원탈퇴 실패")
+                }
+            }
+
+            override fun onFailure(call: Call<UserWithdrawalResponse>, t: Throwable) {
+                Log.e("ERROR", "회원 탈퇴 통신 오류")
+            }
+        })
     }
 }

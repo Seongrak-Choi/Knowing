@@ -21,7 +21,7 @@
             android:fontFamily="@font/godom"
             android:text="@string/onboarding1_1"
             android:textColor="#424242"
-            android:textSize="26sp"
+            android:textSize="26dp"
             android:lineSpacingExtra="7dp"
             app:layout_constraintStart_toStartOf="@+id/img"
             app:layout_constraintTop_toTopOf="parent" />
@@ -35,7 +35,7 @@
             android:fontFamily="@font/roboto_medium"
             android:text="@string/onboarding1_2"
             android:textColor="#7c776e"
-            android:textSize="15sp"
+            android:textSize="15dp"
             app:layout_constraintStart_toStartOf="@+id/img"
             app:layout_constraintTop_toBottomOf="@+id/tx1" />
 

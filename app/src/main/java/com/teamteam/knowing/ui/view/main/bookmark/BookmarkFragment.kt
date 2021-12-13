@@ -30,6 +30,7 @@ class BookmarkFragment : BaseFragment<FragmentBookmarkBinding>(FragmentBookmarkB
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         var array = ArrayList<WelfareInfo>()
+
         //어댑터가 만들어 지기 전에 adapter를 참조했다고 오류나서 이렇게 미리 세팅함
         adapter = MainBookmarkRCAdapter(array,requireContext())
     }
@@ -85,11 +86,26 @@ class BookmarkFragment : BaseFragment<FragmentBookmarkBinding>(FragmentBookmarkB
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                //에디트텍스트가 비어있으면 초기화 버튼 안보이게 설정
+                if (s!!.isEmpty()){
+                    binding.imgSearchCancel.visibility=View.INVISIBLE
+                }else{
+                    binding.imgSearchCancel.visibility=View.VISIBLE
+                }
+
                 adapter.filter.filter(s) //검색을 위해 EditText에 입력을 하면 어댑터의 필터메소드 호출
             }
             override fun afterTextChanged(s: Editable?) {
             }
         })
+
+        //editSearch 포커싱 리스너
+        binding.edtSearch.setOnFocusChangeListener { v, hasFocus ->
+            if (hasFocus){
+            }else{
+                binding.imgSearchCancel.visibility=View.INVISIBLE
+            }
+        }
 
 
         //EditText검색 할 때 나오는 키보드 종류가 완료이도록 설정
@@ -105,9 +121,17 @@ class BookmarkFragment : BaseFragment<FragmentBookmarkBinding>(FragmentBookmarkB
                 val imm = requireActivity().getSystemService(AppCompatActivity.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(binding.edtSearch.windowToken, 0)
 
+                binding.imgSearchCancel.visibility=View.INVISIBLE
+
                 handled = true
             }
             handled
+        }
+
+
+        //edtSearch 초기화 버튼 클릭 리스너
+        binding.imgSearchCancel.setOnClickListener {
+            binding.edtSearch.text = null
         }
 
 

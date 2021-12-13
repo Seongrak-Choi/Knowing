@@ -2,11 +2,15 @@ package com.teamteam.knowing.ui.view.main.home
 
 import android.animation.ValueAnimator
 import android.content.Intent
+import android.graphics.Point
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
+import android.widget.LinearLayout
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -27,6 +31,9 @@ class CustomWelfareFragment : BaseFragment<FragmentMainHomeCustomWelfareBinding>
 
     //백프레스드 콜백 리스너
     private lateinit var callback: OnBackPressedCallback
+
+    //display 메트릭스 인스턴스
+    private val displayMetrics = DisplayMetrics()
 
     //복지데이터
     private lateinit var welfareInfo : MainWelfareResponse
@@ -79,7 +86,26 @@ class CustomWelfareFragment : BaseFragment<FragmentMainHomeCustomWelfareBinding>
 
 
 
+//        requireActivity().windowManager.defaultDisplay.getRealMetrics(displayMetrics)
+//        //dp를 px로 계산하기 위한 변수
+//        //dp55을 px로 변환해서 저장
+//        val dp55 = (55 * displayMetrics.density + 0.5).toInt()
+//
+//
+//        //collapsing되는 부분 toolbar에 디바이스의 높이에 비례한 패딩을 주기 위한 코드
+//        binding.toolbar.setPadding(0,dp55,0,0)
+//        println("디바이스 높이 : ${Height}")
+//
+//        val toolbarLP = binding.toolbar.layoutParams
+//        toolbarLP.height=332
+//        binding.toolbar.layoutParams=toolbarLP
 
+        val Height = resources.displayMetrics.heightPixels
+
+        //appbar 맨 밑 1자 바 높이를 디스플레이에 맞게 지정해준다.
+        val bgCenterLP : ViewGroup.LayoutParams = binding.imgAppBarBgCenter.layoutParams
+        bgCenterLP.height=(Height*0.05).toInt()
+        binding.imgAppBarBgCenter.layoutParams=bgCenterLP
 
 
         //뷰모델 장착
@@ -223,6 +249,7 @@ class CustomWelfareFragment : BaseFragment<FragmentMainHomeCustomWelfareBinding>
     //화면이 재실행 될 때 마다 애니메이션이 실행 되도록 onResume에서 실행시킴
     override fun onResume() {
         super.onResume()
+
         /*
         그래프를 담는 레이아웃의 높이를 구해서 디바이스 크기 마다 일정한 높이만큼 그래프를 증가시키기 위해
         constraintGraph 의 옵저버 리스너를 달아서 높이를 구한 뒤 해당 높이의 비율만큼 그래프 애니메이션 실행시키고
@@ -300,6 +327,7 @@ class CustomWelfareFragment : BaseFragment<FragmentMainHomeCustomWelfareBinding>
                 }
                 subject6_anim.duration=Anitamon_Duration
                 subject6_anim.start()
+
 
                 //리스너 한번만 발동하도록 바로 삭제
                 binding.constraintGraph.viewTreeObserver.removeOnGlobalLayoutListener(this)

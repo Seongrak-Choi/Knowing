@@ -62,7 +62,7 @@ class CalendarFragmentViewModel(application: Application): AndroidViewModel(appl
                     _currentWelfareList.value = result.bookmarkResult
 
                     //복지 정보를 받아왔다면 마지막으로 클릭했던 date로 다시 한번 리사이클러뷰 초기화
-                    setRcList()
+                    //setRcList()
 
                     //api로 받아온 복지 정보 중 applyDate만 저장하는 리스트 생성
                     var applyDateList = ArrayList<String>()
@@ -97,7 +97,7 @@ class CalendarFragmentViewModel(application: Application): AndroidViewModel(appl
                     _currentWelfareList.value = result.bookmarkResult
 
                     //삭제 후 복지 정보를 다시 받아왔다면 마지막으로 클릭했던 date로 다시 한번 리사이클러뷰 초기화
-                    setRcList()
+                    //setRcList() 삭제 애니메이션을 위해 화면을 리셋해버리는 효과를 주지 않기 위해 해당 메소드 호출 안함
 
                     //api로 받아온 복지 정보 중 applyDate만 저장하는 리스트 생성
                     var applyDateList = ArrayList<String>()

@@ -1,363 +1,366 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:animateLayoutChanges="true"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:fillViewport="true">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/btn_back"
-        android:layout_width="31dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:adjustViewBounds="true"
-        android:src="@drawable/ic_arrow_back_signuppage"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="2"
-        android:textSize="14sp"
-        android:fontFamily="@font/roboto_bold"
-        android:textColor="#f98551"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintHorizontal_bias="0.39"
-        app:layout_constraintEnd_toEndOf="@id/img_progress"
-        app:layout_constraintBottom_toTopOf="@+id/img_progress"
-        app:layout_constraintStart_toStartOf="@id/guidelineStart"/>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/btn_back"
+            android:layout_width="31dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_arrow_back_signuppage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="5"
-        android:textSize="14sp"
-        android:fontFamily="@font/roboto_bold"
-        android:textColor="#d8d8d8"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintHorizontal_bias="0.98"
-        app:layout_constraintStart_toStartOf="@id/guidelineStart"
-        app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
-        app:layout_constraintBottom_toTopOf="@+id/img_progress"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="2"
+            android:textColor="#f98551"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/img_progress"
+            app:layout_constraintEnd_toEndOf="@id/img_progress"
+            app:layout_constraintHorizontal_bias="0.39"
+            app:layout_constraintStart_toStartOf="@id/guidelineStart" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/img_progress"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:src="@drawable/progress_bar_2"
-        android:layout_marginTop="40dp"
-        app:layout_constraintTop_toBottomOf="@+id/btn_back"
-        app:layout_constraintStart_toStartOf="@id/guidelineStart"
-        app:layout_constraintEnd_toEndOf="@id/guidelineEnd"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="5"
+            android:textColor="#d8d8d8"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/img_progress"
+            app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+            app:layout_constraintHorizontal_bias="0.98"
+            app:layout_constraintStart_toStartOf="@id/guidelineStart" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tx_category1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="카테고리 중"
-        android:textSize="14sp"
-        android:fontFamily="@font/roboto_regular"
-        android:textColor="#939393"
-        android:layout_marginTop="27dp"
-        android:layout_marginEnd="2dp"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintEnd_toStartOf="@+id/img_star_category"
-        app:layout_constraintTop_toBottomOf="@+id/img_progress"
-        app:layout_constraintStart_toStartOf="@id/guidelineStart"/>
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/img_star_category"
-        android:layout_width="11dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:src="@drawable/star"
-        app:layout_constraintEnd_toStartOf="@id/tx_category2"
-        app:layout_constraintStart_toEndOf="@+id/tx_category1"
-        app:layout_constraintTop_toTopOf="@id/tx_category1"
-        app:layout_constraintBottom_toBottomOf="@id/tx_category1"/>
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tx_category2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="은 필수 기재 사항이에요."
-        android:textSize="14sp"
-        android:fontFamily="@font/roboto_regular"
-        android:textColor="#939393"
-        android:layout_marginTop="27dp"
-        android:layout_marginStart="2dp"
-        app:layout_constraintStart_toEndOf="@+id/img_star_category"
-        app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
-        app:layout_constraintTop_toBottomOf="@id/img_progress"/>
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tx_title_income"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/more_information2_title1"
-        android:fontFamily="@font/roboto_bold"
-        android:textSize="15sp"
-        android:textColor="#666666"
-        android:layout_marginTop="44dp"
-        android:layout_marginStart="3dp"
-        app:layout_constraintStart_toEndOf="@+id/img_star_income"
-        app:layout_constraintTop_toBottomOf="@+id/tx_category1"/>
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/img_star_income"
-        android:layout_width="11dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:src="@drawable/star"
-        app:layout_constraintStart_toStartOf="@id/guidelineStart"
-        app:layout_constraintTop_toTopOf="@+id/tx_title_income"
-        app:layout_constraintBottom_toBottomOf="@+id/tx_title_income"/>
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/edt_income"
-        android:theme="@style/editText"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:hint="EX)) 1,950,000"
-        android:textSize="16sp"
-        android:fontFamily="@font/roboto_regular"
-        android:textColorHint="#c2c2c2"
-        android:layout_marginTop="19dp"
-        android:inputType="number"
-        android:textCursorDrawable="@drawable/sign_up_edt_cursor"
-        app:layout_constraintStart_toStartOf="@id/guidelineStart"
-        app:layout_constraintTop_toBottomOf="@+id/tx_title_income"/>
-
-
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="원"
-        android:textSize="16sp"
-        android:textColor="#414141"
-        android:fontFamily="@font/roboto_regular"
-        android:layout_marginStart="8dp"
-        app:layout_constraintStart_toEndOf="@+id/edt_income"
-        app:layout_constraintTop_toTopOf="@+id/edt_income"
-        app:layout_constraintBottom_toBottomOf="@+id/edt_income"/>
-
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tx_title_get_job"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/more_information2_title2"
-        android:fontFamily="@font/roboto_bold"
-        android:textSize="15sp"
-        android:textColor="#666666"
-        android:layout_marginTop="44dp"
-        android:layout_marginStart="3dp"
-        app:layout_constraintStart_toEndOf="@+id/img_star_income"
-        app:layout_constraintTop_toBottomOf="@+id/edt_income"/>
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/img_star_get_job"
-        android:layout_width="11dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:src="@drawable/star"
-        app:layout_constraintStart_toStartOf="@id/guidelineStart"
-        app:layout_constraintTop_toTopOf="@+id/tx_title_get_job"
-        app:layout_constraintBottom_toBottomOf="@+id/tx_title_get_job"/>
-
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tx_overlap"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="* 중복 선택 가능"
-        android:textColor="#bbbbbb"
-        android:fontFamily="@font/roboto_bold"
-        android:textSize="14sp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/tx_title_get_job"
-        app:layout_constraintStart_toStartOf="@id/guidelineStart"/>
-
-
-    <!--전체, 미취업자, 재직자 버튼 리니어-->
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/linear_btn_1"
-        android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="@id/guidelineStart"
-        app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
-        app:layout_constraintTop_toBottomOf="@+id/tx_overlap">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_get_job_1"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_progress"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="전체"
+            android:layout_marginTop="40dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/progress_bar_2"
+            app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+            app:layout_constraintStart_toStartOf="@id/guidelineStart"
+            app:layout_constraintTop_toBottomOf="@+id/btn_back" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tx_category1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:layout_marginEnd="2dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="카테고리 중"
+            android:textColor="#939393"
             android:textSize="14sp"
-            android:textColor="#6c6c6c"
-            android:fontFamily="@font/roboto_medium"
-            style="?android:attr/borderlessButtonStyle"
-            android:background="@drawable/more_information_4_major_btn_unchecked_bg"
-            android:layout_weight="1"/>
+            app:layout_constraintEnd_toStartOf="@+id/img_star_category"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="@id/guidelineStart"
+            app:layout_constraintTop_toBottomOf="@+id/img_progress" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_star_category"
+            android:layout_width="11dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/star"
+            app:layout_constraintBottom_toBottomOf="@id/tx_category1"
+            app:layout_constraintEnd_toStartOf="@id/tx_category2"
+            app:layout_constraintStart_toEndOf="@+id/tx_category1"
+            app:layout_constraintTop_toTopOf="@id/tx_category1" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tx_category2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="27dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="은 필수 기재 사항이에요."
+            android:textColor="#939393"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+            app:layout_constraintStart_toEndOf="@+id/img_star_category"
+            app:layout_constraintTop_toBottomOf="@id/img_progress" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tx_title_income"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="44dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/more_information2_title1"
+            android:textColor="#666666"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@+id/img_star_income"
+            app:layout_constraintTop_toBottomOf="@+id/tx_category1" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_star_income"
+            android:layout_width="11dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/star"
+            app:layout_constraintBottom_toBottomOf="@+id/tx_title_income"
+            app:layout_constraintStart_toStartOf="@id/guidelineStart"
+            app:layout_constraintTop_toTopOf="@+id/tx_title_income" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edt_income"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            android:fontFamily="@font/roboto_regular"
+            android:hint="EX)) 1,950,000"
+            android:inputType="number"
+            android:textColorHint="#c2c2c2"
+            android:textCursorDrawable="@drawable/sign_up_edt_cursor"
+            android:textSize="16sp"
+            android:theme="@style/editText"
+            app:layout_constraintStart_toStartOf="@id/guidelineStart"
+            app:layout_constraintTop_toBottomOf="@+id/tx_title_income" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="원"
+            android:textColor="#414141"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/edt_income"
+            app:layout_constraintStart_toEndOf="@+id/edt_income"
+            app:layout_constraintTop_toTopOf="@+id/edt_income" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tx_title_get_job"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="44dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/more_information2_title2"
+            android:textColor="#666666"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@+id/img_star_income"
+            app:layout_constraintTop_toBottomOf="@+id/edt_income" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_star_get_job"
+            android:layout_width="11dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/star"
+            app:layout_constraintBottom_toBottomOf="@+id/tx_title_get_job"
+            app:layout_constraintStart_toStartOf="@id/guidelineStart"
+            app:layout_constraintTop_toTopOf="@+id/tx_title_get_job" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tx_overlap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="* 중복 선택 가능"
+            android:textColor="#bbbbbb"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@id/guidelineStart"
+            app:layout_constraintTop_toBottomOf="@+id/tx_title_get_job" />
+
+
+        <!--전체, 미취업자, 재직자 버튼 리니어-->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linear_btn_1"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+            app:layout_constraintStart_toStartOf="@id/guidelineStart"
+            app:layout_constraintTop_toBottomOf="@+id/tx_overlap">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_get_job_1"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                android:fontFamily="@font/roboto_medium"
+                android:text="전체"
+                android:textColor="#6c6c6c"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_get_job_2"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                android:fontFamily="@font/roboto_medium"
+                android:text="미취업자"
+                android:textColor="#6c6c6c"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_get_job_3"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                android:fontFamily="@font/roboto_medium"
+                android:text="재직자"
+                android:textColor="#6c6c6c"
+                android:textSize="14sp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <!--프리랜서, 일용근로자, 단기근로자 버튼 리니어-->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linear_btn_2"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+            app:layout_constraintStart_toStartOf="@id/guidelineStart"
+            app:layout_constraintTop_toBottomOf="@+id/linear_btn_1">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_get_job_4"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                android:fontFamily="@font/roboto_medium"
+                android:text="프리랜서"
+                android:textColor="#6c6c6c"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_get_job_5"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                android:fontFamily="@font/roboto_medium"
+                android:text="일용근로자"
+                android:textColor="#6c6c6c"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_get_job_6"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                android:fontFamily="@font/roboto_medium"
+                android:text="단기근로자"
+                android:textColor="#6c6c6c"
+                android:textSize="14sp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <!--예비창업자, 자영업자, 영농종사자 버튼 리니어-->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linear_btn_3"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+            app:layout_constraintStart_toStartOf="@id/guidelineStart"
+            app:layout_constraintTop_toBottomOf="@+id/linear_btn_2">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_get_job_7"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                android:fontFamily="@font/roboto_medium"
+                android:text="예비창업자"
+                android:textColor="#6c6c6c"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_get_job_8"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                android:fontFamily="@font/roboto_medium"
+                android:text="자영업자"
+                android:textColor="#6c6c6c"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_get_job_9"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/more_information_4_major_btn_unchecked_bg"
+                android:fontFamily="@font/roboto_medium"
+                android:text="영농종사자"
+                android:textColor="#6c6c6c"
+                android:textSize="14sp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_get_job_2"
+            android:id="@+id/btn_next"
             android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/sign_up_final_btn_bg"
+            android:enabled="false"
+            android:fontFamily="@font/gothic_bold"
+            android:text="다음"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+            app:layout_constraintStart_toStartOf="@id/guidelineStart" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineStart"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="미취업자"
-            android:textSize="14sp"
-            android:fontFamily="@font/roboto_medium"
-            style="?android:attr/borderlessButtonStyle"
-            android:textColor="#6c6c6c"
-            android:layout_marginHorizontal="20dp"
-            android:background="@drawable/more_information_4_major_btn_unchecked_bg"
-            android:layout_weight="1"/>
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="25dp" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_get_job_3"
-            android:layout_width="0dp"
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineEnd"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="재직자"
-            android:textSize="14sp"
-            android:fontFamily="@font/roboto_medium"
-            style="?android:attr/borderlessButtonStyle"
-            android:textColor="#6c6c6c"
-            android:background="@drawable/more_information_4_major_btn_unchecked_bg"
-            android:layout_weight="1"/>
-    </androidx.appcompat.widget.LinearLayoutCompat>
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="25dp" />
 
-
-    <!--프리랜서, 일용근로자, 단기근로자 버튼 리니어-->
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/linear_btn_2"
-        android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@id/guidelineStart"
-        app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
-        app:layout_constraintTop_toBottomOf="@+id/linear_btn_1">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_get_job_4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="프리랜서"
-            android:textSize="14sp"
-            android:textColor="#6c6c6c"
-            android:fontFamily="@font/roboto_medium"
-            style="?android:attr/borderlessButtonStyle"
-            android:background="@drawable/more_information_4_major_btn_unchecked_bg"
-            android:layout_weight="1"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_get_job_5"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="일용근로자"
-            android:textSize="14sp"
-            android:fontFamily="@font/roboto_medium"
-            style="?android:attr/borderlessButtonStyle"
-            android:textColor="#6c6c6c"
-            android:layout_marginHorizontal="20dp"
-            android:background="@drawable/more_information_4_major_btn_unchecked_bg"
-            android:layout_weight="1"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_get_job_6"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="단기근로자"
-            android:textSize="14sp"
-            android:fontFamily="@font/roboto_medium"
-            style="?android:attr/borderlessButtonStyle"
-            android:textColor="#6c6c6c"
-            android:background="@drawable/more_information_4_major_btn_unchecked_bg"
-            android:layout_weight="1"/>
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <!--예비창업자, 자영업자, 영농종사자 버튼 리니어-->
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/linear_btn_3"
-        android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="@id/guidelineStart"
-        app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
-        app:layout_constraintTop_toBottomOf="@+id/linear_btn_2">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_get_job_7"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="예비창업자"
-            android:textSize="14sp"
-            android:textColor="#6c6c6c"
-            android:fontFamily="@font/roboto_medium"
-            style="?android:attr/borderlessButtonStyle"
-            android:background="@drawable/more_information_4_major_btn_unchecked_bg"
-            android:layout_weight="1"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_get_job_8"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="자영업자"
-            android:textSize="14sp"
-            android:fontFamily="@font/roboto_medium"
-            style="?android:attr/borderlessButtonStyle"
-            android:textColor="#6c6c6c"
-            android:layout_marginHorizontal="20dp"
-            android:background="@drawable/more_information_4_major_btn_unchecked_bg"
-            android:layout_weight="1"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_get_job_9"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="영농종사자"
-            android:textSize="14sp"
-            android:fontFamily="@font/roboto_medium"
-            style="?android:attr/borderlessButtonStyle"
-            android:textColor="#6c6c6c"
-            android:background="@drawable/more_information_4_major_btn_unchecked_bg"
-            android:layout_weight="1"/>
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_next"
-        android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:text="다음"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:fontFamily="@font/gothic_bold"
-        android:background="@drawable/sign_up_final_btn_bg"
-        android:layout_marginBottom="41dp"
-        android:enabled="false"
-        app:layout_constraintStart_toStartOf="@id/guidelineStart"
-        app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="25dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineEnd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="25dp" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

@@ -22,7 +22,7 @@
             android:fontFamily="@font/roboto_bold"
             android:text="아토님"
             android:textColor="#ff8e3b"
-            android:textSize="24sp"
+            android:textSize="24dp"
             android:layout_marginStart="14dp"
             android:layout_marginTop="8dp"
             app:layout_constraintStart_toEndOf="@id/img_profile"
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:text="변경하고 싶으신 정보가 있으신가요?"
             android:fontFamily="@font/roboto_bold"
-            android:textSize="14sp"
+            android:textSize="14dp"
             android:textColor="#737373"
             android:layout_marginStart="14dp"
             android:layout_marginTop="4dp"
@@ -80,7 +80,7 @@
             android:text="회원 정보 설정"
             android:fontFamily="@font/roboto_bold"
             android:textColor="#a4613d"
-            android:textSize="17sp"
+            android:textSize="17dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="11dp"
             app:layout_constraintVertical_chainStyle="packed"
@@ -118,14 +118,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/btn_alarm_setting"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@drawable/rectangle_ffe4b6_radius30"
-        android:layout_marginTop="36dp"
         android:paddingHorizontal="20dp"
         app:layout_constraintHorizontal_weight="3"
         app:layout_constraintStart_toEndOf="@+id/horizontal_margin"
         app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
-        app:layout_constraintTop_toBottomOf="@+id/constraint_profile">
+        app:layout_constraintTop_toTopOf="@+id/btn_profile_setting"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_profile_setting">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tx_alarm_setting"
@@ -134,14 +134,12 @@
             android:text="알림 설정"
             android:fontFamily="@font/roboto_bold"
             android:textColor="#a4613d"
-            android:textSize="17sp"
+            android:textSize="17dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="11dp"
-            app:layout_constraintVertical_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/img_alarm_setting"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/img_alarm_setting"
@@ -162,14 +160,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/btn_category_setting"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/rectangle_ffe4b6_radius30"
         app:layout_constraintHorizontal_chainStyle="spread"
         android:paddingHorizontal="20dp"
+        android:layout_marginTop="36dp"
         app:layout_constraintStart_toStartOf="@id/guidelineStart"
         app:layout_constraintEnd_toStartOf="@+id/horizontal_margin"
-        app:layout_constraintTop_toTopOf="@id/btn_notification"
-        app:layout_constraintBottom_toBottomOf="@id/btn_notification">
+        app:layout_constraintTop_toBottomOf="@+id/btn_alarm_setting">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tx_category_setting"
@@ -179,7 +177,7 @@
             android:gravity="center"
             android:fontFamily="@font/roboto_bold"
             android:textColor="#a4613d"
-            android:textSize="17sp"
+            android:textSize="17dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="11dp"
             app:layout_constraintVertical_chainStyle="packed"
@@ -207,14 +205,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/btn_notification"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="@drawable/rectangle_fff3d8_radius30"
         app:layout_constraintHorizontal_chainStyle="spread"
-        android:layout_marginTop="36dp"
         android:paddingHorizontal="20dp"
         app:layout_constraintStart_toEndOf="@+id/horizontal_margin"
         app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
-        app:layout_constraintTop_toBottomOf="@+id/btn_alarm_setting">
+        app:layout_constraintTop_toTopOf="@+id/btn_category_setting"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_category_setting">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tx_notification"
@@ -223,14 +221,12 @@
             android:text="공지사항"
             android:fontFamily="@font/roboto_bold"
             android:textColor="#a4613d"
-            android:textSize="17sp"
+            android:textSize="17dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="11dp"
-            app:layout_constraintVertical_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/img_notification"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/img_notification"
@@ -265,7 +261,7 @@
             android:layout_height="wrap_content"
             android:text="로그아웃"
             android:fontFamily="@font/roboto_bold"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:textColor="#b2b2b2"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintTop_toTopOf="parent"
@@ -306,7 +302,7 @@
             android:layout_height="wrap_content"
             android:text="문의 및 약관"
             android:fontFamily="@font/roboto_bold"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:textColor="#b2b2b2"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintTop_toTopOf="parent"

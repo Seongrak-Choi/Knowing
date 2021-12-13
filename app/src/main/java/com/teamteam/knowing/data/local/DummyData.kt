@@ -44,9 +44,9 @@ class DummyData {
     init {
 //        do_list.add("강원도")
         do_list.add("서울특별시")
-        do_list.add("인천광역시")
-        do_list.add("경기도")
-        do_list.add("세종특별자치시")
+//        do_list.add("인천광역시")
+//        do_list.add("경기도")
+//        do_list.add("세종특별자치시")
 //        do_list.add("경상남도")
 //        do_list.add("경상북도")
 //        do_list.add("광주광역시")

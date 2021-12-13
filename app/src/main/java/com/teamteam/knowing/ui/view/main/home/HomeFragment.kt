@@ -13,7 +13,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
 class HomeFragment : BaseFragment<FragmentMainHomeBinding>(FragmentMainHomeBinding::bind, R.layout.fragment_main_home){
-    val tabTitleList = arrayListOf("맞춤 복지","나의 캘린더","모든 복지")
+    val tabTitleList = arrayListOf("맞춤 복지","나의 달력","모든 복지")
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -35,19 +35,20 @@ class HomeFragment : BaseFragment<FragmentMainHomeBinding>(FragmentMainHomeBindi
 //        binding.viewPager2.layoutParams = params
 
 
+
         //viewpager2 어댑터 설정
         binding.viewPager2.adapter = HomeFragmentViewPager2Adapter(this,welfareInfo)
         binding.viewPager2.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         binding.viewPager2.isSaveEnabled = false
 
         //tabLayout과 viewpager2 연결
-        TabLayoutMediator(binding.tabLayout,binding.viewPager2){tab, position ->
+        TabLayoutMediator(binding.homeTabLayout,binding.viewPager2){tab, position ->
             tab.text = tabTitleList[position]
         }.attach()
 
         //tabLayout의 tab들 마진 설정하는 코드
-        for (i in 0 until binding.tabLayout.getTabCount()) {
-            val tab = (binding.tabLayout.getChildAt(0) as ViewGroup).getChildAt(i)
+        for (i in 0 until binding.homeTabLayout.getTabCount()) {
+            val tab = (binding.homeTabLayout.getChildAt(0) as ViewGroup).getChildAt(i)
             val p = tab.layoutParams as ViewGroup.MarginLayoutParams
             p.setMargins(15, 20, 15, 20)
             tab.requestLayout()
@@ -58,7 +59,7 @@ class HomeFragment : BaseFragment<FragmentMainHomeBinding>(FragmentMainHomeBindi
         binding.viewPager2.isUserInputEnabled = false
 
         //tabLayout 메뉴 누를 때 애니메이션 효과 없애기 위한 코드
-        binding.tabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
+        binding.homeTabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 tab?.position?.let { binding.viewPager2?.setCurrentItem(it,false) }
             }

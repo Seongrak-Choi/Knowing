@@ -11,7 +11,8 @@
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:src="@drawable/ic_arrow_back_signuppage"
-        app:layout_constraintStart_toStartOf="@id/guidelineStart"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -31,62 +32,78 @@
         android:id="@+id/line1"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="#fcf5eb"
         android:layout_marginTop="8dp"
+        android:background="#fcf5eb"
         app:layout_constraintTop_toBottomOf="@id/btn_back" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/img_notification"
-        android:layout_width="243dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rc_notification"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/notice_illust"
-        android:adjustViewBounds="true"
-        app:layout_constraintVertical_bias="0.3"
-        app:layout_constraintTop_toBottomOf="@id/line1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@id/guidelineStart"
-        app:layout_constraintEnd_toEndOf="@id/guidelineEnd"/>
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/title_no_notification"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="아직은 올라온 공지사항이 없어요!"
-        android:textSize="16sp"
-        android:fontFamily="@font/roboto_medium"
-        android:textColor="#656565"
-        android:layout_marginTop="6dp"
-        app:layout_constraintTop_toBottomOf="@+id/img_notification"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="추후 업데이트 시 공지가 올라올 예정이에요요"
-       android:textSize="14sp"
-        android:fontFamily="@font/roboto_medium"
-        android:textColor="#929292"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/title_no_notification"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@+id/line1"/>
 
 
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="20dp" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineEnd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="20dp" />
+    <!--공지사항 없을 때 나오는 일러스트-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
 
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_notification"
+            android:layout_width="243dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/notice_illust"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+            app:layout_constraintStart_toStartOf="@id/guidelineStart"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.4" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/title_no_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="아직은 올라온 공지사항이 없어요!"
+            android:textColor="#656565"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_notification" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="추후 업데이트 시 공지가 올라올 예정이에요요"
+            android:textColor="#929292"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_no_notification" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="20dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

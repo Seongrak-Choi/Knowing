@@ -86,6 +86,7 @@ class WelfareDetailActivity :
         dp48 = (48 * density + 0.5).toInt()
 
 
+
         //이 복지가 북마크에 추가 되어 있는지 확인과 북마크 추가,삭제 api 호출 시 버튼의 색상을 변경하기 위해 라이브데이터 관찰
         welfareDetailActivityViewModel.currentBookmarkWhether.observe(
             this,
@@ -369,7 +370,7 @@ class WelfareDetailActivity :
         //헤더에 붙는 tabLayout 아이템 클릭 리스너
         binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                binding.stickyScroll.elevation = 11f
+                binding.stickyScroll.elevation = 15f
 
                 //tabLayout이 선택되면 무조건 appbar는 축소되도록 설정
                 binding.appBar.setExpanded(false)
@@ -428,6 +429,9 @@ class WelfareDetailActivity :
         binding.stickyScroll.setOnTouchListener { v, event ->
             when (event.actionMasked){
                 MotionEvent.ACTION_DOWN->{
+                    isUserScrolling=true
+                }
+                MotionEvent.ACTION_MOVE->{
                     isUserScrolling=true
                 }
             }
