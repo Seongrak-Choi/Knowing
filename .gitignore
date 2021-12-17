@@ -158,6 +158,7 @@ hs_err_pid*
 # Keystore files
 *.jks
 *.keystore
+*.pepk
 
 # Google Services (e.g. APIs or Firebase)
 # google-services.json
