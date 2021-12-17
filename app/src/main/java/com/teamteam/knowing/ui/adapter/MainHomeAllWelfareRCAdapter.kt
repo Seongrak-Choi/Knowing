@@ -48,10 +48,12 @@ class MainHomeAllWelfareRCAdapter(private val welfareList:ArrayList<WelfareInfo>
                 binding.txMaxCost.text=data.serviceType
             }
 
-            if (data.minMoney!="0"){//0이 아닌 경우만을 위함
-                var minMoney = data.maxMoney.substring(0,data.minMoney.length-4)
+            if (data.minMoney!="0" && data.minMoney !="조건별상이"){//0이 아닌 경우만을 위함
+                var minMoney = data.minMoney.substring(0,data.minMoney.length-4)
                 binding.txMinCost.text="최소 ${minMoney}만원"
-            }else{//최소금액이 없는 경우
+            }else if(data.minMoney=="조건별상이"){//최소금액이 없는 경우
+                binding.txMinCost.text="조건별상이"
+            }else{
                 binding.txMinCost.text=""
             }
 

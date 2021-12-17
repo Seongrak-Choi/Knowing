@@ -108,13 +108,16 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tx_name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="14dp"
                     android:fontFamily="@font/roboto_bold"
                     android:text="청년고용지원"
                     android:textColor="#262626"
                     android:textSize="17sp"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
                     app:layout_constraintStart_toStartOf="@id/guidelineStart"
                     app:layout_constraintTop_toBottomOf="@+id/img_address" />
 
@@ -193,7 +196,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:layout_constraintGuide_begin="18dp" />
+                    app:layout_constraintGuide_end="18dp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

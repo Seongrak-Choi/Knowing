@@ -43,7 +43,12 @@ class AllWelfareFragmentViewModel(application: Application):AndroidViewModel(app
     */
     fun settingAllView(){
         //리사이클러뷰 리스트에 넣는 용
-        _currentRcList.value=_welfareInfo.value?.mainWelfareResult?.totalCategory!!.studentCategory
+        _currentRcList.value=_welfareInfo.value!!.mainWelfareResult.totalCategory.studentCategory
+        when(_currentFilter.value.toString()){
+            "높은 금액순"-> sortHighCost()
+            "낮은 금액순"-> sortLowCost()
+            "마감일순"->sortDeadLine()
+        }
     }
 
 
@@ -52,7 +57,7 @@ class AllWelfareFragmentViewModel(application: Application):AndroidViewModel(app
   학생 지원으로 리사이클러뷰 변환시키기위해 라이브데이터 변경하는 메소드
    */
     fun changeRcToStudent() {
-        _currentRcList.value = _welfareInfo.value?.mainWelfareResult?.studentCategory
+        _currentRcList.value = _welfareInfo.value!!.mainWelfareResult.totalCategory.studentCategory
         when(_currentFilter.value.toString()){
             "높은 금액순"-> sortHighCost()
             "낮은 금액순"-> sortLowCost()
@@ -64,7 +69,7 @@ class AllWelfareFragmentViewModel(application: Application):AndroidViewModel(app
   취업 지원으로 리사이클러뷰 변환시키기위해 라이브데이터 변경하는 메소드
    */
     fun changeRcToEmploy() {
-        _currentRcList.value = _welfareInfo.value?.mainWelfareResult?.employCategory
+        _currentRcList.value = _welfareInfo.value!!.mainWelfareResult.totalCategory.employCategory
         when(_currentFilter.value.toString()){
             "높은 금액순"-> sortHighCost()
             "낮은 금액순"-> sortLowCost()
@@ -76,7 +81,7 @@ class AllWelfareFragmentViewModel(application: Application):AndroidViewModel(app
   창업 지원으로 리사이클러뷰 변환시키기위해 라이브데이터 변경하는 메소드
    */
     fun changeRcToFoundation() {
-        _currentRcList.value = _welfareInfo.value?.mainWelfareResult?.foundationCategory
+        _currentRcList.value = _welfareInfo.value!!.mainWelfareResult.totalCategory.foundationCategory
         when(_currentFilter.value.toString()){
             "높은 금액순"-> sortHighCost()
             "낮은 금액순"-> sortLowCost()
@@ -88,7 +93,7 @@ class AllWelfareFragmentViewModel(application: Application):AndroidViewModel(app
     주거 금융으로 리사이클러뷰 변환시키기위해 라이브데이터 변경하는 메소드
    */
     fun changeRcToResident() {
-        _currentRcList.value = _welfareInfo.value?.mainWelfareResult?.residentCategory
+        _currentRcList.value = _welfareInfo.value!!.mainWelfareResult.totalCategory.residentCategory
         when(_currentFilter.value.toString()){
             "높은 금액순"-> sortHighCost()
             "낮은 금액순"-> sortLowCost()
@@ -100,7 +105,7 @@ class AllWelfareFragmentViewModel(application: Application):AndroidViewModel(app
   생활 복지로 리사이클러뷰 변환시키기위해 라이브데이터 변경하는 메소드
    */
     fun changeRcToLife() {
-        _currentRcList.value = _welfareInfo.value?.mainWelfareResult?.lifeCategory
+        _currentRcList.value = _welfareInfo.value!!.mainWelfareResult.totalCategory.lifeCategory
         when(_currentFilter.value.toString()){
             "높은 금액순"-> sortHighCost()
             "낮은 금액순"-> sortLowCost()
@@ -112,7 +117,7 @@ class AllWelfareFragmentViewModel(application: Application):AndroidViewModel(app
   코로나 19로 리사이클러뷰 변환시키기위해 라이브데이터 변경하는 메소드
    */
     fun changeRcToCovid() {
-        _currentRcList.value = _welfareInfo.value?.mainWelfareResult?.covidCategory
+        _currentRcList.value = _welfareInfo.value!!.mainWelfareResult.totalCategory.covidCategory
         when(_currentFilter.value.toString()){
             "높은 금액순"-> sortHighCost()
             "낮은 금액순"-> sortLowCost()

@@ -8,7 +8,7 @@ import retrofit2.http.Header
 
 
 interface WelfareInterface {
-    @GET("app/mains/mainview")
+    @GET("app/mains/mainpage")
     fun getWelfareInfo(@Header("uid") uid:String) : Call<MainWelfareResponse>
 
     @GET("app/mains/welfareInfo")//복지 정보 하나만 받아오는 api

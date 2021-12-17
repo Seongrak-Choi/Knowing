@@ -136,11 +136,10 @@ class CalendarFragment : BaseFragment<FragmentMainHomeCalenedarBinding>(
         //달력 클릭 리스너 장착
         binding.calendar.setOnDateChangedListener { widget, date, selected ->
             //마지막으로 클릭된 데이터를 저장하는 라이브데이터에 값을 저장
-            calendarFragmentViewModel.finalSelectedDate.value="${date.year}${date.month+1}${date.day}"//월은 0부터 시작해서 1 추가해줌
+            calendarFragmentViewModel.finalSelectedDate.value="${date.year}${date.month+1}${String.format("%02d",date.day)}"//월은 0부터 시작해서 1 추가해줌
             //클릭한 날짜에 해당하는 북마크 중 복지 정보들을 리사이클러뷰 리스트에 저장
             calendarFragmentViewModel.setRcList()
         }
-
     }
 
     /*

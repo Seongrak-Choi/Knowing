@@ -372,9 +372,10 @@ class CustomWelfareFragmentViewModel(application: Application) : AndroidViewMode
         var studentCategoryMaxMoney = ArrayList<Int>()
         var studentCategoryMinMoney = ArrayList<Int>()
 
+
         for (i in _welfareInfo.value!!.mainWelfareResult.studentCategory) {
             studentCategoryMaxMoney.add(i.maxMoney.toInt())//학생 카테고리의 복지 중 최대금액만 저장하는 리스트에 저장
-            if (i.minMoney != "0") //최소 금액이 0이 아닌 최소금액들만 저장
+            if (i.minMoney != "0" && i.minMoney !="조건별상이") //최소 금액이 0이 아닌 최소금액들만 저장
                 studentCategoryMinMoney.add(i.minMoney.toInt())
         }
         if (studentCategoryMaxMoney.isNotEmpty())
@@ -388,7 +389,7 @@ class CustomWelfareFragmentViewModel(application: Application) : AndroidViewMode
         var employCategoryMinMoney = ArrayList<Int>()
         for (i in _welfareInfo.value!!.mainWelfareResult.employCategory) {
             employCategoryMaxMoney.add(i.maxMoney.toInt())
-            if (i.minMoney != "0") //최소 금액이 0이 아닌 최소금액들만 저장
+            if (i.minMoney != "0" && i.minMoney !="조건별상이") //최소 금액이 0이 아닌 최소금액들만 저장
                 employCategoryMinMoney.add(i.minMoney.toInt())
         }
         if (employCategoryMaxMoney.isNotEmpty())
@@ -402,7 +403,7 @@ class CustomWelfareFragmentViewModel(application: Application) : AndroidViewMode
         var foundationCategoryMinMoney = ArrayList<Int>()
         for (i in _welfareInfo.value!!.mainWelfareResult.foundationCategory) {
             foundationCategoryMaxMoney.add(i.maxMoney.toInt())
-            if (i.minMoney != "0") //최소 금액이 0이 아닌 최소금액들만 저장
+            if (i.minMoney != "0" && i.minMoney !="조건별상이") //최소 금액이 0이 아닌 최소금액들만 저장
                 foundationCategoryMinMoney.add(i.minMoney.toInt())
         }
         if (foundationCategoryMaxMoney.isNotEmpty())
@@ -416,7 +417,7 @@ class CustomWelfareFragmentViewModel(application: Application) : AndroidViewMode
         var residentCategoryMinMoney = ArrayList<Int>()
         for (i in _welfareInfo.value!!.mainWelfareResult.residentCategory) {
             residentCategoryMaxMoney.add(i.maxMoney.toInt())
-            if (i.minMoney != "0") //최소 금액이 0이 아닌 최소금액들만 저장
+            if (i.minMoney != "0" && i.minMoney !="조건별상이") //최소 금액이 0이 아닌 최소금액들만 저장
                 residentCategoryMinMoney.add(i.minMoney.toInt())
         }
         if (residentCategoryMaxMoney.isNotEmpty())
@@ -430,7 +431,7 @@ class CustomWelfareFragmentViewModel(application: Application) : AndroidViewMode
         var lifeCategoryMinMoney = ArrayList<Int>()
         for (i in _welfareInfo.value!!.mainWelfareResult.lifeCategory) {
             lifeCategoryMaxMoney.add(i.maxMoney.toInt())
-            if (i.minMoney != "0") //최소 금액이 0이 아닌 최소금액들만 저장
+            if (i.minMoney != "0" && i.minMoney !="조건별상이") //최소 금액이 0이 아닌 최소금액들만 저장
                 lifeCategoryMinMoney.add(i.minMoney.toInt())
         }
         if (lifeCategoryMaxMoney.isNotEmpty())
@@ -444,7 +445,7 @@ class CustomWelfareFragmentViewModel(application: Application) : AndroidViewMode
         var covidCategoryMinMoney = ArrayList<Int>()
         for (i in _welfareInfo.value!!.mainWelfareResult.covidCategory) {
             covidCategoryMaxMoney.add(i.maxMoney.toInt())
-            if (i.minMoney != "0") //최소 금액이 0이 아닌 최소금액들만 저장
+            if (i.minMoney != "0" && i.minMoney !="조건별상이") //최소 금액이 0이 아닌 최소금액들만 저장
                 covidCategoryMinMoney.add(i.minMoney.toInt())
         }
         if (covidCategoryMaxMoney.isNotEmpty())
