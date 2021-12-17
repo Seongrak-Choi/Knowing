@@ -264,6 +264,4 @@ class MoreInformationActivity1ViewModel(application: Application):AndroidViewMod
             choice_value.add("none")
         return choice_value
     }
-
-
 }

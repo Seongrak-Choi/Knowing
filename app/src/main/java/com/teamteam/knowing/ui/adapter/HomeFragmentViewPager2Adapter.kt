@@ -4,9 +4,9 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.teamteam.knowing.data.model.network.response.MainWelfareResponse
-import com.teamteam.knowing.ui.view.main.home.AllWelfareFragment
+import com.teamteam.knowing.ui.view.main.home.allwelfare.AllWelfareFragment
 import com.teamteam.knowing.ui.view.main.home.CalendarFragment
-import com.teamteam.knowing.ui.view.main.home.CustomWelfareFragment
+import com.teamteam.knowing.ui.view.main.home.customwelfare.CustomWelfareFragment
 
 class HomeFragmentViewPager2Adapter(fm: Fragment,val welfareInfo:MainWelfareResponse) :
     FragmentStateAdapter(fm) {
@@ -19,9 +19,9 @@ class HomeFragmentViewPager2Adapter(fm: Fragment,val welfareInfo:MainWelfareResp
     override fun createFragment(position: Int): Fragment {
         var bundle = Bundle()
         bundle.putSerializable("welfareInfo",welfareInfo)
-        var customWelfareFragment=CustomWelfareFragment()
+        var customWelfareFragment= CustomWelfareFragment()
         var calendarFragment=CalendarFragment()
-        var allWelfareFragment=AllWelfareFragment()
+        var allWelfareFragment= AllWelfareFragment()
 
         customWelfareFragment.arguments=bundle
         calendarFragment.arguments=bundle

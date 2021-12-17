@@ -18,6 +18,7 @@ import com.teamteam.knowing.data.model.network.response.WelfareInfo
 import com.teamteam.knowing.databinding.FragmentBookmarkBinding
 import com.teamteam.knowing.ui.adapter.MainBookmarkRCAdapter
 import com.teamteam.knowing.ui.base.BaseFragment
+import com.teamteam.knowing.ui.view.main.home.customwelfare.SelectFilterDialog
 import com.teamteam.knowing.ui.viewmodel.BookmarkFragmentViewModel
 
 class BookmarkFragment : BaseFragment<FragmentBookmarkBinding>(FragmentBookmarkBinding::bind, R.layout.fragment_bookmark){
@@ -54,7 +55,7 @@ class BookmarkFragment : BaseFragment<FragmentBookmarkBinding>(FragmentBookmarkB
 
 
         //뷰모델 장착
-        bookmarkFragmentViewModel=ViewModelProvider(this).get(BookmarkFragmentViewModel::class.java)
+        bookmarkFragmentViewModel=ViewModelProvider(requireActivity()).get(BookmarkFragmentViewModel::class.java)
 
         //북마크 리사이클러뷰를 위해 api로 받아온 라이브데이터 관찰
         bookmarkFragmentViewModel.currentRcList.observe(viewLifecycleOwner, Observer {
@@ -64,8 +65,9 @@ class BookmarkFragment : BaseFragment<FragmentBookmarkBinding>(FragmentBookmarkB
                 binding.rcBookmark.visibility=View.INVISIBLE
                 binding.constraintNoData.visibility = View.VISIBLE
             }else{
-               binding.constraintNoData.visibility = View.INVISIBLE
-                binding.rcBookmark.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
+                binding.constraintNoData.visibility = View.INVISIBLE
+               binding.rcBookmark.visibility=View.VISIBLE
+               binding.rcBookmark.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
                 adapter = MainBookmarkRCAdapter(it,requireContext())
                 binding.rcBookmark.adapter = adapter
                 adapter.notifyDataSetChanged()
@@ -79,6 +81,18 @@ class BookmarkFragment : BaseFragment<FragmentBookmarkBinding>(FragmentBookmarkB
                 })
             }
         })
+
+        //총 건수 설정할 라이브데이터 관찰
+        bookmarkFragmentViewModel.currentBookmarkTotal.observe(viewLifecycleOwner, Observer {
+            binding.txWelfareTotal.text="총 ${it}건"
+        })
+
+
+        //정렬 부분 나타낼 라이브데이터 관찰
+        bookmarkFragmentViewModel.currentFilter.observe(viewLifecycleOwner, Observer {
+            binding.txFilter.text=it.toString()
+        })
+
 
 
         //EditText검색을 위한 텍스트 체인지 리스너
@@ -99,6 +113,7 @@ class BookmarkFragment : BaseFragment<FragmentBookmarkBinding>(FragmentBookmarkB
             }
         })
 
+
         //editSearch 포커싱 리스너
         binding.edtSearch.setOnFocusChangeListener { v, hasFocus ->
             if (hasFocus){
@@ -106,6 +121,7 @@ class BookmarkFragment : BaseFragment<FragmentBookmarkBinding>(FragmentBookmarkB
                 binding.imgSearchCancel.visibility=View.INVISIBLE
             }
         }
+
 
 
         //EditText검색 할 때 나오는 키보드 종류가 완료이도록 설정
@@ -135,10 +151,12 @@ class BookmarkFragment : BaseFragment<FragmentBookmarkBinding>(FragmentBookmarkB
         }
 
 
-        //총 건수 설정할 라이브데이터 관찰
-        bookmarkFragmentViewModel.currentBookmarkTotal.observe(viewLifecycleOwner, Observer {
-            binding.txWelfareTotal.text="총 ${it}건"
-        })
+
+        //btn_filter 필터 버튼 클릭 리스너
+        binding.btnFilter.setOnClickListener {
+            val bottomSheet = SelectBookmarkFilterDialog()
+            bottomSheet.show(requireActivity().supportFragmentManager, bottomSheet.tag)
+        }
     }
 
     override fun onResume() {

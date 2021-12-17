@@ -2,6 +2,7 @@ package com.teamteam.knowing.data.remote.api
 
 import com.teamteam.knowing.data.model.domain.SignUpUser
 import com.teamteam.knowing.data.model.network.request.CategoryCorrectRequest
+import com.teamteam.knowing.data.model.network.request.UserAddCorrectRequest
 import com.teamteam.knowing.data.model.network.request.UserCorrectRequest
 import com.teamteam.knowing.data.model.network.response.*
 import retrofit2.Call
@@ -11,9 +12,16 @@ interface SignUpInterface {
     @POST("app/users/sign-up")
     fun postSignUp(@Header("uid")uid:String, @Body params : SignUpUser) : Call<SignUpResponse>
 
+
+    //유저 기본 정보 수정하는 api
     @POST("app/users/usermodify/privacy")
     fun postUserCorrect(@Header("uid")uid:String, @Body params : UserCorrectRequest) : Call<UserCorrectResponse>
 
+    //유저 추가 정보 수정하는 api
+    @POST("app/users/usermodify/plusinfo")
+    fun postUserAddCorrect(@Header("userUid")userUid: String,@Body params: UserAddCorrectRequest) : Call<UserCorrectResponse>
+
+    //카테고리 수정하는 api
     @POST("app/users/usermodify/welfare")
     fun postCategoryCorrect(@Header("uid")uid: String, @Body params:CategoryCorrectRequest):Call<CategoryCorrectResponse>
 

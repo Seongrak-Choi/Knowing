@@ -16,7 +16,13 @@ class BookmarkFragmentViewModel(application:Application):AndroidViewModel(applic
     //리사이클러뷰에 출력해줄 리스트 저장할 라이브 데이터
     private val _currentRcList = MutableLiveData<ArrayList<WelfareInfo>>()
 
+    //복지 총 갯수 저장할 라이브 데이터
     private val _currentBookmarkTotal = MutableLiveData<Int>()
+
+    //정렬 부분에 보여질 텍스트 저장하는 라이브데이터
+    private val _currentFilter = MutableLiveData<String>()
+
+
 
     val currentRcList : MutableLiveData<ArrayList<WelfareInfo>>
         get() =  _currentRcList
@@ -24,6 +30,13 @@ class BookmarkFragmentViewModel(application:Application):AndroidViewModel(applic
     val currentBookmarkTotal : MutableLiveData<Int>
         get() =  _currentBookmarkTotal
 
+    val currentFilter: MutableLiveData<String>
+        get() = _currentFilter
+
+
+    init {
+        _currentFilter.value="높은 금액순"
+    }
 
 
     /*
@@ -38,6 +51,13 @@ class BookmarkFragmentViewModel(application:Application):AndroidViewModel(applic
                     //받아온 북마크 리스트를 리사이클러뷰를 담당하는 라이브데이터에 저장
                     _currentRcList.value = result.bookmarkResult
                     _currentBookmarkTotal.value = result.bookmarkResult.size
+
+                    //정렬 값에 맞춰 저장
+                    when(_currentFilter.value.toString()){
+                        "높은 금액순"-> sortHighCost()
+                        "낮은 금액순"-> sortLowCost()
+                        "마감일순"->sortDeadLine()
+                    }
                 }else{
                     Log.e("ERROR","북마크 조회 정보 가져오기 실패")
                 }
@@ -70,5 +90,102 @@ class BookmarkFragmentViewModel(application:Application):AndroidViewModel(applic
             }
 
         })
+    }
+
+
+
+    /*
+   높은 금액순으로 정렬하는 메소드
+    */
+    fun sortHighCost(){
+        var sortedList=ArrayList<WelfareInfo>()
+        for (i in 0 until _currentRcList.value!!.size){
+            var max= _currentRcList.value!![i].maxMoney.toInt()
+            var maxIndex = i
+
+            for (j in i+1 until _currentRcList.value!!.size){
+                if (max<_currentRcList.value!![j].maxMoney.toInt()){
+                    max=_currentRcList.value!![j].maxMoney.toInt()
+                    maxIndex=j
+
+                    var temp = _currentRcList.value!![i]
+                    _currentRcList.value!![i]=_currentRcList.value!![maxIndex]
+                    _currentRcList.value!![maxIndex]=temp
+                }
+            }
+            sortedList.add(_currentRcList.value!![i])
+        }
+        _currentRcList.value=sortedList
+    }
+
+
+    /*
+  낮은 금액순으로 정렬하는 메소드
+   */
+    fun sortLowCost(){
+        var sortedList=ArrayList<WelfareInfo>()
+        for (i in 0 until _currentRcList.value!!.size) {
+            var max = _currentRcList.value!![i].minMoney.toInt()
+            var maxIndex = i
+
+            for (j in i + 1 until _currentRcList.value!!.size) {
+                if (max < _currentRcList.value!![j].minMoney.toInt()) {
+                    max = _currentRcList.value!![j].maxMoney.toInt()
+                    maxIndex = j
+
+                    var temp = _currentRcList.value!![i]
+                    _currentRcList.value!![i] = _currentRcList.value!![maxIndex]
+                    _currentRcList.value!![maxIndex] = temp
+                }
+            }
+            sortedList.add(_currentRcList.value!![i])
+        }
+        _currentRcList.value=sortedList
+    }
+
+
+    /*
+    마감일자순으로 정렬하는 메소드
+    */
+    fun sortDeadLine(){
+        //정렬된 리스트를 저장할 리스트
+        var sortedList=ArrayList<WelfareInfo>()
+
+        //작은 값을 저장하고 있을 리스트
+        var soonDeadLineList=ArrayList<WelfareInfo>()
+
+        //applyDate가 연중상시,별도공지 아닌 복지 저장할 리스트
+        var deadLineList=ArrayList<WelfareInfo>()
+
+        //applyDate가 연중상시,별도공지 인 복지 저장할 리스트
+        var lastList=ArrayList<WelfareInfo>()
+
+        //먼저 split을 할 수 있도록 연중상시,별도공지 인지 아닌지 나눈다.
+        for (i in _currentRcList.value!!){
+            if (i.applyDate!="연중상시" && i.applyDate!="별도공지"){
+                deadLineList.add(i)
+            }else{
+                lastList.add(i)
+            }
+        }
+
+        for (i in 0 until deadLineList.size) {
+            var soonDeadLine = deadLineList[i].applyDate.split("~")[1].replace(".","")
+            var soonDeadLineIndex=i
+            for (j in i + 1 until deadLineList.size) {
+                if (soonDeadLine.toInt() > deadLineList[j].applyDate.split("~")[1].replace(".","").toInt()) {
+                    soonDeadLine = deadLineList[j].applyDate.split("~")[1].replace(".","")
+                    soonDeadLineIndex = j
+
+                    var temp = deadLineList[i]
+                    deadLineList[i] = deadLineList[soonDeadLineIndex]
+                    deadLineList[soonDeadLineIndex] = temp
+                }
+            }
+            soonDeadLineList.add(deadLineList[i])
+        }
+        sortedList.addAll(soonDeadLineList)
+        sortedList.addAll(lastList)
+        _currentRcList.value=sortedList
     }
 }

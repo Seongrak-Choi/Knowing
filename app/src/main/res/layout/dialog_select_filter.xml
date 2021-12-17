@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/item_rc_do_dialog_bg">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tx_title_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/godom"
+        android:text="정렬"
+        android:textColor="#656565"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btn_cancel"
+        android:layout_width="32dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_cancel_large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="14dp"
+        android:background="#dddddd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tx_title_main" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/btn_high_cost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="12dp"
+        android:paddingVertical="11dp"
+        android:background="@drawable/rectangle_ffeed3_radius19_5"
+        app:layout_constraintTop_toBottomOf="@+id/line">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tx_high_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="높은 금액순"
+            android:textSize="16dp"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="#ff8854"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/btn_low_cost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="10dp"
+        android:paddingVertical="11dp"
+        app:layout_constraintTop_toBottomOf="@+id/btn_high_cost">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tx_low_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="낮은 금액순"
+            android:textSize="16dp"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="#b0b0b0"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/btn_dead_line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="10dp"
+        android:paddingVertical="11dp"
+        app:layout_constraintTop_toBottomOf="@+id/btn_low_cost">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tx_dead_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="마감일순"
+            android:textSize="16dp"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="#b0b0b0"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

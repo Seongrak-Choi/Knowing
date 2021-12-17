@@ -12,6 +12,8 @@ import android.view.inputmethod.InputMethodManager
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.teamteam.knowing.R
+import com.teamteam.knowing.config.ApplicationClass.Companion.USER_INCOME_KEY
+import com.teamteam.knowing.config.ApplicationClass.Companion.sp
 import com.teamteam.knowing.data.model.domain.SignUpUser
 import com.teamteam.knowing.databinding.ActivityMoreInformation2Binding
 import com.teamteam.knowing.ui.base.BaseActivity
@@ -240,8 +242,6 @@ class MoreInformationActivity2:BaseActivity<ActivityMoreInformation2Binding>(Act
             }else{ //포커싱이 사라질 때...
                 //뷰모델의 라이브데이터로 edtIncome의 데이터 저장
                 moreInformationActivity2ViewModel.currentEdtIncome.value=binding.edtIncome.text.toString()
-
-                println(binding.edtIncome.text.toString().isNotEmpty())
 
                 //'다음'버튼 활성화를 확인하는 메소드 출력
                 moreInformationActivity2ViewModel.checkIsCorrect()

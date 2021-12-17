@@ -484,27 +484,34 @@
                     app:layout_constraintStart_toEndOf="@+id/tx_title_category"
                     app:layout_constraintTop_toTopOf="parent"/>
 
-                <androidx.appcompat.widget.AppCompatTextView
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/btn_filter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="높은 금액순"
-                    android:fontFamily="@font/roboto_bold"
-                    android:textColor="#d28451"
-                    android:textSize="14dp"
-                    android:layout_marginEnd="5.5dp"
+                    android:orientation="horizontal"
+                    android:gravity="center"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/btn_filter"/>
+                    app:layout_constraintEnd_toEndOf="parent">
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/btn_filter"
-                    android:layout_width="34dp"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/ic_main_home_filter"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tx_filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="높은 금액순"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textColor="#d28451"
+                        android:textSize="14dp"
+                        android:layout_marginEnd="5.5dp" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="34dp"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/ic_main_home_filter"/>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!--카테고리별 맞춤 복지 탭 레이아웃-->

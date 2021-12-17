@@ -1,16 +1,13 @@
-package com.teamteam.knowing.ui.view.main.home
+package com.teamteam.knowing.ui.view.main.home.customwelfare
 
 import android.animation.ValueAnimator
 import android.content.Intent
-import android.graphics.Point
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
-import android.widget.LinearLayout
 import androidx.activity.OnBackPressedCallback
-import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -53,6 +50,11 @@ class CustomWelfareFragment : BaseFragment<FragmentMainHomeCustomWelfareBinding>
     private lateinit var subject5_anim : ValueAnimator
     //6번재 주제 그래프바 애니메이션 변수
     private lateinit var subject6_anim : ValueAnimator
+
+
+    //맞춤 복지에 보여주는 리사이클러뷰 어댑터
+    private lateinit var adapter : MainHomeCustomWelfareRCAdapter
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -109,7 +111,7 @@ class CustomWelfareFragment : BaseFragment<FragmentMainHomeCustomWelfareBinding>
 
 
         //뷰모델 장착
-        customWelfareFragmentViewModel=ViewModelProvider(this).get(CustomWelfareFragmentViewModel::class.java)
+        customWelfareFragmentViewModel=ViewModelProvider(requireActivity()).get(CustomWelfareFragmentViewModel::class.java)
 
         //뷰모델 라이브데이터에 복지 정보 전달
         customWelfareFragmentViewModel.welfareInfo.value=welfareInfo
@@ -199,9 +201,14 @@ class CustomWelfareFragment : BaseFragment<FragmentMainHomeCustomWelfareBinding>
         //맞춤복지 리사이클러뷰에 출력할 라이브데이터 관찰
         customWelfareFragmentViewModel.currentRcList.observe(viewLifecycleOwner, Observer {
             binding.rcCustomWelfare.layoutManager= LinearLayoutManager(requireContext())
-            val adapter =  MainHomeCustomWelfareRCAdapter(it,requireContext())
+            adapter =  MainHomeCustomWelfareRCAdapter(it,requireContext())
             binding.rcCustomWelfare.adapter = adapter
-            adapter.notifyDataSetChanged()
+        })
+
+
+        //정렬 부분 나타낼 라이브데이터 관찰
+        customWelfareFragmentViewModel.currentFilter.observe(viewLifecycleOwner, Observer {
+            binding.txFilter.text=it.toString()
         })
 
 
@@ -243,6 +250,12 @@ class CustomWelfareFragment : BaseFragment<FragmentMainHomeCustomWelfareBinding>
             val intent = Intent(requireContext(), WelfareDetailActivity::class.java)
             intent.putExtra("welfareInfo",customWelfareFragmentViewModel.maxMoneyWelfareInfo.value)
             startActivity(intent)
+        }
+
+        //btn_filter 필터 버튼 클릭 리스너
+        binding.btnFilter.setOnClickListener {
+            val bottomSheet = SelectFilterDialog()
+            bottomSheet.show(requireActivity().supportFragmentManager, bottomSheet.tag)
         }
     }
 

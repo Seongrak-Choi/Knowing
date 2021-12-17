@@ -1,4 +1,4 @@
-package com.teamteam.knowing.ui.view.main.home
+package com.teamteam.knowing.ui.view.main.home.allwelfare
 
 import android.os.Bundle
 import android.view.View
@@ -13,6 +13,7 @@ import com.teamteam.knowing.ui.adapter.MainHomeAllWelfareRCAdapter
 import com.teamteam.knowing.ui.base.BaseFragment
 import com.teamteam.knowing.ui.viewmodel.AllWelfareFragmentViewModel
 import com.google.android.material.tabs.TabLayout
+import com.teamteam.knowing.ui.view.main.home.customwelfare.SelectFilterDialog
 
 class AllWelfareFragment : BaseFragment<FragmentMainHomeAllWelfareBinding>(
     FragmentMainHomeAllWelfareBinding::bind,
@@ -56,7 +57,7 @@ class AllWelfareFragment : BaseFragment<FragmentMainHomeAllWelfareBinding>(
 
 
         //뷰모델 장착
-        allWelfareFragmentViewModel= ViewModelProvider(this).get(AllWelfareFragmentViewModel::class.java)
+        allWelfareFragmentViewModel= ViewModelProvider(requireActivity()).get(AllWelfareFragmentViewModel::class.java)
 
         //뷰모델 라이브데이터에 복지 정보 전달
         allWelfareFragmentViewModel.welfareInfo.value=welfareInfo
@@ -75,7 +76,22 @@ class AllWelfareFragment : BaseFragment<FragmentMainHomeAllWelfareBinding>(
             val adapter =  MainHomeAllWelfareRCAdapter(it,requireContext())
             binding.rcAllWelfare.adapter = adapter
             adapter.notifyDataSetChanged()
+
+            binding.txWelfareTotal.text="총 ${it.size}건"
         })
+
+        //정렬 부분 나타낼 라이브데이터 관찰
+        allWelfareFragmentViewModel.currentFilter.observe(viewLifecycleOwner, Observer {
+            binding.txFilter.text=it.toString()
+        })
+
+        //필터 클릭 리스너
+        binding.btnFilter.setOnClickListener {
+            val bottomSheet = SelectAllWelfareFilterDialog()
+            bottomSheet.show(requireActivity().supportFragmentManager, bottomSheet.tag)
+        }
+
+
 
         binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
             override fun onTabSelected(tab: TabLayout.Tab?) {

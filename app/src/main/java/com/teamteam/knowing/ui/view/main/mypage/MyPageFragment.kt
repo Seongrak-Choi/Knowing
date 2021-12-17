@@ -17,6 +17,9 @@ import com.teamteam.knowing.databinding.FragmentMyPageBinding
 import com.teamteam.knowing.ui.base.BaseFragment
 import com.teamteam.knowing.ui.view.login.JoinUpSNSActivity
 import com.teamteam.knowing.ui.view.main.mypage.quize_terms.QuizeTermsActivity
+import com.teamteam.knowing.ui.view.main.mypage.user_correct.SnsUserCorrectActivity
+import com.teamteam.knowing.ui.view.main.mypage.user_correct.UserCorrectActivity
+import com.teamteam.knowing.ui.view.main.mypage.user_correct.UserSetting
 
 class MyPageFragment:BaseFragment<FragmentMyPageBinding>(FragmentMyPageBinding::bind, R.layout.fragment_my_page) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,17 +45,9 @@ class MyPageFragment:BaseFragment<FragmentMyPageBinding>(FragmentMyPageBinding::
 
         //회원정보설정 버튼 클릭 리스너
         binding.btnProfileSetting.setOnClickListener {
-            //로그인한 계정이 sns 로그인이 아닌 경우
-            if (sp.getString(USER_PROVIDER_KEY,"".toString())=="default"){
-                //회원 정보 수정하기 액티비로 이동
-                val intent = Intent(requireContext(),UserCorrectActivity::class.java)
-                requireContext().startActivity(intent)
-            }else{
-                //회원 정보 수정하기 액티비로 이동
-                val intent = Intent(requireContext(),SnsUserCorrectActivity::class.java)
-                requireContext().startActivity(intent)
-            }
-
+            //유저 정보 설정하는 액티비티로 이동
+            val intent = Intent(requireContext(), UserSetting::class.java)
+            startActivity(intent)
         }
 
         //알림 설정 버튼 클릭 리스너

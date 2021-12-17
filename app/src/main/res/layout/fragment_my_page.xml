@@ -30,7 +30,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tx_want_change"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="변경하고 싶으신 정보가 있으신가요?"
             android:fontFamily="@font/roboto_bold"
@@ -39,6 +39,7 @@
             android:layout_marginStart="14dp"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tx_name"
             app:layout_constraintStart_toEndOf="@+id/img_profile"/>

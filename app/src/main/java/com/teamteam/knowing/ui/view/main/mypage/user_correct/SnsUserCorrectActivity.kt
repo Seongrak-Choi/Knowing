@@ -1,4 +1,4 @@
-package com.teamteam.knowing.ui.view.main.mypage
+package com.teamteam.knowing.ui.view.main.mypage.user_correct
 
 import android.app.AlertDialog
 import android.app.Dialog

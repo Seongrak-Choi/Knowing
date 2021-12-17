@@ -28,7 +28,7 @@
             android:fontFamily="@font/roboto_bold"
             android:text="2"
             android:textColor="#f98551"
-            android:textSize="14sp"
+            android:textSize="14dp"
             app:layout_constraintBottom_toTopOf="@+id/img_progress"
             app:layout_constraintEnd_toEndOf="@id/img_progress"
             app:layout_constraintHorizontal_bias="0.39"
@@ -41,7 +41,7 @@
             android:fontFamily="@font/roboto_bold"
             android:text="5"
             android:textColor="#d8d8d8"
-            android:textSize="14sp"
+            android:textSize="14dp"
             app:layout_constraintBottom_toTopOf="@+id/img_progress"
             app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
             app:layout_constraintHorizontal_bias="0.98"
@@ -67,7 +67,7 @@
             android:fontFamily="@font/roboto_regular"
             android:text="카테고리 중"
             android:textColor="#939393"
-            android:textSize="14sp"
+            android:textSize="14dp"
             app:layout_constraintEnd_toStartOf="@+id/img_star_category"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="@id/guidelineStart"
@@ -93,7 +93,7 @@
             android:fontFamily="@font/roboto_regular"
             android:text="은 필수 기재 사항이에요."
             android:textColor="#939393"
-            android:textSize="14sp"
+            android:textSize="14dp"
             app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
             app:layout_constraintStart_toEndOf="@+id/img_star_category"
             app:layout_constraintTop_toBottomOf="@id/img_progress" />
@@ -107,7 +107,7 @@
             android:fontFamily="@font/roboto_bold"
             android:text="@string/more_information2_title1"
             android:textColor="#666666"
-            android:textSize="15sp"
+            android:textSize="15dp"
             app:layout_constraintStart_toEndOf="@+id/img_star_income"
             app:layout_constraintTop_toBottomOf="@+id/tx_category1" />
 
@@ -131,7 +131,7 @@
             android:inputType="number"
             android:textColorHint="#c2c2c2"
             android:textCursorDrawable="@drawable/sign_up_edt_cursor"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:theme="@style/editText"
             app:layout_constraintStart_toStartOf="@id/guidelineStart"
             app:layout_constraintTop_toBottomOf="@+id/tx_title_income" />
@@ -144,7 +144,7 @@
             android:fontFamily="@font/roboto_regular"
             android:text="원"
             android:textColor="#414141"
-            android:textSize="16sp"
+            android:textSize="16dp"
             app:layout_constraintBottom_toBottomOf="@+id/edt_income"
             app:layout_constraintStart_toEndOf="@+id/edt_income"
             app:layout_constraintTop_toTopOf="@+id/edt_income" />
@@ -159,7 +159,7 @@
             android:fontFamily="@font/roboto_bold"
             android:text="@string/more_information2_title2"
             android:textColor="#666666"
-            android:textSize="15sp"
+            android:textSize="15dp"
             app:layout_constraintStart_toEndOf="@+id/img_star_income"
             app:layout_constraintTop_toBottomOf="@+id/edt_income" />
 
@@ -182,7 +182,7 @@
             android:fontFamily="@font/roboto_bold"
             android:text="* 중복 선택 가능"
             android:textColor="#bbbbbb"
-            android:textSize="14sp"
+            android:textSize="14dp"
             app:layout_constraintStart_toStartOf="@id/guidelineStart"
             app:layout_constraintTop_toBottomOf="@+id/tx_title_get_job" />
 
@@ -207,7 +207,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:text="전체"
                 android:textColor="#6c6c6c"
-                android:textSize="14sp" />
+                android:textSize="14dp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_get_job_2"
@@ -220,7 +220,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:text="미취업자"
                 android:textColor="#6c6c6c"
-                android:textSize="14sp" />
+                android:textSize="14dp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_get_job_3"
@@ -232,7 +232,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:text="재직자"
                 android:textColor="#6c6c6c"
-                android:textSize="14sp" />
+                android:textSize="14dp" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
 
@@ -256,7 +256,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:text="프리랜서"
                 android:textColor="#6c6c6c"
-                android:textSize="14sp" />
+                android:textSize="14dp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_get_job_5"
@@ -269,7 +269,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:text="일용근로자"
                 android:textColor="#6c6c6c"
-                android:textSize="14sp" />
+                android:textSize="14dp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_get_job_6"
@@ -281,7 +281,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:text="단기근로자"
                 android:textColor="#6c6c6c"
-                android:textSize="14sp" />
+                android:textSize="14dp" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <!--예비창업자, 자영업자, 영농종사자 버튼 리니어-->
@@ -304,7 +304,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:text="예비창업자"
                 android:textColor="#6c6c6c"
-                android:textSize="14sp" />
+                android:textSize="14dp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_get_job_8"
@@ -317,7 +317,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:text="자영업자"
                 android:textColor="#6c6c6c"
-                android:textSize="14sp" />
+                android:textSize="14dp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_get_job_9"
@@ -329,7 +329,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:text="영농종사자"
                 android:textColor="#6c6c6c"
-                android:textSize="14sp" />
+                android:textSize="14dp" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
 
@@ -343,7 +343,7 @@
             android:fontFamily="@font/gothic_bold"
             android:text="다음"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
             app:layout_constraintStart_toStartOf="@id/guidelineStart" />

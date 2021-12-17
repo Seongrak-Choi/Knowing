@@ -67,6 +67,9 @@ class ApplicationClass : Application() {
         //sp에 user_FCM로 접근할 키 값
         val USER_FCM_TOKEN_KEY = "USER_FCM_TOKEN"
 
+        //sp에 월 소득으로 접근하는 키 값
+        val USER_INCOME_KEY="USER_INCOME"
+
 
 
         // Retrofit 인스턴스, 앱 실행시 한번만 생성하여 사용합니다.

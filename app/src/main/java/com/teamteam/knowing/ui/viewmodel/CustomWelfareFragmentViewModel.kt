@@ -52,6 +52,9 @@ class CustomWelfareFragmentViewModel(application: Application) : AndroidViewMode
     //맞춤복지 리사이클러뷰 출력할 라이브데이터
     private val _currentRcList = MutableLiveData<ArrayList<WelfareInfo>>()
 
+    //정렬 부분에 보여질 텍스트 저장하는 라이브데이터
+    private val _currentFilter = MutableLiveData<String>()
+
 
     val welfareInfo: MutableLiveData<MainWelfareResponse>
         get() = _welfareInfo
@@ -113,8 +116,12 @@ class CustomWelfareFragmentViewModel(application: Application) : AndroidViewMode
     val currentRcList: MutableLiveData<ArrayList<WelfareInfo>>
         get() = _currentRcList
 
+    val currentFilter: MutableLiveData<String>
+        get() = _currentFilter
+
 
     init {
+        _currentFilter.value="높은 금액순"
     }
 
     /*
@@ -275,6 +282,11 @@ class CustomWelfareFragmentViewModel(application: Application) : AndroidViewMode
      */
     fun changeRcToStudent() {
         _currentRcList.value = _welfareInfo.value?.mainWelfareResult?.studentCategory
+        when(_currentFilter.value.toString()){
+            "높은 금액순"-> sortHighCost()
+            "낮은 금액순"-> sortLowCost()
+            "마감일순"->sortDeadLine()
+        }
     }
 
     /*
@@ -282,6 +294,11 @@ class CustomWelfareFragmentViewModel(application: Application) : AndroidViewMode
    */
     fun changeRcToEmploy() {
         _currentRcList.value = _welfareInfo.value?.mainWelfareResult?.employCategory
+        when(_currentFilter.value.toString()){
+            "높은 금액순"-> sortHighCost()
+            "낮은 금액순"-> sortLowCost()
+            "마감일순"->sortDeadLine()
+        }
     }
 
     /*
@@ -289,6 +306,11 @@ class CustomWelfareFragmentViewModel(application: Application) : AndroidViewMode
    */
     fun changeRcToFoundation() {
         _currentRcList.value = _welfareInfo.value?.mainWelfareResult?.foundationCategory
+        when(_currentFilter.value.toString()){
+            "높은 금액순"-> sortHighCost()
+            "낮은 금액순"-> sortLowCost()
+            "마감일순"->sortDeadLine()
+        }
     }
 
     /*
@@ -296,6 +318,11 @@ class CustomWelfareFragmentViewModel(application: Application) : AndroidViewMode
    */
     fun changeRcToResident() {
         _currentRcList.value = _welfareInfo.value?.mainWelfareResult?.residentCategory
+        when(_currentFilter.value.toString()){
+            "높은 금액순"-> sortHighCost()
+            "낮은 금액순"-> sortLowCost()
+            "마감일순"->sortDeadLine()
+        }
     }
 
     /*
@@ -303,6 +330,11 @@ class CustomWelfareFragmentViewModel(application: Application) : AndroidViewMode
    */
     fun changeRcToLife() {
         _currentRcList.value = _welfareInfo.value?.mainWelfareResult?.lifeCategory
+        when(_currentFilter.value.toString()){
+            "높은 금액순"-> sortHighCost()
+            "낮은 금액순"-> sortLowCost()
+            "마감일순"->sortDeadLine()
+        }
     }
 
     /*
@@ -310,6 +342,11 @@ class CustomWelfareFragmentViewModel(application: Application) : AndroidViewMode
    */
     fun changeRcToCovid() {
         _currentRcList.value = _welfareInfo.value?.mainWelfareResult?.covidCategory
+        when(_currentFilter.value.toString()){
+            "높은 금액순"-> sortHighCost()
+            "낮은 금액순"-> sortLowCost()
+            "마감일순"->sortDeadLine()
+        }
     }
 
 
@@ -415,7 +452,7 @@ class CustomWelfareFragmentViewModel(application: Application) : AndroidViewMode
         if (covidCategoryMinMoney.isNotEmpty())//최소금액이 다 0이여서 아무런 데이터가 저장되어 있지 않는다면...
             minMoneyOfCategory.add(covidCategoryMinMoney.minOrNull()!!)//카테고리에서 산출된 최소 금액을 리스트에 저장
 
-
+        //3개마다 콤마 찍기 위해 포멧 지정
         val myFormatter = DecimalFormat("###,###")
 
 
@@ -513,6 +550,100 @@ class CustomWelfareFragmentViewModel(application: Application) : AndroidViewMode
 //        })
 //    }
 
+    /*
+    높은 금액순으로 정렬하는 메소드
+     */
+    fun sortHighCost(){
+        var sortedList=ArrayList<WelfareInfo>()
+        for (i in 0 until _currentRcList.value!!.size){
+            var max= _currentRcList.value!![i].maxMoney.toInt()
+            var maxIndex = i
+
+            for (j in i+1 until _currentRcList.value!!.size){
+                if (max<_currentRcList.value!![j].maxMoney.toInt()){
+                    max=_currentRcList.value!![j].maxMoney.toInt()
+                    maxIndex=j
+
+                    var temp = _currentRcList.value!![i]
+                    _currentRcList.value!![i]=_currentRcList.value!![maxIndex]
+                    _currentRcList.value!![maxIndex]=temp
+                }
+            }
+            sortedList.add(_currentRcList.value!![i])
+        }
+        _currentRcList.value=sortedList
+    }
+
+
+    /*
+  낮은 금액순으로 정렬하는 메소드
+   */
+    fun sortLowCost(){
+        var sortedList=ArrayList<WelfareInfo>()
+        for (i in 0 until _currentRcList.value!!.size) {
+            var max = _currentRcList.value!![i].minMoney.toInt()
+            var maxIndex = i
+
+            for (j in i + 1 until _currentRcList.value!!.size) {
+                if (max < _currentRcList.value!![j].minMoney.toInt()) {
+                    max = _currentRcList.value!![j].maxMoney.toInt()
+                    maxIndex = j
+
+                    var temp = _currentRcList.value!![i]
+                    _currentRcList.value!![i] = _currentRcList.value!![maxIndex]
+                    _currentRcList.value!![maxIndex] = temp
+                }
+            }
+            sortedList.add(_currentRcList.value!![i])
+        }
+        _currentRcList.value=sortedList
+    }
+
+
+    /*
+    마감일자순으로 정렬하는 메소드
+    */
+    fun sortDeadLine(){
+        //정렬된 리스트를 저장할 리스트
+        var sortedList=ArrayList<WelfareInfo>()
+
+        //작은 값을 저장하고 있을 리스트
+        var soonDeadLineList=ArrayList<WelfareInfo>()
+
+        //applyDate가 연중상시,별도공지 아닌 복지 저장할 리스트
+        var deadLineList=ArrayList<WelfareInfo>()
+
+        //applyDate가 연중상시,별도공지 인 복지 저장할 리스트
+        var lastList=ArrayList<WelfareInfo>()
+
+        //먼저 split을 할 수 있도록 연중상시,별도공지 인지 아닌지 나눈다.
+        for (i in _currentRcList.value!!){
+            if (i.applyDate!="연중상시" && i.applyDate!="별도공지"){
+                deadLineList.add(i)
+            }else{
+                lastList.add(i)
+            }
+        }
+
+        for (i in 0 until deadLineList.size) {
+            var soonDeadLine = deadLineList[i].applyDate.split("~")[1].replace(".","")
+            var soonDeadLineIndex=i
+            for (j in i + 1 until deadLineList.size) {
+                if (soonDeadLine.toInt() > deadLineList[j].applyDate.split("~")[1].replace(".","").toInt()) {
+                    soonDeadLine = deadLineList[j].applyDate.split("~")[1].replace(".","")
+                    soonDeadLineIndex = j
+
+                    var temp = deadLineList[i]
+                    deadLineList[i] = deadLineList[soonDeadLineIndex]
+                    deadLineList[soonDeadLineIndex] = temp
+                }
+            }
+            soonDeadLineList.add(deadLineList[i])
+        }
+        sortedList.addAll(soonDeadLineList)
+        sortedList.addAll(lastList)
+        _currentRcList.value=sortedList
+    }
 
     /*
     그래프의 높이 비율을 구하기 위한 메소드

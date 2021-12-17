@@ -11,7 +11,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_knowing_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Knowing">
+        android:theme="@style/Theme.Knowing"
+        android:screenOrientation="portrait">
 
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
         <activity android:name="com.facebook.FacebookActivity"
@@ -27,17 +28,21 @@
 <!--        </activity>-->
 
         <activity android:name="com.teamteam.knowing.ui.view.main.MainActivity"
-            android:windowSoftInputMode="adjustNothing">
+            android:windowSoftInputMode="adjustNothing"
+            android:screenOrientation="portrait">
         </activity>
 
-        <activity android:name="com.teamteam.knowing.ui.view.main.LoadingActivity">
+        <activity android:name="com.teamteam.knowing.ui.view.main.LoadingActivity"
+            android:screenOrientation="portrait">
         </activity>
 
-        <activity android:name="com.teamteam.knowing.ui.view.onboarding.OnboardingActivity">
+        <activity android:name="com.teamteam.knowing.ui.view.onboarding.OnboardingActivity"
+            android:screenOrientation="portrait">
         </activity>
 
         <activity android:name="com.teamteam.knowing.ui.view.splash.SplashActivity"
-            android:theme="@style/SplashActivity">
+            android:theme="@style/SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -45,11 +50,14 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.teamteam.knowing.ui.view.login.JoinUpSNSActivity">
+        <activity android:name="com.teamteam.knowing.ui.view.login.JoinUpSNSActivity"
+            android:screenOrientation="portrait">
         </activity>
         <activity android:name="com.teamteam.knowing.ui.view.sign_up.SnsSignUpActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/sign_up_theme"/>
         <activity android:name="com.teamteam.knowing.ui.view.sign_up.SignUpActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/sign_up_theme">
         </activity>
         <meta-data android:name="com.kakao.sdk.AppKey"
@@ -65,40 +73,66 @@
                     android:scheme="kakaod8e0e3e9398b5db90db367e587268a49"/>
             </intent-filter>
         </activity>
-        <activity android:name="com.teamteam.knowing.ui.view.sign_in.SignInActivity">
+        <activity android:name="com.teamteam.knowing.ui.view.sign_in.SignInActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name="com.teamteam.knowing.ui.view.more_information.MoreInformationActivity1">
+        <activity android:name="com.teamteam.knowing.ui.view.more_information.MoreInformationActivity1"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name="com.teamteam.knowing.ui.view.more_information.MoreInformationActivity2">
+        <activity android:name="com.teamteam.knowing.ui.view.more_information.MoreInformationActivity2"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name="com.teamteam.knowing.ui.view.more_information.MoreInformationActivity3">
+        <activity android:name="com.teamteam.knowing.ui.view.more_information.MoreInformationActivity3"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name="com.teamteam.knowing.ui.view.more_information.MoreInformationActivity4">
+        <activity android:name="com.teamteam.knowing.ui.view.more_information.MoreInformationActivity4"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name="com.teamteam.knowing.ui.view.more_information.MoreInformationActivity5">
+        <activity android:name="com.teamteam.knowing.ui.view.more_information.MoreInformationActivity5"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name="com.teamteam.knowing.ui.view.sign_in.search_email.SearchEmailActivity"/>
-        <activity android:name="com.teamteam.knowing.ui.view.sign_in.search_email.LoadingSearchEmailActivity"/>
-        <activity android:name="com.teamteam.knowing.ui.view.sign_in.search_pwd.SearchPwdActivity"/>
-        <activity android:name="com.teamteam.knowing.ui.view.sign_in.search_pwd.LoadingSearchPwdActivity">
+        <activity android:name="com.teamteam.knowing.ui.view.sign_in.search_email.SearchEmailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.teamteam.knowing.ui.view.sign_in.search_email.LoadingSearchEmailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.teamteam.knowing.ui.view.sign_in.search_pwd.SearchPwdActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.teamteam.knowing.ui.view.sign_in.search_pwd.LoadingSearchPwdActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name="com.teamteam.knowing.ui.view.more_information.SelectCategoryActivity">
+        <activity android:name="com.teamteam.knowing.ui.view.more_information.SelectCategoryActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name="com.teamteam.knowing.ui.view.main.WelfareDetailActivity">
+        <activity android:name="com.teamteam.knowing.ui.view.main.WelfareDetailActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name="com.teamteam.knowing.ui.view.main.mypage.UserCorrectActivity"
-            android:theme="@style/user_correct_activity"/>
-        <activity android:name="com.teamteam.knowing.ui.view.main.mypage.AlarmSettingActivity"/>
-        <activity android:name="com.teamteam.knowing.ui.view.main.mypage.CategoryCorrectActivity"/>
-        <activity android:name="com.teamteam.knowing.ui.view.main.mypage.quize_terms.QuizeTermsActivity"/>
-        <activity android:name="com.teamteam.knowing.ui.view.main.mypage.NotificationActivity"/>
-        <activity android:name="com.teamteam.knowing.ui.view.main.mypage.quize_terms.PersonalInformationActivity"/>
-        <activity android:name="com.teamteam.knowing.ui.view.main.mypage.quize_terms.OpenSourceActivity"/>
-        <activity android:name="com.teamteam.knowing.ui.view.main.mypage.quize_terms.TermsOfUseActivity"/>
-        <activity android:name="com.teamteam.knowing.ui.view.main.mypage.SnsUserCorrectActivity"
-            android:theme="@style/sign_up_theme"/>
-        <activity android:name="com.teamteam.knowing.ui.view.agree_terms.AgreeTermsActivity"/>
-
+        <activity android:name="com.teamteam.knowing.ui.view.main.mypage.user_correct.UserCorrectActivity"
+            android:theme="@style/user_correct_activity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.teamteam.knowing.ui.view.main.mypage.AlarmSettingActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.teamteam.knowing.ui.view.main.mypage.CategoryCorrectActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.teamteam.knowing.ui.view.main.mypage.quize_terms.QuizeTermsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.teamteam.knowing.ui.view.main.mypage.NotificationActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.teamteam.knowing.ui.view.main.mypage.quize_terms.PersonalInformationActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.teamteam.knowing.ui.view.main.mypage.quize_terms.OpenSourceActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.teamteam.knowing.ui.view.main.mypage.quize_terms.TermsOfUseActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.teamteam.knowing.ui.view.main.mypage.user_correct.SnsUserCorrectActivity"
+            android:theme="@style/sign_up_theme"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.teamteam.knowing.ui.view.agree_terms.AgreeTermsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.view.main.mypage.user_correct.UserSetting"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.view.main.mypage.user_correct.MoreInformationCorrectActivity"
+            android:screenOrientation="portrait">
+        </activity>
         <service android:name=".util.FCMClass"
             android:stopWithTask="false">
             <intent-filter>

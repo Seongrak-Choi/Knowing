@@ -170,7 +170,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="기억해둘 복지에 알림 아이콘을 눌르면\n신청 마감일이 다가왔을 때 알림을 드려요!"
+            android:text="기억해둘 복지에 알림 아이콘을 누르면\n신청 마감일이 다가왔을 때 알림을 드려요!"
             android:textSize="14dp"
             android:fontFamily="@font/roboto_medium"
             android:textColor="#929292"

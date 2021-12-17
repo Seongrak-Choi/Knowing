@@ -27,7 +27,7 @@
             android:fontFamily="@font/roboto_bold"
             android:text="4"
             android:textColor="#f98551"
-            android:textSize="14sp"
+            android:textSize="14dp"
             app:layout_constraintBottom_toTopOf="@+id/img_progress"
             app:layout_constraintEnd_toEndOf="@id/img_progress"
             app:layout_constraintHorizontal_bias="0.79"
@@ -40,7 +40,7 @@
             android:fontFamily="@font/roboto_bold"
             android:text="5"
             android:textColor="#d8d8d8"
-            android:textSize="14sp"
+            android:textSize="14dp"
             app:layout_constraintBottom_toTopOf="@+id/img_progress"
             app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
             app:layout_constraintHorizontal_bias="0.98"
@@ -66,7 +66,7 @@
             android:fontFamily="@font/roboto_regular"
             android:text="카테고리 중"
             android:textColor="#939393"
-            android:textSize="14sp"
+            android:textSize="14dp"
             app:layout_constraintEnd_toStartOf="@+id/img_star_category"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="@id/guidelineStart"
@@ -92,7 +92,7 @@
             android:fontFamily="@font/roboto_regular"
             android:text="은 필수 기재 사항이에요."
             android:textColor="#939393"
-            android:textSize="14sp"
+            android:textSize="14dp"
             app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
             app:layout_constraintStart_toEndOf="@+id/img_star_category"
             app:layout_constraintTop_toBottomOf="@id/img_progress" />
@@ -106,7 +106,7 @@
             android:fontFamily="@font/roboto_bold"
             android:text="@string/more_information4_title_major"
             android:textColor="#666666"
-            android:textSize="15sp"
+            android:textSize="15dp"
             app:layout_constraintStart_toStartOf="@id/guidelineStart"
             app:layout_constraintTop_toBottomOf="@+id/tx_category1" />
 
@@ -130,7 +130,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:text="인문"
                 android:textColor="#6c6c6c"
-                android:textSize="14sp" />
+                android:textSize="14dp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_major2"
@@ -143,7 +143,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:text="사회"
                 android:textColor="#6c6c6c"
-                android:textSize="14sp" />
+                android:textSize="14dp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_major3"
@@ -155,7 +155,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:text="법"
                 android:textColor="#6c6c6c"
-                android:textSize="14sp" />
+                android:textSize="14dp" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
 
@@ -179,7 +179,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:text="경영"
                 android:textColor="#6c6c6c"
-                android:textSize="14sp" />
+                android:textSize="14dp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_major5"
@@ -192,7 +192,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:text="교육"
                 android:textColor="#6c6c6c"
-                android:textSize="14sp" />
+                android:textSize="14dp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_major6"
@@ -204,7 +204,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:text="공학"
                 android:textColor="#6c6c6c"
-                android:textSize="14sp" />
+                android:textSize="14dp" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
 
@@ -228,7 +228,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:text="자연"
                 android:textColor="#6c6c6c"
-                android:textSize="14sp" />
+                android:textSize="14dp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_major8"
@@ -241,7 +241,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:text="예체능"
                 android:textColor="#6c6c6c"
-                android:textSize="14sp" />
+                android:textSize="14dp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_major9"
@@ -253,7 +253,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:text="의약"
                 android:textColor="#6c6c6c"
-                android:textSize="14sp" />
+                android:textSize="14dp" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
         <!--기타, 공백, 공백 버튼 리니어-->
@@ -276,7 +276,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:text="기타"
                 android:textColor="#6c6c6c"
-                android:textSize="14sp" />
+                android:textSize="14dp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_major11"
@@ -303,7 +303,7 @@
             android:fontFamily="@font/roboto_bold"
             android:text="@string/more_information4_title_major2"
             android:textColor="#666666"
-            android:textSize="15sp"
+            android:textSize="15dp"
             app:layout_constraintStart_toStartOf="@id/guidelineStart"
             app:layout_constraintTop_toBottomOf="@+id/linear_btn_4" />
 
@@ -316,7 +316,7 @@
             android:inputType="text"
             android:textColorHint="#c2c2c2"
             android:textCursorDrawable="@drawable/sign_up_edt_cursor"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:theme="@style/editText"
             app:layout_constraintStart_toStartOf="@id/guidelineStart"
             app:layout_constraintTop_toBottomOf="@+id/tx_title_major_detail" />
@@ -328,7 +328,7 @@
             android:fontFamily="@font/roboto_regular"
             android:text="학과"
             android:textColor="#414141"
-            android:textSize="16sp"
+            android:textSize="16dp"
             app:layout_constraintBottom_toBottomOf="@+id/edt_major_detail"
             app:layout_constraintStart_toEndOf="@+id/edt_major_detail"
             app:layout_constraintTop_toTopOf="@+id/edt_major_detail" />
@@ -342,7 +342,7 @@
             android:fontFamily="@font/gothic_bold"
             android:text="다음"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
             app:layout_constraintStart_toStartOf="@id/guidelineStart" />
