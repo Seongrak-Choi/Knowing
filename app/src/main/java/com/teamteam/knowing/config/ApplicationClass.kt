@@ -6,6 +6,7 @@ import com.teamteam.knowing.R
 import com.facebook.FacebookSdk
 import com.facebook.appevents.AppEventsLogger
 import com.kakao.sdk.common.KakaoSdk
+import com.teamteam.knowing.data.model.network.response.MainWelfareResponse
 import com.teamteam.knowing.util.FCMClass
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -75,6 +76,9 @@ class ApplicationClass : Application() {
         // Retrofit 인스턴스, 앱 실행시 한번만 생성하여 사용합니다.
         lateinit var sRetrofit: Retrofit
         lateinit var collegeRetrofit : Retrofit
+
+        //로딩에서 받아온 복지 정보를 저장할 싱글톤 변수
+        lateinit var mainWelfareResponse : MainWelfareResponse
     }
 
 

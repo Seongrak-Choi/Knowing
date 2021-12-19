@@ -539,10 +539,6 @@
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="학생 지원"/>
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:text="취업 지원"/>
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
@@ -560,6 +556,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="코로나19"/>
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="학생 지원"/>
             </com.google.android.material.tabs.TabLayout>
 
             <androidx.recyclerview.widget.RecyclerView

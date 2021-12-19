@@ -135,7 +135,7 @@ class CustomWelfareFragmentViewModel(application: Application) : AndroidViewMode
         //그래프 관련 데이터 세팅하는 메소드
         getBiasAndTxGraphSubject()
 
-        changeRcToStudent()//학생 지원이 맨 처음 보이도록 세팅
+        changeRcToEmploy()//학생 지원이 맨 처음 보이도록 세팅
     }
 
 
@@ -175,15 +175,27 @@ class CustomWelfareFragmentViewModel(application: Application) : AndroidViewMode
         else
             _biasBarHeightSubject3.value = 0.01f
 
-        if (totalMap[sortedList[3]] != 0)
+        if (totalMap[sortedList[3]] != 0){
+            println("값 뭐임? 4번째 sortedList[0] ${totalMap[sortedList[0]]}")
+            println("값 뭐임? 4번째 sortedList[4] ${totalMap[sortedList[3]]}")
             _biasBarHeightSubject4.value =
                 getBias((20 / (totalMap[sortedList[0]]!!.toFloat() / totalMap[sortedList[3]]!!.toFloat())).toInt())
+            println("값 뭐임? 4번째 bias: ${(20 / (totalMap[sortedList[0]]!!.toFloat() / totalMap[sortedList[3]]!!.toFloat()))}")
+            println("값 뭐임? 4번째: ${_biasBarHeightSubject4.value}")
+        }
+
         else
             _biasBarHeightSubject4.value = 0.01f
 
-        if (totalMap[sortedList[4]] != 0)
+        if (totalMap[sortedList[4]] != 0){
+            println("값 뭐임? 5번째 sortedList[0] ${totalMap[sortedList[0]]}")
+            println("값 뭐임? 5번째 sortedList[4] ${totalMap[sortedList[4]]}")
             _biasBarHeightSubject5.value =
                 getBias((20 / (totalMap[sortedList[0]]!!.toFloat() / totalMap[sortedList[4]]!!.toFloat())).toInt())
+            println("값 뭐임? 5번째 bias: ${(20 / (totalMap[sortedList[0]]!!.toFloat() / totalMap[sortedList[4]]!!.toFloat()))}")
+            println("값 뭐임? 5번째: ${_biasBarHeightSubject5.value}")
+        }
+
         else
             _biasBarHeightSubject5.value = 0.01f
 
@@ -671,7 +683,7 @@ class CustomWelfareFragmentViewModel(application: Application) : AndroidViewMode
             4 -> return 0.09019f
             3 -> return 0.06039f
             2 -> return 0.03059f
-            1 -> return 0.00079f
+            1 -> return 0.01059f
             else -> return 0.01f
         }
     }

@@ -13,6 +13,7 @@ import com.teamteam.knowing.ui.adapter.MainHomeAllWelfareRCAdapter
 import com.teamteam.knowing.ui.base.BaseFragment
 import com.teamteam.knowing.ui.viewmodel.AllWelfareFragmentViewModel
 import com.google.android.material.tabs.TabLayout
+import com.teamteam.knowing.config.ApplicationClass
 import com.teamteam.knowing.ui.view.main.home.customwelfare.SelectFilterDialog
 
 class AllWelfareFragment : BaseFragment<FragmentMainHomeAllWelfareBinding>(
@@ -29,7 +30,7 @@ class AllWelfareFragment : BaseFragment<FragmentMainHomeAllWelfareBinding>(
         super.onCreate(savedInstanceState)
 
         //복지데이터 받기
-        welfareInfo = arguments?.getSerializable("welfareInfo") as MainWelfareResponse
+        //welfareInfo = arguments?.getSerializable("welfareInfo") as MainWelfareResponse
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -60,7 +61,7 @@ class AllWelfareFragment : BaseFragment<FragmentMainHomeAllWelfareBinding>(
         allWelfareFragmentViewModel= ViewModelProvider(requireActivity()).get(AllWelfareFragmentViewModel::class.java)
 
         //뷰모델 라이브데이터에 복지 정보 전달
-        allWelfareFragmentViewModel.welfareInfo.value=welfareInfo
+        allWelfareFragmentViewModel.welfareInfo.value= ApplicationClass.mainWelfareResponse
         //복지 데이터를 입력했으니 알맞게 세팅하기 위함.
         allWelfareFragmentViewModel.settingAllView()
 
@@ -96,12 +97,13 @@ class AllWelfareFragment : BaseFragment<FragmentMainHomeAllWelfareBinding>(
         binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when (tab!!.position){
-                    0->allWelfareFragmentViewModel.changeRcToStudent()
-                    1->allWelfareFragmentViewModel.changeRcToEmploy()
-                    2->allWelfareFragmentViewModel.changeRcToFoundation()
-                    3->allWelfareFragmentViewModel.changeRcToResident()
-                    4->allWelfareFragmentViewModel.changeRcToLife()
-                    else->allWelfareFragmentViewModel.changeRcToCovid()
+                    0->allWelfareFragmentViewModel.changeRcToEmploy()
+                    1->allWelfareFragmentViewModel.changeRcToFoundation()
+                    2->allWelfareFragmentViewModel.changeRcToResident()
+                    3->allWelfareFragmentViewModel.changeRcToLife()
+                    4->allWelfareFragmentViewModel.changeRcToCovid()
+                    else->allWelfareFragmentViewModel.changeRcToStudent()
+
                 }
             }
 

@@ -19,7 +19,7 @@ class HomeFragment : BaseFragment<FragmentMainHomeBinding>(FragmentMainHomeBindi
         super.onViewCreated(view, savedInstanceState)
 
         //복지 정보 받기
-        val welfareInfo = arguments?.getSerializable("welfareInfo") as MainWelfareResponse
+       // val welfareInfo = arguments?.getSerializable("welfareInfo") as MainWelfareResponse
 
         //statusbar 높이 구하는 방법
         var result = 0
@@ -37,7 +37,7 @@ class HomeFragment : BaseFragment<FragmentMainHomeBinding>(FragmentMainHomeBindi
 
 
         //viewpager2 어댑터 설정
-        binding.viewPager2.adapter = HomeFragmentViewPager2Adapter(this,welfareInfo)
+        binding.viewPager2.adapter = HomeFragmentViewPager2Adapter(this)
         binding.viewPager2.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         binding.viewPager2.isSaveEnabled = false
 

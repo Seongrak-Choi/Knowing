@@ -43,7 +43,7 @@ class AllWelfareFragmentViewModel(application: Application):AndroidViewModel(app
     */
     fun settingAllView(){
         //리사이클러뷰 리스트에 넣는 용
-        _currentRcList.value=_welfareInfo.value!!.mainWelfareResult.totalCategory.studentCategory
+        _currentRcList.value=_welfareInfo.value!!.mainWelfareResult.totalCategory.employCategory
         when(_currentFilter.value.toString()){
             "높은 금액순"-> sortHighCost()
             "낮은 금액순"-> sortLowCost()

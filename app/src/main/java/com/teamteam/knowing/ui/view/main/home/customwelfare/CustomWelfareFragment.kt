@@ -22,6 +22,7 @@ import com.teamteam.knowing.ui.base.BaseFragment
 import com.teamteam.knowing.ui.view.main.WelfareDetailActivity
 import com.teamteam.knowing.ui.viewmodel.CustomWelfareFragmentViewModel
 import com.google.android.material.tabs.TabLayout
+import com.teamteam.knowing.config.ApplicationClass
 
 class CustomWelfareFragment : BaseFragment<FragmentMainHomeCustomWelfareBinding>(FragmentMainHomeCustomWelfareBinding::bind,
     R.layout.fragment_main_home_custom_welfare){
@@ -61,7 +62,7 @@ class CustomWelfareFragment : BaseFragment<FragmentMainHomeCustomWelfareBinding>
         super.onCreate(savedInstanceState)
 
         //복지데이터 받기
-        welfareInfo = arguments?.getSerializable("welfareInfo") as MainWelfareResponse
+       // welfareInfo = arguments?.getSerializable("welfareInfo") as MainWelfareResponse
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -114,7 +115,7 @@ class CustomWelfareFragment : BaseFragment<FragmentMainHomeCustomWelfareBinding>
         customWelfareFragmentViewModel=ViewModelProvider(requireActivity()).get(CustomWelfareFragmentViewModel::class.java)
 
         //뷰모델 라이브데이터에 복지 정보 전달
-        customWelfareFragmentViewModel.welfareInfo.value=welfareInfo
+        customWelfareFragmentViewModel.welfareInfo.value= ApplicationClass.mainWelfareResponse
         customWelfareFragmentViewModel.settingAllView()
 
         //첫번째 주제 총 복지 갯수
@@ -229,12 +230,13 @@ class CustomWelfareFragment : BaseFragment<FragmentMainHomeCustomWelfareBinding>
         binding.tabLayoutCustomWelfare.addOnTabSelectedListener(object:TabLayout.OnTabSelectedListener{
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when (tab!!.position){
-                    0->customWelfareFragmentViewModel.changeRcToStudent()
-                    1->customWelfareFragmentViewModel.changeRcToEmploy()
-                    2->customWelfareFragmentViewModel.changeRcToFoundation()
-                    3->customWelfareFragmentViewModel.changeRcToResident()
-                    4->customWelfareFragmentViewModel.changeRcToLife()
-                    else->customWelfareFragmentViewModel.changeRcToCovid()
+                    0->customWelfareFragmentViewModel.changeRcToEmploy()
+                    1->customWelfareFragmentViewModel.changeRcToFoundation()
+                    2->customWelfareFragmentViewModel.changeRcToResident()
+                    3->customWelfareFragmentViewModel.changeRcToLife()
+                    4->customWelfareFragmentViewModel.changeRcToCovid()
+                    else->customWelfareFragmentViewModel.changeRcToStudent()
+
                 }
             }
             override fun onTabUnselected(tab: TabLayout.Tab?) {

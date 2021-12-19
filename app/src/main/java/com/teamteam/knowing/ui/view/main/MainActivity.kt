@@ -29,17 +29,17 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         window.statusBarColor = Color.TRANSPARENT
 
         //로딩화면에서 받아온 복지 데이터
-        val welfareInfo = intent.getSerializableExtra("welfareInfo") as MainWelfareResponse
+        //val welfareInfo = intent.getSerializableExtra("welfareInfo") as MainWelfareResponse
 
 
         //Fragment에서 사용할 수 있도록 bundle에 저장
-        val bundle = Bundle()
-        bundle.putSerializable("welfareInfo",welfareInfo)
+//        val bundle = Bundle()
+//        bundle.putSerializable("welfareInfo",welfareInfo)
 
-        fmHome.arguments=bundle//복지 정보 전달
-        fmAlert.arguments=bundle//복지 정보 전달
-        fmBookmark.arguments=bundle//복지 정보 전달
-        fmMyPage.arguments=bundle//복지 정보 전달
+//        fmHome.arguments=bundle//복지 정보 전달
+//        fmAlert.arguments=bundle//복지 정보 전달
+//        fmBookmark.arguments=bundle//복지 정보 전달
+//        fmMyPage.arguments=bundle//복지 정보 전달
 
 
         //Main에서 처음으로 보여질 fragment 설정

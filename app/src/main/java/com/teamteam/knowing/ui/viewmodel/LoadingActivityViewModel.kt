@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.teamteam.knowing.config.ApplicationClass
+import com.teamteam.knowing.config.ApplicationClass.Companion.mainWelfareResponse
 import com.teamteam.knowing.data.model.domain.SignUpUser
 import com.teamteam.knowing.data.model.network.response.MainWelfareResponse
 import com.teamteam.knowing.data.model.network.response.PostFcmTokenResponse
@@ -65,9 +66,11 @@ class LoadingActivityViewModel(application: Application) : AndroidViewModel(appl
                     CoroutineScope(Dispatchers.Main).launch {
                         delay(2000L) //
 
+                        mainWelfareResponse = result
+
                         //받아온 복지 정보를 받아서 main화면으로 이동
                         val intent = Intent(mContext, MainActivity::class.java)
-                        intent.putExtra("welfareInfo", result)
+//                        intent.putExtra("welfareInfo", result)
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //activity stack을 지워서 뒤로가면 앱이 꺼져서 해당 activity못오게 함
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)//activity가 아닌 곳에서 startActivity를 할 경우 오류가 발생하기 때문에 flag를 지정해준다.
                         mContext.startActivity(intent)
