@@ -259,6 +259,23 @@ class CustomWelfareFragment : BaseFragment<FragmentMainHomeCustomWelfareBinding>
             val bottomSheet = SelectFilterDialog()
             bottomSheet.show(requireActivity().supportFragmentManager, bottomSheet.tag)
         }
+
+
+        //nestedScroll 스크롤 체인지 리스너
+        //맨 위로 버튼 visible관리하기 위함
+        binding.nestedScroll.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+            if (scrollY>1200){
+                binding.btnScrollTop.visibility=View.VISIBLE
+            }else{
+                binding.btnScrollTop.visibility=View.INVISIBLE
+            }
+        }
+
+        //맨위로 버튼 클릭 리스너
+        binding.btnScrollTop.setOnClickListener {
+            binding.nestedScroll.smoothScrollTo(0,0)
+            binding.appBar.setExpanded(true)
+        }
     }
 
     //화면이 재실행 될 때 마다 애니메이션이 실행 되도록 onResume에서 실행시킴

@@ -1,776 +1,804 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#fff5e6"
-    android:paddingBottom="50dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/nested_scroll"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="-80dp"
-        android:paddingTop="70dp"
-        android:clipToPadding="false"
-        android:overScrollMode="never"
-        android:paddingBottom="70dp"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+        android:background="#fff5e6"
+        android:paddingBottom="50dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nested_scroll"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <!--수혜 예상 복지 50건 레이아웃-->
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/layout_title_total_welfare"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="@id/guidelineStart">
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tx_title_graph"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_bold"
-                    android:text="수혜 예상 복지"
-                    android:textColor="#a4613d"
-                    android:textSize="17dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="7dp"
-                    android:background="#ffc68d"
-                    app:layout_constraintStart_toStartOf="@+id/tx_total_welfare"
-                    app:layout_constraintEnd_toEndOf="@+id/tx_total_welfare"
-                    app:layout_constraintBottom_toBottomOf="@+id/tx_total_welfare"/>
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tx_total_welfare"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_bold"
-                    android:text="50건"
-                    android:textColor="#a4613d"
-                    android:textSize="17dp"
-                    android:layout_marginStart="6dp"
-                    app:layout_constraintStart_toEndOf="@+id/tx_title_graph"
-                    app:layout_constraintTop_toTopOf="parent"/>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <!--그래프 그려지는 하얀색 백그라운드 레이아웃-->
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraint_graph"
-                android:layout_width="0dp"
-                android:layout_height="250dp"
-                android:background="@drawable/rectangle_ffffff_radius30"
-                android:layout_marginTop="18dp"
-                app:layout_constraintStart_toStartOf="@id/guidelineStart"
-                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
-                app:layout_constraintTop_toBottomOf="@+id/layout_title_total_welfare">
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <!--그래프 1번재 주제-->
-            <ImageView
-                android:id="@+id/img_graph_subject1"
-                android:layout_width="24dp"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:src="@drawable/graph_subject1_shape"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintStart_toStartOf="@id/tx_graph_subject1_1"
-                app:layout_constraintEnd_toEndOf="@+id/tx_graph_subject1_1"
-                app:layout_constraintBottom_toTopOf="@+id/view_graph_subject1"/>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tx_graph_subject1_total"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:textSize="12dp"
-                android:fontFamily="@font/roboto_bold"
-                android:textColor="#b97142"
-                app:layout_constraintVertical_bias="0.35"
-                app:layout_constraintStart_toStartOf="@id/img_graph_subject1"
-                app:layout_constraintEnd_toEndOf="@+id/img_graph_subject1"
-                app:layout_constraintTop_toTopOf="@id/img_graph_subject1"
-                app:layout_constraintBottom_toBottomOf="@id/img_graph_subject1"/>
-
-            <View
-                android:id="@+id/view_graph_subject1"
-                android:layout_width="20dp"
-                android:layout_height="2dp"
-                android:background="@drawable/graph_subject1_bar_radius15"
-                android:layout_marginBottom="7dp"
-                app:layout_constraintBottom_toTopOf="@+id/tx_graph_subject1_1"
-                app:layout_constraintStart_toStartOf="@+id/tx_graph_subject1_1"
-                app:layout_constraintEnd_toEndOf="@+id/tx_graph_subject1_1"/>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tx_graph_subject1_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="학생"
-                android:textSize="12dp"
-                android:textColor="#666666"
-                android:fontFamily="@font/roboto_regular"
-                app:layout_constraintBottom_toTopOf="@+id/tx_graph_subject1_2"
-                app:layout_constraintEnd_toStartOf="@+id/tx_graph_subject2_1"
-                app:layout_constraintStart_toStartOf="@id/constraint_graph" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tx_graph_subject1_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="11"
-                android:textSize="12dp"
-                android:textColor="#666666"
-                android:fontFamily="@font/roboto_regular"
-                android:layout_marginBottom="14dp"
-                app:layout_constraintBottom_toBottomOf="@id/constraint_graph"
-                app:layout_constraintStart_toStartOf="@id/tx_graph_subject1_1"
-                app:layout_constraintEnd_toEndOf="@+id/tx_graph_subject1_1"/>
-
-
-            <!--그래프 2번재 주제-->
-            <ImageView
-                android:id="@+id/img_graph_subject2"
-                android:layout_width="24dp"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:src="@drawable/graph_subject2_shape"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintStart_toStartOf="@id/tx_graph_subject2_1"
-                app:layout_constraintEnd_toEndOf="@+id/tx_graph_subject2_1"
-                app:layout_constraintBottom_toTopOf="@+id/view_graph_subject2"/>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tx_graph_subject2_total"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:textSize="12dp"
-                android:fontFamily="@font/roboto_bold"
-                android:textColor="#ffffff"
-                app:layout_constraintVertical_bias="0.35"
-                app:layout_constraintStart_toStartOf="@id/img_graph_subject2"
-                app:layout_constraintEnd_toEndOf="@+id/img_graph_subject2"
-                app:layout_constraintTop_toTopOf="@id/img_graph_subject2"
-                app:layout_constraintBottom_toBottomOf="@id/img_graph_subject2"/>
-
-
-            <View
-                android:id="@+id/view_graph_subject2"
-                android:layout_width="20dp"
-                android:layout_height="2dp"
-                android:background="@drawable/graph_subject2_bar_radius15"
-                android:layout_marginBottom="7dp"
-                app:layout_constraintBottom_toTopOf="@+id/tx_graph_subject2_1"
-                app:layout_constraintStart_toStartOf="@+id/tx_graph_subject2_1"
-                app:layout_constraintEnd_toEndOf="@+id/tx_graph_subject2_1"/>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tx_graph_subject2_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_regular"
-                android:text="취업"
-                android:textColor="#666666"
-                android:textSize="12dp"
-                app:layout_constraintBottom_toTopOf="@+id/tx_graph_subject2_2"
-                app:layout_constraintStart_toEndOf="@+id/tx_graph_subject1_1"
-                app:layout_constraintEnd_toStartOf="@+id/tx_graph_subject3_1"/>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tx_graph_subject2_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_regular"
-                android:text="22"
-                android:textColor="#666666"
-                android:textSize="12dp"
-                android:layout_marginBottom="14dp"
-                app:layout_constraintBottom_toBottomOf="@id/constraint_graph"
-                app:layout_constraintEnd_toEndOf="@+id/tx_graph_subject2_1"
-                app:layout_constraintStart_toStartOf="@id/tx_graph_subject2_1" />
-
-
-            <!--그래프 3번째 주제-->
-            <ImageView
-                android:id="@+id/img_graph_subject3"
-                android:layout_width="24dp"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:src="@drawable/graph_subject3_shape"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintStart_toStartOf="@id/tx_graph_subject3_1"
-                app:layout_constraintEnd_toEndOf="@+id/tx_graph_subject3_1"
-                app:layout_constraintBottom_toTopOf="@+id/view_graph_subject3"/>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tx_graph_subject3_total"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:textSize="12dp"
-                android:fontFamily="@font/roboto_bold"
-                android:textColor="#ffffff"
-                app:layout_constraintVertical_bias="0.35"
-                app:layout_constraintStart_toStartOf="@id/img_graph_subject3"
-                app:layout_constraintEnd_toEndOf="@+id/img_graph_subject3"
-                app:layout_constraintTop_toTopOf="@id/img_graph_subject3"
-                app:layout_constraintBottom_toBottomOf="@id/img_graph_subject3"/>
-
-            <View
-                android:id="@+id/view_graph_subject3"
-                android:layout_width="20dp"
-                android:layout_height="2dp"
-                android:background="@drawable/graph_subject3_bar_radius15"
-                android:layout_marginBottom="7dp"
-                app:layout_constraintBottom_toTopOf="@+id/tx_graph_subject3_1"
-                app:layout_constraintStart_toStartOf="@+id/tx_graph_subject3_1"
-                app:layout_constraintEnd_toEndOf="@+id/tx_graph_subject3_1"/>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tx_graph_subject3_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="창업"
-                android:textSize="12dp"
-                android:textColor="#666666"
-                android:fontFamily="@font/roboto_regular"
-                app:layout_constraintBottom_toTopOf="@+id/tx_graph_subject3_2"
-                app:layout_constraintStart_toEndOf="@id/tx_graph_subject2_1"
-                app:layout_constraintEnd_toStartOf="@id/tx_graph_subject4_1"/>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tx_graph_subject3_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="33"
-                android:textSize="12dp"
-                android:textColor="#666666"
-                android:fontFamily="@font/roboto_regular"
-                android:layout_marginBottom="14dp"
-                app:layout_constraintBottom_toBottomOf="@id/constraint_graph"
-                app:layout_constraintStart_toStartOf="@id/tx_graph_subject3_1"
-                app:layout_constraintEnd_toEndOf="@+id/tx_graph_subject3_1"/>
-
-
-            <!--그래프 4번재 주제-->
-            <ImageView
-                android:id="@+id/img_graph_subject4"
-                android:layout_width="24dp"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:src="@drawable/graph_subject4_shape"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintStart_toStartOf="@id/tx_graph_subject4_1"
-                app:layout_constraintEnd_toEndOf="@+id/tx_graph_subject4_1"
-                app:layout_constraintBottom_toTopOf="@+id/view_graph_subject4"/>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tx_graph_subject4_total"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:textSize="12dp"
-                android:fontFamily="@font/roboto_bold"
-                android:textColor="#ffffff"
-                app:layout_constraintVertical_bias="0.35"
-                app:layout_constraintStart_toStartOf="@id/img_graph_subject4"
-                app:layout_constraintEnd_toEndOf="@+id/img_graph_subject4"
-                app:layout_constraintTop_toTopOf="@id/img_graph_subject4"
-                app:layout_constraintBottom_toBottomOf="@id/img_graph_subject4"/>
-
-            <View
-                android:id="@+id/view_graph_subject4"
-                android:layout_width="20dp"
-                android:layout_height="2dp"
-                android:background="@drawable/graph_subject4_bar_radius15"
-                android:layout_marginBottom="7dp"
-                app:layout_constraintBottom_toTopOf="@+id/tx_graph_subject4_1"
-                app:layout_constraintStart_toStartOf="@+id/tx_graph_subject4_1"
-                app:layout_constraintEnd_toEndOf="@+id/tx_graph_subject4_1"/>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tx_graph_subject4_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="주거"
-                android:textSize="12dp"
-                android:textColor="#666666"
-                android:fontFamily="@font/roboto_regular"
-                app:layout_constraintBottom_toTopOf="@+id/tx_graph_subject4_2"
-                app:layout_constraintStart_toEndOf="@+id/tx_graph_subject3_1"
-                app:layout_constraintEnd_toStartOf="@id/tx_graph_subject5_1"/>
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tx_graph_subject4_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="44"
-                android:textSize="12dp"
-                android:textColor="#666666"
-                android:fontFamily="@font/roboto_regular"
-                android:layout_marginBottom="14dp"
-                app:layout_constraintBottom_toBottomOf="@id/constraint_graph"
-                app:layout_constraintStart_toStartOf="@id/tx_graph_subject4_1"
-                app:layout_constraintEnd_toEndOf="@id/tx_graph_subject4_1"/>
-
-
-            <!--그래프 5번째 주제-->
-            <ImageView
-                android:id="@+id/img_graph_subject5"
-                android:layout_width="24dp"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:src="@drawable/graph_subject5_shape"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintStart_toStartOf="@id/tx_graph_subject5_1"
-                app:layout_constraintEnd_toEndOf="@+id/tx_graph_subject5_1"
-                app:layout_constraintBottom_toTopOf="@+id/view_graph_subject5"/>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tx_graph_subject5_total"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:textSize="12dp"
-                android:fontFamily="@font/roboto_bold"
-                android:textColor="#ffffff"
-                app:layout_constraintVertical_bias="0.35"
-                app:layout_constraintStart_toStartOf="@id/img_graph_subject5"
-                app:layout_constraintEnd_toEndOf="@+id/img_graph_subject5"
-                app:layout_constraintTop_toTopOf="@id/img_graph_subject5"
-                app:layout_constraintBottom_toBottomOf="@id/img_graph_subject5"/>
-
-            <View
-                android:id="@+id/view_graph_subject5"
-                android:layout_width="20dp"
-                android:layout_height="2dp"
-                android:background="@drawable/graph_subject5_bar_radius15"
-                android:layout_marginBottom="7dp"
-                app:layout_constraintBottom_toTopOf="@+id/tx_graph_subject5_1"
-                app:layout_constraintStart_toStartOf="@+id/tx_graph_subject5_1"
-                app:layout_constraintEnd_toEndOf="@+id/tx_graph_subject5_1"/>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tx_graph_subject5_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="생활"
-                android:textSize="12dp"
-                android:textColor="#666666"
-                android:fontFamily="@font/roboto_regular"
-                app:layout_constraintBottom_toTopOf="@+id/tx_graph_subject5_2"
-                app:layout_constraintStart_toEndOf="@id/tx_graph_subject4_1"
-                app:layout_constraintEnd_toStartOf="@id/tx_graph_subject6_1"/>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tx_graph_subject5_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="55"
-                android:textSize="12dp"
-                android:textColor="#666666"
-                android:fontFamily="@font/roboto_regular"
-                android:layout_marginBottom="14dp"
-                app:layout_constraintBottom_toBottomOf="@id/constraint_graph"
-                app:layout_constraintStart_toStartOf="@id/tx_graph_subject5_1"
-                app:layout_constraintEnd_toEndOf="@id/tx_graph_subject5_1"/>
-
-            <!--그래프 6번째 주제-->
-            <ImageView
-                android:id="@+id/img_graph_subject6"
-                android:layout_width="24dp"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:src="@drawable/graph_subject6_shape"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintStart_toStartOf="@id/tx_graph_subject6_1"
-                app:layout_constraintEnd_toEndOf="@+id/tx_graph_subject6_1"
-                app:layout_constraintBottom_toTopOf="@+id/view_graph_subject6"/>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tx_graph_subject6_total"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:textSize="12dp"
-                android:fontFamily="@font/roboto_bold"
-                android:textColor="#ffffff"
-                app:layout_constraintVertical_bias="0.35"
-                app:layout_constraintStart_toStartOf="@id/img_graph_subject6"
-                app:layout_constraintEnd_toEndOf="@+id/img_graph_subject6"
-                app:layout_constraintTop_toTopOf="@id/img_graph_subject6"
-                app:layout_constraintBottom_toBottomOf="@id/img_graph_subject6"/>
-
-            <View
-                android:id="@+id/view_graph_subject6"
-                android:layout_width="20dp"
-                android:layout_height="2dp"
-                android:background="@drawable/graph_subject6_bar_radius15"
-                android:layout_marginBottom="7dp"
-                app:layout_constraintBottom_toTopOf="@+id/tx_graph_subject6_1"
-                app:layout_constraintStart_toStartOf="@+id/tx_graph_subject6_1"
-                app:layout_constraintEnd_toEndOf="@+id/tx_graph_subject6_1"/>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tx_graph_subject6_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="코로나"
-                android:textSize="12dp"
-                android:textColor="#666666"
-                android:fontFamily="@font/roboto_regular"
-                app:layout_constraintBottom_toTopOf="@+id/tx_graph_subject6_2"
-                app:layout_constraintStart_toEndOf="@id/tx_graph_subject5_1"
-                app:layout_constraintEnd_toEndOf="@id/constraint_graph"/>
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tx_graph_subject6_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="66"
-                android:textSize="12dp"
-                android:textColor="#666666"
-                android:fontFamily="@font/roboto_regular"
-                android:layout_marginBottom="14dp"
-                app:layout_constraintBottom_toBottomOf="@id/constraint_graph"
-                app:layout_constraintStart_toStartOf="@id/tx_graph_subject6_1"
-                app:layout_constraintEnd_toEndOf="@+id/tx_graph_subject6_1"/>
-
-
-
-            <!--카테고리별 맞춤 복지, 높은 금액순, 설정 버튼 레이아웃-->
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/layout_title_category_custom_welfare"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="38dp"
-                app:layout_constraintTop_toBottomOf="@+id/constraint_graph"
-                app:layout_constraintStart_toStartOf="@id/guidelineStart"
-                app:layout_constraintEnd_toEndOf="@id/guidelineEnd">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tx_title_category"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_bold"
-                    android:text="카테고리별"
-                    android:textColor="#a4613d"
-                    android:textSize="17dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="7dp"
-                    android:background="#ffc68d"
-                    app:layout_constraintStart_toStartOf="@+id/tx_title_custom_welfare"
-                    app:layout_constraintEnd_toEndOf="@+id/tx_title_custom_welfare"
-                    app:layout_constraintBottom_toBottomOf="@+id/tx_title_custom_welfare"/>
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tx_title_custom_welfare"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_bold"
-                    android:text="맞춤 복지"
-                    android:textColor="#a4613d"
-                    android:textSize="17dp"
-                    android:layout_marginStart="6dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/tx_title_category"
-                    app:layout_constraintTop_toTopOf="parent"/>
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/btn_filter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tx_filter"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="높은 금액순"
-                        android:fontFamily="@font/roboto_bold"
-                        android:textColor="#d28451"
-                        android:textSize="14dp"
-                        android:layout_marginEnd="5.5dp" />
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="34dp"
-                        android:layout_height="wrap_content"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_main_home_filter"/>
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <!--카테고리별 맞춤 복지 탭 레이아웃-->
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tab_layout_custom_welfare"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:tabMode="scrollable"
-                app:tabGravity="start"
-                app:tabSelectedTextColor="@color/white"
-                app:tabIndicatorColor="@color/trans"
-                app:tabBackground="@drawable/home_custom_welfare_selector_tab_bg"
-                app:tabTextAppearance="@style/main_home_custom_welfare_tab_layout_text_style"
-                android:overScrollMode="never"
-                android:background="@color/trans"
-                app:tabRippleColor="@null"
-                app:tabTextColor="#d28451"
-
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:clipToPadding="false"
-                app:tabContentStart="25dp"
-                android:layout_marginTop="15dp"
-                app:layout_constraintTop_toBottomOf="@+id/layout_title_category_custom_welfare">
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="취업 지원"/>
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="창업 지원"/>
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="주거&#183;금융"/>
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="생활&#183;복지"/>
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="코로나19"/>
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="학생 지원"/>
-            </com.google.android.material.tabs.TabLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rc_custom_welfare"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:overScrollMode="never"
-                app:layout_constraintStart_toStartOf="@id/guidelineStart"
-                app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
-                app:layout_constraintTop_toBottomOf="@+id/tab_layout_custom_welfare"/>
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guidelineStart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_begin="20dp" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guidelineEnd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_end="20dp" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
-
-
-
-    <!--NestedScrollView보다 위에 있어야 하기 때문에 아래에 선언했음-->
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        app:elevation="0dp">
-
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
-
-            <!--collapsing이 여기 전까지 되기 때문에 toolbar 필요-->
-            <!--collapsing이 되는 부분을 위해 paddingTop을 코드 onResume에서 주었다-->
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="50dp"
-                app:layout_constraintTop_toTopOf="parent">
-                <!--collapsing 위치를 지정하기 위해 home화면이랑 똑같은 tabLayout 가져와서 위치 조정함-->
-                <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/tab_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="@drawable/home_tab_layout_bg"
-                    app:tabTextColor="#8b8b8b"
-                    app:tabTextAppearance="@style/main_home_tab_layout_text_style"
-                    app:tabSelectedTextColor="@color/white"
-                    app:tabRippleColor="@null"
-                    app:tabIndicatorHeight="0dp"
-                    app:tabIndicatorFullWidth="false"
-                    app:tabBackground="@drawable/home_selector_tab_bg"
-                    app:tabGravity="fill"
-                    app:tabMode="fixed"
-                    android:visibility="invisible"/>
-            </com.google.android.material.appbar.MaterialToolbar>
+            android:layout_height="match_parent"
+            android:layout_marginTop="-80dp"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            android:paddingTop="70dp"
+            android:paddingBottom="70dp"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraint"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/app_bar_bg"
-                    android:layout_width="match_parent"
-                    android:layout_height="190dp"
-                    android:background="#ffe4b6"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/img_app_bar_bg_left"
+                <!--수혜 예상 복지 50건 레이아웃-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_title_total_welfare"
                     android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/main_home_appbar_left"
-                    app:layout_constraintVertical_chainStyle="packed"
-                    app:layout_constraintEnd_toStartOf="@+id/img_app_bar_bg_center"
-                    app:layout_constraintTop_toTopOf="@id/img_app_bar_bg_center"
-                    app:layout_constraintBottom_toBottomOf="@id/img_app_bar_bg_center"
-                    app:layout_constraintStart_toStartOf="parent"/>
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/img_app_bar_bg_center"
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:background="#ffe4b6"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/app_bar_bg"
-                    app:layout_constraintStart_toEndOf="@+id/img_app_bar_bg_left" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/img_app_bar_bg_right"
-                    android:layout_width="40dp"
                     android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/main_home_appbar_right"
-                    android:layout_marginTop="-1dp"
-                    app:layout_constraintTop_toBottomOf="@+id/img_app_bar_bg_center"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <!--toolbar 만큼 멘트들을 내려주기 위함.-->
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tx_title_graph"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="수혜 예상 복지"
+                        android:textColor="#a4613d"
+                        android:textSize="17dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="7dp"
+                        android:background="#ffc68d"
+                        app:layout_constraintBottom_toBottomOf="@+id/tx_total_welfare"
+                        app:layout_constraintEnd_toEndOf="@+id/tx_total_welfare"
+                        app:layout_constraintStart_toStartOf="@+id/tx_total_welfare" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tx_total_welfare"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="50건"
+                        android:textColor="#a4613d"
+                        android:textSize="17dp"
+                        app:layout_constraintStart_toEndOf="@+id/tx_title_graph"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!--그래프 그려지는 하얀색 백그라운드 레이아웃-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraint_graph"
+                    android:layout_width="0dp"
+                    android:layout_height="250dp"
+                    android:layout_marginTop="18dp"
+                    android:background="@drawable/rectangle_ffffff_radius30"
+                    app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                    app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_title_total_welfare"></androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!--그래프 1번재 주제-->
+                <ImageView
+                    android:id="@+id/img_graph_subject1"
+                    android:layout_width="24dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/graph_subject1_shape"
+                    app:layout_constraintBottom_toTopOf="@+id/view_graph_subject1"
+                    app:layout_constraintEnd_toEndOf="@+id/tx_graph_subject1_1"
+                    app:layout_constraintStart_toStartOf="@id/tx_graph_subject1_1" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_graph_subject1_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="0"
+                    android:textColor="#b97142"
+                    android:textSize="12dp"
+                    app:layout_constraintBottom_toBottomOf="@id/img_graph_subject1"
+                    app:layout_constraintEnd_toEndOf="@+id/img_graph_subject1"
+                    app:layout_constraintStart_toStartOf="@id/img_graph_subject1"
+                    app:layout_constraintTop_toTopOf="@id/img_graph_subject1"
+                    app:layout_constraintVertical_bias="0.35" />
+
+                <View
+                    android:id="@+id/view_graph_subject1"
+                    android:layout_width="20dp"
+                    android:layout_height="2dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="@drawable/graph_subject1_bar_radius15"
+                    app:layout_constraintBottom_toTopOf="@+id/tx_graph_subject1_1"
+                    app:layout_constraintEnd_toEndOf="@+id/tx_graph_subject1_1"
+                    app:layout_constraintStart_toStartOf="@+id/tx_graph_subject1_1" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_graph_subject1_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="학생"
+                    android:textColor="#666666"
+                    android:textSize="12dp"
+                    app:layout_constraintBottom_toTopOf="@+id/tx_graph_subject1_2"
+                    app:layout_constraintEnd_toStartOf="@+id/tx_graph_subject2_1"
+                    app:layout_constraintStart_toStartOf="@id/constraint_graph" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_graph_subject1_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="14dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="11"
+                    android:textColor="#666666"
+                    android:textSize="12dp"
+                    app:layout_constraintBottom_toBottomOf="@id/constraint_graph"
+                    app:layout_constraintEnd_toEndOf="@+id/tx_graph_subject1_1"
+                    app:layout_constraintStart_toStartOf="@id/tx_graph_subject1_1" />
+
+
+                <!--그래프 2번재 주제-->
+                <ImageView
+                    android:id="@+id/img_graph_subject2"
+                    android:layout_width="24dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/graph_subject2_shape"
+                    app:layout_constraintBottom_toTopOf="@+id/view_graph_subject2"
+                    app:layout_constraintEnd_toEndOf="@+id/tx_graph_subject2_1"
+                    app:layout_constraintStart_toStartOf="@id/tx_graph_subject2_1" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_graph_subject2_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="0"
+                    android:textColor="#ffffff"
+                    android:textSize="12dp"
+                    app:layout_constraintBottom_toBottomOf="@id/img_graph_subject2"
+                    app:layout_constraintEnd_toEndOf="@+id/img_graph_subject2"
+                    app:layout_constraintStart_toStartOf="@id/img_graph_subject2"
+                    app:layout_constraintTop_toTopOf="@id/img_graph_subject2"
+                    app:layout_constraintVertical_bias="0.35" />
+
+
+                <View
+                    android:id="@+id/view_graph_subject2"
+                    android:layout_width="20dp"
+                    android:layout_height="2dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="@drawable/graph_subject2_bar_radius15"
+                    app:layout_constraintBottom_toTopOf="@+id/tx_graph_subject2_1"
+                    app:layout_constraintEnd_toEndOf="@+id/tx_graph_subject2_1"
+                    app:layout_constraintStart_toStartOf="@+id/tx_graph_subject2_1" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_graph_subject2_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="취업"
+                    android:textColor="#666666"
+                    android:textSize="12dp"
+                    app:layout_constraintBottom_toTopOf="@+id/tx_graph_subject2_2"
+                    app:layout_constraintEnd_toStartOf="@+id/tx_graph_subject3_1"
+                    app:layout_constraintStart_toEndOf="@+id/tx_graph_subject1_1" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_graph_subject2_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="14dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="22"
+                    android:textColor="#666666"
+                    android:textSize="12dp"
+                    app:layout_constraintBottom_toBottomOf="@id/constraint_graph"
+                    app:layout_constraintEnd_toEndOf="@+id/tx_graph_subject2_1"
+                    app:layout_constraintStart_toStartOf="@id/tx_graph_subject2_1" />
+
+
+                <!--그래프 3번째 주제-->
+                <ImageView
+                    android:id="@+id/img_graph_subject3"
+                    android:layout_width="24dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/graph_subject3_shape"
+                    app:layout_constraintBottom_toTopOf="@+id/view_graph_subject3"
+                    app:layout_constraintEnd_toEndOf="@+id/tx_graph_subject3_1"
+                    app:layout_constraintStart_toStartOf="@id/tx_graph_subject3_1" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_graph_subject3_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="0"
+                    android:textColor="#ffffff"
+                    android:textSize="12dp"
+                    app:layout_constraintBottom_toBottomOf="@id/img_graph_subject3"
+                    app:layout_constraintEnd_toEndOf="@+id/img_graph_subject3"
+                    app:layout_constraintStart_toStartOf="@id/img_graph_subject3"
+                    app:layout_constraintTop_toTopOf="@id/img_graph_subject3"
+                    app:layout_constraintVertical_bias="0.35" />
+
+                <View
+                    android:id="@+id/view_graph_subject3"
+                    android:layout_width="20dp"
+                    android:layout_height="2dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="@drawable/graph_subject3_bar_radius15"
+                    app:layout_constraintBottom_toTopOf="@+id/tx_graph_subject3_1"
+                    app:layout_constraintEnd_toEndOf="@+id/tx_graph_subject3_1"
+                    app:layout_constraintStart_toStartOf="@+id/tx_graph_subject3_1" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_graph_subject3_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="창업"
+                    android:textColor="#666666"
+                    android:textSize="12dp"
+                    app:layout_constraintBottom_toTopOf="@+id/tx_graph_subject3_2"
+                    app:layout_constraintEnd_toStartOf="@id/tx_graph_subject4_1"
+                    app:layout_constraintStart_toEndOf="@id/tx_graph_subject2_1" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_graph_subject3_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="14dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="33"
+                    android:textColor="#666666"
+                    android:textSize="12dp"
+                    app:layout_constraintBottom_toBottomOf="@id/constraint_graph"
+                    app:layout_constraintEnd_toEndOf="@+id/tx_graph_subject3_1"
+                    app:layout_constraintStart_toStartOf="@id/tx_graph_subject3_1" />
+
+
+                <!--그래프 4번재 주제-->
+                <ImageView
+                    android:id="@+id/img_graph_subject4"
+                    android:layout_width="24dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/graph_subject4_shape"
+                    app:layout_constraintBottom_toTopOf="@+id/view_graph_subject4"
+                    app:layout_constraintEnd_toEndOf="@+id/tx_graph_subject4_1"
+                    app:layout_constraintStart_toStartOf="@id/tx_graph_subject4_1" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_graph_subject4_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="0"
+                    android:textColor="#ffffff"
+                    android:textSize="12dp"
+                    app:layout_constraintBottom_toBottomOf="@id/img_graph_subject4"
+                    app:layout_constraintEnd_toEndOf="@+id/img_graph_subject4"
+                    app:layout_constraintStart_toStartOf="@id/img_graph_subject4"
+                    app:layout_constraintTop_toTopOf="@id/img_graph_subject4"
+                    app:layout_constraintVertical_bias="0.35" />
+
+                <View
+                    android:id="@+id/view_graph_subject4"
+                    android:layout_width="20dp"
+                    android:layout_height="2dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="@drawable/graph_subject4_bar_radius15"
+                    app:layout_constraintBottom_toTopOf="@+id/tx_graph_subject4_1"
+                    app:layout_constraintEnd_toEndOf="@+id/tx_graph_subject4_1"
+                    app:layout_constraintStart_toStartOf="@+id/tx_graph_subject4_1" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_graph_subject4_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="주거"
+                    android:textColor="#666666"
+                    android:textSize="12dp"
+                    app:layout_constraintBottom_toTopOf="@+id/tx_graph_subject4_2"
+                    app:layout_constraintEnd_toStartOf="@id/tx_graph_subject5_1"
+                    app:layout_constraintStart_toEndOf="@+id/tx_graph_subject3_1" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_graph_subject4_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="14dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="44"
+                    android:textColor="#666666"
+                    android:textSize="12dp"
+                    app:layout_constraintBottom_toBottomOf="@id/constraint_graph"
+                    app:layout_constraintEnd_toEndOf="@id/tx_graph_subject4_1"
+                    app:layout_constraintStart_toStartOf="@id/tx_graph_subject4_1" />
+
+
+                <!--그래프 5번째 주제-->
+                <ImageView
+                    android:id="@+id/img_graph_subject5"
+                    android:layout_width="24dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/graph_subject5_shape"
+                    app:layout_constraintBottom_toTopOf="@+id/view_graph_subject5"
+                    app:layout_constraintEnd_toEndOf="@+id/tx_graph_subject5_1"
+                    app:layout_constraintStart_toStartOf="@id/tx_graph_subject5_1" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_graph_subject5_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="0"
+                    android:textColor="#ffffff"
+                    android:textSize="12dp"
+                    app:layout_constraintBottom_toBottomOf="@id/img_graph_subject5"
+                    app:layout_constraintEnd_toEndOf="@+id/img_graph_subject5"
+                    app:layout_constraintStart_toStartOf="@id/img_graph_subject5"
+                    app:layout_constraintTop_toTopOf="@id/img_graph_subject5"
+                    app:layout_constraintVertical_bias="0.35" />
+
+                <View
+                    android:id="@+id/view_graph_subject5"
+                    android:layout_width="20dp"
+                    android:layout_height="2dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="@drawable/graph_subject5_bar_radius15"
+                    app:layout_constraintBottom_toTopOf="@+id/tx_graph_subject5_1"
+                    app:layout_constraintEnd_toEndOf="@+id/tx_graph_subject5_1"
+                    app:layout_constraintStart_toStartOf="@+id/tx_graph_subject5_1" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_graph_subject5_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="생활"
+                    android:textColor="#666666"
+                    android:textSize="12dp"
+                    app:layout_constraintBottom_toTopOf="@+id/tx_graph_subject5_2"
+                    app:layout_constraintEnd_toStartOf="@id/tx_graph_subject6_1"
+                    app:layout_constraintStart_toEndOf="@id/tx_graph_subject4_1" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_graph_subject5_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="14dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="55"
+                    android:textColor="#666666"
+                    android:textSize="12dp"
+                    app:layout_constraintBottom_toBottomOf="@id/constraint_graph"
+                    app:layout_constraintEnd_toEndOf="@id/tx_graph_subject5_1"
+                    app:layout_constraintStart_toStartOf="@id/tx_graph_subject5_1" />
+
+                <!--그래프 6번째 주제-->
+                <ImageView
+                    android:id="@+id/img_graph_subject6"
+                    android:layout_width="24dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/graph_subject6_shape"
+                    app:layout_constraintBottom_toTopOf="@+id/view_graph_subject6"
+                    app:layout_constraintEnd_toEndOf="@+id/tx_graph_subject6_1"
+                    app:layout_constraintStart_toStartOf="@id/tx_graph_subject6_1" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_graph_subject6_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="0"
+                    android:textColor="#ffffff"
+                    android:textSize="12dp"
+                    app:layout_constraintBottom_toBottomOf="@id/img_graph_subject6"
+                    app:layout_constraintEnd_toEndOf="@+id/img_graph_subject6"
+                    app:layout_constraintStart_toStartOf="@id/img_graph_subject6"
+                    app:layout_constraintTop_toTopOf="@id/img_graph_subject6"
+                    app:layout_constraintVertical_bias="0.35" />
+
+                <View
+                    android:id="@+id/view_graph_subject6"
+                    android:layout_width="20dp"
+                    android:layout_height="2dp"
+                    android:layout_marginBottom="7dp"
+                    android:background="@drawable/graph_subject6_bar_radius15"
+                    app:layout_constraintBottom_toTopOf="@+id/tx_graph_subject6_1"
+                    app:layout_constraintEnd_toEndOf="@+id/tx_graph_subject6_1"
+                    app:layout_constraintStart_toStartOf="@+id/tx_graph_subject6_1" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_graph_subject6_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="코로나"
+                    android:textColor="#666666"
+                    android:textSize="12dp"
+                    app:layout_constraintBottom_toTopOf="@+id/tx_graph_subject6_2"
+                    app:layout_constraintEnd_toEndOf="@id/constraint_graph"
+                    app:layout_constraintStart_toEndOf="@id/tx_graph_subject5_1" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tx_graph_subject6_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="14dp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="66"
+                    android:textColor="#666666"
+                    android:textSize="12dp"
+                    app:layout_constraintBottom_toBottomOf="@id/constraint_graph"
+                    app:layout_constraintEnd_toEndOf="@+id/tx_graph_subject6_1"
+                    app:layout_constraintStart_toStartOf="@id/tx_graph_subject6_1" />
+
+
+                <!--카테고리별 맞춤 복지, 높은 금액순, 설정 버튼 레이아웃-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_title_category_custom_welfare"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="38dp"
+                    app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                    app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                    app:layout_constraintTop_toBottomOf="@+id/constraint_graph">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tx_title_category"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="카테고리별"
+                        android:textColor="#a4613d"
+                        android:textSize="17dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="7dp"
+                        android:background="#ffc68d"
+                        app:layout_constraintBottom_toBottomOf="@+id/tx_title_custom_welfare"
+                        app:layout_constraintEnd_toEndOf="@+id/tx_title_custom_welfare"
+                        app:layout_constraintStart_toStartOf="@+id/tx_title_custom_welfare" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tx_title_custom_welfare"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="맞춤 복지"
+                        android:textColor="#a4613d"
+                        android:textSize="17dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/tx_title_category"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/btn_filter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tx_filter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5.5dp"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="높은 금액순"
+                            android:textColor="#d28451"
+                            android:textSize="14dp" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="34dp"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_main_home_filter" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!--카테고리별 맞춤 복지 탭 레이아웃-->
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab_layout_custom_welfare"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/trans"
+                    android:clipToPadding="false"
+                    android:overScrollMode="never"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layout_title_category_custom_welfare"
+                    app:tabBackground="@drawable/home_custom_welfare_selector_tab_bg"
+                    app:tabContentStart="25dp"
+                    app:tabGravity="start"
+
+                    app:tabIndicatorColor="@color/trans"
+                    app:tabMode="scrollable"
+                    app:tabRippleColor="@null"
+                    app:tabSelectedTextColor="@color/white"
+                    app:tabTextAppearance="@style/main_home_custom_welfare_tab_layout_text_style"
+                    app:tabTextColor="#d28451">
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="취업 지원" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="창업 지원" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="주거&#183;금융" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="생활&#183;복지" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="코로나19" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="학생 지원" />
+                </com.google.android.material.tabs.TabLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rc_custom_welfare"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:overScrollMode="never"
+                    app:layout_constraintEnd_toEndOf="@id/guidelineEnd"
+                    app:layout_constraintStart_toStartOf="@id/guidelineStart"
+                    app:layout_constraintTop_toBottomOf="@+id/tab_layout_custom_welfare" />
+
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineStart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="20dp" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineEnd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_end="20dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+        <!--NestedScrollView보다 위에 있어야 하기 때문에 아래에 선언했음-->
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            app:elevation="0dp">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collapsing_tool_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <!--collapsing이 여기 전까지 되기 때문에 toolbar 필요-->
+                <!--collapsing이 되는 부분을 위해 paddingTop을 코드 onResume에서 주었다-->
                 <com.google.android.material.appbar.MaterialToolbar
-                    android:id="@+id/toolbar_fake"
+                    android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingTop="50dp"
                     app:layout_constraintTop_toTopOf="parent">
+                    <!--collapsing 위치를 지정하기 위해 home화면이랑 똑같은 tabLayout 가져와서 위치 조정함-->
                     <com.google.android.material.tabs.TabLayout
-                        android:id="@+id/tab_layout_fake"
+                        android:id="@+id/tab_layout"
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
                         android:layout_marginStart="20dp"
                         android:layout_marginEnd="20dp"
                         android:background="@drawable/home_tab_layout_bg"
-                        app:tabTextColor="#8b8b8b"
-                        app:tabTextAppearance="@style/main_home_tab_layout_text_style"
-                        app:tabSelectedTextColor="@color/white"
-                        app:tabRippleColor="@null"
-                        app:tabIndicatorHeight="0dp"
-                        app:tabIndicatorFullWidth="false"
+                        android:visibility="invisible"
                         app:tabBackground="@drawable/home_selector_tab_bg"
                         app:tabGravity="fill"
+                        app:tabIndicatorFullWidth="false"
+                        app:tabIndicatorHeight="0dp"
                         app:tabMode="fixed"
-                        android:visibility="invisible"/>
+                        app:tabRippleColor="@null"
+                        app:tabSelectedTextColor="@color/white"
+                        app:tabTextAppearance="@style/main_home_tab_layout_text_style"
+                        app:tabTextColor="#8b8b8b" />
                 </com.google.android.material.appbar.MaterialToolbar>
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tx_name_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="아토님의 최대 수혜 금액"
-                    android:textSize="17dp"
-                    android:textColor="#a4613d"
-                    android:fontFamily="@font/godom"
-                    android:layout_marginTop="35dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/toolbar_fake"/>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraint"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tx_max_cost"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="250,000"
-                    android:textColor="#b97142"
-                    android:fontFamily="@font/godob"
-                    android:textSize="42dp"
-                    android:layout_marginTop="4dp"
-                    app:layout_constraintHorizontal_chainStyle="packed"
-                    app:layout_constraintEnd_toStartOf="@+id/tx_won"
-                    app:layout_constraintTop_toBottomOf="@+id/tx_name_title"
-                    app:layout_constraintStart_toStartOf="parent"/>
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/app_bar_bg"
+                        android:layout_width="match_parent"
+                        android:layout_height="190dp"
+                        android:background="#ffe4b6"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tx_won"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="원"
-                    android:fontFamily="@font/godob"
-                    android:textSize="22dp"
-                    android:textColor="#b47a5b"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginStart="2dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/tx_max_cost"
-                    app:layout_constraintStart_toEndOf="@+id/tx_max_cost"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/img_app_bar_bg_left"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/main_home_appbar_left"
+                        app:layout_constraintBottom_toBottomOf="@id/img_app_bar_bg_center"
+                        app:layout_constraintEnd_toStartOf="@+id/img_app_bar_bg_center"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/img_app_bar_bg_center"
+                        app:layout_constraintVertical_chainStyle="packed" />
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/btn_max_cost_welfare_show"
-                    android:layout_width="38dp"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/ic_main_home_max_cost_arrow"
-                    android:layout_marginStart="3dp"
-                    app:layout_constraintStart_toEndOf="@+id/tx_won"
-                    app:layout_constraintBottom_toBottomOf="@id/tx_won" />
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/img_app_bar_bg_center"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:background="#ffe4b6"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/img_app_bar_bg_left"
+                        app:layout_constraintTop_toBottomOf="@id/app_bar_bg" />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tx_min_cost"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="최소 80,000원"
-                    android:textSize="18dp"
-                    android:fontFamily="@font/roboto_bold"
-                    android:textColor="#d28451"
-                    android:layout_marginTop="4dp"
-                    app:layout_constraintTop_toBottomOf="@+id/tx_max_cost"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-    </com.google.android.material.appbar.AppBarLayout>
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/img_app_bar_bg_right"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-1dp"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/main_home_appbar_right"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/img_app_bar_bg_center" />
 
-    <!--collapsing될 때 위쪽 부분에 안보이도록 같은 색상의 이미지뷰로 가려주기 위함-->
+                    <!--toolbar 만큼 멘트들을 내려주기 위함.-->
+                    <com.google.android.material.appbar.MaterialToolbar
+                        android:id="@+id/toolbar_fake"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.google.android.material.tabs.TabLayout
+                            android:id="@+id/tab_layout_fake"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/home_tab_layout_bg"
+                            android:visibility="invisible"
+                            app:tabBackground="@drawable/home_selector_tab_bg"
+                            app:tabGravity="fill"
+                            app:tabIndicatorFullWidth="false"
+                            app:tabIndicatorHeight="0dp"
+                            app:tabMode="fixed"
+                            app:tabRippleColor="@null"
+                            app:tabSelectedTextColor="@color/white"
+                            app:tabTextAppearance="@style/main_home_tab_layout_text_style"
+                            app:tabTextColor="#8b8b8b" />
+                    </com.google.android.material.appbar.MaterialToolbar>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tx_name_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="35dp"
+                        android:fontFamily="@font/godom"
+                        android:text="아토님의 최대 수혜 금액"
+                        android:textColor="#a4613d"
+                        android:textSize="17dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/toolbar_fake" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tx_max_cost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/godob"
+                        android:text="250,000"
+                        android:textColor="#b97142"
+                        android:textSize="42dp"
+                        app:layout_constraintEnd_toStartOf="@+id/tx_won"
+                        app:layout_constraintHorizontal_chainStyle="packed"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tx_name_title" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tx_won"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/godob"
+                        android:text="원"
+                        android:textColor="#b47a5b"
+                        android:textSize="22dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tx_max_cost"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/tx_max_cost" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/btn_max_cost_welfare_show"
+                        android:layout_width="38dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="3dp"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/ic_main_home_max_cost_arrow"
+                        app:layout_constraintBottom_toBottomOf="@id/tx_won"
+                        app:layout_constraintStart_toEndOf="@+id/tx_won" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tx_min_cost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="최소 80,000원"
+                        android:textColor="#d28451"
+                        android:textSize="18dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tx_max_cost" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <!--collapsing될 때 위쪽 부분에 안보이도록 같은 색상의 이미지뷰로 가려주기 위함-->
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_top_rectangle"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="#ffe4b6" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/img_top_rectangle"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:background="#ffe4b6"/>
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        android:id="@+id/btn_scroll_top"
+        android:layout_width="46dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_up"
+        android:visibility="invisible"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintVertical_bias="0.85"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

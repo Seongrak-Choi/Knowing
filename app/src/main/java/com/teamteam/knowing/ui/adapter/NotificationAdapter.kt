@@ -28,10 +28,10 @@ class NotificationAdapter(private val notificationList:ArrayList<NotificationRes
             //더 보기 버튼 클릭 리스너
             binding.btnMoreInfo.setOnClickListener {
                 if (binding.constraintContent.visibility== View.GONE){
-                    binding.btnMoreInfo.setImageResource(R.drawable.ic_arrow_close)
+                    binding.imgMoreInfo.setImageResource(R.drawable.ic_arrow_close)
                     binding.constraintContent.visibility=View.VISIBLE
                 }else if (binding.constraintContent.visibility==View.VISIBLE){
-                    binding.btnMoreInfo.setImageResource(R.drawable.ic_arrow_open)
+                    binding.imgMoreInfo.setImageResource(R.drawable.ic_arrow_open)
                     binding.constraintContent.visibility=View.GONE
                 }
             }

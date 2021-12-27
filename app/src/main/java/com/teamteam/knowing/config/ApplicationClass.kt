@@ -77,6 +77,7 @@ class ApplicationClass : Application() {
         lateinit var sRetrofit: Retrofit
         lateinit var collegeRetrofit : Retrofit
 
+
         //로딩에서 받아온 복지 정보를 저장할 싱글톤 변수
         lateinit var mainWelfareResponse : MainWelfareResponse
     }
