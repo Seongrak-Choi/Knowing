@@ -4,6 +4,7 @@ import android.animation.ValueAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.util.DisplayMetrics
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
@@ -12,6 +13,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewpager2.widget.ViewPager2
 import com.teamteam.knowing.R
 import com.teamteam.knowing.config.ApplicationClass.Companion.USER_NAME_KEY
 import com.teamteam.knowing.config.ApplicationClass.Companion.sp
@@ -56,10 +58,17 @@ class CustomWelfareFragment : BaseFragment<FragmentMainHomeCustomWelfareBinding>
     //맞춤 복지에 보여주는 리사이클러뷰 어댑터
     private lateinit var adapter : MainHomeCustomWelfareRCAdapter
 
+    //부모 뷰페이저2
+    lateinit var parentViewPager2 : ViewPager2
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //부모 뷰페이저 선언
+        parentViewPager2= requireActivity().findViewById(R.id.view_pager2)
 
         //복지데이터 받기
        // welfareInfo = arguments?.getSerializable("welfareInfo") as MainWelfareResponse
@@ -275,6 +284,31 @@ class CustomWelfareFragment : BaseFragment<FragmentMainHomeCustomWelfareBinding>
         binding.btnScrollTop.setOnClickListener {
             binding.nestedScroll.smoothScrollTo(0,0)
             binding.appBar.setExpanded(true)
+        }
+
+
+
+        //tabLayout의 tab들에게 부모 뷰페이저 스크롤링 막기 위해 클릭 리스너 설정하는 코드
+        for (i in 0 until binding.tabLayoutCustomWelfare.getTabCount()) {
+            val tab = (binding.tabLayoutCustomWelfare.getChildAt(0) as ViewGroup).getChildAt(i)
+            tab.setOnTouchListener { v, event ->
+                when(event.action){
+                    MotionEvent.ACTION_DOWN->{
+                        parentViewPager2.isUserInputEnabled=false
+                    }
+                }
+                false
+            }
+        }
+
+        //tablayout터치 이후 네스티드스크롤뷰 자체를 클릭 시에는 스크롤링이 가능하도록 설정
+        binding.nestedScroll.setOnTouchListener { v, event ->
+            when(event.action){
+                MotionEvent.ACTION_DOWN->{
+                    parentViewPager2.isUserInputEnabled=true
+                }
+            }
+            false
         }
     }
 

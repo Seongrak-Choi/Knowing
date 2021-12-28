@@ -1,11 +1,17 @@
 package com.teamteam.knowing.ui.view.main.home.allwelfare
 
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.View
+import android.view.ViewGroup
+import android.widget.ScrollView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.ViewCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewpager2.widget.ViewPager2
 import com.teamteam.knowing.R
 import com.teamteam.knowing.data.model.network.response.MainWelfareResponse
 import com.teamteam.knowing.databinding.FragmentMainHomeAllWelfareBinding
@@ -26,8 +32,14 @@ class AllWelfareFragment : BaseFragment<FragmentMainHomeAllWelfareBinding>(
     //뷰모델 변수
     private lateinit var allWelfareFragmentViewModel:AllWelfareFragmentViewModel
 
+    //부모 뷰페이저2
+    lateinit var parentViewPager2 : ViewPager2
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //부모 뷰페이저 선언
+        parentViewPager2= requireActivity().findViewById(R.id.view_pager2)
 
         //복지데이터 받기
         //welfareInfo = arguments?.getSerializable("welfareInfo") as MainWelfareResponse
@@ -93,7 +105,7 @@ class AllWelfareFragment : BaseFragment<FragmentMainHomeAllWelfareBinding>(
         }
 
 
-
+        //탭 레이아웃 클릭 리스너
         binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 when (tab!!.position){
@@ -103,17 +115,49 @@ class AllWelfareFragment : BaseFragment<FragmentMainHomeAllWelfareBinding>(
                     3->allWelfareFragmentViewModel.changeRcToLife()
                     4->allWelfareFragmentViewModel.changeRcToCovid()
                     else->allWelfareFragmentViewModel.changeRcToStudent()
-
                 }
             }
-
             override fun onTabUnselected(tab: TabLayout.Tab?) {
             }
-
             override fun onTabReselected(tab: TabLayout.Tab?) {
             }
-
         })
+
+
+        //tabLayout의 tab들에게 부모 뷰페이저 스크롤링 막기 위해 클릭 리스너 설정하는 코드
+        for (i in 0 until binding.tabLayout.getTabCount()) {
+            val tab = (binding.tabLayout.getChildAt(0) as ViewGroup).getChildAt(i)
+            tab.setOnTouchListener { v, event ->
+                when(event.action){
+                    MotionEvent.ACTION_DOWN->{
+                        parentViewPager2.isUserInputEnabled=false
+                    }
+                }
+                false
+            }
+        }
+
+        //tablayout터치 이후 네스티드스크롤뷰 자체를 클릭 시에는 스크롤링이 가능하도록 설정
+        binding.nestedScroll.setOnTouchListener { v, event ->
+            when(event.action){
+                MotionEvent.ACTION_DOWN->{
+                    parentViewPager2.isUserInputEnabled=true
+                }
+            }
+            false
+        }
+
+        //tablayout터치 이후 네스티드스크롤뷰 자체를 클릭 시에는 스크롤링이 가능하도록 설정
+        binding.rcAllWelfare.setOnTouchListener { v, event ->
+            when(event.action){
+                MotionEvent.ACTION_DOWN->{
+                    parentViewPager2.isUserInputEnabled=true
+                }
+            }
+            false
+        }
+
+
 
 
         //nestedScroll 스크롤 체인지 리스너
@@ -129,7 +173,6 @@ class AllWelfareFragment : BaseFragment<FragmentMainHomeAllWelfareBinding>(
         //맨위로 버튼 클릭 리스너
         binding.btnScrollTop.setOnClickListener {
             binding.nestedScroll.smoothScrollTo(0,0)
-            binding.appBar.setExpanded(true)
         }
     }
 }

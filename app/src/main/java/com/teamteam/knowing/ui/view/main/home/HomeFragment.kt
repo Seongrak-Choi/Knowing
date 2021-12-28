@@ -56,20 +56,20 @@ class HomeFragment : BaseFragment<FragmentMainHomeBinding>(FragmentMainHomeBindi
 
 
         //뷰페이저 스크롤 막는 코드
-        binding.viewPager2.isUserInputEnabled = false
+        //binding.viewPager2.isUserInputEnabled = false
 
-        //tabLayout 메뉴 누를 때 애니메이션 효과 없애기 위한 코드
-        binding.homeTabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                tab?.position?.let { binding.viewPager2?.setCurrentItem(it,false) }
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-            }
-
-        })
+//        //tabLayout 메뉴 누를 때 애니메이션 효과 없애기 위한 코드
+//        binding.homeTabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
+//            override fun onTabSelected(tab: TabLayout.Tab?) {
+//                tab?.position?.let { binding.viewPager2?.setCurrentItem(it,false) }
+//            }
+//
+//            override fun onTabUnselected(tab: TabLayout.Tab?) {
+//            }
+//
+//            override fun onTabReselected(tab: TabLayout.Tab?) {
+//            }
+//
+//        })
     }
 }

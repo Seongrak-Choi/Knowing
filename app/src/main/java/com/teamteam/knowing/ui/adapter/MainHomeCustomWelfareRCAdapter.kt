@@ -4,10 +4,13 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.ParseException
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.teamteam.knowing.R
 import com.teamteam.knowing.data.model.network.response.WelfareInfo
 import com.teamteam.knowing.databinding.ItemHomeCustomWelfareRcBinding
@@ -20,6 +23,9 @@ class MainHomeCustomWelfareRCAdapter(private val welfareList:ArrayList<WelfareIn
     RecyclerView.Adapter<MainHomeCustomWelfareRCAdapter.ViewHolder>(){
 
     private var listener: MainHomeCustomWelfareRCAdapter.OnItemClickListener? = null
+
+    //부모 뷰페이저2
+    lateinit var parentViewPager2 : ViewPager2
 
     interface OnItemClickListener {
         fun onItemClick(value: String)
@@ -82,12 +88,26 @@ class MainHomeCustomWelfareRCAdapter(private val welfareList:ArrayList<WelfareIn
                 intent.putExtra("welfareInfo",data)
                 mContext.startActivity(intent)
             }
+
+
+            //리사이클러뷰 아이템 터치 리스너를 설정해서 아이템이 터치될 때는 뷰페이저 스크롤링이 먹도록 설정
+            binding.btnSelectWelfare.setOnTouchListener { v, event ->
+                when(event.action){
+                    MotionEvent.ACTION_DOWN->{
+                        parentViewPager2.isUserInputEnabled=true
+                    }
+                }
+                false
+            }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
             ItemHomeCustomWelfareRcBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+
+        //부모 뷰페이저 선언
+        parentViewPager2=(mContext as AppCompatActivity).findViewById(R.id.view_pager2)
 
         return ViewHolder(binding)
     }
