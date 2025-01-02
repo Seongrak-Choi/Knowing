@@ -11,8 +11,8 @@ CMC 8기 노잉 - Knowing
 ## 🔨 사용 기술
 
 - Kotlin
-- Retrofit2을 이용해 API연동
-- MVVM패턴
+- Retrofit2
+- MVVM
 - Corutine
 - SNS 로그인
 
